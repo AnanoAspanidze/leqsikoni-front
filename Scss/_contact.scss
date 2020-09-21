@@ -8,7 +8,7 @@
   .user-item {
     display: flex;
     justify-content: center;
-    align-items: end;
+    align-items: flex-start;
     border: 1px solid #f7cf43;
     border-radius: 100%;
     width: 40px;
@@ -117,16 +117,16 @@
       margin-top: 8vh;
     }
     &-content_item {
-      padding-left: 24vh;
+      //padding-left: 24vh;
     }
     &-header_box {
       margin-top: 2vh;
     }
   }
   footer{
-    position: absolute;
-    bottom: 10%;
-    width: 80%;
+    //ან რამდენითაცაა ჩამოწეული, ფუტერი აბსოლუტით არ გააკეთო ხოლმე
+    
+    margin-top: 30px;
   }
   .soc i {
     color: #7fd1d8;
