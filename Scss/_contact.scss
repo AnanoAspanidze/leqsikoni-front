@@ -23,7 +23,7 @@
     a {
       color: #c5cbcd;
       font-size: 16px;
-      font-family: ALK Sanet;
+      font-family: ALK Sanet Regular;
     }
   }
   .nav-link {
@@ -117,7 +117,7 @@
       margin-top: 8vh;
     }
     &-content_item {
-      //padding-left: 24vh;
+      padding-left: 24vh;
     }
     &-header_box {
       margin-top: 2vh;
@@ -126,7 +126,10 @@
   footer{
     //ან რამდენითაცაა ჩამოწეული, ფუტერი აბსოლუტით არ გააკეთო ხოლმე
     
-    margin-top: 30px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 11vh;
   }
   .soc i {
     color: #7fd1d8;
