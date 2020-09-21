@@ -246,7 +246,7 @@
 #contact-app .nav-item a {
   color: #c5cbcd;
   font-size: 16px;
-  font-family: ALK Sanet;
+  font-family: ALK Sanet Regular;
 }
 
 #contact-app .nav-link {
@@ -356,12 +356,19 @@
   margin-top: 8vh;
 }
 
+#contact-app .contact-content_item {
+  padding-left: 24vh;
+}
+
 #contact-app .contact-header_box {
   margin-top: 2vh;
 }
 
 #contact-app footer {
-  margin-top: 30px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 11vh;
 }
 
 #contact-app .soc i {
