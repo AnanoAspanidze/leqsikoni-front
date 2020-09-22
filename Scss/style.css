@@ -88,11 +88,6 @@
   font-size: 40px;
 }
 
-/* გვაქ ორი სახის იკონკები 
-პირველი ---- მრგვალი
-მეორე --- მხოლოდ ლოგო
-ასევე იკონკების ზომები შეგიძლიათ ცვალოთ font-size-ით; ფერი - color-ით
-*/
 .about {
   overflow-x: hidden;
 }
@@ -119,80 +114,64 @@
 }
 
 .about .nav-item {
+  position: relative;
   margin-left: 80px;
-  color: #c5cbcd;
-  font-size: 2.2vh;
-  font-family: "ALK Sanet";
 }
 
-.about .header-logo {
-  height: 6.9vh;
-  max-height: 53px;
+.about .nav-item a {
+  color: #C5CBCD;
+  font-size: 16px;
+  font-family: "ALK Sanet Regular";
+}
+
+.about .nav-link {
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+  padding-bottom: 0 !important;
+}
+
+.about .nav-link .active:after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  bottom: -8px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #f7cf43;
+}
+
+.about .nav-link:after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  bottom: -8px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 0%;
+  background: #f7cf43;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.about .nav-link .active {
+  color: #7FD1D8;
+}
+
+.about .nav-link:hover {
+  color: #7FD1D8;
+}
+
+.about .nav-link:hover:after {
+  width: 100%;
+  background: orange;
 }
 
 .about .header-logo img {
-  height: 100%;
-}
-
-.about .card {
-  border: 1px solid rgba(127, 209, 216, 0.2);
-  -webkit-box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.6);
-          box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.6);
-  border-radius: 3.1vh;
-}
-
-.about .card-title {
-  color: #7fd1d8;
-  font-size: 3.2vh;
-  font-family: "ALK Sanet";
-  padding-top: 25px;
-}
-
-.about .card-text {
-  color: #c5cbcd;
-  font-size: 2.4vh;
-  font-family: "Noto Sans";
-  padding-top: 10px;
-  padding-bottom: 60px;
-}
-
-.about .ladybird {
-  height: 3.2vh;
-  max-height: 25px;
-  left: 30vh;
-}
-
-.about .ladybird img {
-  height: 100%;
-}
-
-.about .fly {
-  position: absolute;
-  bottom: 2vh;
-  right: 9vh;
-  height: 23vh;
-  max-height: 179px;
-}
-
-.about .fly img {
-  height: 100%;
-}
-
-.about .footer {
-  margin-top: 5vh;
-}
-
-.about .soc .fb {
-  border-radius: 100%;
-  height: 40px;
-  width: 40px;
-  border: 1px solid #7fd1d8;
-}
-
-.about .soc i {
-  color: #7fd1d8;
-  font-size: 25px;
-  margin-left: 30px;
+  width: 54.98px;
+  height: 53.44px;
 }
 
 .about .user {
@@ -211,6 +190,70 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+
+.about .card {
+  border: 1px solid rgba(127, 209, 216, 0.2);
+  -webkit-box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.6);
+          box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.6);
+  border-radius: 3.1vh;
+}
+
+.about .card-title {
+  color: #7fd1d8;
+  font-size: 25px;
+  font-family: "ALK Sanet";
+  padding-top: 1.8vh;
+}
+
+.about .card-text {
+  color: #c5cbcd;
+  font-size: 2.2vh;
+  font-family: "Noto Sans";
+  padding-top: 10px;
+  padding-bottom: 60px;
+}
+
+.about .ladybird {
+  height: 3.2vh;
+  max-height: 25px;
+  left: 22vh;
+}
+
+.about .ladybird img {
+  height: 100%;
+}
+
+.about .fly {
+  position: absolute;
+  bottom: 8vh;
+  right: 10vh;
+  height: 23vh;
+  max-height: 179px;
+}
+
+.about .fly img {
+  height: 100%;
+}
+
+.about .footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 11vh;
+}
+
+.about .soc .fb {
+  border-radius: 100%;
+  height: 40px;
+  width: 40px;
+  border: 1px solid #7fd1d8;
+}
+
+.about .soc i {
+  color: #7fd1d8;
+  font-size: 30px;
+  margin-left: 30px;
 }
 
 #contact-app .header-logo img {
