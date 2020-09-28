@@ -1,4 +1,12 @@
+// vsriable declaration
+$primary:  #7FD1D8;
+$warning: #f7cf43;
+$text: #C5CBCD;
+
+
+// vsriable declaration
+@import "./bulma.sass";
 @import "./flaticon";
-@import "./page";
-@import "./about-project";
+
 @import "./contact";
+@import "./about-project";
