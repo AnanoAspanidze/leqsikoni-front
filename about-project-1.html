@@ -10,12 +10,12 @@
 </head>
 
 <body>
-    <div class="container is-fluid">
+    <div class="container">
         <!--Header Section-->
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+        <nav class="navbar pt-30px" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item" href="#">
-                    <img src="./img/logo.svg" width="54" height="53">
+                <a class="logo" href="#">
+                    <img src="./img/logo.svg" class="logo">
                 </a>
 
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
@@ -26,13 +26,13 @@
                 </a>
             </div>
 
-            <div id="navbarBasicExample" class="navbar-menu">
+            <div id="navbarBasicExample" class="navbar-menu is-primary is-family-primary">
                 <div class="navbar-start is-menu-center">
                     <a class="navbar-item">
                         ანბანი
                     </a>
 
-                    <a class="navbar-item">
+                    <a class="navbar-item ">
                        პროექტის შესახებ
                     </a>
                     <a class="navbar-item">
@@ -41,11 +41,11 @@
 
                 </div>
 
-                <div class="navbar-end">
+                <div class="navbar-end is-primary">
                     <div class="navbar-item">
-                        <button class="button is-rounded">
+                        <button class="button is-rounded is-user">
                             <span class="icon">
-                                <i class="fas fa-user"></i>
+                                <i class="fi flaticon-user "></i>
                             </span>
                         </button>
                     </div>
@@ -57,42 +57,34 @@
  <!--Card Section-->
  <div class="container section">
      
-    <figure class="image is-32x32">
-        <img src="./img/about-project/fly.svg">
-    </figure>
      <div class="columns">
-         <div class="column is-8">
-             <div class="card">
+         <div class="column is-10">
+             <div class="card is-card">
                     <div class="card-content">
                         <div class="media-content">
-                          <p class="title is-4">რატომ ვიყენებთ მას?</p>
+                          <p class="title is-4  is-card-title">რატომ ვიყენებთ მას?</p>
                         </div>
                       </div>
                   
-                      <div class="content">
-                        რატომ ვიყენებთ მას? ცნობილი ფაქტია, რომ გვერდის წაკითხვად შიგთავსს შეუძლია მკითხველის ყურადღება მიიზიდოს და დიზაინის აღქმაში ხელი შეუშალოს. Lorem Ipsum-ის გამოყენებით ვღებულობთ იმაზე მეტ-ნაკლებად სწორი გადანაწილების ტექსტს, ვიდრე ერთიდაიგივე გამეორებადი სიტყვებია ხოლმე. შედეგად, ტექსტი ჩვეულებრივ ინგლისურს გავს, მისი წაითხვა კი შეუძლებელია. დღეს უამრავი პერსონალური საგამომცემლო პროგრამა და ვებგვერდი იყენებს Lorem Ipsum-ს, როგორც დროებით ტექსტს წყობის შესავსებად; Lorem Ipsum-ის მოძებნისას კი საძიებო სისტემები ბევრ დაუსრულებელ გვერდს გვიჩვენებენ. წლების მანძილზე ამ ტექსტის უამრავი ვერსია გამოჩნდა, ზოგი შემთხვევით დაშვებული შეცდომის გამო, ზოგი კი — განზრახ, ხუმრობით.
+                      <div class="content is-card-text is-family-secondary">
+                        ცნობილი ფაქტია, რომ გვერდის წაკითხვად შიგთავსს შეუძლია მკითხველის ყურადღება მიიზიდოს და დიზაინის აღქმაში ხელი შეუშალოს. Lorem Ipsum-ის გამოყენებით ვღებულობთ იმაზე მეტ-ნაკლებად სწორი გადანაწილების ტექსტს, ვიდრე ერთიდაიგივე გამეორებადი სიტყვებია ხოლმე.<br><br> შედეგად, ტექსტი ჩვეულებრივ ინგლისურს გავს, მისი წაითხვა კი შეუძლებელია. დღეს უამრავი პერსონალური საგამომცემლო პროგრამა და ვებგვერდი იყენებს Lorem Ipsum-ს, როგორც დროებით ტექსტს წყობის შესავსებად; Lorem Ipsum-ის მოძებნისას კი საძიებო სისტემები ბევრ დაუსრულებელ გვერდს გვიჩვენებენ.<br><br>წლების მანძილზე ამ ტექსტის უამრავი ვერსია გამოჩნდა, ზოგი შემთხვევით დაშვებული შეცდომის გამო, ზოგი კი — განზრახ, ხუმრობით.
                       </div>
                   </div>
              </div>
          </div>
-         <figure class="is-128x128">
-            <img src="./img/about-project/ladybird.svg">
+         <figure class="is-128x128 ladybird">
+            <img src="./img/about-project/ladybird.svg" class="ladybird">
+        </figure>
+        <figure class="is-fly">
+            <img src="./img/about-project/fly.svg" class="fly">
         </figure>
      </div>
-     <footer class="footer">
-        <div class="content has-text-centered">
-            <div class="columns">
-                <div class="column">
-                    <i class="fi flaticon-fb_round"></i>
-                </div>
-                <div class="column">
-                    <i class="fi flaticon-tw_round"></i>
-                </div>
-                <div class="column">
-                    <i class="fi flaticon-in_round"></i>
-                </div>           
-
-                <!-- ფონტის გამოსაყენებლად i თაგს უნდა ქონდეს აუცილებლად ცლასი fi და იცონის დასახელება რომებსაც აქაც ნახავთ და _flaticon.scss-ში -->
+     <footer class="footer is-footer">
+        <div class="content has-text-centered is-soc ">
+            <div class="is-soc fb ">
+                    <i class="fi flaticon-fb_round fb"></i>
+                    <i class="fi flaticon-tw_round fb"></i>
+                    <i class="fi flaticon-in_round fb"></i>
             </div>
         </div>
       </footer>

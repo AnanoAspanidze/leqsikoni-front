@@ -1,12 +1,16 @@
-// vsriable declaration
+// variable declaration
 $primary:  #7FD1D8;
 $warning: #f7cf43;
 $text: #C5CBCD;
 
+$family-primary :"ALK Sanet";
+$family-secondary: "NotoSans-Regular";
 
-// vsriable declaration
+
+
+// variable declaration
 @import "./bulma.sass";
 @import "./flaticon";
-
+@import "./fonts";
 @import "./contact";
-@import "./about-project";
+@import "./about-project"

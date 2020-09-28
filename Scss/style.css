@@ -361,7 +361,7 @@ button,
 input,
 select,
 textarea {
-  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: "ALK Sanet";
 }
 
 code,
@@ -10937,11 +10937,11 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 .is-family-primary {
-  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
+  font-family: "ALK Sanet" !important;
 }
 
 .is-family-secondary {
-  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
+  font-family: "NotoSans-Regular" !important;
 }
 
 .is-family-sans-serif {
@@ -12409,6 +12409,22 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   content: "\f106";
 }
 
+@font-face {
+  font-family: "NotoSans-Regular";
+  src: url("../fonts/NotoSans-Regular/NotoSans-Regular.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/NotoSans-Regular/NotoSans-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/NotoSans-Regular/NotoSans-Regular.otf") format("opentype"), url("../fonts/NotoSans-Regular/NotoSans-Regular.svg") format("svg"), url("../fonts/NotoSans-Regular/NotoSans-Regular.ttf") format("truetype"), url("../fonts/NotoSans-Regular/NotoSans-Regular.woff") format("woff"), url("../fonts/NotoSans-Regular/NotoSans-Regular.woff2") format("woff2");
+  /* Modern Browsers */
+}
+
+@font-face {
+  font-family: 'ALK Sanet';
+  src: url("../fonts/alk-sanet/alk-sanet-webfont.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/alk-sanet/alk-sanet-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/alk-sanet/alk-sanet-webfont.woff2") format("woff2"), url("../fonts/alk-sanet/alk-sanet-webfont.woff") format("woff"), url("../fonts/alk-sanet/alk-sanet-webfont.ttf") format("truetype"), url("../fonts/alk-sanet/alk-sanet-webfont.svg#alk_sanetregular") format("svg");
+  /* Legacy iOS */
+}
+
 #contact-app .header-logo img {
   width: 54.98px;
   height: 53.44px;
@@ -12572,93 +12588,11 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   font-size: 30px;
 }
 
-.about {
-  overflow-x: hidden;
+.is-menu-center {
+  margin: auto;
 }
 
-.about .container {
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.about header {
-  margin-top: 2vh;
-}
-
-.about .main-box_relative {
-  position: relative;
-  height: 100vh;
-}
-
-.about .content {
-  margin-top: 2vh;
-}
-
-.about .nav-item {
-  position: relative;
-  margin-left: 80px;
-}
-
-.about .nav-item a {
-  color: #C5CBCD;
-  font-size: 16px;
-  font-family: "ALK Sanet Regular";
-}
-
-.about .nav-link {
-  padding-right: 0rem !important;
-  padding-left: 0rem !important;
-  padding-bottom: 0 !important;
-}
-
-.about .nav-link .active:after {
-  position: absolute;
-  content: "";
-  height: 2px;
-  bottom: -8px;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  width: 100%;
-  background: #f7cf43;
-}
-
-.about .nav-link:after {
-  position: absolute;
-  content: "";
-  height: 2px;
-  bottom: -8px;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  width: 0%;
-  background: #f7cf43;
-  -webkit-transition: .5s;
-  transition: .5s;
-}
-
-.about .nav-link .active {
-  color: #7FD1D8;
-}
-
-.about .nav-link:hover {
-  color: #7FD1D8;
-}
-
-.about .nav-link:hover:after {
-  width: 100%;
-  background: orange;
-}
-
-.about .header-logo img {
-  width: 54.98px;
-  height: 53.44px;
-}
-
-.about .user {
+.is-user {
   border-radius: 100%;
   height: 40px;
   width: 40px;
@@ -12666,7 +12600,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   border: 1px solid #f7cf43;
 }
 
-.about .user i {
+.is-user i {
   color: #f7cf43;
   font-size: 30px;
   position: absolute;
@@ -12676,67 +12610,27 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
           transform: translate(-50%, -50%);
 }
 
-.about .card {
+.is-card {
   border: 1px solid rgba(127, 209, 216, 0.2);
   -webkit-box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.6);
           box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.6);
   border-radius: 3.1vh;
 }
 
-.about .card-title {
+.is-card-title {
   color: #7fd1d8;
   font-size: 25px;
   font-family: "ALK Sanet";
-  padding-top: 1.8vh;
+  padding-top: 20px;
 }
 
-.about .card-text {
+.is-card-text {
   color: #c5cbcd;
   font-size: 2.2vh;
   font-family: "Noto Sans";
   padding-top: 10px;
-  padding-bottom: 60px;
-}
-
-.about .ladybird {
-  height: 3.2vh;
-  max-height: 25px;
-  left: 22vh;
-}
-
-.about .ladybird img {
-  height: 100%;
-}
-
-.about .fly {
-  position: absolute;
-  bottom: 8vh;
-  right: 10vh;
-  height: 23vh;
-  max-height: 179px;
-}
-
-.about .fly img {
-  height: 100%;
-}
-
-.about .footer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 11vh;
-}
-
-.about .soc .fb {
-  border-radius: 100%;
-  height: 40px;
-  width: 40px;
-  border: 1px solid #7fd1d8;
-}
-
-.about .soc i {
-  color: #7fd1d8;
-  font-size: 30px;
-  margin-left: 30px;
+  padding-bottom: 100px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 /*# sourceMappingURL=style.css.map */
