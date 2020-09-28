@@ -1,16 +1,14 @@
 // variable declaration
-$primary:  #7FD1D8;
+$primary: #7fd1d8;
 $warning: #f7cf43;
-$text: #C5CBCD;
+$text: #c5cbcd;
 
-$family-primary :"ALK Sanet";
+$family-primary: "ALK Sanet";
 $family-secondary: "NotoSans-Regular";
-
-
 
 // variable declaration
 @import "./bulma.sass";
 @import "./flaticon";
 @import "./fonts";
 @import "./contact";
-@import "./about-project"
+@import "./about-project";
