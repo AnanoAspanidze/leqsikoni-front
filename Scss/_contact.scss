@@ -1,14 +1,14 @@
-.is-navbar {
-  margin: 0 10px;
-}
-.is-navbar-end {
-  margin: 0;
-}
 .navbar-item {
   img {
     max-width: 54.98px;
     max-height: 53.44px;
   }
+}
+.is-navbar-end {
+  margin: 0;
+}
+.is-menu-center {
+  margin: auto;
 }
 .button {
   border-color: transparent;
@@ -126,7 +126,7 @@
   }
   .is-navbar_line{
     padding: 0;
-    margin: 0.5rem 0.75rem;
+    margin: 0.5rem 1.5rem;
   }
 
 .card-content {
