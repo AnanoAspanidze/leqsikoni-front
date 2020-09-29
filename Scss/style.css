@@ -12611,22 +12611,16 @@ body {
 }
 
 .header {
-  margin-top: 3vh;
+  margin-top: 2vh;
 }
 
 .logo img {
   width: 54px;
   height: 53px;
+  margin-top: 3vh;
 }
 
-.navbar-item {
-  margin-left: 30px;
-  padding-right: 0rem !important;
-  padding-left: 0rem !important;
-  padding-bottom: 0 !important;
-}
-
-.navbar-item .active:after {
+.is-navbar_line.active:after {
   position: absolute;
   content: "";
   height: 2px;
@@ -12634,11 +12628,11 @@ body {
   margin: 0 auto;
   left: 0;
   right: 0;
-  width: 100%;
+  width: 80%;
   background: #f7cf43;
 }
 
-.navbar-item:after {
+.is-navbar_line:after {
   position: absolute;
   content: "";
   height: 2px;
@@ -12652,17 +12646,23 @@ body {
   transition: .5s;
 }
 
-.navbar-item .active {
-  color: #7fd1d8;
+.is-navbar_line.active {
+  color: #7fd1d8 !important;
 }
 
-.navbar-item:hover {
-  color: #7fd1d8;
+.is-navbar_line:hover {
+  color: #7fd1d8 !important;
+  background-color: inherit !important;
 }
 
-.navbar-item:hover:after {
-  width: 100%;
-  background: orange;
+.is-navbar_line:hover:after {
+  width: 80%;
+  background: #f7cf43;
+}
+
+.is-navbar_line {
+  padding: 0;
+  margin: 0.5rem 2rem;
 }
 
 .is-user {
@@ -12670,7 +12670,6 @@ body {
   height: 40px;
   width: 40px;
   position: relative;
-  border: 1px solid #f7cf43;
 }
 
 .is-user i {
@@ -12684,13 +12683,13 @@ body {
 }
 
 .card-container {
-  margin-top: 8vh;
+  margin-top: 5vh;
 }
 
 .is-card {
   border: 1px solid rgba(123, 168, 172, 0.2);
-  -webkit-box-shadow: 2px 2px 8px #7fd1d8;
-          box-shadow: 2px 2px 8px #7fd1d8;
+  -webkit-box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.4);
+          box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.4);
   border-radius: 3.1vh;
 }
 
@@ -12700,13 +12699,21 @@ body {
   padding-top: 20px;
 }
 
+.title {
+  font-weight: 300;
+}
+
+.card-content {
+  margin-left: 2rem;
+}
+
 .is-card-text {
   color: #c5cbcd;
   font-size: 2.2vh;
   padding-top: 10px;
   padding-bottom: 100px;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding-right: 30px;
+  padding-left: 30px;
 }
 
 .is-soc i {
