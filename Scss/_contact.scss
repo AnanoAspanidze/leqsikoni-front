@@ -1,9 +1,9 @@
 @font-face {
-  font-family: ALK Sanet;
+  font-family: ALKSanet;
   src: url(alk-sanet-webfont.woff);
 }
 @font-face {
-  font-family: Noto Sans;
+  font-family: NotoSans;
   src: url(NotoSans-Regular.woff);
 }
 .navbar-item {
@@ -100,13 +100,13 @@
 .is-card-title-item {
   color: #7fd1d8;
   font-size: 25px;
-  font-family: ALK Sanet;
+  font-family: ALKSanet;
   padding-top: 35px;
 }
 .is-card-text-item {
   color: #c5cbcd;
   font-size: 2.2vh;
-  font-family: Noto Sans;
+  font-family: NotoSans;
   margin-bottom: 0.5rem!important;
   a {
     color: #c5cbcd;
