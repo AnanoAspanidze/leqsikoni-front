@@ -1,5 +1,16 @@
-.is-menu-center {
+body{
+    overflow-x: hidden;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.is-center {
   margin: auto;
+}
+
+.header{
+  margin-top:3vh;
 }
 
 .logo {
@@ -10,17 +21,55 @@
 }
 .navbar-item {
   margin-left: 30px;
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+  padding-bottom: 0 !important;
 }
+
+.navbar-item .active:after {
+    position: absolute;
+    content: "";
+    height: 2px;
+    bottom: -8px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: $warning;
+  }
+
+  .navbar-item:after {
+    position: absolute;
+    content: "";
+    height: 2px;
+    bottom: -8px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 0%;
+    background: $warning;
+    transition:.5s;
+  }
+  .navbar-item .active {
+        color: $primary;
+      }
+  .navbar-item:hover {
+        color: $primary;
+      }
+  .navbar-item:hover:after {
+        width: 100%;
+        background: orange;
+  }
 
 .is-user {
   border-radius: 100%;
   height: 40px;
   width: 40px;
   position: relative;
-  border: 1px solid #f7cf43;
+  border: 1px solid $warning;
 
   i {
-    color: #f7cf43;
+    color: $warning;
     font-size: 30px;
     position: absolute;
     top: 70%;
@@ -29,19 +78,23 @@
   }
 }
 
+.card-container{
+  margin-top:8vh;
+}
+
 .is-card {
-  border: 1px solid rgba(127, 209, 216, 0.2);
-  box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.6);
+  border: 1px solid rgba(123, 168, 172, 0.2);
+  box-shadow: 2px 2px 8px $primary;
   border-radius: 3.1vh;
 }
 
 .is-card-title {
-  color: #7fd1d8;
+  color: $primary;
   font-size: 25px;
   padding-top: 20px;
 }
 .is-card-text {
-  color: #c5cbcd;
+  color:$text;
   font-size: 2.2vh;
   padding-top: 10px;
   padding-bottom: 100px;
@@ -49,159 +102,30 @@
   padding-left: 20px;
 }
 
-.is-footer {
-}
 .is-soc {
   i {
-    color: #7fd1d8;
+    color: $primary;
     font-size: 30px;
     margin-left: 30px;
   }
 }
 
-.is-fly {
-  position: absolute;
-  display: flex;
-  bottom: 8vh;
-  right: 10vh;
-  height: 23vh;
-  max-height: 179px;
-  img {
-    height: 100%;
-  }
+.ladybird{
+  position:fixed;
+  width:30px;
+  height:25px;
+  top:17vh;
+  left:40vh;
 }
 
-// .about {
-//   overflow-x: hidden;
-//   .container {
-//     width: 100%;
-//     margin-right: auto;
-//     margin-left: auto;
-//     padding-right: 15px;
-//     padding-left: 15px;
-//   }
-//   header {
-//     margin-top: 2vh;
-//   }
-//   .main-box_relative {
-//     position: relative;
-//     height: 100vh;
-//   }
-//   .content {
-//     margin-top: 2vh;
-//   }
-//   .nav-item {
-//     position: relative;
-//     margin-left:80px;
-//     a {
-//       color: #C5CBCD;
-//       font-size: 16px;
-//       font-family: "ALK Sanet Regular";
-//     }
-//   }
-//   .nav-link {
-//     padding-right: 0rem !important;
-//     padding-left: 0rem !important;
-//     padding-bottom: 0 !important;
+.is-fly{
+  position:fixed;
+  right:10vh;
+  bottom:3vh;
+  height:180px;
+  width:230px;
+}
 
-//   }
-
-//   .nav-link .active:after {
-//     position: absolute;
-//     content: "";
-//     height: 2px;
-//     bottom: -8px;
-//     margin: 0 auto;
-//     left: 0;
-//     right: 0;
-//     width: 100%;
-//     background: #f7cf43;
-//   }
-//   .nav-link:after {
-//     position: absolute;
-//     content: "";
-//     height: 2px;
-//     bottom: -8px;
-//     margin: 0 auto;
-//     left: 0;
-//     right: 0;
-//     width: 0%;
-//     background: #f7cf43;
-//     transition:.5s;
-//   }
-//   .nav-link .active {
-//     color: #7FD1D8;
-//   }
-//   .nav-link:hover {
-//     color: #7FD1D8;
-//   }
-//   .nav-link:hover:after {
-//     width: 100%;
-//     background: orange;
-//   }
-//   .header-logo {
-//     img {
-//       width: 54.98px;
-//       height: 53.44px;
-//     }
-//   }
-//
-//   .card {
-//     border: 1px solid rgba(127, 209, 216, 0.2);
-//     box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.6);
-//     border-radius: 3.1vh;
-//   }
-
-//   .card-title {
-//     color: #7fd1d8;
-//     font-size: 25px;
-//     font-family: "ALK Sanet";
-//     padding-top: 1.8vh;
-//   }
-//   .card-text {
-//     color: #c5cbcd;
-//     font-size: 2.2vh;
-//     font-family: "Noto Sans";
-//     padding-top: 10px;
-//     padding-bottom: 60px;
-//   }
-
-//   .ladybird {
-//     height: 3.2vh;
-//     max-height: 25px;
-//     left: 22vh;
-//     img {
-//       height: 100%;
-//     }
-//   }
-//   .fly {
-//     position: absolute;
-//     bottom: 8vh;
-//     right: 10vh;
-//     height: 23vh;
-//     max-height: 179px;
-//     img {
-//       height: 100%;
-//     }
-//   }
-//   .footer {
-//     position: fixed;
-//     left: 0;
-//     right: 0;
-//     bottom: 11vh;
-//   }
-//   .soc {
-//     .fb {
-//       border-radius: 100%;
-//       height: 40px;
-//       width: 40px;
-//       border: 1px solid #7fd1d8;
-//     }
-//     i {
-//       color: #7fd1d8;
-//       font-size: 30px;
-//       margin-left: 30px;
-//     }
-//   }
-
-// }
+.footer{
+  padding: $footer-padding;
+}
