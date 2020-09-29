@@ -12427,12 +12427,12 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 
 @font-face {
   font-family: ALKSanet;
-  src: url(alk-sanet-webfont.woff);
+  src: url("/fonts/alk-sanet-webfont.woff");
 }
 
 @font-face {
   font-family: NotoSans;
-  src: url(NotoSans-Regular.woff);
+  src: url("/fonts/NotoSans-Regular.woff");
 }
 
 .navbar-item img {
