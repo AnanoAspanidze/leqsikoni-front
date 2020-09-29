@@ -12425,16 +12425,6 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   /* Legacy iOS */
 }
 
-@font-face {
-  font-family: ALKSanet;
-  src: url("/fonts/alk-sanet-webfont.woff");
-}
-
-@font-face {
-  font-family: NotoSans;
-  src: url("/fonts/NotoSans-Regular.woff");
-}
-
 .navbar-item img {
   max-width: 54.98px;
   max-height: 53.44px;
@@ -12546,14 +12536,14 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 .is-card-title-item {
   color: #7fd1d8;
   font-size: 25px;
-  font-family: ALKSanet;
+  font-family: ALK Sanet;
   padding-top: 35px;
 }
 
 .is-card-text-item {
   color: #c5cbcd;
   font-size: 2.2vh;
-  font-family: NotoSans;
+  font-family: Noto Sans;
   margin-bottom: 0.5rem !important;
 }
 
