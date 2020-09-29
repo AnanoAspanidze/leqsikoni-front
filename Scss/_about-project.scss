@@ -19,14 +19,14 @@ body{
     height: 53px;
   }
 }
-.navbar-item {
+.is-about-item {
   margin-left: 30px;
   padding-right: 0rem !important;
   padding-left: 0rem !important;
   padding-bottom: 0 !important;
 }
 
-.navbar-item .active:after {
+.is-about-item.active:after {
     position: absolute;
     content: "";
     height: 2px;
@@ -38,7 +38,7 @@ body{
     background: $warning;
   }
 
-  .navbar-item:after {
+  .is-about-item:after {
     position: absolute;
     content: "";
     height: 2px;
@@ -50,13 +50,13 @@ body{
     background: $warning;
     transition:.5s;
   }
-  .navbar-item .active {
+  .is-about-item.active {
         color: $primary;
       }
-  .navbar-item:hover {
+  .is-about-item:hover {
         color: $primary;
       }
-  .navbar-item:hover:after {
+  .is-about-item:hover:after {
         width: 100%;
         background: orange;
   }
