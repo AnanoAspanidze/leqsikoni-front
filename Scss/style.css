@@ -12789,55 +12789,53 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   font-size: 30px;
 }
 
-.numbers {
-  font-size: 400px;
-  font-weight: 600;
-  font-family: "ALK Sanet";
-  color: #f7cf43;
-  margin-left: 250px;
+.absolute {
+  position: absolute;
 }
 
-.ladybird-error {
-  position: absolute;
-  top: 19vh;
-  left: 66vh;
-  width: 40px;
-  height: 40px;
+.error-404 {
+  top: 25vh;
+  left: 45vh;
 }
 
 .text-section {
-  position: absolute;
   top: 60vh;
-  left: 45vh;
+  left: 60vh;
 }
 
 .error-subtitle {
   color: #7fd1d8;
+  font-size: 14px;
+  font-family: "NotoSans-Regular";
 }
 
 .fly-error {
-  position: absolute;
-  left: 60vh;
-  bottom: 10vh;
+  left: 65vh;
+  bottom: 11vh;
+  width: 60px;
+  height: 52px;
 }
 
 .error-button {
-  position: absolute;
-  bottom: 10vh;
+  bottom: 11vh;
+  left: 82vh;
 }
 
 .round-button {
-  width: 160px;
-  height: 60px;
+  width: 115px;
+  height: 30px;
+  -webkit-box-shadow: 2px 2px 8px #7FD1D866;
+          box-shadow: 2px 2px 8px #7FD1D866;
+  border-radius: 15px;
   border-radius: 290486px;
   padding-left: calc(1em + 0.25em);
   padding-right: calc(1em + 0.25em);
 }
 
 .error-click {
-  position: absolute;
-  bottom: 2vh;
-  color: white;
-  font-size: 18px;
+  bottom: 0.5vh;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-family: "ALK Sanet";
 }
 /*# sourceMappingURL=style.css.map */
