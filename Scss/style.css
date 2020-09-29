@@ -12425,6 +12425,11 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   /* Legacy iOS */
 }
 
+@font-face {
+  font-family: alkSanet;
+  src: url(alk-sanet-webfont.woff);
+}
+
 .navbar-item img {
   max-width: 54.98px;
   max-height: 53.44px;
