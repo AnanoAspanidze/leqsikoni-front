@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
     <link rel="stylesheet" href="./Scss/style.css">
+    <link rel="stylesheet" href="./Scss/_responsive.scss">
     <title>ლექსიკონი</title>
 </head>
 <body>
     <div class="container">
         <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
+            <div class="column is-half navbar-brand ">
                 <a class="navbar-item" href="index.html">
-                    <img src="./img/logo.svg" alt="logo">
+                    <img src="./img/logo.svg" alt="logo" class="is-header-logo">
                 </a>
 
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
@@ -34,25 +35,24 @@
                         კონტაქტი
                     </a>    
                 </div>
-
-                <div class="navbar-end is-primary is-navbar-end">
-                    <div class="navbar-item">
-                        <button class="button is-rounded">
-                            <span class="icon">
-                                <i class="fi flaticon-user"></i>
-                            </span>
-                        </button>
-                    </div>
+            </div>
+            <div class="navbar-end is-primary is-navbar-end">
+                <div class="navbar-item">
+                    <button class="button is-rounded">
+                        <span class="icon">
+                            <i class="fi flaticon-user"></i>
+                        </span>
+                    </button>
                 </div>
             </div>
         </nav>
     </div>
-    <div class="container section">
+    <div class="container section is-section-item">
         <div class="columns is-centered ml-6">
-            <div class="column is-1 ml-6">
+            <div class="column is-1 ml-6 card-content-item">
                 <img src="./img/contact/contact-img-1.svg" class="contact-img_1" alt="img">
             </div>
-            <div class="column is-6 mt-4">
+            <div class="column is-6 mt-4 card-content-item">
                 <div class="card is-card-content-item is-mobile">
                     <div class="card-content">
                         <div class="media-content">
@@ -96,5 +96,7 @@
             </div>
         </div>
       </footer>
+
+    <script src="./js/script.js"></script>
 </body>
 </html>
