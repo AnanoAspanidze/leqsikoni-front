@@ -178,20 +178,21 @@
 
 
 
-.ladybird{
-  position:fixed;
-  width:30px;
-  height:25px;
-  top:17vh;
-  left:40vh;
+.ladybird {
+  position: fixed;
+  width: 30px;
+  height: 25px;
+  margin-top: 0;
+  margin-left: 6rem;
+  z-index: 30;
 }
 
-.is-fly{
-  position:fixed;
-  right:10vh;
-  bottom:3vh;
-  height:180px;
-  width:230px;
+.is-fly {
+  position: fixed;
+  margin-left: -4.5rem;
+  margin-top: 27.5rem;
+  height: 170px;
+  width: 220px;
 }
 
 .footer {

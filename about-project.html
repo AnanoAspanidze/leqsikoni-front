@@ -6,15 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
     <link rel="stylesheet" href="./Scss/style.css">
+    <link rel="stylesheet" href="./Scss/_responsive.scss">
     <title>პროექტის შესახებ</title>
 </head>
 
 <body>
     <div class="container">
         <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
+            <div class="column is-half navbar-brand ">
                 <a class="navbar-item" href="index.html">
-                    <img src="./img/logo.svg" alt="logo">
+                    <img src="./img/logo.svg" alt="logo" class="is-header-logo">
                 </a>
 
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
@@ -24,29 +25,26 @@
                     <span aria-hidden="true"></span>
                 </a>
             </div>
-
-            <div class="navbar-menu is-family-primary ">
+            <div id="navbarBasicExample" class="navbar-menu is-primary is-family-primary">
                 <div class="navbar-start is-menu-center">
                     <a class="navbar-item is-navbar_line">
                         ანბანი
                     </a>
-
-                    <a class="navbar-item is-navbar_line active">
+                    <a class="navbar-item is-navbar_line active" href="about-project.html">
                        პროექტის შესახებ
                     </a>
                     <a class="navbar-item is-navbar_line" href="contact.html">
                         კონტაქტი
                     </a>    
                 </div>
-
-                <div class="navbar-end is-primary is-navbar-end">
-                    <div class="navbar-item">
-                        <button class="button is-rounded">
-                            <span class="icon">
-                                <i class="fi flaticon-user"></i>
-                            </span>
-                        </button>
-                    </div>
+            </div>
+            <div class="navbar-end is-primary is-navbar-end">
+                <div class="navbar-item">
+                    <button class="button is-rounded">
+                        <span class="icon">
+                            <i class="fi flaticon-user"></i>
+                        </span>
+                    </button>
                 </div>
             </div>
         </nav>
@@ -54,8 +52,11 @@
  <!--Card Section-->
  <div class="container card-container ">
      
-     <div class="columns">
-         <div class="column is-9 is-menu-center">
+     <div class="columns is-centered">
+        <div>
+            <img src="./img/about-project/ladybird.svg" class="ladybird" alt="img">
+        </div>
+        <div class="column is-9">
              <div class="card is-card">
                     <div class="card-content card-content-1">
                         <div class="media-content">
@@ -64,18 +65,25 @@
                       </div>
                   
                       <div class="content is-card-text is-family-secondary">
-                        ცნობილი ფაქტია, რომ გვერდის წაკითხვად შიგთავსს შეუძლია მკითხველის ყურადღება მიიზიდოს და დიზაინის აღქმაში ხელი შეუშალოს. Lorem Ipsum-ის გამოყენებით ვღებულობთ იმაზე მეტ-ნაკლებად სწორი გადანაწილების ტექსტს, ვიდრე ერთიდაიგივე გამეორებადი სიტყვებია ხოლმე.<br><br> შედეგად, ტექსტი ჩვეულებრივ ინგლისურს გავს, მისი წაითხვა კი შეუძლებელია. დღეს უამრავი პერსონალური საგამომცემლო პროგრამა და ვებგვერდი იყენებს Lorem Ipsum-ს, როგორც დროებით ტექსტს წყობის შესავსებად; Lorem Ipsum-ის მოძებნისას კი საძიებო სისტემები ბევრ დაუსრულებელ გვერდს გვიჩვენებენ.<br><br>წლების მანძილზე ამ ტექსტის უამრავი ვერსია გამოჩნდა, ზოგი შემთხვევით დაშვებული შეცდომის გამო, ზოგი კი — განზრახ, ხუმრობით.
+                          <div class="text">
+                            <div class="text-scroll">
+                                ცნობილი ფაქტია, რომ გვერდის წაკითხვად შიგთავსს შეუძლია მკითხველის ყურადღება მიიზიდოს და დიზაინის აღქმაში ხელი შეუშალოს. Lorem Ipsum-ის გამოყენებით ვღებულობთ იმაზე მეტ-ნაკლებად სწორი გადანაწილების ტექსტს, ვიდრე ერთიდაიგივე გამეორებადი სიტყვებია ხოლმე.<br><br> შედეგად, ტექსტი ჩვეულებრივ ინგლისურს გავს, მისი წაითხვა კი შეუძლებელია. დღეს უამრავი პერსონალური საგამომცემლო პროგრამა და ვებგვერდი იყენებს Lorem Ipsum-ს, როგორც დროებით ტექსტს წყობის შესავსებად; Lorem Ipsum-ის მოძებნისას კი საძიებო სისტემები ბევრ დაუსრულებელ გვერდს გვიჩვენებენ.<br><br>წლების მანძილზე ამ ტექსტის უამრავი ვერსია გამოჩნდა, ზოგი შემთხვევით დაშვებული შეცდომის გამო, ზოგი კი — განზრახ, ხუმრობით.
+                              </div>
+                          </div>
                       </div>
                   </div>
              </div>
+             <div>
+                <img src="./img/about-project/fly.svg" class="is-fly">
+            </div>
          </div>
      </div>
-     <div>
+     <!-- <div>
         <img src="./img/about-project/ladybird.svg" class="ladybird">
      </div>
-    <div class="is-fly">
+    <div>
         <img src="./img/about-project/fly.svg" class="is-fly">
-    </div>
+    </div> -->
     <footer class="footer">
         <div class="content has-text-centered is-soc-item">
             <div class="columns">
@@ -92,9 +100,9 @@
                 </div>
             </div>
         </div>
-      </footer>
+    </footer>
 
-
+    <script src="./js/script.js"></script>
 </body>
 
 </html>
