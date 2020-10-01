@@ -1,19 +1,82 @@
-// variable declaration
+// color global variables
 $primary: #7fd1d8;
 $warning: #f7cf43;
 $text: #c5cbcd;
+$grey-lightest: #c5cbcd;
 
+//font family
 $family-primary: "ALK Sanet";
 $family-secondary: "NotoSans-Regular";
-$footer-padding:3rem 1.5rem;
+$footer-padding: 3rem 1.5rem;
 
+// navbar global variables
 $navbar-height: 6rem;
 
-// variable declaration
+//card global variables
+$card-radius: 1.5rem;
+$card-shadow: 2px 2px 8px #7fd1d866;
+
+// input variables
+$input-focus-border-color: #7fd1d866;
+$input-focus-box-shadow-size: 2px 2px 8px;
+$input-focus-box-shadow-color: #7fd1d866;
+
+// button global variables
+$button-padding-horizontal: 3.5em;
+$button-focus-box-shadow-size: 0 0 0 0.25em;
+
+//footer global variables
+$footer-background-color: #fff;
+$footer-padding: 3rem 1.5rem 5.3rem;
 @import "./bulma.sass";
 @import "./flaticon";
 @import "./fonts";
-@import "./contact";
-@import "./about-project";
+@import "./auth";
+@import "./footer";
+//@import "./contact";
+//@import "./about-project";
 @import "./error";
-@import "./responsive";
+//@import "./responsive";
+
+// main classes
+.ml-a {
+  margin-left: auto;
+}
+.mr-a {
+  margin-right: auto;
+}
+.mx-a {
+  margin: 0 auto;
+}
+
+//flexbox
+.is{
+  &-align {
+    &-start {
+      align-items: flex-start;
+    }
+    &-center {
+      align-items: center;
+    }
+    &-end {
+      align-items: flex-end;
+    }
+  }
+  &-justify {
+    &-start {
+      justify-content: start;
+    }
+    &-center {
+      justify-content: center;
+    }
+    &-end {
+      justify-content: end;
+    }
+    &-around {
+      justify-content: space-around;
+    }
+    &-between {
+      justify-content: space-between;
+    }
+  }
+}

@@ -10,30 +10,33 @@
 .is-menu-center {
   margin: auto;
 }
-.button {
+/* .button {
   border-color: transparent;
-  box-shadow: 2px 2px 8px rgba(247, 207, 67, 0.5);
   color: #f7cf43;
   padding-bottom: 0px;
   padding-top: 24px;
-}
+} */
 .button.is-rounded {
   height: 48px;
   width: 48px;
 }
-.button:active, .button.is-active {
+.button:active,
+.button.is-active {
   border-color: transparent;
   color: #f7cf43;
 }
-.button:hover, .button.is-hovered {
+.button:hover,
+.button.is-hovered {
   border-color: transparent;
   color: #f7cf43;
 }
-.button:focus, .button.is-focused {
+.button:focus,
+.button.is-focused {
   border-color: transparent;
   color: #f7cf43;
 }
-.button:focus:not(:active), .button.is-focused:not(:active) {
+.button:focus:not(:active),
+.button.is-focused:not(:active) {
   box-shadow: 2px 2px 8px rgba(247, 207, 67, 0.5);
 }
 .flaticon-user:before {
@@ -60,21 +63,21 @@
   right: 0;
   width: 0%;
   background: #f7cf43;
-  transition:.5s;
+  transition: 0.5s;
 }
 .is-navbar_line.active {
-  color: #7fd1d8!important;
+  color: #7fd1d8 !important;
 }
 .is-navbar_line:hover {
-  color: #7fd1d8!important;
-  background-color: inherit!important;
+  color: #7fd1d8 !important;
+  background-color: inherit !important;
 }
 
 .is-navbar_line:hover:after {
   width: 80%;
-  background:#f7cf43;
+  background: #f7cf43;
 }
-.is-navbar_line{
+.is-navbar_line {
   font-size: 16px;
   padding: 0;
   margin: 0.5rem 1.5rem;
@@ -100,7 +103,7 @@
   color: #c5cbcd;
   font-size: 2.2vh;
   font-family: Noto Sans;
-  margin-bottom: 0.5rem!important;
+  margin-bottom: 0.5rem !important;
   a {
     color: #c5cbcd;
     text-decoration: underline;
@@ -110,7 +113,7 @@
   margin-top: 20px;
 }
 
-.contact-img_1{
+.contact-img_1 {
   position: fixed;
   margin-top: -1rem;
   margin-left: 0.5rem;
@@ -123,7 +126,7 @@
   margin-left: 0;
   width: 230px;
   height: 191px;
-  }
+}
 .footer {
   background-color: transparent;
   padding: 0;

@@ -1,0 +1,9 @@
+.auth {
+  min-height: calc(100vh - 15.5rem);
+  .card {
+   // min-width: 588px;
+  }
+  .input::placeholder {
+    font-family: "HelveticaNeue";
+  }
+}
