@@ -12350,7 +12350,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 
 /*
     Flaticon icon font: Flaticon
-    Creation date: 18/09/2020 07:19
+    Creation date: 02/10/2020 19:42
     */
 @font-face {
   font-family: "Flaticon";
@@ -12382,32 +12382,56 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   font-smoothing: antialiased;
 }
 
-.flaticon-user:before {
+.user:before {
   content: "\f100";
 }
 
-.flaticon-fb_round:before {
+.in:before {
   content: "\f101";
 }
 
-.flaticon-in_round:before {
+.fb:before {
   content: "\f102";
 }
 
-.flaticon-in:before {
+.tw:before {
   content: "\f103";
 }
 
-.flaticon-fb:before {
+.info:before {
   content: "\f104";
 }
 
-.flaticon-tw_round:before {
+.global:before {
   content: "\f105";
 }
 
-.flaticon-tw:before {
+.share:before {
   content: "\f106";
+}
+
+.plus:before {
+  content: "\f107";
+}
+
+.clock:before {
+  content: "\f108";
+}
+
+.edit:before {
+  content: "\f109";
+}
+
+.checked:before {
+  content: "\f10a";
+}
+
+.eye:before {
+  content: "\f10b";
+}
+
+.block:before {
+  content: "\f10c";
 }
 
 @font-face {
