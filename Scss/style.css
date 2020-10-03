@@ -12503,6 +12503,269 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   font-size: 18px;
 }
 
+.is-header-logo {
+  width: 54px;
+  height: 54px;
+}
+
+.is-menu-center {
+  margin: auto;
+}
+
+.is-navbar-end {
+  margin: 0;
+}
+
+.is-menu-center {
+  margin: auto;
+}
+
+.button {
+  border-color: transparent;
+  -webkit-box-shadow: 2px 2px 8px rgba(247, 207, 67, 0.5);
+          box-shadow: 2px 2px 8px rgba(247, 207, 67, 0.5);
+  color: #f7cf43;
+  padding-bottom: 0px;
+  padding-top: 24px;
+}
+
+.button.is-rounded {
+  height: 48px;
+  width: 48px;
+}
+
+.button:active, .button.is-active {
+  border-color: transparent;
+  color: #f7cf43;
+}
+
+.button:hover, .button.is-hovered {
+  border-color: transparent;
+  color: #f7cf43;
+}
+
+.button:focus, .button.is-focused {
+  border-color: transparent;
+  color: #f7cf43;
+}
+
+.button:focus:not(:active), .button.is-focused:not(:active) {
+  -webkit-box-shadow: 2px 2px 8px rgba(247, 207, 67, 0.5);
+          box-shadow: 2px 2px 8px rgba(247, 207, 67, 0.5);
+}
+
+.flaticon-user:before {
+  font-size: 28px;
+}
+
+.is-navbar_line.active:after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  bottom: -8px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 80%;
+  background: #f7cf43;
+}
+
+.is-navbar_line:after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  bottom: -8px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  width: 0%;
+  background: #f7cf43;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.is-navbar_line.active {
+  color: #7fd1d8 !important;
+}
+
+.is-navbar_line:hover {
+  color: #7fd1d8 !important;
+  background-color: inherit !important;
+}
+
+.is-navbar_line:hover:after {
+  width: 80%;
+  background: #f7cf43;
+}
+
+.is-navbar_line {
+  padding: 0;
+  margin: 0.5rem 1.5rem;
+}
+
+.is-user {
+  border-radius: 100%;
+  height: 40px;
+  width: 40px;
+  position: relative;
+}
+
+.is-user i {
+  color: #f7cf43;
+  font-size: 30px;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.card-content {
+  padding: 1.2rem 0;
+}
+
+.is-card-content-item {
+  border: 1px solid rgba(127, 209, 216, 0.1);
+  -webkit-box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.4);
+          box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.4);
+  border-radius: 3.1vh;
+  padding: 0 0 70px 30px;
+}
+
+.is-card-title-item {
+  color: #7fd1d8;
+  font-size: 25px;
+  font-family: ALK Sanet;
+  padding-top: 35px;
+}
+
+.is-card-text-item {
+  color: #c5cbcd;
+  font-size: 2.2vh;
+  font-family: Noto Sans;
+  margin-bottom: 0.5rem !important;
+}
+
+.is-card-text-item a {
+  color: #c5cbcd;
+  text-decoration: underline;
+}
+
+.is-card-text-top {
+  margin-top: 20px;
+}
+
+.contact-img_1 {
+  position: fixed;
+  margin-top: -1rem;
+  margin-left: 0.5rem;
+  width: 59px;
+  height: 52px;
+}
+
+.contact-img_2 {
+  position: fixed;
+  margin-top: 15rem;
+  margin-left: 0;
+  width: 230px;
+  height: 191px;
+}
+
+.is-soc-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 10px auto;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 6vh;
+}
+
+.is-soc-content {
+  margin: 0 7px;
+}
+
+.is-soc-content i {
+  color: #7fd1d8;
+  font-size: 30px;
+}
+
+.card-container {
+  margin-top: 5vh;
+}
+
+.is-card {
+  border: 1px solid rgba(123, 168, 172, 0.2);
+  -webkit-box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.4);
+          box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.4);
+  border-radius: 3.1vh;
+}
+
+.is-card-title {
+  color: #7fd1d8;
+  font-size: 25px;
+  padding-top: 20px;
+}
+
+.title {
+  font-weight: 300;
+}
+
+.card-content-1 {
+  margin-left: 2rem;
+}
+
+.is-card-text {
+  color: #c5cbcd;
+  font-size: 2.2vh;
+  padding-top: 10px;
+  padding-bottom: 100px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.ladybird {
+  position: fixed;
+  width: 30px;
+  height: 25px;
+  margin-top: 0;
+  margin-left: 6rem;
+  z-index: 30;
+}
+
+.is-fly {
+  position: fixed;
+  margin-left: -4.5rem;
+  margin-top: 27.5rem;
+  height: 170px;
+  width: 220px;
+}
+
+.is-soc-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 10px auto;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 6vh;
+}
+
+.is-soc-content {
+  margin: 0 7px;
+}
+
+.is-soc-content i {
+  color: #7fd1d8;
+  font-size: 30px;
+}
+
 .absolute {
   position: absolute;
 }
