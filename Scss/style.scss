@@ -11,7 +11,11 @@ $family-secondary: "NotoSans-Regular";
 $footer-padding: 3rem 1.5rem;
 
 // navbar global variables
-$navbar-height: 6rem;
+$navbar-height: 8rem;
+$navbar-item-img-max-height: 3.375rem;
+$navbar-item-hover-color: $text;
+$navbar-item-active-color: $primary;
+$navbar-item-active-color: $text;
 
 //card global variables
 $card-radius: 1.5rem;
@@ -22,26 +26,31 @@ $input-focus-border-color: #7fd1d866;
 $input-focus-box-shadow-size: 2px 2px 8px;
 $input-focus-box-shadow-color: #7fd1d866;
 
+// van-dropdown
+$navbar-dropdown-border-top: none;
+$navbar-burger-color: $primary;
+
 // button global variables
 $button-padding-horizontal: 3.5em;
 $button-focus-box-shadow-size: 0 0 0 0.25em;
 
-//font sizes 
-$is-size-7:0.875rem;
+//font sizes
+$is-size-7: 0.875rem;
 
 //footer global variables
 $footer-background-color: #fff;
 $footer-padding: 3rem 1.5rem 5.3rem;
+
 @import "./bulma.sass";
 @import "./flaticon";
 @import "./fonts";
+@import "./shared/footer";
+@import "./shared/header";
+//pages
 @import "./auth";
-@import "./footer";
-@import "./header";
 @import "./contact";
 @import "./about-project";
 @import "./error";
-//@import "./responsive";
 
 @import "./main-page";
 
@@ -101,3 +110,10 @@ $footer-padding: 3rem 1.5rem 5.3rem;
   }
 }
 
+.text {
+  &-decoration {
+    &-underline {
+      text-decoration: underline;
+    }
+  }
+}

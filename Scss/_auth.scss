@@ -16,4 +16,14 @@
       font-size: 10px;
     }
   }
+  @media screen and(max-width: 1024px) {
+    &_image-box-2 {
+      display: none;
+    }
+  }
+  @media screen and(max-width: 768px) {
+    &_image-box-1 {
+      display: none;
+    }
+  }
 }
