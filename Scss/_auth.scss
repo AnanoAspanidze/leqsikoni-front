@@ -1,9 +1,19 @@
 .auth {
   min-height: calc(100vh - 15.5rem);
-  .card {
-   // min-width: 588px;
+  &_image-box-1 {
+    left: -60px;
+    top: 10px;
   }
-  .input::placeholder {
-    font-family: "HelveticaNeue";
+  &_image-box-2 {
+    right: -256px;
+    bottom: -150px;
+  }
+  .field {
+    .input::placeholder {
+      font-family: "HelveticaNeue";
+    }
+    p {
+      font-size: 10px;
+    }
   }
 }

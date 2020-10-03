@@ -1,6 +1,6 @@
 /*
     Flaticon icon font: Flaticon
-    Creation date: 18/09/2020 07:19
+    Creation date: 02/10/2020 19:42
     */
 
 @font-face {
@@ -37,32 +37,56 @@
   font-smoothing: antialiased;
 }
 
-.flaticon-user:before {
+.user:before {
   content: "\f100";
 }
-.flaticon-fb_round:before {
+.in:before {
   content: "\f101";
 }
-.flaticon-in_round:before {
+.fb:before {
   content: "\f102";
 }
-.flaticon-in:before {
+.tw:before {
   content: "\f103";
 }
-.flaticon-fb:before {
+.info:before {
   content: "\f104";
 }
-.flaticon-tw_round:before {
+.global:before {
   content: "\f105";
 }
-.flaticon-tw:before {
+.share:before {
   content: "\f106";
 }
+.plus:before {
+  content: "\f107";
+}
+.clock:before {
+  content: "\f108";
+}
+.edit:before {
+  content: "\f109";
+}
+.checked:before {
+  content: "\f10a";
+}
+.eye:before {
+  content: "\f10b";
+}
+.block:before {
+  content: "\f10c";
+}
 
-$font-Flaticon-user: "\f100";
-$font-Flaticon-fb_round: "\f101";
-$font-Flaticon-in_round: "\f102";
-$font-Flaticon-in: "\f103";
-$font-Flaticon-fb: "\f104";
-$font-Flaticon-tw_round: "\f105";
-$font-Flaticon-tw: "\f106";
+$font-user: "\f100";
+$font-in: "\f101";
+$font-fb: "\f102";
+$font-tw: "\f103";
+$font-info: "\f104";
+$font-global: "\f105";
+$font-share: "\f106";
+$font-plus: "\f107";
+$font-clock: "\f108";
+$font-edit: "\f109";
+$font-checked: "\f10a";
+$font-eye: "\f10b";
+$font-block: "\f10c";

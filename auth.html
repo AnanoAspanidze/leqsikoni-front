@@ -42,7 +42,7 @@
                 <div class="navbar-item">
                     <button class="button is-rounded">
                         <span class="icon">
-                            <i class="fi flaticon-user"></i>
+                            <i class="fi user"></i>
                         </span>
                     </button>
                 </div>
@@ -52,7 +52,12 @@
         <div class="auth pt-5">
             <div class="container section">
                 <div class="columns is-mobile is-centered">
-                    <div class="column is-half-desktop is-four-fifths-tablet is-full-mobile">
+                    <div class="column is-half-desktop is-four-fifths-tablet is-full-mobile is-relative">
+                        <div class="auth_image-box-1 is-absolute">
+                            <figure class="image is-64x64">
+                                <img src="./img/fly.svg" alt="fly">
+                            </figure>
+                        </div>
                         <div class="card mt-5">
                             <div class="card-header-title has-text-grey-lighter">
                                 <h1 class="mx-a">
@@ -68,13 +73,18 @@
                                         <form>
                                             <div class="field pb-1">
                                                 <div class="control">
-                                                    <input class="input is-rounded" type="mail" placeholder="ელ.ფოსტა">
+                                                    <input class="input is-rounded" type="mail" placeholder="ელ.ფოსტა"
+                                                        required>
                                                 </div>
+                                                <p class="help is-danger">ელ.ფოსტა ან პაროლი არასწორია</p>
                                             </div>
                                             <div class="field pt-1">
                                                 <div class="control">
-                                                    <input class="input is-rounded" type="mail" placeholder="ელ.ფოსტა">
+                                                    <input class="input is-rounded" type="password" placeholder="პაროლი"
+                                                        required>
                                                 </div>
+                                                <p class="help is-danger ">პაროლი უნდა შედგებოდეს მინ. 7 სიმპოლოსაგან
+                                                </p>
                                             </div>
                                             <a href="#" class="has-text-primary is-size-7 pb-2">დაგავიწყდა პაროლი?</a>
                                             <div class="field is-grouped is-grouped-centered pt-5">
@@ -88,6 +98,11 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="auth_image-box-2 is-absolute">
+                            <figure class="image is-256x256">
+                                <img src="./img/lighthouse.svg" alt="lighthouse">
+                            </figure>
                         </div>
                     </div>
                 </div>
@@ -103,13 +118,13 @@
                 <div class="column is-one-fifth-desktop is-one-quarter-tablet is-three-fifths-mobile">
                     <div class="is-flex is-justify-around">
                         <a class="button is-rounded has-text-primary">
-                            <i class="fi flaticon-fb"></i>
+                            <i class="fi fb"></i>
                         </a>
                         <a class="button is-rounded has-text-primary">
-                            <i class="fi flaticon-tw"></i>
+                            <i class="fi tw"></i>
                         </a>
                         <a class="button is-rounded has-text-primary">
-                            <i class="fi flaticon-in"></i>
+                            <i class="fi in"></i>
                         </a>
                     </div>
                 </div>

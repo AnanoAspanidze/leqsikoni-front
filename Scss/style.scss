@@ -1,6 +1,7 @@
 // color global variables
 $primary: #7fd1d8;
 $warning: #f7cf43;
+$danger: #dc6c85;
 $text: #c5cbcd;
 $grey-lightest: #c5cbcd;
 
@@ -52,7 +53,8 @@ $footer-padding: 3rem 1.5rem 5.3rem;
 }
 
 //flexbox
-.is{
+.is {
+  // flexbox vertical
   &-align {
     &-start {
       align-items: flex-start;
@@ -64,6 +66,7 @@ $footer-padding: 3rem 1.5rem 5.3rem;
       align-items: flex-end;
     }
   }
+  //flexbox horizontal
   &-justify {
     &-start {
       justify-content: start;
@@ -80,5 +83,16 @@ $footer-padding: 3rem 1.5rem 5.3rem;
     &-between {
       justify-content: space-between;
     }
+  }
+  // positions
+  &-absolute {
+    position: absolute;
+  }
+}
+
+.image.is {
+  &-256x256 {
+    height: 256px;
+    width: 256px;
   }
 }
