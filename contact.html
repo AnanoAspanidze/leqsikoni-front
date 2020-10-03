@@ -12,10 +12,28 @@
 
 <body>
     <div class="container">
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand ">
-                <a href="index.html">
-                    <img src="./img/logo.svg" alt="logo" class="is-header-logo">
+        <nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <div class="navbar-end is-mobile">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link is-arrowless is-relative">
+                            <div class="fi user has-text-warning is-flex is-justify-center is-align-end"></div>
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a href="./" class="navbar-item">
+                                რედაქტირება
+                            </a>
+                            <a class="navbar-item">
+                                ჩემი სიტყვები
+                            </a>
+                            <a class="navbar-item">
+                                გამოსვლა
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a class="navbar-item" href="#">
+                    <img src="./img/logo.svg" width="112" height="28">
                 </a>
 
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
@@ -25,59 +43,74 @@
                     <span aria-hidden="true"></span>
                 </a>
             </div>
-            <div id="navbarBasicExample" class="navbar-menu is-primary is-family-primary">
-                <div class="navbar-start is-menu-center">
-                    <a class="navbar-item is-navbar_line">
-                        ანბანი
+
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a href="main-page.html" class="navbar-item px-6">
+                        <span class="is-relative">ანბანი</span>
                     </a>
-                    <a class="navbar-item is-navbar_line" href="about-project.html">
-                        პროექტის შესახებ
+                    <a href="about-project.html" class="navbar-item px-6 ">
+                        <span class="is-relative">პროექტის შესახებ</span>
                     </a>
-                    <a class="navbar-item is-navbar_line active">
-                        კონტაქტი
+                    <a href="contact.html" class="navbar-item px-6 is-active">
+                        <span class="is-relative">კონტაქტი</span>
                     </a>
                 </div>
-            </div>
-            <div class="navbar-end is-primary is-navbar-end is-user">
-                <div class="navbar-item">
-                    <button class="button is-rounded">
-                        <span class="icon">
-                            <i class="fi user"></i>
-                        </span>
-                    </button>
+
+                <div class="navbar-end">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link is-arrowless is-relative">
+                            <div class="fi user has-text-warning is-flex is-justify-center is-align-end"></div>
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item">
+                                რედაქტირება
+                            </a>
+                            <a class="navbar-item">
+                                ჩემი სიტყვები
+                            </a>
+                            <a class="navbar-item">
+                                გამოსვლა
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
     </div>
 
-    <div class="container section is-section-item">
-        <div class="columns is-centered ml-6">
-            <div class="column is-1 ml-6 card-content-item">
-                <img src="./img/contact/contact-img-1.svg" class="contact-img_1" alt="img">
-            </div>
-            <div class="column is-6 mt-4 card-content-item">
-                <div class="card is-card-content-item is-mobile">
-                    <div class="card-content">
-                        <div class="media-content">
-                            <p class="title is-card-title-item">კონტაქტი</p>
-                        </div>
+    <div class="container section contact">
+        <div class="columns is-centered is-mobile">
+            <div class="column is-6-widescreen is-7-desktop is-8-tablet is-12-mobile mt-4 is-relative">
+                <!-- img -->
+                <div class="contact_image-box-1 is-absolute">
+                    <figure class="image is-64x64">
+                        <img src="./img/fly.svg" alt="fly">
+                    </figure>
+                </div>
+                <!-- card -->
+                <div class="card px-5">
+                    <div class="card-header-title">
+                        <h1 class="title has-text-primary is-size-4 has-text-weight-light mt-6 mb-5">კონტაქტი</>
                     </div>
 
-                    <div class="content is-family-secondary">
-                        <p class="is-card-text-item">Adresse : IMPACT, Chaussée de Vleurgat 195, 1050 Ixelles
-                        </p>
-                        <p class="is-card-text-item">Tél. Machin : +32 484 26 26 26</p>
-                        <p class="is-card-text-item"> Tél. Truc : +32 484 26 26 26</p>
-                        <p class="is-card-text-item is-card-text-top">
-                            Mail : <a href="#" class="text-decoration-underline"> info@impact.org</a>
-                        </p>
-                        <p class="is-card-text-item "> IBAN : BE 32 484 26 77 94 </p>
-                        <p class="is-card-text-item">BIC : BE 32 484 26 77 94</p>
+                    <div class="card-content is-family-secondary pb-6">
+                        <div class="content mb-2">Adresse : IMPACT, Chaussée de Vleurgat 195, 1050 Ixelles</div>
+                        <div class="content mb-2">Tél. Machin : +32 484 26 26 26</div>
+                        <div class="content mb-2"> Tél. Truc : +32 484 26 26 26</div>
+                        <div class="content pb-5">
+                            Mail : <a href="#" class="text-decoration-underline has-text-primary"> info@impact.org</a>
+                        </div>
+                        <div class="content mb-2"> IBAN : BE 32 484 26 77 94 </div>
+                        <div class="content mb-2">BIC : BE 32 484 26 77 94</div>
                     </div>
                 </div>
-            </div>
-            <div class="column is-2">
-                <img src="./img/contact/contact-img-2.svg" class="contact-img_2" alt="img">
+                <!-- img -->
+                <div class="contact_image-box-2 is-absolute">
+                    <figure class="image is-256x256">
+                        <img src="./img/lighthouse.svg" alt="lighthouse">
+                    </figure>
+                </div>
             </div>
         </div>
     </div>
