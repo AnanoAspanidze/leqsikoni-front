@@ -12,10 +12,28 @@
 
 <body>
     <div class="container">
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand ">
-                <a  href="index.html">
-                    <img src="./img/logo.svg" alt="logo" class="is-header-logo">
+        <nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <div class="navbar-end is-mobile">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link is-arrowless is-relative">
+                            <div class="fi user has-text-warning is-flex is-justify-center is-align-end"></div>
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a href="./" class="navbar-item">
+                                რედაქტირება
+                            </a>
+                            <a class="navbar-item">
+                                ჩემი სიტყვები
+                            </a>
+                            <a class="navbar-item">
+                                გამოსვლა
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a class="navbar-item" href="#">
+                    <img src="./img/logo.svg" width="112" height="28">
                 </a>
 
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
@@ -25,61 +43,74 @@
                     <span aria-hidden="true"></span>
                 </a>
             </div>
-            <div id="navbarBasicExample" class="navbar-menu is-primary is-family-primary">
-                <div class="navbar-start is-menu-center">
-                    <a class="navbar-item is-navbar_line">
-                        ანბანი
+
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a href="main-page.html" class="navbar-item px-6 is-active">
+                        <span class="is-relative">ანბანი</span>
                     </a>
-                    <a class="navbar-item is-navbar_line" href="about-project.html">
-                        პროექტის შესახებ
+                    <a href="about-project.html" class="navbar-item px-6">
+                        <span class="is-relative">პროექტის შესახებ</span>
                     </a>
-                    <a class="navbar-item is-navbar_line">
-                        კონტაქტი
+                    <a href="contact.html" class="navbar-item px-6">
+                        <span class="is-relative">კონტაქტი</span>
                     </a>
                 </div>
-            </div>
-            <div class="navbar-end is-primary is-navbar-end is-user">
-                <div class="navbar-item">
-                    <button class="button is-rounded">
-                        <span class="icon">
-                            <i class="fi user"></i>
-                        </span>
-                    </button>
+
+                <div class="navbar-end">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link is-arrowless is-relative">
+                            <div class="fi user has-text-warning is-flex is-justify-center is-align-end"></div>
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item">
+                                რედაქტირება
+                            </a>
+                            <a class="navbar-item">
+                                ჩემი სიტყვები
+                            </a>
+                            <a class="navbar-item">
+                                გამოსვლა
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
 
-            <div class="container section">
-                <div>
-                    <img src="./img/main-page/fly-1.svg" alt="fly" class="fly-1">
-                </div>
-                <div>
-                    <img src="./img/main-page/fly-2.svg" alt="fly" class="fly-2">
-                </div>
-                <div>
-                    <img src="./img/main-page/earth.svg" alt="globe" class="earth">
-                </div>
-                <div class="columns is-mobile is-centered">
-                             <form>
-                                 <div class="field has-addons is-family-secondary">
-                                     <div class="control">
-                                         <input class="card input is-rounded" type="mail" placeholder="საძიებო სიტყვა" style="width:710px;font-size:14px;height:100px;padding-left:50px;">
-                                         <img src="./img/main-page/blue-mark.svg" alt="blue-mark" class="blue-mark">
-                                         <input type="image" src="./img/main-page/search.svg" class="search"/>
-                                         <input type="image" src="./img/main-page/plus.svg" class="plus"/>
-                                    </div>
-                                </div>
-                             </form>
-                </div>
+        <div class="container section">
+            <div>
+                <img src="./img/main-page/fly-1.svg" alt="fly" class="fly-1">
             </div>
-            <div class="container ">
-                <div>
-                    <img src="./img/main-page/yellow-ladybird.svg" alt="ladybird" class="yellow-ladybird">
-                </div>
-                <div class="columns is-mobile is-centered">
-                    <div class="column is-half-desktop is-four-fifths-tablet is-full-mobile" style="width:714px; height:185px;">
-                        <div class="card mt-5">
-                            <div class="padding-top">
+            <div>
+                <img src="./img/main-page/fly-2.svg" alt="fly" class="fly-2">
+            </div>
+            <div>
+                <img src="./img/main-page/earth.svg" alt="globe" class="earth">
+            </div>
+            <div class="columns is-mobile is-centered">
+                <form>
+                    <div class="field has-addons is-family-secondary">
+                        <div class="control">
+                            <input class="card input is-rounded" type="mail" placeholder="საძიებო სიტყვა"
+                                style="width:710px;font-size:14px;height:100px;padding-left:50px;">
+                            <img src="./img/main-page/blue-mark.svg" alt="blue-mark" class="blue-mark">
+                            <input type="image" src="./img/main-page/search.svg" class="search" />
+                            <input type="image" src="./img/main-page/plus.svg" class="plus" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container ">
+            <div>
+                <img src="./img/main-page/yellow-ladybird.svg" alt="ladybird" class="yellow-ladybird">
+            </div>
+            <div class="columns is-mobile is-centered">
+                <div class="column is-half-desktop is-four-fifths-tablet is-full-mobile"
+                    style="width:714px; height:185px;">
+                    <div class="card mt-5">
+                        <div class="padding-top">
                             <div class="is-family-secondary padding-left">
                                 <a class=" has-text-primary">
                                     <i class="fi user"></i>
@@ -87,9 +118,10 @@
                                 <a class=" has-text-primary">
                                     <i class="fi user"></i>
                                 </a>
-                                <p class="title has-text-weight-bold has-text-primary is-size-7 text-style is-inline-block">
+                                <p
+                                    class="title has-text-weight-bold has-text-primary is-size-7 text-style is-inline-block">
                                     Lorem ipsum
-                                  </p>
+                                </p>
                             </div>
                             <div class="is-family-secondary padding-left">
                                 <a class=" has-text-primary">
@@ -100,7 +132,7 @@
                                 </a>
                                 <p class="title has-text-grey-lighter is-size-7 text-style is-inline-block">
                                     ლორემ იფსუმ
-                                  </p>
+                                </p>
                             </div>
                             <div class="is-family-secondary padding-left">
                                 <a class=" has-text-primary">
@@ -111,18 +143,18 @@
                                 </a>
                                 <p class="title has-text-grey-lighter is-size-7 text-style is-inline-block">
                                     საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია.
-                                  </p>
+                                </p>
                             </div>
-                            </div>
-                                 <div>
-                                     <img src="img/main-page/share.svg" alt="share">
-                                 </div>
-                                    <button class="button click-button">
-                                        <a class="click"href="index.html">სრულად</a>
-                                     </button>
                         </div>
-                        <div class="card mt-5">
-                            <div class="padding-top">
+                        <div>
+                            <img src="img/main-page/share.svg" alt="share">
+                        </div>
+                        <button class="button click-button">
+                            <a class="click" href="index.html">სრულად</a>
+                        </button>
+                    </div>
+                    <div class="card mt-5">
+                        <div class="padding-top">
                             <div class="is-family-secondary padding-left">
                                 <a class=" has-text-primary">
                                     <i class="fi user"></i>
@@ -130,9 +162,10 @@
                                 <a class=" has-text-primary">
                                     <i class="fi user"></i>
                                 </a>
-                                <p class="title has-text-weight-bold has-text-primary is-size-7 text-style is-inline-block">
+                                <p
+                                    class="title has-text-weight-bold has-text-primary is-size-7 text-style is-inline-block">
                                     Lorem ipsum
-                                  </p>
+                                </p>
                             </div>
                             <div class="is-family-secondary padding-left">
                                 <a class=" has-text-primary">
@@ -143,7 +176,7 @@
                                 </a>
                                 <p class="title has-text-grey-lighter is-size-7 text-style is-inline-block">
                                     ლორემ იფსუმ
-                                  </p>
+                                </p>
                             </div>
                             <div class="is-family-secondary padding-left">
                                 <a class=" has-text-primary">
@@ -154,18 +187,18 @@
                                 </a>
                                 <p class="title has-text-grey-lighter is-size-7 text-style is-inline-block">
                                     საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია.
-                                  </p>
+                                </p>
                             </div>
-                            </div>
-                                 <div>
-                                     <img src="img/main-page/share.svg" alt="share">
-                                 </div>
-                                    <button class="button click-button">
-                                        <a class="click"href="index.html">სრულად</a>
-                                     </button>
                         </div>
-                        <div class="card mt-5">
-                            <div class="padding-top">
+                        <div>
+                            <img src="img/main-page/share.svg" alt="share">
+                        </div>
+                        <button class="button click-button">
+                            <a class="click" href="index.html">სრულად</a>
+                        </button>
+                    </div>
+                    <div class="card mt-5">
+                        <div class="padding-top">
                             <div class="is-family-secondary padding-left">
                                 <a class=" has-text-primary">
                                     <i class="fi user"></i>
@@ -175,7 +208,7 @@
                                 </a>
                                 <p class="title has-text-primary is-size-7 text-style is-inline-block">
                                     Lorem ipsum
-                                  </p>
+                                </p>
                             </div>
                             <div class="is-family-secondary padding-left">
                                 <a class=" has-text-primary">
@@ -186,7 +219,7 @@
                                 </a>
                                 <p class="title has-text-grey-lighter is-size-7 text-style is-inline-block">
                                     ლორემ იფსუმ
-                                  </p>
+                                </p>
                             </div>
                             <div class="is-family-secondary padding-left">
                                 <a class=" has-text-primary">
@@ -197,18 +230,18 @@
                                 </a>
                                 <p class="title has-text-grey-lighter is-size-7 text-style is-inline-block">
                                     საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია.
-                                  </p>
+                                </p>
                             </div>
-                            </div>
-                                 <div>
-                                     <img src="img/main-page/share.svg" alt="share">
-                                 </div>
-                                    <button class="button click-button">
-                                        <a class="click"href="index.html">სრულად</a>
-                                     </button>
                         </div>
-                        <div class="card mt-5">
-                            <div class="padding-top">
+                        <div>
+                            <img src="img/main-page/share.svg" alt="share">
+                        </div>
+                        <button class="button click-button">
+                            <a class="click" href="index.html">სრულად</a>
+                        </button>
+                    </div>
+                    <div class="card mt-5">
+                        <div class="padding-top">
                             <div class="is-family-secondary padding-left">
                                 <a class=" has-text-primary">
                                     <i class="fi user"></i>
@@ -218,7 +251,7 @@
                                 </a>
                                 <p class="title  has-text-primary is-size-7 text-style is-inline-block">
                                     Lorem ipsum
-                                  </p>
+                                </p>
                             </div>
                             <div class="is-family-secondary padding-left">
                                 <a class=" has-text-primary">
@@ -229,7 +262,7 @@
                                 </a>
                                 <p class="title has-text-grey-lighter is-size-7 text-style is-inline-block">
                                     ლორემ იფსუმ
-                                  </p>
+                                </p>
                             </div>
                             <div class="is-family-secondary padding-left">
                                 <a class=" has-text-primary">
@@ -240,23 +273,23 @@
                                 </a>
                                 <p class="title has-text-grey-lighter is-size-7 text-style is-inline-block">
                                     საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია.
-                                  </p>
+                                </p>
                             </div>
-                            </div>
-                                 <div>
-                                     <img src="img/main-page/share.svg" alt="share">
-                                 </div>
-                                    <button class="button click-button">
-                                        <a class="click"href="index.html">სრულად</a>
-                                     </button>
                         </div>
-                        
-                        
+                        <div>
+                            <img src="img/main-page/share.svg" alt="share">
+                        </div>
+                        <button class="button click-button">
+                            <a class="click" href="index.html">სრულად</a>
+                        </button>
                     </div>
+
+
                 </div>
             </div>
+        </div>
 
-        
+
     </div>
 
 
