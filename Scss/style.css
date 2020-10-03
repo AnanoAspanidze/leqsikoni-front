@@ -12515,6 +12515,60 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   font-family: "ALK Sanet";
 }
 
+.earth {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  left: 20vh;
+  top: 8vh;
+}
+
+.fly-1 {
+  position: fixed;
+  right: 13vh;
+  top: 25vh;
+}
+
+.fly-2 {
+  position: fixed;
+  left: 10vh;
+  top: 70vh;
+}
+
+.blue-mark {
+  position: absolute;
+  right: 6vh;
+  top: 1vh;
+}
+
+.search {
+  position: absolute;
+  right: 10vh;
+  top: 1vh;
+}
+
+.plus {
+  position: absolute;
+  right: 1vh;
+  top: 1vh;
+}
+
+.is-width {
+  width: 714px;
+  height: 185px;
+}
+
+.padding-left {
+  padding-left: 50px;
+}
+
+.click {
+  bottom: 0.5vh;
+  color: #7fd1d8;
+  font-size: 12px;
+  font-family: "ALK Sanet";
+}
+
 .ml-a {
   margin-left: auto;
 }
