@@ -12497,10 +12497,11 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 .footer .button {
   padding: 9px;
   border: 2px solid #7fd1d8;
+  margin-left: 5vh;
 }
 
 .footer .button i {
-  font-size: 18px;
+  font-size: 12px;
 }
 
 .is-header-logo {
@@ -12671,28 +12672,6 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   height: 191px;
 }
 
-.is-soc-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  margin: 10px auto;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 6vh;
-}
-
-.is-soc-content {
-  margin: 0 7px;
-}
-
-.is-soc-content i {
-  color: #7fd1d8;
-  font-size: 30px;
-}
-
 .card-container {
   margin-top: 5vh;
 }
@@ -12742,28 +12721,6 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   margin-top: 27.5rem;
   height: 170px;
   width: 220px;
-}
-
-.is-soc-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  margin: 10px auto;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 6vh;
-}
-
-.is-soc-content {
-  margin: 0 7px;
-}
-
-.is-soc-content i {
-  color: #7fd1d8;
-  font-size: 30px;
 }
 
 .absolute {
@@ -12836,6 +12793,12 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   top: 70vh;
 }
 
+.yellow-ladybird {
+  position: absolute;
+  left: 30vh;
+  top: 1vh;
+}
+
 .blue-mark {
   position: absolute;
   right: 6vh;
@@ -12863,11 +12826,32 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   padding-left: 50px;
 }
 
+.padding-top {
+  padding-top: 25px;
+}
+
 .click {
+  position: absolute;
   bottom: 0.5vh;
   color: #7fd1d8;
   font-size: 12px;
   font-family: "ALK Sanet";
+}
+
+.button-size {
+  width: 30px;
+  height: 30px;
+}
+
+.click-button {
+  width: 90px;
+  height: 30px;
+  -webkit-box-shadow: 2px 2px 8px #7FD1D866;
+          box-shadow: 2px 2px 8px #7FD1D866;
+  border-radius: 15px;
+  border-radius: 290486px;
+  padding-left: calc(1em + 0.25em);
+  padding-right: calc(1em + 0.25em);
 }
 
 .ml-a {

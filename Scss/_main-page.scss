@@ -18,6 +18,12 @@
     top:70vh;
 }
 
+.yellow-ladybird{
+   position:absolute;
+   left:30vh;
+   top:1vh;
+}
+
 .blue-mark{
     position: absolute;
     right:6vh;
@@ -42,11 +48,30 @@
 .padding-left{
     padding-left:50px;
 }
+.padding-top{
+    padding-top:25px;
+}
 
 
 .click{
+    position:absolute;
     bottom:0.5vh;
     color:$primary;
     font-size:12px;
     font-family:$family-primary;
+}
+
+.button-size{
+    width: 30px;
+    height:30px;
+  }
+
+  .click-button{
+    width:90px;
+    height:30px;
+    box-shadow: 2px 2px 8px #7FD1D866;
+    border-radius: 15px;
+    border-radius: 290486px;
+    padding-left: calc(1em + 0.25em);
+    padding-right: calc(1em + 0.25em);
 }
