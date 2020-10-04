@@ -1788,7 +1788,7 @@ fieldset[disabled] .button.is-danger.is-inverted.is-outlined {
 
 .button.is-small {
   border-radius: 2px;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .button.is-normal {
@@ -1878,7 +1878,7 @@ fieldset[disabled] .button {
 
 .buttons.are-small .button:not(.is-normal):not(.is-medium):not(.is-large) {
   border-radius: 2px;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .buttons.are-medium .button:not(.is-small):not(.is-normal):not(.is-large) {
@@ -2187,7 +2187,7 @@ fieldset[disabled] .button {
 }
 
 .content.is-small {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .content.is-medium {
@@ -2704,7 +2704,7 @@ fieldset[disabled] .button {
 }
 
 .progress.is-small {
-  height: 0.75rem;
+  height: 0.875rem;
 }
 
 .progress.is-medium {
@@ -3023,7 +3023,7 @@ fieldset[disabled] .button {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   height: 2em;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -3120,7 +3120,7 @@ fieldset[disabled] .button {
 }
 
 .tag:not(body).is-normal {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .tag:not(body).is-medium {
@@ -3264,7 +3264,7 @@ a.tag:hover {
 }
 
 .title.is-7 {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .subtitle {
@@ -3308,7 +3308,7 @@ a.tag:hover {
 }
 
 .subtitle.is-7 {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .heading {
@@ -3533,7 +3533,7 @@ fieldset[disabled] .select select:-ms-input-placeholder,
 
 .is-small.input, .is-small.textarea {
   border-radius: 2px;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .is-medium.input, .is-medium.textarea {
@@ -3844,7 +3844,7 @@ fieldset[disabled] .select select:hover {
 
 .select.is-small {
   border-radius: 2px;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .select.is-medium {
@@ -3877,7 +3877,7 @@ fieldset[disabled] .select select:hover {
 }
 
 .select.is-loading.is-small:after {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .select.is-loading.is-medium:after {
@@ -4152,7 +4152,7 @@ fieldset[disabled] .select select:hover {
 }
 
 .file.is-small {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .file.is-medium {
@@ -4374,7 +4374,7 @@ fieldset[disabled] .select select:hover {
 }
 
 .label.is-small {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .label.is-medium {
@@ -4387,7 +4387,7 @@ fieldset[disabled] .select select:hover {
 
 .help {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   margin-top: 0.25rem;
 }
 
@@ -4615,7 +4615,7 @@ fieldset[disabled] .select select:hover {
     text-align: right;
   }
   .field-label.is-small {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     padding-top: 0.375em;
   }
   .field-label.is-normal {
@@ -4683,7 +4683,7 @@ fieldset[disabled] .select select:hover {
 .control.has-icons-left .input.is-small ~ .icon,
 .control.has-icons-left .select.is-small ~ .icon, .control.has-icons-right .input.is-small ~ .icon,
 .control.has-icons-right .select.is-small ~ .icon {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .control.has-icons-left .input.is-medium ~ .icon,
@@ -4734,7 +4734,7 @@ fieldset[disabled] .select select:hover {
 }
 
 .control.is-loading.is-small:after {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .control.is-loading.is-medium:after {
@@ -4830,7 +4830,7 @@ fieldset[disabled] .select select:hover {
 }
 
 .breadcrumb.is-small {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .breadcrumb.is-medium {
@@ -5284,7 +5284,7 @@ button.dropdown-item.is-active {
 }
 
 .menu.is-small {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .menu.is-medium {
@@ -5353,7 +5353,7 @@ button.dropdown-item.is-active {
 }
 
 .message.is-small {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .message.is-medium {
@@ -6823,7 +6823,7 @@ a.navbar-item:focus, a.navbar-item:focus-within, a.navbar-item:hover, a.navbar-i
 }
 
 .pagination.is-small {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .pagination.is-medium {
@@ -7473,7 +7473,7 @@ label.panel-block:hover {
 }
 
 .tabs.is-small {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .tabs.is-medium {
@@ -10522,7 +10522,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 .is-size-7 {
-  font-size: 0.75rem !important;
+  font-size: 0.875rem !important;
 }
 
 @media screen and (max-width: 768px) {
@@ -10545,7 +10545,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     font-size: 1rem !important;
   }
   .is-size-7-mobile {
-    font-size: 0.75rem !important;
+    font-size: 0.875rem !important;
   }
 }
 
@@ -10569,7 +10569,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     font-size: 1rem !important;
   }
   .is-size-7-tablet {
-    font-size: 0.75rem !important;
+    font-size: 0.875rem !important;
   }
 }
 
@@ -10593,7 +10593,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     font-size: 1rem !important;
   }
   .is-size-7-touch {
-    font-size: 0.75rem !important;
+    font-size: 0.875rem !important;
   }
 }
 
@@ -10617,7 +10617,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     font-size: 1rem !important;
   }
   .is-size-7-desktop {
-    font-size: 0.75rem !important;
+    font-size: 0.875rem !important;
   }
 }
 
@@ -10641,7 +10641,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     font-size: 1rem !important;
   }
   .is-size-7-widescreen {
-    font-size: 0.75rem !important;
+    font-size: 0.875rem !important;
   }
 }
 
@@ -10665,7 +10665,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
     font-size: 1rem !important;
   }
   .is-size-7-fullhd {
-    font-size: 0.75rem !important;
+    font-size: 0.875rem !important;
   }
 }
 
@@ -12695,7 +12695,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 .card-container .ladybird {
-  position: fixed;
+  position: absolute;
   width: 30px;
   height: 25px;
   margin-top: 0;
@@ -12762,10 +12762,14 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 }
 
 .earth {
-  position: absolute;
   width: 45px;
   height: 45px;
-  left: 20vh;
+}
+
+.dropdown-button {
+  background-color: white;
+  position: relative;
+  left: 15vh;
   top: 8vh;
 }
 
@@ -12840,6 +12844,22 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   border-radius: 290486px;
   padding-left: calc(1em + 0.25em);
   padding-right: calc(1em + 0.25em);
+}
+
+.user-color {
+  background-color: #f7cf43;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  border-color: #f7cf43;
+  -webkit-box-shadow: 2px -1px 12px -4px #f7cf43;
+          box-shadow: 2px -1px 12px -4px #f7cf43;
+}
+
+.user-color .i {
+  font-size: 14px;
 }
 
 .ml-a {

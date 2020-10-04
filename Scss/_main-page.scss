@@ -1,11 +1,14 @@
 .earth{
-    position:absolute;
     width:45px;
     height:45px;
-    left:20vh;
-    top:8vh;
 }
 
+.dropdown-button{
+    background-color:white;
+    position: relative;
+    left:15vh;
+    top:8vh;
+}
 .fly-1{
     position:fixed;
     right:13vh;
@@ -40,6 +43,7 @@
     right:1vh;
     top:1vh;
 }
+
 .is-width{
     width:714px;
     height:185px;
@@ -75,3 +79,19 @@
     padding-left: calc(1em + 0.25em);
     padding-right: calc(1em + 0.25em);
 }
+
+.user-color{
+    background-color: rgba(247, 207, 67, 1);
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    border-color: rgba(247, 207, 67, 1);
+    box-shadow: 2px -1px 12px -4px rgba(247, 207, 67, 1);
+    .i{
+        font-size:14px;
+    }
+
+}
+  
