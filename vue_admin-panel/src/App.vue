@@ -51,10 +51,13 @@ export default {
   data: () => ({
     drawer: null,
     items: [
-      { title: 'panel-1' },
-      { title: 'panel-2' },
-      { title: 'panel-3' },
-      { title: 'panel-4' }
+      // { title: 'panel-1' },
+      // { title: 'panel-2' },
+      // { title: 'panel-3' },
+      // { title: 'panel-4' }
+      { icon: 'dashboard', title: 'Dashboard', route: '/' },
+      { icon: 'folder', title: 'my words', route: '/panel-2' },
+      { icon: 'folder', title: 'words', route: '/panel-3' }
     ]
   })
 }
