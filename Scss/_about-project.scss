@@ -25,10 +25,11 @@
 
   .is-fly {
     position: fixed;
-    margin-left: -4.5rem;
-    margin-top: 27.5rem;
+    margin-left: 2rem;
     height: 170px;
     width: 220px;
+  }
+
   @media screen and(max-width: 1024px) {
     &_image-2 {
       display: none;

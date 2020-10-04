@@ -12671,13 +12671,28 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   z-index: 5;
 }
 
-.card-container .ladybird {
+.about_image-2 {
+  right: 0;
+  top: 85%;
+  -webkit-transform: translateX(80%);
+          transform: translateX(80%);
+  z-index: 5;
+}
+
+.about .ladybird {
   position: absolute;
   width: 30px;
   height: 25px;
   margin-top: 0;
   margin-left: 6rem;
   z-index: 30;
+}
+
+.about .is-fly {
+  position: fixed;
+  margin-left: 2rem;
+  height: 170px;
+  width: 220px;
 }
 
 @media screen and (max-width: 1024px) {
