@@ -12660,55 +12660,29 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   }
 }
 
-.card-container {
+.about {
   margin-top: 5vh;
+  min-height: calc(100vh - 16rem);
 }
 
-.card-container .is-card {
-  border: 1px solid rgba(123, 168, 172, 0.2);
-  -webkit-box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.4);
-          box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.4);
-  border-radius: 3.1vh;
+.about_image-1 {
+  left: 10%;
+  top: 0;
+  z-index: 5;
 }
 
-.card-container .is-card-title {
-  color: #7fd1d8;
-  font-size: 25px;
-  padding-top: 20px;
+.about_image-2 {
+  right: 0;
+  top: 85%;
+  -webkit-transform: translateX(80%);
+          transform: translateX(80%);
+  z-index: 5;
 }
 
-.card-container .title {
-  font-weight: 300;
-}
-
-.card-container .card-content-1 {
-  margin-left: 2rem;
-}
-
-.card-container .is-card-text {
-  color: #c5cbcd;
-  font-size: 2.2vh;
-  padding-top: 10px;
-  padding-bottom: 100px;
-  padding-right: 30px;
-  padding-left: 30px;
-}
-
-.card-container .ladybird {
-  position: fixed;
-  width: 30px;
-  height: 25px;
-  margin-top: 0;
-  margin-left: 6rem;
-  z-index: 30;
-}
-
-.card-container .is-fly {
-  position: fixed;
-  margin-left: -4.5rem;
-  margin-top: 27.5rem;
-  height: 170px;
-  width: 220px;
+@media screen and (max-width: 1024px) {
+  .about_image-2 {
+    display: none;
+  }
 }
 
 .absolute {
