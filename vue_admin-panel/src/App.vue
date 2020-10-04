@@ -15,7 +15,7 @@
 
         <v-divider></v-divider>
 
-        <v-list-item v-for="item in items" :key="item.title" link>
+        <v-list-item v-for="item in items" :key="item.title" router :to="item.route">
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -42,6 +42,7 @@
 
     <v-main>
       <!--  -->
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
@@ -51,13 +52,10 @@ export default {
   data: () => ({
     drawer: null,
     items: [
-      // { title: 'panel-1' },
-      // { title: 'panel-2' },
-      // { title: 'panel-3' },
-      // { title: 'panel-4' }
       { icon: 'dashboard', title: 'Dashboard', route: '/' },
-      { icon: 'folder', title: 'my words', route: '/panel-2' },
-      { icon: 'folder', title: 'words', route: '/panel-3' }
+      { icon: 'folder', title: 'my words', route: '/myWords' },
+      { icon: 'folder', title: 'words', route: '/words' },
+      { icon: 'folder', title: 'profile', route: '/profile' }
     ]
   })
 }
