@@ -1,0 +1,21 @@
+.contact {
+  min-height: calc(100vh - 16rem);
+  &_image-box-1 {
+    left: -60px;
+    top: -10px;
+  }
+  &_image-box-2 {
+    right: -256px;
+    bottom: -150px;
+  }
+  @media screen and(max-width: 1024px) {
+    &_image-box-2 {
+      display: none;
+    }
+  }
+  @media screen and(max-width: 768px) {
+    &_image-box-1 {
+      display: none;
+    }
+  }
+}

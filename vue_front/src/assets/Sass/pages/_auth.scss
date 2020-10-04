@@ -1,0 +1,9 @@
+.slesh {
+  position: relative;
+  a::after {
+    content: '/';
+    position: absolute;
+    right: 0;
+    color: #c5cbcd;
+  }
+}
