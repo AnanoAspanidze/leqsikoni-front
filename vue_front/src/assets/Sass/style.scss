@@ -1,0 +1,130 @@
+// color global variables
+$primary: #7fd1d8;
+$warning: #f7cf43;
+$danger: #dc6c85;
+$text: #c5cbcd;
+$grey-lightest: #c5cbcd;
+
+//font family
+$family-primary: 'ALK Sanet';
+$family-secondary: 'NotoSans-Regular';
+$footer-padding: 3rem 1.5rem;
+
+// navbar global variables
+$navbar-height: 8rem;
+$navbar-item-img-max-height: 3.375rem;
+$navbar-item-hover-color: $text;
+$navbar-item-active-color: $primary;
+$navbar-item-active-color: $text;
+
+//card global variables
+$card-radius: 1.5rem;
+$card-shadow: 2px 2px 8px #7fd1d866;
+
+// input variables
+$input-focus-border-color: #7fd1d866;
+$input-focus-box-shadow-size: 2px 2px 8px;
+$input-focus-box-shadow-color: #7fd1d866;
+
+// van-dropdown
+$navbar-dropdown-border-top: none;
+$navbar-burger-color: $primary;
+
+// button global variables
+$button-padding-horizontal: 3.5em;
+$button-focus-box-shadow-size: 0 0 0 0.25em;
+
+//font sizes
+$size-7: 0.875rem;
+
+//footer global variables
+$footer-background-color: #fff;
+$footer-padding: 3rem 1.5rem 4.3rem;
+
+//tabs
+$tabs-border-bottom-color: rgba(219, 219, 219, 0);
+$tabs-link-color: $text;
+$tabs-link-hover-color: $primary;
+$tabs-link-active-color: $primary;
+$tabs-link-hover-border-bottom-color: $warning;
+$tabs-link-active-border-bottom-color: $warning;
+// Import Bulma's core
+@import '~bulma/sass/utilities/_all';
+
+// Import Bulma and Buefy styles
+@import '~bulma';
+@import '~buefy/src/scss/buefy';
+
+@import './flaticon';
+@import './fonts';
+//@import './shared/header';
+//pages
+//@import './main-page';
+@import './pages/auth';
+//@import './contact';
+//@import './about-project';
+//@import './error';
+
+// main classes
+.ml-a {
+  margin-left: auto;
+}
+.mr-a {
+  margin-right: auto;
+}
+.mx-a {
+  margin: 0 auto;
+}
+
+//flexbox
+.is {
+  // flexbox vertical
+  &-align {
+    &-start {
+      align-items: flex-start;
+    }
+    &-center {
+      align-items: center;
+    }
+    &-end {
+      align-items: flex-end;
+    }
+  }
+  //flexbox horizontal
+  &-justify {
+    &-start {
+      justify-content: start;
+    }
+    &-center {
+      justify-content: center;
+    }
+    &-end {
+      justify-content: end;
+    }
+    &-around {
+      justify-content: space-around;
+    }
+    &-between {
+      justify-content: space-between;
+    }
+  }
+  // positions
+  &-absolute {
+    position: absolute;
+  }
+}
+
+.image.is {
+  &-256x256 {
+    height: 256px;
+    width: 256px;
+  }
+}
+
+.text {
+  &-decoration {
+    &-underline {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,97 @@
+.earth{
+    width:45px;
+    height:45px;
+}
+
+.dropdown-button{
+    background-color:white;
+    position: relative;
+    left:15vh;
+    top:8vh;
+}
+.fly-1{
+    position:fixed;
+    right:13vh;
+    top:25vh;
+}
+
+.fly-2{
+    position:fixed;
+    left:10vh;
+    top:70vh;
+}
+
+.yellow-ladybird{
+   position:absolute;
+   left:30vh;
+   top:1vh;
+}
+
+.blue-mark{
+    position: absolute;
+    right:6vh;
+    top:1vh;
+}
+
+.search{
+    position:absolute;
+    right:10vh;
+    top:1vh;
+}
+.plus{
+    position:absolute;
+    right:1vh;
+    top:1vh;
+}
+
+.is-width{
+    width:714px;
+    height:185px;
+}
+
+.padding-left{
+    padding-left:50px;
+}
+.padding-top{
+    padding-top:25px;
+}
+
+
+.click{
+    position:absolute;
+    bottom:0.5vh;
+    color:$primary;
+    font-size:12px;
+    font-family:$family-primary;
+}
+
+.button-size{
+    width: 30px;
+    height:30px;
+  }
+
+  .click-button{
+    width:90px;
+    height:30px;
+    box-shadow: 2px 2px 8px #7FD1D866;
+    border-radius: 15px;
+    border-radius: 290486px;
+    padding-left: calc(1em + 0.25em);
+    padding-right: calc(1em + 0.25em);
+}
+
+.user-color{
+    background-color: rgba(247, 207, 67, 1);
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    border-color: rgba(247, 207, 67, 1);
+    box-shadow: 2px -1px 12px -4px rgba(247, 207, 67, 1);
+    .i{
+        font-size:14px;
+    }
+
+}
+  
