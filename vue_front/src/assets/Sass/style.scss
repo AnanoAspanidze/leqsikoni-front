@@ -112,6 +112,9 @@ $tabs-link-active-border-bottom-color: $warning;
   &-absolute {
     position: absolute;
   }
+  &-fixed {
+    position: fixed;
+  }
 }
 
 .image.is {
