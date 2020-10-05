@@ -8,14 +8,14 @@
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title>Application</v-list-item-title>
-            <v-list-item-subtitle>Subtext</v-list-item-subtitle>
+            <v-list-item-title>სახელი გვარი</v-list-item-title>
+            <v-list-item-subtitle>ადმინისტრატორი</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
 
         <v-divider></v-divider>
 
-        <v-list-item v-for="item in items" :key="item.title" link>
+        <v-list-item v-for="item in items" :key="item.title" router :to="item.route">
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -42,6 +42,7 @@
 
     <v-main>
       <!--  -->
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
@@ -51,10 +52,11 @@ export default {
   data: () => ({
     drawer: null,
     items: [
-      { title: 'panel-1' },
-      { title: 'panel-2' },
-      { title: 'panel-3' },
-      { title: 'panel-4' }
+      { icon: 'equalizer', title: 'სტატისტიკა', route: '/' },
+      { icon: 'text_snippet', title: 'ჩემი სიტყვები', route: '/myWords' },
+      { icon: 'library_books', title: 'სიტყვები', route: '/words' },
+      { icon: 'supervisor_account', title: 'მომხმარებელთა სია', route: '/users' },
+      { icon: 'account_circle', title: 'ადმინისტრაცია', route: '/administration' }
     ]
   })
 }

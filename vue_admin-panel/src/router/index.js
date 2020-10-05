@@ -1,33 +1,45 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import panelOne from '../views/Panel-1.vue'
-import panelTwo from '../views/Panel-2.vue'
-import panelThree from '../views/Panel-3.vue'
-import panelFour from '../views/Panel-4.vue'
+import Statistics from '../views/Statistics.vue'
+import MyWords from '../views/MyWords.vue'
+import Words from '../views/Words.vue'
+import Users from '../views/Users.vue'
+import Administration from '../views/Administration.vue'
+import UserDetails from '../views/UserDetails.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'panelOne',
-    component: panelOne
+    name: 'statistics',
+    component: Statistics
   },
   {
-    path: '/panel-2',
-    name: 'panelTwo',
-    component: panelTwo
+    path: '/myWords',
+    name: 'myWords',
+    component: MyWords
   },
   {
-    path: '/panel-3',
-    name: 'panelThree',
-    component: panelThree
+    path: '/words',
+    name: 'words',
+    component: Words
   },
   {
-    path: '/panel-4',
-    name: 'panelFour',
-    component: panelFour
+    path: '/users',
+    name: 'users',
+    component: Users
+  },
+  {
+    path: '/administration',
+    name: 'administration',
+    component: Administration
+  },
+  {
+    path: '/userDetails',
+    name: 'userDetails',
+    component: UserDetails
   }
 ]
 
