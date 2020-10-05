@@ -6,6 +6,7 @@ import MyWords from '../views/MyWords.vue'
 import Words from '../views/Words.vue'
 import Users from '../views/Users.vue'
 import Administration from '../views/Administration.vue'
+import UserDetails from '../views/UserDetails.vue'
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,11 @@ const routes = [
     path: '/administration',
     name: 'administration',
     component: Administration
+  },
+  {
+    path: '/userDetails',
+    name: 'userDetails',
+    component: UserDetails
   }
 ]
 
