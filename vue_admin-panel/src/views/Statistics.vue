@@ -21,7 +21,6 @@
         >
           <template v-slot:[`item.details`]="{ value }">
             <router-link :to="value">
-              <!-- {{ value }}    -->
               <v-btn small color="primary">
                 დეტალურად
               </v-btn>
@@ -45,7 +44,7 @@ export default {
           // filterable: false,
           value: 'user'
         },
-        { text: 'ინგლისური სიტყვები', value: 'engWord' },
+        { text: 'ინგლისური სიტყვა', value: 'engWord' },
         { text: 'ქართული შესატყვისი', value: 'geoWord' },
         { text: 'განმარტება', value: 'definition' },
         { text: '', value: 'details' }
