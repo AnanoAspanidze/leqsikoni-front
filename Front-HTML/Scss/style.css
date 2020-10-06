@@ -12758,15 +12758,28 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 
 .dropdown-button {
   background-color: white;
+  border: none;
   position: relative;
-  left: 15vh;
-  top: 8vh;
+  left: 8rem;
+  top: 4rem;
+}
+
+.dropdown-menu-content {
+  left: 2.7rem;
+  top: 7rem;
+  min-width: 6rem;
+}
+
+.dropdown-menu-content-item {
+  -webkit-box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.4);
+          box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.4);
+  border-radius: 8px;
 }
 
 .fly-1 {
   position: fixed;
-  right: 13vh;
-  top: 25vh;
+  right: 5rem;
+  top: 14rem;
 }
 
 .fly-2 {
@@ -12777,26 +12790,32 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 
 .yellow-ladybird {
   position: absolute;
-  left: 30vh;
-  top: 1vh;
+  left: 16.5rem;
+  top: 1.5rem;
+  z-index: 30;
+}
+
+.search-input {
+  border: transparent;
+  background-color: transparent;
 }
 
 .blue-mark {
   position: absolute;
-  right: 6vh;
-  top: 1vh;
+  right: 3rem;
+  top: 0.4rem;
 }
 
 .search {
   position: absolute;
-  right: 10vh;
-  top: 1vh;
+  right: 5rem;
+  top: 0.4rem;
 }
 
 .plus {
   position: absolute;
-  right: 1vh;
-  top: 1vh;
+  right: 0.6rem;
+  top: 0.4rem;
 }
 
 .is-width {
@@ -12846,9 +12865,6 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   border-color: #f7cf43;
   -webkit-box-shadow: 2px -1px 12px -4px #f7cf43;
           box-shadow: 2px -1px 12px -4px #f7cf43;
-}
-
-.user-color .i {
   font-size: 14px;
 }
 
