@@ -64,7 +64,6 @@
                     </v-row>
                   </v-container>
                 </v-card-text>
-
                 <v-card-actions>
                   <v-spacer></v-spacer>
                   <v-btn color="blue darken-1" text @click="close">
@@ -99,14 +98,24 @@
           <v-icon small color="orange" class="mr-2" @click="editItem(item)">
             mdi-pencil
           </v-icon>
-          <v-icon small color="primary" @click="deleteItem(item)">
+          <v-icon small color="primary" class="mr-2" @click="deleteItem(item)">
             mdi-delete
+          </v-icon>
+          <v-icon small color="indigo darken-3"> 
+            remove_red_eye
           </v-icon>
         </template>
         <template v-slot:no-data>
           <v-btn color="primary" @click="initialize">
             Reset
           </v-btn>
+        </template>
+        <template v-slot:[`item.details`]="{ value }">
+          <router-link :to="value">
+            <v-btn small color="primary">
+              დეტალურად
+            </v-btn>
+          </router-link>
         </template>
       </v-data-table>
     </v-container>
@@ -121,10 +130,11 @@ export default {
     dialog: false,
     dialogDelete: false,
     headers: [
-      { text: 'ინგლისური სიტყვა', align: 'start', value: 'engWord'},
+      { text: 'ინგლისური სიტყვა', align: 'start', value: 'engWord' },
       { text: 'ქართული შესატყვისი', value: 'geoWord' },
       { text: 'განმარტება', value: 'definition' },
-      { text: 'Actions', value: 'actions', sortable: false }
+      { text: 'Actions', value: 'actions', sortable: false },
+      { text: '', value: 'details' }
     ],
     words: [],
     editedIndex: -1,
@@ -142,7 +152,7 @@ export default {
 
   computed: {
     formTitle() {
-      return this.editedIndex === -1 ? 'New Item' : 'რედაქტირება'
+      return this.editedIndex === -1 ? 'ახალი სიტყვა' : 'რედაქტირება'
     }
   },
 
@@ -165,32 +175,39 @@ export default {
         {
           engWord: 'bug',
           geoWord: 'შეცდომა',
-          definition: 'პროგრამული შეცდომა (კომპიუტერული პროგრამის ან სისტემის შეცდომა / ხარვეზი)'
+          definition:
+            'პროგრამული შეცდომა (კომპიუტერული პროგრამის ან სისტემის შეცდომა / ხარვეზი)',
+          details: '/userDetails'
         },
         {
           engWord: 'hardware',
           geoWord: 'აპარატული უზრუნველყოფა ',
-          definition: 'კომპიუტერული სისტემის ელექტრონული მოწყობილობა'
+          definition: 'კომპიუტერული სისტემის ელექტრონული მოწყობილობა',
+          details: '/userDetails'
         },
         {
           engWord: 'software',
           geoWord: 'პროგრამული უზრუნველყოფა',
-          definition: 'კომპიუტერული პროგრამა '
+          definition: 'კომპიუტერული პროგრამა ',
+          details: '/userDetails'
         },
         {
           engWord: 'mouse',
           geoWord: 'მაუსი',
-          definition: 'მონიტორის ეკრანზე კურსორის / ისრის მართვის მოწყობილობა'
+          definition: 'მონიტორის ეკრანზე კურსორის / ისრის მართვის მოწყობილობა',
+          details: '/userDetails'
         },
         {
           engWord: 'desktop',
           geoWord: 'სამუშაო მაგიდა',
-          definition: 'ინტერაქციული სივრცე მონიტორის ეკრანზე'
+          definition: 'ინტერაქციული სივრცე მონიტორის ეკრანზე',
+          details: '/userDetails'
         },
         {
           engWord: 'keyboard',
           geoWord: 'კომპიუტერის კლავიატურა',
-          definition: 'კომპიუტერის კლავიატურა'
+          definition: 'კომპიუტერის კლავიატურა',
+          details: '/userDetails'
         }
       ]
     },

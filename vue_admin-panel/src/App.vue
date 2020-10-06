@@ -35,7 +35,7 @@
       <v-toolbar-items>
         <v-btn flat depressed>
           <v-icon left>mdi-logout</v-icon>
-          Log Out
+          გასვლა
         </v-btn>
       </v-toolbar-items>
     </v-app-bar>
