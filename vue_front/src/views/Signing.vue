@@ -240,36 +240,38 @@
               </div>
             </div>
           </div>
-          <transition name="slide-fade" mode="out-in">
-            <div
-              v-if="activeTab == 0"
-              :key="0"
-              class="signing_image-box-2 is-absolute"
-              :style="{ top: '90%' }"
-            >
-              <figure class="image is-256x256">
-                <img src="@/assets/img/lighthouse.svg" alt="lighthouse" />
-              </figure>
-            </div>
-            <div
-              v-else
-              :key="1"
-              class="signing_image-box-2 is-absolute"
-              :style="{ top: '57%' }"
-            >
-              <figure class="image is-256x256">
-                <img src="@/assets/img/pencile.svg" alt="lighthouse" />
-              </figure>
-            </div>
-          </transition>
         </div>
       </div>
     </div>
+    <transition @enter="enter" @leave="leave" mode="out-in">
+      <div
+        v-if="activeTab == 0"
+        :key="0"
+        class="signing_image-box-2 is-fixed"
+        :style="{ top: '60%' }"
+      >
+        <figure class="image is-256x256">
+          <img src="@/assets/img/lighthouse.svg" alt="lighthouse" />
+        </figure>
+      </div>
+      <div
+        v-else
+        :key="1"
+        class="signing_image-box-2 is-fixed"
+        :style="{ top: '57%' }"
+      >
+        <figure class="image is-256x256">
+          <img src="@/assets/img/pencile.svg" alt="lighthouse" />
+        </figure>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
 import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
+import { gsap } from 'gsap'
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 
 export default {
   name: 'Signing',
@@ -327,10 +329,60 @@ export default {
       }
     }
   },
+  mounted() {
+    gsap.registerPlugin(MotionPathPlugin)
+    const r = 25
+    gsap.to('.signing_image-box-1', {
+      motionPath: {
+        path: `M ${-r}, 0
+           a ${r},${r} 0 1,0 ${r * 2},0
+           a ${r},${r} 0 1,0 -${r * 2},0z`,
+        autoRotate: true
+      },
+      duration: 10,
+      repeat: -1,
+      ease: 'none'
+    })
+  },
   methods: {
     restoreUser() {},
     logIn() {},
-    registerUser() {}
+    registerUser() {},
+    enter(el, done) {
+      gsap.from(el, {
+        x: 150,
+        duration: 2,
+        opacity: 0,
+        motionPath: {
+          path: [
+            { x: 150, y: 0 },
+            { x: 60, y: -80 },
+            { x: 0, y: 0 }
+          ],
+          start: 1,
+          end: 0.3
+        },
+        ease: 'power1.inOut',
+        onComplete: done
+      })
+    },
+    leave(el, done) {
+      gsap.to(el, {
+        motionPath: {
+          path: [
+            { x: 0, y: 0 },
+            { x: 60, y: 80 },
+            { x: 150, y: 0 }
+          ],
+          start: 0.3,
+          end: 1
+        },
+        duration: 1,
+        opacity: 0,
+        ease: 'power1.inOut',
+        onComplete: done
+      })
+    }
   }
 }
 </script>
@@ -342,7 +394,7 @@ export default {
     top: 10px;
   }
   &_image-box-2 {
-    right: -256px;
+    right: 10%;
   }
   .field {
     font-family: 'HelveticaNeue';
@@ -361,6 +413,7 @@ export default {
   @media screen and(max-width: 768px) {
     &_image-box-1 {
       display: none;
+      z-index: 999990;
     }
   }
 }

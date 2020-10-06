@@ -44,13 +44,22 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <router-link :to="{ name: 'Alphabet' }" class="navbar-item px-6">
+        <router-link
+          :to="{ name: 'Alphabet' }"
+          class="navbar-item hover-link px-6"
+        >
           <span class="is-relative">ანბანი</span>
         </router-link>
-        <router-link :to="{ name: 'About' }" class="navbar-item px-6 ">
+        <router-link
+          :to="{ name: 'About' }"
+          class="navbar-item hover-link px-6 "
+        >
           <span class="is-relative">პროექტის შესახებ</span>
         </router-link>
-        <router-link :to="{ name: 'Contact' }" class="navbar-item px-6">
+        <router-link
+          :to="{ name: 'Contact' }"
+          class="navbar-item hover-link px-6"
+        >
           <span class="is-relative">კონტაქტი</span>
         </router-link>
       </div>
@@ -60,9 +69,10 @@
           <a class="navbar-link is-arrowless is-relative">
             <div
               class="fi user has-text-warning is-flex is-justify-center is-align-end"
+              @click="redirectUser"
             ></div>
           </a>
-          <div class="navbar-dropdown">
+          <div class="navbar-dropdown" v-if="token">
             <a class="navbar-item">
               რედაქტირება
             </a>
@@ -80,7 +90,21 @@
 </template>
 
 <script>
-export default {}
+import { mapGetters } from 'vuex'
+
+export default {
+  computed: {
+    ...mapGetters(['token'])
+  },
+  methods: {
+    redirectUser() {
+      console.log(this.token)
+      if (!this.token) {
+        this.$router.push({ name: 'Signing' })
+      }
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -90,6 +114,31 @@ export default {}
   }
   &-start {
     margin: 0 auto;
+    .hover-link {
+      span::after {
+        content: '';
+        display: inline-block;
+        height: 2px;
+        width: xxxx0px;
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: all 1s;
+      }
+      &:hover span::after {
+        content: '';
+        display: inline-block;
+        background: #f7cf43;
+        height: 2px;
+        width: 60px;
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: all 1s;
+      }
+    }
     .router-link-exact-active span:after {
       content: '';
       display: inline-block;

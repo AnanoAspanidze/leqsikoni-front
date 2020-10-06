@@ -1,18 +1,20 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Dashboard from '../views/Dashboard.vue'
+import Statistics from '../views/Statistics.vue'
 import MyWords from '../views/MyWords.vue'
 import Words from '../views/Words.vue'
-import Profile from '../views/Profile.vue'
+import Users from '../views/Users.vue'
+import Administration from '../views/Administration.vue'
+import UserDetails from '../views/UserDetails.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'dashboard',
-    component: Dashboard
+    name: 'statistics',
+    component: Statistics
   },
   {
     path: '/myWords',
@@ -25,9 +27,19 @@ const routes = [
     component: Words
   },
   {
-    path: '/profile',
-    name: 'profile',
-    component: Profile
+    path: '/users',
+    name: 'users',
+    component: Users
+  },
+  {
+    path: '/administration',
+    name: 'administration',
+    component: Administration
+  },
+  {
+    path: '/userDetails',
+    name: 'userDetails',
+    component: UserDetails
   }
 ]
 

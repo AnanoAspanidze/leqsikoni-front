@@ -8,8 +8,8 @@
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title>Application</v-list-item-title>
-            <v-list-item-subtitle>Subtext</v-list-item-subtitle>
+            <v-list-item-title>სახელი გვარი</v-list-item-title>
+            <v-list-item-subtitle>ადმინისტრატორი</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
 
@@ -52,10 +52,11 @@ export default {
   data: () => ({
     drawer: null,
     items: [
-      { icon: 'dashboard', title: 'Dashboard', route: '/' },
-      { icon: 'folder', title: 'my words', route: '/myWords' },
-      { icon: 'folder', title: 'words', route: '/words' },
-      { icon: 'folder', title: 'profile', route: '/profile' }
+      { icon: 'equalizer', title: 'სტატისტიკა', route: '/' },
+      { icon: 'text_snippet', title: 'ჩემი სიტყვები', route: '/myWords' },
+      { icon: 'library_books', title: 'სიტყვები', route: '/words' },
+      { icon: 'supervisor_account', title: 'მომხმარებელთა სია', route: '/users' },
+      { icon: 'account_circle', title: 'ადმინისტრაცია', route: '/administration' }
     ]
   })
 }
