@@ -33,7 +33,7 @@
 
 .yellow-ladybird{
    position: absolute;
-   left: 16.5rem;
+   left: 17.5rem;
    top: 1.5rem;
    z-index: 30;
 }
@@ -65,10 +65,10 @@
 }
 
 .padding-left{
-    padding-left:50px;
+    padding-left:63px;
 }
 .padding-top{
-    padding-top:25px;
+    padding-top:35px;
 }
 
 
@@ -83,18 +83,25 @@
 .button-size{
     width: 30px;
     height:30px;
-  }
-
+}
+.share-item {
+    display: flex;
+    margin: 0 0.7rem;
+    width: 30px;
+    height: 30px;
+}
 .click-button{
     width:90px;
     height:30px;
     box-shadow: 2px 2px 8px #7FD1D866;
     border-radius: 15px;
-    border-radius: 290486px;
+    border: none;
     padding-left: calc(1em + 0.25em);
     padding-right: calc(1em + 0.25em);
 }
-
+.share-full-content {
+    padding: 0.5rem 3.75rem 1rem;
+}
 .user-color{
     background-color: rgba(247, 207, 67, 1);
     height: 20px;
@@ -102,9 +109,18 @@
     border-radius: 100%;
     padding-left: 0;
     padding-right: 0;
+    padding-top: 0.4rem;
     border-color: rgba(247, 207, 67, 1);
     box-shadow: 2px -1px 12px -4px rgba(247, 207, 67, 1);
-    font-size: 14px;
-
+    font-size: 15px;
+    margin: 0.2rem;
 }
-  
+.fa-info-content {
+    height: 20px;
+    width: 20px;
+    margin: 0.2rem;
+    font-size: 20.67px!important;
+}
+.card-content-item {
+    display: flex;
+}
