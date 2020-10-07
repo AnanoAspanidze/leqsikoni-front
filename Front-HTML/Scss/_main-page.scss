@@ -124,3 +124,11 @@
 .card-content-item {
     display: flex;
 }
+.pagination-link-content{
+    min-width: 0.1em;
+    border: none;
+}
+.is-current {
+    border-bottom: 1px solid $warning;
+    border-radius: inherit;
+}

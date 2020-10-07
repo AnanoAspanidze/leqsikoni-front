@@ -26,6 +26,20 @@ $input-focus-border-color: #7fd1d866;
 $input-focus-box-shadow-size: 2px 2px 8px;
 $input-focus-box-shadow-color: #7fd1d866;
 
+//pagination 
+$pagination-color: $text;
+$pagination-current-border-color: $warning;
+$pagination-current-color: $primary;
+$pagination-hover-color: $primary;
+$pagination-hover-border-color: $warning;
+$pagination-focus-color: $primary;
+$pagination-focus-border-color: $warning;
+$pagination-current-background-color: transparent;
+$pagination-item-font-size: 12px;
+$pagination-item-padding-left: 0.1em;
+$pagination-item-padding-right: 0.1em;
+$pagination-item-margin: 0.7rem;
+
 // van-dropdown
 $navbar-dropdown-border-top: none;
 $navbar-burger-color: $primary;
