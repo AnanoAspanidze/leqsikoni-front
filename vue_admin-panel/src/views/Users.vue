@@ -43,7 +43,7 @@
             <v-dialog v-model="userBlock" max-width="500px">
               <v-card>
                 <v-card-title class="headline">
-                  ნამდვილად გსურთ დაბლოკოთ მომხმარებელი: {{editedItem.user}} ?
+                  ნამდვილად გსურთ დაბლოკოთ მომხმარებელი: {{ editedItem.user }} ?
                 </v-card-title>
                 <v-card-actions>
                   <v-spacer></v-spacer>
@@ -63,7 +63,7 @@
           <v-icon small color="primary" class="mr-2" @click="deleteItem(item)">
             mdi-delete
           </v-icon>
-          <v-icon small color="red" @click="blockUser(item)"> 
+          <v-icon small color="red" @click="blockUser(item)">
             block
           </v-icon>
         </template>
@@ -83,7 +83,6 @@
     </v-container>
   </div>
 </template>
-
 
 <script>
 export default {
@@ -175,7 +174,7 @@ export default {
       this.users.splice(this.editedIndex, 1)
       this.closeDelete()
     },
-    blockUser(item){
+    blockUser(item) {
       this.editedIndex = this.users.indexOf(item)
       this.editedItem = Object.assign({}, item)
       this.userBlock = true
@@ -222,8 +221,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-toolbar--flat{
+.v-toolbar--flat {
   display: none;
 }
-
 </style>

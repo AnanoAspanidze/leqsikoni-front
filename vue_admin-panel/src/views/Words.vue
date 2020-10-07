@@ -101,7 +101,7 @@
           <v-icon small color="primary" class="mr-2" @click="deleteItem(item)">
             mdi-delete
           </v-icon>
-          <v-icon small color="indigo darken-3"> 
+          <v-icon small color="indigo darken-3">
             remove_red_eye
           </v-icon>
         </template>
@@ -121,7 +121,6 @@
     </v-container>
   </div>
 </template>
-
 
 <script>
 export default {
@@ -257,5 +256,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

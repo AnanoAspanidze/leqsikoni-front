@@ -15,7 +15,12 @@
 
         <v-divider></v-divider>
 
-        <v-list-item v-for="item in items" :key="item.title" router :to="item.route">
+        <v-list-item
+          v-for="item in items"
+          :key="item.title"
+          router
+          :to="item.route"
+        >
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
@@ -55,8 +60,16 @@ export default {
       { icon: 'equalizer', title: 'სტატისტიკა', route: '/' },
       { icon: 'text_snippet', title: 'ჩემი სიტყვები', route: '/myWords' },
       { icon: 'library_books', title: 'სიტყვები', route: '/words' },
-      { icon: 'supervisor_account', title: 'მომხმარებელთა სია', route: '/users' },
-      { icon: 'account_circle', title: 'ადმინისტრაცია', route: '/administration' }
+      {
+        icon: 'supervisor_account',
+        title: 'მომხმარებელთა სია',
+        route: '/users'
+      },
+      {
+        icon: 'account_circle',
+        title: 'ადმინისტრაცია',
+        route: '/administration'
+      }
     ]
   })
 }
