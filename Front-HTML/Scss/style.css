@@ -12806,10 +12806,11 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   top: 0.4rem;
 }
 
-.search {
+.search-svg {
   position: absolute;
-  right: 5rem;
-  top: 0.4rem;
+  top: 0.3rem;
+  right: 5.2rem;
+  z-index: 30;
 }
 
 .plus {
@@ -12833,10 +12834,14 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 
 .click {
   position: absolute;
-  bottom: 0.5vh;
   color: #7fd1d8;
   font-size: 12px;
   font-family: "ALK Sanet";
+}
+
+.click-button:hover, .click:hover {
+  background-color: #7fd1d8;
+  color: #fff;
 }
 
 .button-size {
@@ -12851,6 +12856,16 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   margin: 0 0.7rem;
   width: 30px;
   height: 30px;
+  color: #7fd1d8;
+  border: 1px solid #7fd1d8;
+  border-radius: 50%;
+  font-size: 14px;
+  padding: 0.1rem 0 0 0;
+}
+
+.share-item:hover {
+  color: #fff;
+  background-color: #7fd1d8;
 }
 
 .click-button {
@@ -12886,7 +12901,7 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 .fa-info-content {
   height: 20px;
   width: 20px;
-  margin: 0.2rem;
+  margin: 0.2rem 0.3rem 0.2rem 0.1rem;
   font-size: 20.67px !important;
 }
 
@@ -12899,6 +12914,11 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 .pagination-link-content {
   min-width: 0.1em;
   border: none;
+}
+
+.pagination-link-content:hover {
+  border-bottom: 1px solid #f7cf43;
+  border-radius: inherit;
 }
 
 .is-current {
@@ -13059,6 +13079,29 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 .is-current {
   border-bottom: 1px solid #f7cf43;
   border-radius: inherit;
+}
+
+.user-card-item-top {
+  padding-top: 35px;
+}
+
+.user-card-item {
+  padding-top: 20px;
+}
+
+.bee {
+  position: absolute;
+  right: 10rem;
+  top: -4rem;
+  z-index: 30;
+}
+
+.fa-clock-content {
+  height: 20px;
+  width: 20px;
+  margin: 0.2rem 0.3rem 0.2rem 0.1rem;
+  font-size: 20.67px !important;
+  color: #60B5B6;
 }
 
 .ml-a {
