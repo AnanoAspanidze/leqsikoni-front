@@ -12806,11 +12806,10 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   top: 0.4rem;
 }
 
-.search-svg {
+.search {
   position: absolute;
-  top: 0.3rem;
-  right: 5.2rem;
-  z-index: 30;
+  right: 5rem;
+  top: 0.4rem;
 }
 
 .plus {
@@ -12903,6 +12902,21 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
   width: 20px;
   margin: 0.2rem 0.3rem 0.2rem 0.1rem;
   font-size: 20.67px !important;
+}
+
+a.has-text-white:hover, a.has-text-white:focus {
+  color: #f7cf43 !important;
+  background-color: #fff;
+  -webkit-box-shadow: 2px -1px 12px -4px #f7cf43;
+          box-shadow: 2px -1px 12px -4px #f7cf43;
+}
+
+a.has-text-primary:hover, a.has-text-primary:focus {
+  color: #fff !important;
+  background-color: #7fd1d8;
+  -webkit-box-shadow: 2px -1px 12px -4px #7fd1d8;
+          box-shadow: 2px -1px 12px -4px #7fd1d8;
+  border-radius: 100%;
 }
 
 .card-content-item {
