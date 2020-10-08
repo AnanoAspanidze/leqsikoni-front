@@ -47,11 +47,10 @@
     top: 0.4rem;
 }
 
-.search-svg {
-    position: absolute;
-    top: 0.3rem;
-    right: 5.2rem;
-    z-index: 30;
+.search{
+    position:absolute;
+    right: 5rem;
+    top: 0.4rem;
 }
 
 .plus{
@@ -130,6 +129,17 @@
     width: 20px;
     margin: 0.2rem 0.3rem 0.2rem 0.1rem;
     font-size: 20.67px!important;
+}
+a.has-text-white:hover, a.has-text-white:focus {
+    color: $warning!important;
+    background-color: #fff;
+    box-shadow: 2px -1px 12px -4px rgba(247, 207, 67, 1);
+}
+a.has-text-primary:hover, a.has-text-primary:focus {
+    color: #fff !important;
+    background-color: $primary;
+    box-shadow: 2px -1px 12px -4px rgba(127,209,216, 1);
+    border-radius: 100%;
 }
 .card-content-item {
     display: flex;
