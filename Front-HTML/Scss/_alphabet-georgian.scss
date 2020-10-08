@@ -19,22 +19,11 @@
     box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.4);
     border-radius: 8px;
 }
-.fly-1{
-    position:fixed;
-    right: 5rem;
-    top: 14rem;
-}
-
-.fly-2{
-    position:fixed;
-    left:10vh;
-    top:70vh;
-}
 
 .yellow-ladybird{
    position: absolute;
    left: 17.5rem;
-   top: 1.5rem;
+   top: 4rem;
    z-index: 30;
 }
 .search-input {
@@ -57,6 +46,14 @@
     position:absolute;
     right: 0.6rem;
     top: 0.4rem;
+}
+
+.found{
+    font-size:14px;
+    font-family: $family-secondary;
+    position:relative;
+    left:33rem;
+    top:1.5rem;
 }
 
 .is-width{
@@ -131,4 +128,12 @@
 .is-current {
     border-bottom: 1px solid $warning;
     border-radius: inherit;
+}
+
+.card-radius{
+    border-radius:3rem;
+}
+
+.li-position{
+    margin-left: 17px;
 }
