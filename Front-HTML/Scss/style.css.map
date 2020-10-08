@@ -73,6 +73,7 @@
         "_about-project.scss",
         "_error.scss",
         "_main-page.scss",
+        "_alphabet-georgian.scss",
         "_user-info.scss"
     ],
     "names": [],

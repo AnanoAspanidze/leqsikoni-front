@@ -1,15 +1,15 @@
 <template>
   <div class="administration">
     <v-container>
-      <v-card class="overflow-hidden" color="blue-grey darken-1" dark>
-        <v-toolbar flat color="blue-grey darken-2">
+      <v-card class="overflow-hidden" color="grey darken-2" dark>
+        <v-toolbar flat color="grey darken-3">
           <v-icon class="mr-2">mdi-account</v-icon>
           <v-toolbar-title class="font-weight-light">
             ადმინისტრატორის გვერდი
           </v-toolbar-title>
           <v-spacer></v-spacer>
           <v-btn
-            color="blue-grey darken-1"
+            color="grey darken-2"
             fab
             small
             @click="isEditing = !isEditing"
