@@ -2,68 +2,73 @@
   <div class="administration">
     <v-container>
       <v-card class="overflow-hidden" color="blue-grey darken-1" dark>
-    <v-toolbar flat color="blue-grey darken-2">
-      <v-icon class="mr-2">mdi-account</v-icon>
-      <v-toolbar-title class="font-weight-light">
-        ადმინისტრატორის გვერდი
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn color="blue-grey darken-1" fab small @click="isEditing = !isEditing">
-        <v-icon v-if="isEditing">
-          mdi-close
-        </v-icon>
-        <v-icon v-else>
-          mdi-pencil
-        </v-icon>
-      </v-btn>
-    </v-toolbar>
-    <v-card-text>
-      <v-text-field
-        :disabled="!isEditing"
-        color="white"
-        label="სახელი"
-        v-model="name"
-        :error-messages="nameErrors"
-        :counter="10"
-        required
-        @input="$v.name.$touch()"
-        @blur="$v.name.$touch()"
-      ></v-text-field>
-      <v-text-field
-        :disabled="!isEditing"
-        color="white"
-        label="გვარი"
-        v-model="surname"
-        :error-messages="surnameErrors"
-        :counter="15"
-        required
-        @input="$v.surname.$touch()"
-        @blur="$v.surname.$touch()"
-      ></v-text-field>
-      <v-text-field
-        :disabled="!isEditing"
-        v-model="password"
-        :error-messages="passwordErrors"
-        color="white"
-        label="პაროლი"
-        :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-        :type="show1 ? 'text' : 'password'"
-        hint="At least 8 characters"
-        counter
-        @click:append="show1 = !show1"
-      ></v-text-field>
-    </v-card-text>
-    <v-divider></v-divider>
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn :disabled="!isEditing" color="success" @click="save">
-        Save
-      </v-btn>
-    </v-card-actions>
-    <v-snackbar v-model="hasSaved" :timeout="2000" absolute bottom left>
-      Your profile has been updated
-    </v-snackbar>
-  </v-card>
+        <v-toolbar flat color="blue-grey darken-2">
+          <v-icon class="mr-2">mdi-account</v-icon>
+          <v-toolbar-title class="font-weight-light">
+            ადმინისტრატორის გვერდი
+          </v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="blue-grey darken-1"
+            fab
+            small
+            @click="isEditing = !isEditing"
+          >
+            <v-icon v-if="isEditing">
+              mdi-close
+            </v-icon>
+            <v-icon v-else>
+              mdi-pencil
+            </v-icon>
+          </v-btn>
+        </v-toolbar>
+        <v-card-text>
+          <v-text-field
+            v-model="name"
+            :disabled="!isEditing"
+            color="white"
+            label="სახელი"
+            :error-messages="nameErrors"
+            :counter="10"
+            required
+            @input="$v.name.$touch()"
+            @blur="$v.name.$touch()"
+          ></v-text-field>
+          <v-text-field
+            v-model="surname"
+            :disabled="!isEditing"
+            color="white"
+            label="გვარი"
+            :error-messages="surnameErrors"
+            :counter="15"
+            required
+            @input="$v.surname.$touch()"
+            @blur="$v.surname.$touch()"
+          ></v-text-field>
+          <v-text-field
+            v-model="password"
+            :disabled="!isEditing"
+            :error-messages="passwordErrors"
+            color="white"
+            label="პაროლი"
+            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="show1 ? 'text' : 'password'"
+            hint="At least 8 characters"
+            counter
+            @click:append="show1 = !show1"
+          ></v-text-field>
+        </v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn :disabled="!isEditing" color="success" @click="save">
+            Save
+          </v-btn>
+        </v-card-actions>
+        <v-snackbar v-model="hasSaved" :timeout="2000" absolute bottom left>
+          Your profile has been updated
+        </v-snackbar>
+      </v-card>
     </v-container>
   </div>
 </template>
@@ -86,7 +91,7 @@ export default {
       surname: 'ახალკაცი',
       password: 'password12',
       hasSaved: false,
-      isEditing: null,
+      isEditing: false,
       model: null,
       show1: false
     }
