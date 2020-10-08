@@ -41,7 +41,6 @@ export default {
         {
           text: 'მომხმარებელი',
           align: 'start',
-          // filterable: false,
           value: 'user'
         },
         { text: 'ინგლისური სიტყვა', value: 'engWord' },
