@@ -31,7 +31,7 @@
     top:70vh;
 }
 
-.yellow-ladybird{
+.yellow-ladybird-main{
    position: absolute;
    left: 17.5rem;
    top: 1.5rem;
@@ -155,4 +155,12 @@ a.has-text-primary:hover, a.has-text-primary:focus {
 .is-current {
     border-bottom: 1px solid $warning;
     border-radius: inherit;
+}
+
+.input-style{
+    width:700px;
+    font-size:14px;
+    height:100px;
+    padding-left:50px !important;
+
 }
