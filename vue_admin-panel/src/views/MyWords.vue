@@ -94,9 +94,9 @@
     </div> -->
 
                     <div
-                      class="form-group"
                       v-for="(input, k) in words"
                       :key="k"
+                      class="form-group"
                     >
                       <v-row>
                         <v-col cols="12">
@@ -106,16 +106,16 @@
                           ></v-text-field>
                           <div>
                             <v-icon
-                              @click="remove(k)"
-                              color="red"
                               v-show="k || (!k && words.length > 1)"
+                              color="red"
+                              @click="remove(k)"
                             >
                               remove_circle_outline
                             </v-icon>
                             <v-icon
-                              @click="add(k)"
-                              color="green"
                               v-show="k == words.length - 1"
+                              color="green"
+                              @click="add(k)"
                             >
                               add_circle_outline
                             </v-icon>
@@ -128,16 +128,16 @@
                           ></v-text-field>
                           <div>
                             <v-icon
-                              @click="remove(k)"
-                              color="red"
                               v-show="k || (!k && words.length > 1)"
+                              color="red"
+                              @click="remove(k)"
                             >
                               remove_circle_outline
                             </v-icon>
                             <v-icon
-                              @click="add(k)"
-                              color="green"
                               v-show="k == words.length - 1"
+                              color="green"
+                              @click="add(k)"
                             >
                               add_circle_outline
                             </v-icon>
@@ -148,18 +148,18 @@
                             v-model="editedItem.definition"
                             label="განმარტება"
                           ></v-text-field>
-                         <div>
+                          <div>
                             <v-icon
-                              @click="remove(k)"
-                              color="red"
                               v-show="k || (!k && words.length > 1)"
+                              color="red"
+                              @click="remove(k)"
                             >
                               remove_circle_outline
                             </v-icon>
                             <v-icon
-                              @click="add(k)"
-                              color="green"
                               v-show="k == words.length - 1"
+                              color="green"
+                              @click="add(k)"
                             >
                               add_circle_outline
                             </v-icon>
@@ -308,13 +308,22 @@ export default {
           engWord: 'bug',
           geoWord: 'შეცდომა',
           definition:
-            'პროგრამული შეცდომა (კომპიუტერული პროგრამის ან სისტემის შეცდომა / ხარვეზი)',
-          details: '/userDetails'
+            'პროგრამული შეცდომა (კომპიუტერული პროგრამის ან სისტემის შეცდომა / ხარვეზი)'
         },
         {
-          engWord: 'hardware',
-          geoWord: 'აპარატული უზრუნველყოფა ',
-          definition: 'კომპიუტერული სისტემის ელექტრონული მოწყობილობა',
+          main: {
+            engWord: 'hardware',
+            geoWord: 'აპარატული უზრუნველყოფა ',
+            definition: 'კომპიუტერული სისტემის ელექტრონული მოწყობილობა'
+          },
+          other: {
+            engWord_1: 'hardware',
+            geoWord_1: 'აპარატული უზრუნველყოფა ',
+            definition_1: 'კომპიუტერული სისტემის ელექტრონული მოწყობილობა',
+            engWord_2: 'hardware',
+            geoWord_2: 'აპარატული უზრუნველყოფა ',
+            definition_2: 'კომპიუტერული სისტემის ელექტრონული მოწყობილობა'
+          },
           details: '/userDetails'
         },
         {
