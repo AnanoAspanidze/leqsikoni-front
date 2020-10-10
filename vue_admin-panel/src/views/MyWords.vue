@@ -42,7 +42,7 @@
 
                 <v-card-text>
                   <v-container>
-                    <v-row>
+                    <!-- <v-row>
                       <v-col cols="12">
                         <v-text-field
                           v-model="editedItem.engWord"
@@ -61,7 +61,129 @@
                           label="განმარტება"
                         ></v-text-field>
                       </v-col>
+                    </v-row> -->
+
+                    <!-- <div
+     v-for="(textField, i) in words"
+     :key="i"
+     class="text-fields-row"
+    >
+     <v-row>
+                      <v-col cols="12">
+                        <v-text-field
+                          v-model="editedItem.engWord"
+                          label="ინგლისური სიტყვა"
+                        ></v-text-field>
+                         <v-btn @click="remove(i)" class="error">delete</v-btn>
+                      </v-col>
+                      <v-col cols="12">
+                        <v-text-field
+                          v-model="editedItem.geoWord"
+                          label="ქართული შესატყვისი"
+                        ></v-text-field>
+                         <v-btn @click="remove(i)" class="error">delete</v-btn>
+                      </v-col>
+                      <v-col cols="12">
+                        <v-text-field
+                          v-model="editedItem.definition"
+                          label="განმარტება"
+                        ></v-text-field>
+                         <v-btn @click="remove(i)" class="error">delete</v-btn>
+                      </v-col>
                     </v-row>
+    </div> -->
+
+                    <div
+                      class="form-group"
+                      v-for="(input, k) in words"
+                      :key="k"
+                    >
+                      <v-row>
+                        <v-col cols="12">
+                          <v-text-field
+                            v-model="editedItem.engWord"
+                            label="ინგლისური სიტყვა"
+                          ></v-text-field>
+                          <div>
+                            <v-icon
+                              @click="remove(k)"
+                              color="red"
+                              v-show="k || (!k && words.length > 1)"
+                            >
+                              remove_circle_outline
+                            </v-icon>
+                            <v-icon
+                              @click="add(k)"
+                              color="green"
+                              v-show="k == words.length - 1"
+                            >
+                              add_circle_outline
+                            </v-icon>
+                          </div>
+                        </v-col>
+                        <v-col cols="12">
+                          <v-text-field
+                            v-model="editedItem.geoWord"
+                            label="ქართული შესატყვისი"
+                          ></v-text-field>
+                          <div>
+                            <v-icon
+                              @click="remove(k)"
+                              color="red"
+                              v-show="k || (!k && words.length > 1)"
+                            >
+                              remove_circle_outline
+                            </v-icon>
+                            <v-icon
+                              @click="add(k)"
+                              color="green"
+                              v-show="k == words.length - 1"
+                            >
+                              add_circle_outline
+                            </v-icon>
+                          </div>
+                        </v-col>
+                        <v-col cols="12">
+                          <v-text-field
+                            v-model="editedItem.definition"
+                            label="განმარტება"
+                          ></v-text-field>
+                         <div>
+                            <v-icon
+                              @click="remove(k)"
+                              color="red"
+                              v-show="k || (!k && words.length > 1)"
+                            >
+                              remove_circle_outline
+                            </v-icon>
+                            <v-icon
+                              @click="add(k)"
+                              color="green"
+                              v-show="k == words.length - 1"
+                            >
+                              add_circle_outline
+                            </v-icon>
+                          </div>
+                        </v-col>
+                      </v-row>
+
+                      <!-- <input
+                        type="text"
+                        class="form-control"
+                        v-model="input.name"
+                      />
+                      <span>
+                        <v-icon
+                          @click="remove(k)"
+                          v-show="k || (!k && inputs.length > 1)"
+                        >
+                          remove_circle_outline
+                        </v-icon>
+                        <v-icon @click="add(k)" v-show="k == inputs.length - 1">
+                          add_circle_outline
+                        </v-icon>
+                      </span> -->
+                    </div>
                   </v-container>
                 </v-card-text>
                 <v-card-actions>
@@ -128,6 +250,11 @@ export default {
     search: '',
     dialog: false,
     dialogDelete: false,
+    inputs: [
+      {
+        name: ''
+      }
+    ],
     headers: [
       { text: 'ინგლისური სიტყვა', align: 'start', value: 'engWord' },
       { text: 'ქართული შესატყვისი', value: 'geoWord' },
@@ -169,6 +296,12 @@ export default {
   },
 
   methods: {
+    add() {
+      this.words.push({ name: '' })
+    },
+    remove(index) {
+      this.words.splice(index, 1)
+    },
     initialize() {
       this.words = [
         {
