@@ -72,7 +72,7 @@
                           დაგავიწყდა პაროლი?
                         </a>
                         <b-field class="pt-5 pb-5">
-                          <p class="control is-flex is-justify-center">
+                          <p class="control is-flex is-justify-content-center">
                             <b-button
                               type="is-warning"
                               rounded
@@ -222,7 +222,7 @@
                           ></b-input>
                         </b-field>
                         <b-field class="pt-5 pb-5">
-                          <p class="control is-flex is-justify-center">
+                          <p class="control is-flex is-justify-content-center">
                             <b-button
                               type="is-warning"
                               rounded
@@ -269,164 +269,164 @@
 </template>
 
 <script>
-import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
-import { gsap } from 'gsap'
-import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
+  import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
+  import { gsap } from 'gsap'
+  import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 
-export default {
-  name: 'Signing',
-  data() {
-    return {
-      activeTab: 0,
+  export default {
+    name: 'Signing',
+    data() {
+      return {
+        activeTab: 0,
+        login: {
+          email: '',
+          password: ''
+        },
+        register: {
+          email: '',
+          user: '',
+          first_name: '',
+          last_name: '',
+          password: '',
+          rePassword: ''
+        },
+        isLoading: false
+      }
+    },
+    validations: {
       login: {
-        email: '',
-        password: ''
+        email: {
+          required,
+          email
+        },
+        password: {
+          required
+        }
       },
       register: {
-        email: '',
-        user: '',
-        first_name: '',
-        last_name: '',
-        password: '',
-        rePassword: ''
-      },
-      isLoading: false
-    }
-  },
-  validations: {
-    login: {
-      email: {
-        required,
-        email
-      },
-      password: {
-        required
+        email: {
+          required,
+          email
+        },
+        user: {
+          required,
+          minLength: minLength(4)
+        },
+        first_name: {
+          required,
+          minLength: minLength(2)
+        },
+        last_name: {
+          required
+        },
+        password: {
+          required,
+          minLength: minLength(6)
+        },
+        rePassword: {
+          required,
+          sameAsPassword: sameAs('password')
+        }
       }
     },
-    register: {
-      email: {
-        required,
-        email
-      },
-      user: {
-        required,
-        minLength: minLength(4)
-      },
-      first_name: {
-        required,
-        minLength: minLength(2)
-      },
-      last_name: {
-        required
-      },
-      password: {
-        required,
-        minLength: minLength(6)
-      },
-      rePassword: {
-        required,
-        sameAsPassword: sameAs('password')
-      }
-    }
-  },
-  mounted() {
-    gsap.registerPlugin(MotionPathPlugin)
-    const r = 25
-    gsap.to('.signing_image-box-1', {
-      motionPath: {
-        path: `M ${-r}, 0
+    mounted() {
+      gsap.registerPlugin(MotionPathPlugin)
+      const r = 25
+      gsap.to('.signing_image-box-1', {
+        motionPath: {
+          path: `M ${-r}, 0
            a ${r},${r} 0 1,0 ${r * 2},0
            a ${r},${r} 0 1,0 -${r * 2},0z`,
-        autoRotate: true
-      },
-      duration: 10,
-      repeat: -1,
-      ease: 'none'
-    })
-  },
-  methods: {
-    restoreUser() {},
-    logIn() {},
-    registerUser() {},
-    enter(el, done) {
-      gsap.from(el, {
-        x: 150,
-        duration: 2,
-        opacity: 0,
-        motionPath: {
-          path: [
-            { x: 150, y: 0 },
-            { x: 60, y: -80 },
-            { x: 0, y: 0 }
-          ],
-          start: 1,
-          end: 0.3
+          autoRotate: true
         },
-        ease: 'power1.inOut',
-        onComplete: done
+        duration: 10,
+        repeat: -1,
+        ease: 'none'
       })
     },
-    leave(el, done) {
-      gsap.to(el, {
-        motionPath: {
-          path: [
-            { x: 0, y: 0 },
-            { x: 60, y: 80 },
-            { x: 150, y: 0 }
-          ],
-          start: 0.3,
-          end: 1
-        },
-        duration: 1,
-        opacity: 0,
-        ease: 'power1.inOut',
-        onComplete: done
-      })
+    methods: {
+      restoreUser() {},
+      logIn() {},
+      registerUser() {},
+      enter(el, done) {
+        gsap.from(el, {
+          x: 150,
+          duration: 2,
+          opacity: 0,
+          motionPath: {
+            path: [
+              { x: 150, y: 0 },
+              { x: 60, y: -80 },
+              { x: 0, y: 0 }
+            ],
+            start: 1,
+            end: 0.3
+          },
+          ease: 'power1.inOut',
+          onComplete: done
+        })
+      },
+      leave(el, done) {
+        gsap.to(el, {
+          motionPath: {
+            path: [
+              { x: 0, y: 0 },
+              { x: 60, y: 80 },
+              { x: 150, y: 0 }
+            ],
+            start: 0.3,
+            end: 1
+          },
+          duration: 1,
+          opacity: 0,
+          ease: 'power1.inOut',
+          onComplete: done
+        })
+      }
     }
   }
-}
 </script>
 
 <style lang="scss">
-.signing {
-  &_image-box-1 {
-    left: -60px;
-    top: 10px;
-  }
-  &_image-box-2 {
-    right: 10%;
-  }
-  .field {
-    font-family: 'HelveticaNeue';
-    .input {
-      font-family: 'HelveticaNeue';
-    }
-    p {
-      font-size: 10px;
-    }
-  }
-  @media screen and(max-width: 1024px) {
-    &_image-box-2 {
-      display: none;
-    }
-  }
-  @media screen and(max-width: 768px) {
+  .signing {
     &_image-box-1 {
-      display: none;
-      z-index: 999990;
+      left: -60px;
+      top: 10px;
+    }
+    &_image-box-2 {
+      right: 10%;
+    }
+    .field {
+      font-family: 'HelveticaNeue';
+      .input {
+        font-family: 'HelveticaNeue';
+      }
+      p {
+        font-size: 10px;
+      }
+    }
+    @media screen and(max-width: 1024px) {
+      &_image-box-2 {
+        display: none;
+      }
+    }
+    @media screen and(max-width: 768px) {
+      &_image-box-1 {
+        display: none;
+        z-index: 999990;
+      }
     }
   }
-}
 
-.slide-fade-enter-active {
-  transition: all 0.8s ease;
-}
-.slide-fade-leave-active {
-  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
-}
-.slide-fade-enter, .slide-fade-leave-to
+  .slide-fade-enter-active {
+    transition: all 0.8s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+  }
+  .slide-fade-enter, .slide-fade-leave-to
 /* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateX(10px);
-  opacity: 0;
-}
+    transform: translateX(10px);
+    opacity: 0;
+  }
 </style>

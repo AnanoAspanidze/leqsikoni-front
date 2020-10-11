@@ -21,6 +21,10 @@ $navbar-item-active-color: $text;
 $card-radius: 1.5rem;
 $card-shadow: 2px 2px 8px #7fd1d866;
 
+// panel variables
+$panel-shadow: 2px 2px 8px #7fd1d866;
+$panel-radius: 8px;
+
 // input variables
 $input-focus-border-color: #7fd1d866;
 $input-focus-box-shadow-size: 2px 2px 8px;
@@ -78,36 +82,6 @@ $tabs-link-active-border-bottom-color: $warning;
 
 //flexbox
 .is {
-  // flexbox vertical
-  &-align {
-    &-start {
-      align-items: flex-start;
-    }
-    &-center {
-      align-items: center;
-    }
-    &-end {
-      align-items: flex-end;
-    }
-  }
-  //flexbox horizontal
-  &-justify {
-    &-start {
-      justify-content: start;
-    }
-    &-center {
-      justify-content: center;
-    }
-    &-end {
-      justify-content: end;
-    }
-    &-around {
-      justify-content: space-around;
-    }
-    &-between {
-      justify-content: space-between;
-    }
-  }
   // positions
   &-absolute {
     position: absolute;

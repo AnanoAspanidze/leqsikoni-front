@@ -1,6 +1,6 @@
 /*
     Flaticon icon font: Flaticon
-    Creation date: 02/10/2020 19:42
+    Creation date: 11/10/2020 13:45
     */
 
 @font-face {
@@ -52,8 +52,8 @@
 .info:before {
   content: '\f104';
 }
-.global:before {
-  content: '\f105';
+.internet:before {
+  content: '\f10c';
 }
 .share:before {
   content: '\f106';
@@ -77,12 +77,18 @@
   content: '\f10c';
 }
 
+.down:before {
+  content: '\f10d';
+}
+.up:before {
+  content: '\f10e';
+}
+
 $font-user: '\f100';
 $font-in: '\f101';
 $font-fb: '\f102';
 $font-tw: '\f103';
 $font-info: '\f104';
-$font-global: '\f105';
 $font-share: '\f106';
 $font-plus: '\f107';
 $font-clock: '\f108';
@@ -90,3 +96,6 @@ $font-edit: '\f109';
 $font-checked: '\f10a';
 $font-eye: '\f10b';
 $font-block: '\f10c';
+$fon-internet: '\f10c';
+$font-down: '\f10d';
+$font-up: '\f10e';

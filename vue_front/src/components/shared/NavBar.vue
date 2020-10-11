@@ -9,7 +9,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link is-arrowless is-relative">
             <div
-              class="fi user has-text-warning is-flex is-justify-center is-align-end"
+              class="fi user has-text-warning is-flex is-justify-content-center is-align-items-end"
             ></div>
           </a>
           <div class="navbar-dropdown">
@@ -64,15 +64,15 @@
         </router-link>
       </div>
 
-      <div class="navbar-end is-flex is-justify-center">
+      <div class="navbar-end is-flex is-justify-content-center">
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link is-arrowless is-relative">
             <div
-              class="fi user has-text-warning is-flex is-justify-center is-align-end"
+              class="fi user has-text-warning is-flex is-justify-content-center is-align-items-end"
               @click="redirectUser"
             ></div>
           </a>
-          <div class="navbar-dropdown" v-if="token">
+          <div v-if="token" class="navbar-dropdown">
             <a class="navbar-item">
               რედაქტირება
             </a>
@@ -90,43 +90,56 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+  import { mapGetters } from 'vuex'
 
-export default {
-  computed: {
-    ...mapGetters(['token'])
-  },
-  methods: {
-    redirectUser() {
-      console.log(this.token)
-      if (!this.token) {
-        this.$router.push({ name: 'Signing' })
+  export default {
+    computed: {
+      ...mapGetters(['token'])
+    },
+    methods: {
+      redirectUser() {
+        console.log(this.token)
+        if (!this.token) {
+          this.$router.push({ name: 'Signing' })
+        }
       }
     }
   }
-}
 </script>
 
 <style lang="scss" scoped>
-.navbar {
-  .is-mobile {
-    display: none;
-  }
-  &-start {
-    margin: 0 auto;
-    .hover-link {
-      span::after {
-        content: '';
-        display: inline-block;
-        height: 2px;
-        width: xxxx0px;
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        transition: all 1s;
+  .navbar {
+    .is-mobile {
+      display: none;
+    }
+    &-start {
+      margin: 0 auto;
+      .hover-link {
+        span::after {
+          content: '';
+          display: inline-block;
+          height: 2px;
+          width: xxxx0px;
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          transition: all 1s;
+        }
+        &:hover span::after {
+          content: '';
+          display: inline-block;
+          background: #f7cf43;
+          height: 2px;
+          width: 60px;
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          transition: all 1s;
+        }
       }
-      &:hover span::after {
+      .router-link-exact-active span:after {
         content: '';
         display: inline-block;
         background: #f7cf43;
@@ -139,101 +152,88 @@ export default {
         transition: all 1s;
       }
     }
-    .router-link-exact-active span:after {
-      content: '';
-      display: inline-block;
-      background: #f7cf43;
-      height: 2px;
-      width: 60px;
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      transition: all 1s;
-    }
-  }
-  &-end {
-    margin: 0;
-    min-width: 112px;
-    .user {
-      height: 48px;
-      width: 48px;
-      border-radius: 100%;
-      padding-left: 0;
-      padding-right: 0;
-      border-color: #fff;
-      box-shadow: 2px -1px 12px -4px rgba(247, 207, 67, 1);
-      font-size: 32px;
-    }
-    .navbar-dropdown {
-      left: -140%;
-      top: 80%;
-      box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.4);
-      border-radius: 8px;
-    }
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .navbar {
-    &-item img {
-      max-height: 2.375rem;
-    }
-    &-burger:hover {
-      background-color: rgba(0, 0, 0, 0);
-      color: #7fd1d8;
-    }
-
-    .navbar-brand {
-      flex-direction: row-reverse;
-      justify-content: space-between;
-      .burger {
-        margin: 0;
-      }
-    }
-    &-start {
-      .is-active span:after {
-        display: none;
-      }
-    }
     &-end {
-      display: none;
-      min-width: 136px;
+      margin: 0;
+      min-width: 112px;
       .user {
-        width: 32px;
-        height: 32px;
-        font-size: 22px;
+        height: 48px;
+        width: 48px;
+        border-radius: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        border-color: #fff;
+        box-shadow: 2px -1px 12px -4px rgba(247, 207, 67, 1);
+        font-size: 32px;
       }
-      .navbar-item {
-        position: relative;
-        display: flex;
-        flex-shrink: 0;
-        flex-grow: 0;
-        &.is-hoverable:hover .navbar-dropdown {
-          display: block;
+      .navbar-dropdown {
+        left: -140%;
+        top: 80%;
+        box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.4);
+        border-radius: 8px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .navbar {
+      &-item img {
+        max-height: 2.375rem;
+      }
+      &-burger:hover {
+        background-color: rgba(0, 0, 0, 0);
+        color: #7fd1d8;
+      }
+
+      .navbar-brand {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        .burger {
+          margin: 0;
         }
       }
-    }
-    .is-mobile {
-      display: flex;
-      min-width: 100px;
-      align-items: stretch;
-      justify-content: center;
-    }
+      &-start {
+        .is-active span:after {
+          display: none;
+        }
+      }
+      &-end {
+        display: none;
+        min-width: 136px;
+        .user {
+          width: 32px;
+          height: 32px;
+          font-size: 22px;
+        }
+        .navbar-item {
+          position: relative;
+          display: flex;
+          flex-shrink: 0;
+          flex-grow: 0;
+          &.is-hoverable:hover .navbar-dropdown {
+            display: block;
+          }
+        }
+      }
+      .is-mobile {
+        display: flex;
+        min-width: 100px;
+        align-items: stretch;
+        justify-content: center;
+      }
 
-    &-dropdown {
-      position: absolute;
-      display: none;
-      background: #fff;
-    }
-    &-link:hover {
-      background-color: #fff;
-    }
-    &-menu.is-active {
-      position: absolute;
-      left: 5%;
-      top: 80%;
+      &-dropdown {
+        position: absolute;
+        display: none;
+        background: #fff;
+      }
+      &-link:hover {
+        background-color: #fff;
+      }
+      &-menu.is-active {
+        position: absolute;
+        left: 5%;
+        top: 80%;
+      }
     }
   }
-}
 </style>
