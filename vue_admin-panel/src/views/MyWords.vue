@@ -305,28 +305,6 @@ export default {
     initialize() {
       this.words = [
         {
-          engWord: 'bug',
-          geoWord: 'შეცდომა',
-          definition:
-            'პროგრამული შეცდომა (კომპიუტერული პროგრამის ან სისტემის შეცდომა / ხარვეზი)'
-        },
-        {
-          main: {
-            engWord: 'hardware',
-            geoWord: 'აპარატული უზრუნველყოფა ',
-            definition: 'კომპიუტერული სისტემის ელექტრონული მოწყობილობა'
-          },
-          other: {
-            engWord_1: 'hardware',
-            geoWord_1: 'აპარატული უზრუნველყოფა ',
-            definition_1: 'კომპიუტერული სისტემის ელექტრონული მოწყობილობა',
-            engWord_2: 'hardware',
-            geoWord_2: 'აპარატული უზრუნველყოფა ',
-            definition_2: 'კომპიუტერული სისტემის ელექტრონული მოწყობილობა'
-          },
-          details: '/userDetails'
-        },
-        {
           engWord: 'software',
           geoWord: 'პროგრამული უზრუნველყოფა',
           definition: 'კომპიუტერული პროგრამა ',
