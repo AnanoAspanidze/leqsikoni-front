@@ -44,7 +44,9 @@
       </div>
       <div class="columns is-centered">
         <div class="column is-10">
-          <div class="is-flex">
+          <div
+            class="is-flex is-justify-content-space-around is-align-content-center alphabet-wrapper"
+          >
             <div class="lang">
               <div class="lang_icon is-inline-flex">
                 <b-icon
@@ -76,7 +78,7 @@
                     <div
                       v-for="item in geoSort"
                       :key="item"
-                      class="has-text-primary"
+                      class="has-text-text is-sorting"
                     >
                       {{ item }}
                     </div>
@@ -98,16 +100,32 @@
                     <div
                       v-for="item in engSort"
                       :key="item"
-                      class="has-text-primary"
+                      class="has-text-text is-sorting"
                     >
                       {{ item }}
                     </div>
                   </b-collapse>
                 </div>
-                <div class="is-clickable px-2 py-2">თარიღით</div>
+                <div class="is-clickable px-2 py-2 is-date">თარიღით</div>
               </b-collapse>
             </div>
-            <div class="search"></div>
+            <div class="search">
+              <div class="card is-flex is-align-items-center">
+                <div
+                  class="search_icon is-flex is-align-items-center is-justify-content-space-between"
+                >
+                  <input
+                    class="input is-rounded"
+                    type="text"
+                    placeholder="მოძებნე"
+                  />
+                  <figure class="image is-64x64 mr-6">
+                    <img src="@/assets/img/component-1.svg" />
+                  </figure>
+                </div>
+                <div class="search_add-icon"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -117,6 +135,8 @@
 
 <script>
   import { mapGetters } from 'vuex'
+  import { gsap } from 'gsap'
+  import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 
   export default {
     name: 'Alphabet',
@@ -140,6 +160,25 @@
         return this.engAlphabet
       }
     },
+    mounted() {
+      gsap.registerPlugin(MotionPathPlugin)
+      gsap.to('.bee', {
+        transformOrigin: '50% 50%',
+        duration: 5,
+        ease: 'power1.inOut',
+        yoyo: true,
+        repeat: -1,
+        motionPath: {
+          alignOrigin: [0.5, 0.5],
+          curviness: 0,
+          path: [
+            { x: 0, y: 0, scale: 1 },
+            { x: 40, y: -20, scale: 1.4 },
+            { x: 80, y: 0, scale: 1 }
+          ]
+        }
+      })
+    },
     methods: {
       selectLetter(val) {
         this.selectedLetter = val
@@ -151,8 +190,8 @@
 <style lang="scss" scoped>
   .alphabet {
     .bee {
-      right: 30px;
-      top: 0;
+      right: 100px;
+      top: 50px;
       z-index: 100;
     }
     &_list {
@@ -163,12 +202,45 @@
         width: 40px;
       }
     }
-    .lang {
-      &_icon {
-        border-radius: 100%;
-        box-shadow: 2px 2px 8px #badfed99;
-        &:hover {
-          box-shadow: 1px 1px 6px #f7cf43;
+    &-wrapper {
+      .lang {
+        display: flex;
+        align-items: center;
+        &_icon {
+          border-radius: 100%;
+          box-shadow: 2px 2px 8px #badfed99;
+          &:hover {
+            box-shadow: 1px 1px 6px #f7cf43;
+          }
+        }
+        .is {
+          &-sorting:hover {
+            color: #7fd1d8;
+          }
+          &-date:hover {
+            color: #7fd1d8;
+          }
+        }
+      }
+      .search {
+        width: 80%;
+        .card {
+          height: 100px;
+          border-radius: 5rem;
+        }
+        &_icon {
+          height: 100%;
+          width: 90%;
+          background: url('../assets/img/blue-mark.svg') no-repeat;
+          background-position: center right;
+          background-size: contain;
+          input {
+            width: 70%;
+            border-color: transparent;
+            border-radius: 0;
+            box-shadow: none;
+            padding-inline-start: 2rem;
+          }
         }
       }
     }
@@ -177,6 +249,16 @@
         &_list {
           flex-direction: row;
           flex-wrap: wrap;
+        }
+      }
+    }
+    @media screen and (max-width: 769px) {
+      .alphabet {
+        &-wrapper {
+          flex-direction: column;
+          .search {
+            width: 100%;
+          }
         }
       }
     }
