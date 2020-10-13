@@ -151,7 +151,56 @@
                     <img src="@/assets/img/component-1.svg" />
                   </figure>
                 </div>
-                <div class="search_add-icon"></div>
+                <div class="search_add-icon">
+                  <div>
+                    <svg viewBox="0 0 79.238 79.6">
+                      <!--  <defs>
+                        <filter
+                          id="a"
+                          x="0"
+                          y="0"
+                          width="79.238"
+                          height="79.6"
+                          filterUnits="userSpaceOnUse"
+                        >
+                          <feOffset dx="2" dy="2" input="SourceAlpha" />
+                          <feGaussianBlur stdDeviation="4" result="b" />
+                          <feFlood flood-color="#f7cf43" flood-opacity="0.4" />
+                          <feComposite operator="in" in2="b" />
+                          <feComposite in="SourceGraphic" />
+                        </filter>
+                      </defs> -->
+                      <g transform="translate(10 10)">
+                        <g transform="translate(55.238 0) rotate(90)">
+                          <g transform="translate(0 0)">
+                            <g
+                              class="c"
+                              transform="matrix(0, -1, 1, 0, -10, 65.24)"
+                            >
+                              <path
+                                class="a"
+                                d="M.4,27.291s5.065,27.947,28.7,27.947,31.321-25.321,23.632-39.95S22.9-4.03,9.963,3.659.4,27.291.4,27.291Z"
+                                transform="translate(65.24 10) rotate(90)"
+                              />
+                            </g>
+                          </g>
+                        </g>
+                        <g transform="translate(-894.947 -318.641)">
+                          <line
+                            class="b"
+                            y2="10.952"
+                            transform="translate(922.976 340.5)"
+                          />
+                          <line
+                            class="b"
+                            x1="10.952"
+                            transform="translate(917.5 345.976)"
+                          />
+                        </g>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -328,7 +377,7 @@
         }
         &_icon {
           height: 100%;
-          width: 90%;
+          width: 94%;
           background: url('../assets/img/blue-mark.svg') no-repeat;
           background-position: center right;
           background-size: contain;
@@ -338,6 +387,33 @@
             border-radius: 0;
             box-shadow: none;
             padding-inline-start: 2rem;
+          }
+        }
+        &_add-icon div {
+          margin-left: -2rem;
+          height: 64px;
+          width: 64px;
+          cursor: pointer;
+          &:hover {
+            .a {
+              fill: #f7cf43;
+            }
+            .b {
+              fill: none;
+              stroke: #fff;
+              stroke-width: 2px;
+            }
+          }
+          .a {
+            fill: #fff;
+          }
+          .b {
+            fill: none;
+            stroke: #f7cf43;
+            stroke-width: 2px;
+          }
+          .c {
+            filter: drop-shadow(2px 2px 4px #f7cf43);
           }
         }
       }
