@@ -243,7 +243,7 @@
         </div>
       </div>
     </div>
-    <transition @enter="enter" @leave="leave" mode="out-in">
+    <transition mode="out-in" @enter="enter" @leave="leave">
       <div
         v-if="activeTab == 0"
         :key="0"
