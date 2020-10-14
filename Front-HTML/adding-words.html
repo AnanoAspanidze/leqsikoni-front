@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+    <link rel="stylesheet" href="./Scss/style.css">
+    <link rel="stylesheet" href="./Scss/_responsive.scss">
+    <title>ლექსიკონი</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar is-transparent " role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <div class="navbar-end is-mobile">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link is-arrowless is-relative">
+                            <div class="fi user has-text-warning is-flex is-justify-center is-align-end"></div>
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a href="./" class="navbar-item">
+                                რედაქტირება
+                            </a>
+                            <a class="navbar-item">
+                                ჩემი სიტყვები
+                            </a>
+                            <a class="navbar-item">
+                                გამოსვლა
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <a class="navbar-item" href="#">
+                    <img src="./img/logo.svg" width="112" height="28">
+                </a>
+
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                    data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a href="main-page.html" class="navbar-item px-6">
+                        <span class="is-relative">ანბანი</span>
+                    </a>
+                    <a href="about-project.html" class="navbar-item px-6 is-active">
+                        <span class="is-relative">პროექტის შესახებ</span>
+                    </a>
+                    <a href="contact.html" class="navbar-item px-6">
+                        <span class="is-relative">კონტაქტი</span>
+                    </a>
+                </div>
+
+                <div class="navbar-end">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link is-arrowless is-relative">
+                            <div class="fi user has-text-warning is-flex is-justify-center is-align-end"></div>
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item">
+                                რედაქტირება
+                            </a>
+                            <a class="navbar-item">
+                                ჩემი სიტყვები
+                            </a>
+                            <a class="navbar-item">
+                                გამოსვლა
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="words pt-5">
+            <div class="container section">
+                <div class="columns is-mobile is-centered">
+                    <div class="column is-half-desktop is-four-fifths-tablet is-full-mobile is-relative">
+                        <div class="words_image-box-1 is-absolute">
+                            <figure class="image is-64x64">
+                                <img src="./img/yellow-ladybird.svg" alt="ladybird-words" class="yellow-ladybird-words" style="position: absolute;
+                                width: 30px;
+                                height: 25px;
+                                z-index: 100;
+                                left: 3rem;
+                                bottom: 3rem;">
+                            </figure>
+                        </div>
+                        <div class="card">
+                            <div class="card-header-title has-text-grey-lighter">
+                                <h1 class="mx-a" style="margin-top:3vh;">
+                                    <span class="has-text-primary" style="font-size:16px;">სიტყვის დამატება</span>
+                                </h1>
+                            </div>
+                            <span class="is-danger" style="font-size:14px; display:flex; justify-content:center; font-family:'HelveticaNeue'">პირველი სამი ველიდან ერთერთის შევსება სავალდებულოა.</span>
+                            <div class="card-content">
+                                <div class="columns is-centered is-mobile">
+                                    <div
+                                        class="column is-two-thirds-desktop is-three-fifths-tablet is-four-fifths-mobile">
+                                        <form>
+                                            <div class="field pb-1">
+                                                <div class="is-family-secondary card-content-item mb-1">
+                                                    <a class="icon has-text-white user-color">
+                                                        <i class="fi user"></i>
+                                                    </a>
+                                                    <a class="fa-info-content icon has-text-primary" href="user-info.html">
+                                                        <i class="fas fa-info-circle "></i>
+                                                    </a>
+                                                <div class="control">
+                                                    <input class="input  is-rounded" type="mail" placeholder="ინგლისური სიტყვა"
+                                                        required style="margin-left:20px;margin-bottom:20px; width:248px;  font-family:'HelveticaNeue';font-size:14px;">
+                                                </div>
+                                            </div>
+                                            <div class="is-family-secondary card-content-item mb-1">
+                                                <a class="icon has-text-white user-color">
+                                                    <i class="fi user"></i>
+                                                </a>
+                                                <a class="fa-info-content icon has-text-primary" href="user-info.html">
+                                                    <i class="fas fa-info-circle "></i>
+                                                </a>
+                                            <div class="control">
+                                                <input class="input is-rounded" type="mail" placeholder="ქართული სიტყვა"
+                                                    required style="margin-left:20px;margin-bottom:20px;  width:248px; font-family:'HelveticaNeue';font-size:14px;">
+                                            </div>
+                                        </div>
+                                        <div class="is-family-secondary card-content-item mb-1">
+                                            <a class="icon has-text-white user-color">
+                                                <i class="fi user"></i>
+                                            </a>
+                                            <a class="fa-info-content icon has-text-primary" href="user-info.html">
+                                                <i class="fas fa-info-circle "></i>
+                                            </a>                               
+                                                <div class="control">
+                                                    <input class="input is-rounded" type="text" placeholder="განმარტება"
+                                                        required style="margin-left:20px;  width:248px; font-family:'HelveticaNeue';font-size:14px;">
+                                                </div>
+                                            </div>
+                                            <p class="help is-danger " style="font-size:10px; font-family:'HelveticaNeue';margin-top:2rem; margin-left:4rem;" >დაფიქსირდა შეცდომა, თავიდან სცადეთ
+                                            </p>
+                                            
+                                            <div class="field is-grouped is-grouped-centered pt-5">
+                                                <p class="control">
+                                                    <button class="button is-warning is-outlined is-rounded" style="width:163px;">
+                                                        შენახვა
+                                                    </button>
+                                                </p>
+                                                <p class="control">
+                                                    <button class="button is-danger is-outlined is-rounded"  style="width:163px;">
+                                                       გაუქმება
+                                                    </button>
+                                                </p>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="words_lighthouse is-absolute">
+                            <figure class="image is-256x256">
+                                <img src="./img/lighthouse.svg" alt="lighthouse" class="words_lighthouse" style="position: absolute;
+                                right: 20rem;
+                                bottom: 10rem;
+                            ">
+                            </figure>
+                        </div>
+                        <div class="words_fly is-absolute">
+                            <figure class="image is-256x256">
+                                <img src="./img/about-project/fly.svg" alt="fly-words" class="words_fly" style="    position: absolute;
+                                left: 38rem;
+                                bottom: 25rem;">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

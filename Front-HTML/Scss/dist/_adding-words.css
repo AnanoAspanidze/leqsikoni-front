@@ -1,0 +1,45 @@
+.words {
+  min-height: calc(100vh - 15.5rem);
+}
+
+.words_lighthouse {
+  left: -60px;
+  top: 10px;
+}
+
+.words_fly {
+  position: absolute;
+  left: 35rem;
+  bottom: 30rem;
+}
+
+.yellow-ladybird-words {
+  z-index: 100;
+  width: 30px;
+  height: 25px;
+  position: absolute;
+  left: 3rem;
+  top: 0.75rem;
+}
+
+.field .input::placeholder {
+  font-family: "HelveticaNeue";
+  font-size: 14px;
+}
+.field p {
+  font-size: 10px;
+}
+
+.h1 .span::after {
+  content: "";
+  cursor: pointer;
+  display: inline-block;
+  background: #f7cf43;
+  height: 2px;
+  width: 60px;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
