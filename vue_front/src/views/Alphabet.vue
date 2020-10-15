@@ -154,22 +154,6 @@
                 <div class="search_add-icon">
                   <div>
                     <svg viewBox="0 0 79.238 79.6">
-                      <!--  <defs>
-                        <filter
-                          id="a"
-                          x="0"
-                          y="0"
-                          width="79.238"
-                          height="79.6"
-                          filterUnits="userSpaceOnUse"
-                        >
-                          <feOffset dx="2" dy="2" input="SourceAlpha" />
-                          <feGaussianBlur stdDeviation="4" result="b" />
-                          <feFlood flood-color="#f7cf43" flood-opacity="0.4" />
-                          <feComposite operator="in" in2="b" />
-                          <feComposite in="SourceGraphic" />
-                        </filter>
-                      </defs> -->
                       <g transform="translate(10 10)">
                         <g transform="translate(55.238 0) rotate(90)">
                           <g transform="translate(0 0)">
@@ -206,17 +190,23 @@
           </div>
         </div>
       </div>
+      <!-- cards -->
+      <word-card />
     </div>
   </div>
 </template>
 
 <script>
+  import WordCard from '@/components/WordCard.vue'
   import { mapGetters } from 'vuex'
   import { gsap } from 'gsap'
   import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 
   export default {
     name: 'Alphabet',
+    components: {
+      WordCard
+    },
     data() {
       return {
         alphabet: {
