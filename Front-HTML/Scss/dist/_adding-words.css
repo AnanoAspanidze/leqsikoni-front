@@ -3,14 +3,15 @@
 }
 
 .words_lighthouse {
-  left: -60px;
-  top: 10px;
+  position: absolute;
+  right: 20rem;
+  bottom: 10rem;
 }
 
 .words_fly {
   position: absolute;
-  left: 35rem;
-  bottom: 30rem;
+  left: 38rem;
+  bottom: 25rem;
 }
 
 .yellow-ladybird-words {
@@ -25,6 +26,9 @@
 .field .input::placeholder {
   font-family: "HelveticaNeue";
   font-size: 14px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  width: 248px;
 }
 .field p {
   font-size: 10px;
