@@ -1,6 +1,11 @@
 <template>
-  <div class="columns is-centered">
-    <div class="column is-10">
+  <div class="columns is-centered mt-5">
+    <div ref="parent" class="column is-8 is-offset-1 is-relative">
+      <div v-if="item === 1" class="card_image-1 is-absolute">
+        <figure class="image is-32x32">
+          <img src="@/assets/img/yellow-ladybird.svg" alt="ladybird" />
+        </figure>
+      </div>
       <div class="card">
         <div class="card-content mx-6 my-5">
           <!-- fist content -->
@@ -49,10 +54,15 @@
           </div>
           <!-- share content -->
           <div class="card-content-line is-flex mt-5">
-            <div class="card-content_line-share">
+            <div class="card-content_line-share ml-a">
               <div class="buttons">
-                <b-button type="is-danger" icon-right="delete" rounded />
-                <b-button type="is-danger">
+                <b-button
+                  type="is-primary"
+                  icon-right="share"
+                  outlined
+                  rounded
+                />
+                <b-button type="is-primary" outlined rounded>
                   სრულად
                 </b-button>
               </div>
@@ -65,19 +75,61 @@
 </template>
 
 <script>
+  import gsap from 'gsap'
+  import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
+
   export default {
-    name: 'WordCard'
+    name: 'WordCard',
+    props: {
+      item: {
+        type: Number,
+        required: true
+      }
+    },
+    mounted() {
+      let parent = this.$refs.parent.clientWidth
+      gsap.registerPlugin(MotionPathPlugin)
+      gsap.to('.card_image-1', {
+        duration: 12,
+        ease: 'none',
+        yoyo: true,
+        repeat: -1,
+        rotateX: 0,
+        xPercent: -50,
+        motionPath: {
+          curviness: 0,
+          path: [
+            { x: 0, y: 0 },
+            { x: (parent / 100) * 15, y: 0 },
+            { x: (parent / 100) * 25, y: 0 },
+            { x: (parent / 100) * 29, y: 0 },
+            { x: (parent / 100) * 30, y: 0 }
+          ],
+          autoRotate: true
+        }
+      })
+    }
   }
 </script>
 
 <style lang="scss" scoped>
+  .card_image-1 {
+    left: 50px;
+    top: 0;
+    z-index: 90;
+  }
   .card-content {
     &_line {
       &-icon {
         border-radius: 100%;
+        max-height: 24px;
       }
       &-share button {
         padding: 1rem 1.2rem;
+        &:last-child {
+          box-shadow: 2px 2px 6px #7fd1d866;
+          border: none;
+        }
       }
     }
   }
