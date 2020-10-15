@@ -12946,31 +12946,6 @@ a.has-text-primary:hover, a.has-text-primary:focus {
   padding-left: 50px !important;
 }
 
-.earth {
-  width: 45px;
-  height: 45px;
-}
-
-.dropdown-button {
-  background-color: white;
-  border: none;
-  position: relative;
-  left: 8rem;
-  top: 4rem;
-}
-
-.dropdown-menu-content {
-  left: 2.7rem;
-  top: 7rem;
-  min-width: 6rem;
-}
-
-.dropdown-menu-content-item {
-  -webkit-box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.4);
-          box-shadow: 2px 2px 8px rgba(127, 209, 216, 0.4);
-  border-radius: 8px;
-}
-
 .yellow-ladybird {
   position: absolute;
   left: 17.5rem;
@@ -12978,26 +12953,20 @@ a.has-text-primary:hover, a.has-text-primary:focus {
   z-index: 30;
 }
 
-.search-input {
-  border: transparent;
-  background-color: transparent;
+.yellow-ladybird .bee-alphabet {
+  position: fixed;
+  margin-left: -4rem;
 }
 
-.blue-mark {
-  position: absolute;
-  right: 3rem;
-  top: 0.4rem;
-}
-
-.found {
+.yellow-ladybird .found {
   font-size: 14px;
   font-family: "NotoSans-Regular";
   position: relative;
   left: 33rem;
-  top: 1.5rem;
+  top: 1rem;
 }
 
-.li-position {
+.yellow-ladybird .li-position {
   margin-left: 17px;
 }
 
@@ -13027,6 +12996,13 @@ a.has-text-primary:hover, a.has-text-primary:focus {
   z-index: 30;
 }
 
+.user-ladybird {
+  position: absolute;
+  left: 17.5rem;
+  top: 1.5rem;
+  z-index: 30;
+}
+
 .fa-clock-content {
   height: 20px;
   width: 20px;
@@ -13040,6 +13016,92 @@ a.has-text-primary:hover, a.has-text-primary:focus {
   font-size: 14px;
   height: 100px;
   padding-left: 50px !important;
+}
+
+.words {
+  min-height: calc(100vh - 15.5rem);
+}
+
+.words_lighthouse {
+  position: absolute;
+  right: 20rem;
+  bottom: 10rem;
+}
+
+.words_fly {
+  position: absolute;
+  left: 38rem;
+  bottom: 25rem;
+}
+
+.yellow-ladybird-words {
+  position: absolute;
+  width: 30px;
+  height: 25px;
+  z-index: 100;
+  left: 3rem;
+  bottom: 3rem;
+}
+
+.field .input::-webkit-input-placeholder {
+  font-family: "HelveticaNeue";
+  font-size: 14px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  width: 248px;
+}
+
+.field .input:-ms-input-placeholder {
+  font-family: "HelveticaNeue";
+  font-size: 14px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  width: 248px;
+}
+
+.field .input::-ms-input-placeholder {
+  font-family: "HelveticaNeue";
+  font-size: 14px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  width: 248px;
+}
+
+.field .input::placeholder {
+  font-family: "HelveticaNeue";
+  font-size: 14px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  width: 248px;
+}
+
+.field p {
+  font-size: 10px;
+}
+
+.field button {
+  width: 163px;
+}
+
+.h1 .span::after {
+  content: "";
+  cursor: pointer;
+  display: inline-block;
+  background: #f7cf43;
+  height: 2px;
+  width: 60px;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.error-message {
+  font-size: 10px;
+  font-family: 'HelveticaNeue';
+  margin-top: 2rem;
+  margin-left: 4rem;
 }
 
 .ml-a {
