@@ -2,7 +2,7 @@
   <div class="alphabet">
     <div class="columns is-centered">
       <div class="column is-8 is-relative">
-        <div class="bee is-absolute">
+        <div class="bee is-fixed is-unselectable">
           <figure class="image is-32x32">
             <img src="../assets/img/bee.svg" />
           </figure>
@@ -62,7 +62,7 @@
           <!-- ანბანის ველის - დასასრული  -->
         </div>
       </div>
-      <div class="columns is-centered">
+      <div class="columns is-centered mt-5">
         <div class="column is-10">
           <div
             class="is-flex is-justify-content-center is-align-content-center alphabet-wrapper"
@@ -191,7 +191,29 @@
         </div>
       </div>
       <!-- cards -->
-      <word-card />
+      <word-card v-for="item in 10" :key="item" :item="item" />
+
+      <div class="columns is-centered mt-6 is-mobile">
+        <div class="column is-7-tablet is-6-desktop is-5-widescreen">
+          <b-pagination
+            v-model="current"
+            :total="200"
+            :range-before="1"
+            :range-after="1"
+            :simple="false"
+            :rounded="true"
+            :per-page="8"
+            size="is-small"
+            order="is-centered"
+            icon-prev="left-chevron"
+            icon-next="right-chevron"
+            aria-next-label="Next page"
+            aria-previous-label="Previous page"
+            aria-page-label="Page"
+            aria-current-label="Current page"
+          ></b-pagination>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -209,6 +231,18 @@
     },
     data() {
       return {
+        total: 200,
+        current: 10,
+        perPage: 10,
+        rangeBefore: 3,
+        rangeAfter: 1,
+        order: '',
+        size: '',
+        isSimple: false,
+        isRounded: false,
+        prevIcon: 'chevron-left',
+        nextIcon: 'chevron-right',
+
         alphabet: {
           active: false,
           index: 0
@@ -316,8 +350,8 @@
       height: 40px;
     }
     .bee {
-      right: 100px;
-      top: 50px;
+      right: 30%;
+      top: 22%;
       z-index: 100;
     }
     .search-wrap {
