@@ -5,7 +5,7 @@
         <div ref="parent" class="column is-9 is-relative">
           <div class="about_image-1 is-absolute">
             <figure class="image is-32x32">
-              <img src="../assets/img/ladybird.svg" alt="img" />
+              <img src="../assets/img/ladybird.svg" alt="ladybird" />
             </figure>
           </div>
           <div class="card px-5">
@@ -55,7 +55,6 @@
   export default {
     mounted() {
       let parent = this.$refs.parent.clientWidth
-      console.log(parent)
       gsap.registerPlugin(MotionPathPlugin)
       gsap.to('.about_image-1', {
         duration: 12,
