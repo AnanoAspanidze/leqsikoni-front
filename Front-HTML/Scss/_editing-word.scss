@@ -1,0 +1,46 @@
+.editing_word {
+    &-ladybird {
+        position: absolute;
+        left: 21.5rem;
+        top: 1.5rem;
+        z-index: 30;
+    }
+    &-card_item {
+        padding: 40px 80px;
+    }
+    &-title_active {
+        position: absolute;
+        margin: 38px auto 0;
+        left: 0;
+        right: 0;
+        border-bottom: 2px solid #f7cf43;
+        width: 14%;
+    }
+    &-add {
+        width: 40px;
+        height: 40px;
+    }
+    &-input_text {
+        padding-right: calc(calc(0.75em - -90px) + 0.375em)!important;
+    }
+    &-textarea_content {
+        width: 78%;
+        textarea {
+            font-size: 0.875rem;
+            border-radius: 1rem;
+        }
+    }
+    &-warning {
+        border-color: transparent!important;
+        box-shadow: 2px 2px 8px rgba(247, 207, 67, 0.5); 
+    }
+    &-danger {
+        border-color: transparent!important;
+        box-shadow: 2px 2px 8px rgba(220, 108, 133, 0.5);
+    }
+    &-edit {
+        button:hover {
+            color: #fff!important;
+        }
+    }
+}

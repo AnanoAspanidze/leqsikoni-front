@@ -25,6 +25,10 @@ $card-shadow: 2px 2px 8px #7fd1d866;
 $input-focus-border-color: #7fd1d866;
 $input-focus-box-shadow-size: 2px 2px 8px;
 $input-focus-box-shadow-color: #7fd1d866;
+$input-focus-color: $grey-lightest;
+$input-border-color: #fff;
+$input-shadow: 2px 2px 8px #7fd1d866;
+$input-hover-border-color: #fff;
 
 //pagination 
 $pagination-color: $text;
@@ -68,10 +72,11 @@ $footer-padding: 3rem 1.5rem 5.3rem;
 @import "./error";
 
 @import "./main-page";
-@import "./alphabet-georgian";
+// @import "./alphabet-georgian";
 @import "./alphabet-english";
 @import "./user-info";
 @import "./adding-words";
+@import "./editing-word";
 
 // main classes
 .ml-a {
