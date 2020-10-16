@@ -5,6 +5,9 @@ $danger: #dc6c85;
 $text: #c5cbcd;
 $grey-lightest: #c5cbcd;
 
+$warning-invert: #fff;
+$primary-invert: #fff;
+
 //font family
 $family-primary: 'ALK Sanet';
 $family-secondary: 'NotoSans-Regular';
@@ -36,6 +39,7 @@ $navbar-burger-color: $primary;
 
 // button global variables
 $button-padding-horizontal: 3.5em;
+$button-text-hover-color: #fff;
 $button-focus-box-shadow-size: 0 0 0 0.25em;
 
 //font sizes
@@ -52,8 +56,22 @@ $tabs-link-hover-color: $primary;
 $tabs-link-active-color: $primary;
 $tabs-link-hover-border-bottom-color: $warning;
 $tabs-link-active-border-bottom-color: $warning;
+
+// pagination
+$pagination-color: $text;
+$pagination-current-color: $primary;
+$pagination-current-background-color: transparent;
+$pagination-current-border-color: $primary;
+$pagination-hover-color: $primary;
+$pagination-border-color: transparent;
+$pagination-hover-border-color: $primary;
+$pagination-focus-border-color: transparent;
+$pagination-ellipsis-color: $primary;
+$pagination-disabled-background-color: rgba(197, 203, 205, 0.1);
+$pagination-disabled-border-color: transparent;
+
 // Import Bulma's core
-@import '~bulma/sass/utilities/_all';
+//@import '~bulma/sass/utilities/_all';
 
 // Import Bulma and Buefy styles
 @import '~bulma';
@@ -80,7 +98,7 @@ $tabs-link-active-border-bottom-color: $warning;
   margin: 0 auto;
 }
 
-//flexbox
+//positions
 .is {
   // positions
   &-absolute {
@@ -90,14 +108,14 @@ $tabs-link-active-border-bottom-color: $warning;
     position: fixed;
   }
 }
-
+//image
 .image.is {
   &-256x256 {
     height: 256px;
     width: 256px;
   }
 }
-
+//text
 .text {
   &-decoration {
     &-underline {

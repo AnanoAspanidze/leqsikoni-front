@@ -3,6 +3,7 @@
     <div class="container section contact">
       <div class="columns is-centered is-mobile">
         <div
+          ref="parent"
           class="column is-6-widescreen is-7-desktop is-8-tablet is-12-mobile mt-4 is-relative"
         >
           <!-- img -->
@@ -50,29 +51,49 @@
 </template>
 
 <script>
-export default {}
+  import gsap from 'gsap'
+  import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
+
+  export default {
+    mounted() {
+      gsap.registerPlugin(MotionPathPlugin)
+      //const r = 25
+      gsap.to('.contact_image-box-1', {
+        motionPath: {
+          path:
+            'M9,20c0,0,18.53-41.58,49.91-65.11c30-22.5,65.81-24.85,77.39-24.85c33.87,0,57.55,11.71,77.05,28.47c23.09,19.85,40.33,46.79,61.71,69.77c24.09,25.89,53.44,46.75,102.37,46.75',
+          autoRotate: true
+        },
+        duration: 10,
+        repeat: -1,
+        yoyo: true,
+        ease: 'none'
+      })
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
-.contact {
-  min-height: calc(100vh - 16rem);
-  &_image-box-1 {
-    left: -60px;
-    top: -10px;
-  }
-  &_image-box-2 {
-    right: -256px;
-    bottom: -150px;
-  }
-  @media screen and(max-width: 1024px) {
-    &_image-box-2 {
-      display: none;
-    }
-  }
-  @media screen and(max-width: 768px) {
+  .contact {
+    min-height: calc(100vh - 16rem);
     &_image-box-1 {
-      display: none;
+      left: -60px;
+      top: -10px;
+      z-index: 90;
+    }
+    &_image-box-2 {
+      right: -256px;
+      bottom: -150px;
+    }
+    @media screen and(max-width: 1024px) {
+      &_image-box-2 {
+        display: none;
+      }
+    }
+    @media screen and(max-width: 768px) {
+      &_image-box-1 {
+        display: none;
+      }
     }
   }
-}
 </style>

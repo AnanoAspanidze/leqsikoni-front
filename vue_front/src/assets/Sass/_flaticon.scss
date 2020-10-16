@@ -1,6 +1,6 @@
 /*
     Flaticon icon font: Flaticon
-    Creation date: 11/10/2020 13:45
+    Creation date: 15/10/2020 18:09
     */
 
 @font-face {
@@ -52,50 +52,57 @@
 .info:before {
   content: '\f104';
 }
+.share:before {
+  content: '\f105';
+}
+.plus:before {
+  content: '\f106';
+}
+.clock:before {
+  content: '\f107';
+}
+.edit:before {
+  content: '\f108';
+}
+.checked:before {
+  content: '\f109';
+}
+.eye:before {
+  content: '\f10a';
+}
+.blocks:before {
+  content: '\f10b';
+}
 .internet:before {
   content: '\f10c';
 }
-.share:before {
-  content: '\f106';
-}
-.plus:before {
-  content: '\f107';
-}
-.clock:before {
-  content: '\f108';
-}
-.edit:before {
-  content: '\f109';
-}
-.checked:before {
-  content: '\f10a';
-}
-.eye:before {
-  content: '\f10b';
-}
-.blocks:before {
-  content: '\f10c';
-}
-
 .down:before {
   content: '\f10d';
 }
 .up:before {
   content: '\f10e';
 }
+.right-chevron:before {
+  content: '\f10f';
+}
+.left-chevron:before {
+  content: '\f110';
+}
 
-$font-user: '\f100';
-$font-in: '\f101';
-$font-fb: '\f102';
-$font-tw: '\f103';
-$font-info: '\f104';
-$font-share: '\f106';
-$font-plus: '\f107';
-$font-clock: '\f108';
-$font-edit: '\f109';
-$font-checked: '\f10a';
-$font-eye: '\f10b';
-$font-block: '\f10c';
-$fon-internet: '\f10c';
-$font-down: '\f10d';
-$font-up: '\f10e';
+$user: '\f100';
+$in: '\f101';
+$fb: '\f102';
+$tw: '\f103';
+$info: '\f104';
+$share: '\f105';
+$plus: '\f106';
+$clock: '\f107';
+$edit: '\f108';
+$checked: '\f109';
+$eye: '\f10a';
+$blocks: '\f10b';
+$internet: '\f10c';
+$down: '\f10d';
+$up: '\f10e';
+$right-chevron: '\f10f';
+$left-chevron: '\f110';
