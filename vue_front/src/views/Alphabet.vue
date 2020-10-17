@@ -9,7 +9,7 @@
         </div>
       </div>
     </div>
-    <div class="container section">
+    <div class="container section pt-0">
       <div class="columns">
         <div class="column is-12">
           <!-- ანბანის ველის -->
@@ -62,7 +62,14 @@
           <!-- ანბანის ველის - დასასრული  -->
         </div>
       </div>
-      <div class="columns is-centered mt-5">
+      <div
+        class="columns is-centered mt-5"
+        :class="[
+          { 'is-mobile-mt': isOpen && !isEng && !isGeo },
+          { 'is-lang-mt': isEng },
+          { 'is-lang-mt': isGeo }
+        ]"
+      >
         <div class="column is-10">
           <div
             class="is-flex is-justify-content-center is-align-content-center alphabet-wrapper"
@@ -139,50 +146,62 @@
             </div>
             <div class="search ml-5">
               <div class="card is-flex is-align-items-center">
-                <div
-                  class="search_icon is-flex is-align-items-center is-justify-content-space-between"
-                >
+                <div class="search is-flex is-align-items-center">
                   <input
                     class="input is-rounded"
                     type="text"
                     placeholder="მოძებნე"
                   />
-                  <figure class="image is-64x64 mr-6">
-                    <img src="@/assets/img/component-1.svg" />
-                  </figure>
                 </div>
-                <div class="search_add-icon">
-                  <div>
-                    <svg viewBox="0 0 79.238 79.6">
-                      <g transform="translate(10 10)">
-                        <g transform="translate(55.238 0) rotate(90)">
-                          <g transform="translate(0 0)">
-                            <g
-                              class="c"
-                              transform="matrix(0, -1, 1, 0, -10, 65.24)"
-                            >
-                              <path
-                                class="a"
-                                d="M.4,27.291s5.065,27.947,28.7,27.947,31.321-25.321,23.632-39.95S22.9-4.03,9.963,3.659.4,27.291.4,27.291Z"
-                                transform="translate(65.24 10) rotate(90)"
-                              />
+                <div class="search_icon is-flex is-relative">
+                  <div
+                    class="find is-flex is-align-items-center is-justify-content-center mr-4"
+                  >
+                    <figure
+                      class="image"
+                      :class="[$screen.width > 769 ? 'is-64x64' : 'is-48x48']"
+                    >
+                      <img src="@/assets/img/component-1.svg" />
+                    </figure>
+                  </div>
+                  <div
+                    class="add is-flex is-align-items-center is-justify-content-center is-absolute"
+                  >
+                    <div
+                      class="image"
+                      :class="[$screen.width > 769 ? 'is-64x64' : 'is-48x48']"
+                    >
+                      <svg viewBox="0 0 79.238 79.6">
+                        <g transform="translate(10 10)">
+                          <g transform="translate(55.238 0) rotate(90)">
+                            <g transform="translate(0 0)">
+                              <g
+                                class="c"
+                                transform="matrix(0, -1, 1, 0, -10, 65.24)"
+                              >
+                                <path
+                                  class="a"
+                                  d="M.4,27.291s5.065,27.947,28.7,27.947,31.321-25.321,23.632-39.95S22.9-4.03,9.963,3.659.4,27.291.4,27.291Z"
+                                  transform="translate(65.24 10) rotate(90)"
+                                />
+                              </g>
                             </g>
                           </g>
+                          <g transform="translate(-894.947 -318.641)">
+                            <line
+                              class="b"
+                              y2="10.952"
+                              transform="translate(922.976 340.5)"
+                            />
+                            <line
+                              class="b"
+                              x1="10.952"
+                              transform="translate(917.5 345.976)"
+                            />
+                          </g>
                         </g>
-                        <g transform="translate(-894.947 -318.641)">
-                          <line
-                            class="b"
-                            y2="10.952"
-                            transform="translate(922.976 340.5)"
-                          />
-                          <line
-                            class="b"
-                            x1="10.952"
-                            transform="translate(917.5 345.976)"
-                          />
-                        </g>
-                      </g>
-                    </svg>
+                      </svg>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -346,9 +365,6 @@
 
 <style lang="scss" scoped>
   .alphabet {
-    .test {
-      height: 40px;
-    }
     .bee {
       right: 30%;
       top: 22%;
@@ -396,48 +412,55 @@
       .search {
         width: 80%;
         .card {
-          height: 100px;
+          height: 94px;
           border-radius: 5rem;
+        }
+
+        input {
+          border-color: transparent;
+          border-radius: 0;
+          box-shadow: none;
+          padding-inline-start: 2rem;
         }
         &_icon {
           height: 100%;
-          width: 94%;
-          background: url('../assets/img/blue-mark.svg') no-repeat;
-          background-position: center right;
-          background-size: contain;
-          input {
-            width: 70%;
-            border-color: transparent;
-            border-radius: 0;
-            box-shadow: none;
-            padding-inline-start: 2rem;
+          width: 170px;
+          margin-right: 2rem;
+          .find {
+            height: 100%;
+            width: 100%;
+            background: url('../assets/img/blue-mark.svg') no-repeat;
+            background-position: center bottom;
+            margin-right: 0;
           }
-        }
-        &_add-icon div {
-          margin-left: -2rem;
-          height: 64px;
-          width: 64px;
-          cursor: pointer;
-          &:hover {
-            .a {
-              fill: #f7cf43;
+          .add {
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            div {
+              cursor: pointer;
+              &:hover {
+                .a {
+                  fill: #f7cf43;
+                }
+                .b {
+                  fill: none;
+                  stroke: #fff;
+                  stroke-width: 2px;
+                }
+              }
+              .a {
+                fill: #fff;
+              }
+              .b {
+                fill: none;
+                stroke: #f7cf43;
+                stroke-width: 2px;
+              }
+              .c {
+                filter: drop-shadow(2px 2px 4px #f7cf43);
+              }
             }
-            .b {
-              fill: none;
-              stroke: #fff;
-              stroke-width: 2px;
-            }
-          }
-          .a {
-            fill: #fff;
-          }
-          .b {
-            fill: none;
-            stroke: #f7cf43;
-            stroke-width: 2px;
-          }
-          .c {
-            filter: drop-shadow(2px 2px 4px #f7cf43);
           }
         }
       }
@@ -453,11 +476,43 @@
     @media screen and (max-width: 769px) {
       .alphabet {
         &-wrapper {
-          flex-direction: column;
+          .lang {
+            margin-top: 0.75rem;
+            margin-right: 1rem !important;
+            .is-panel_wrapper {
+              transform: translate(80%, 6%);
+            }
+          }
           .search {
-            width: 100%;
+            margin-left: 0 !important;
+            .card {
+              height: 64px;
+              border-radius: 5rem;
+            }
+            &_icon {
+              width: 162px;
+              margin-right: 0;
+              .find {
+                background-size: contain;
+              }
+              .add {
+                right: 6px;
+              }
+            }
           }
         }
+      }
+
+      .is-mobile-mt {
+        margin-bottom: 10rem !important;
+      }
+      .is-lang-mt {
+        margin-bottom: 15rem;
+      }
+    }
+    @media screen and (max-width: 500px) {
+      .alphabet-wrapper .search_icon {
+        width: 262px;
       }
     }
   }
