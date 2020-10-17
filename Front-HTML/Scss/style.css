@@ -12975,8 +12975,15 @@ a.has-text-primary:hover, a.has-text-primary:focus {
 .user-ladybird {
   position: absolute;
   left: 17.5rem;
-  top: 1.5rem;
+  top: 2.5rem;
   z-index: 30;
+}
+
+.user-edit {
+  position: relative;
+  left: 50rem;
+  top: 7rem;
+  z-index: 99;
 }
 
 .fa-clock-content {
@@ -12994,66 +13001,91 @@ a.has-text-primary:hover, a.has-text-primary:focus {
   padding-left: 50px !important;
 }
 
-.words {
-  min-height: calc(100vh - 15.5rem);
-}
-
-.words_lighthouse {
-  left: -60px;
-  top: 10px;
-}
-
-.words_fly {
+.adding_word-ladybird {
   position: absolute;
-  left: 35rem;
-  bottom: 30rem;
+  left: 21.5rem;
+  top: 1.5rem;
+  z-index: 30;
 }
 
-.yellow-ladybird-words {
-  z-index: 100;
-  width: 30px;
-  height: 25px;
-  position: absolute;
-  left: 3rem;
-  top: 0.75rem;
+.adding_word-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.field .input::-webkit-input-placeholder {
+.adding_word-card_item {
+  padding: 30px 80px;
+}
+
+.adding_word-span {
   font-family: "HelveticaNeue";
   font-size: 14px;
 }
 
-.field .input:-ms-input-placeholder {
+.adding_word-span-second {
   font-family: "HelveticaNeue";
-  font-size: 14px;
-}
-
-.field .input::-ms-input-placeholder {
-  font-family: "HelveticaNeue";
-  font-size: 14px;
-}
-
-.field .input::placeholder {
-  font-family: "HelveticaNeue";
-  font-size: 14px;
-}
-
-.field p {
   font-size: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 20px;
+  color: #DC6C85;
 }
 
-.h1 .span::after {
-  content: "";
-  cursor: pointer;
-  display: inline-block;
-  background: #f7cf43;
-  height: 2px;
-  width: 60px;
+.adding_word-title_active {
   position: absolute;
-  bottom: -10px;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
+  margin: 38px auto 0;
+  left: 0;
+  right: 0;
+  border-bottom: 2px solid #f7cf43;
+  width: 14%;
+}
+
+.adding_word-add {
+  width: 40px;
+  height: 40px;
+}
+
+.adding_word-input_text {
+  padding-right: calc(calc(0.75em - -90px) + 0.375em) !important;
+  font-family: "HelveticaNeue";
+  font-size: 14px;
+  margin-left: 1em;
+}
+
+.adding_word-textarea_content {
+  width: 68%;
+}
+
+.adding_word-textarea_content textarea {
+  font-size: 0.875rem;
+  border-radius: 1rem;
+  margin-left: 1rem;
+  font-family: "HelveticaNeue";
+  font-size: 14px;
+}
+
+.adding_word-warning {
+  border-color: transparent !important;
+  -webkit-box-shadow: 2px 2px 8px rgba(247, 207, 67, 0.5);
+          box-shadow: 2px 2px 8px rgba(247, 207, 67, 0.5);
+}
+
+.adding_word-danger {
+  border-color: transparent !important;
+  -webkit-box-shadow: 2px 2px 8px rgba(220, 108, 133, 0.5);
+          box-shadow: 2px 2px 8px rgba(220, 108, 133, 0.5);
+}
+
+.adding_word-edit button:hover {
+  color: #fff !important;
 }
 
 .editing_word-ladybird {

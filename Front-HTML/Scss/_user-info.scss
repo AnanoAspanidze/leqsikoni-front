@@ -14,9 +14,15 @@
 .user-ladybird{
     position: absolute;
     left: 17.5rem;
-    top: 1.5rem;
+    top: 2.5rem;
     z-index: 30;
  }
+ .user-edit{
+    position: relative;
+    left: 50rem;
+    top: 7rem;
+    z-index: 99;
+}
 
 .fa-clock-content {
     height: 20px;

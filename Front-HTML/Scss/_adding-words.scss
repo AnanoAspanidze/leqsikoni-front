@@ -1,76 +1,68 @@
-    .words{
-        min-height: calc(100vh - 15.5rem);
-    }
-
-
-    .words_lighthouse{
+.adding_word{
+  &-ladybird {
       position: absolute;
-      right: 20rem;
-      bottom: 10rem;
-    }
-
-    .words_fly {
+      left: 21.5rem;
+      top: 1.5rem;
+      z-index: 30;
+  }
+  &-card{
+    display:flex;
+    justify-content:center;
+  }
+  &-card_item {
+      padding: 30px 80px;
+  }
+  &-span{
+    font-family: "HelveticaNeue";
+    font-size:14px;
+  }
+  &-span-second{
+    font-family: "HelveticaNeue";
+    font-size:10px;
+    justify-content: center;
+    display: flex;
+    padding-top: 20px;
+    color:#DC6C85;
+  }
+  &-title_active {
       position: absolute;
-      left: 38rem;
-      bottom: 25rem;
-    }
-
-    .yellow-ladybird-words{
-      position: absolute;
-      width: 30px;
-      height: 25px;
-      z-index: 100;
-      left: 3rem;
-      bottom: 3rem;
-    }
-    
-    .field {
-      .input::placeholder {
-        font-family: "HelveticaNeue";
-        font-size:14px;
-        margin-left:20px;
-        margin-bottom:20px; 
-        width:248px;  
+      margin: 38px auto 0;
+      left: 0;
+      right: 0;
+      border-bottom: 2px solid #f7cf43;
+      width: 14%;
+  }
+  &-add {
+      width: 40px;
+      height: 40px;
+  }
+  &-input_text {
+      padding-right: calc(calc(0.75em - -90px) + 0.375em)!important;
+      font-family: "HelveticaNeue";
+      font-size:14px;
+      margin-left:1em;
+  }
+  &-textarea_content {
+      width: 68%;
+      textarea {
+          font-size: 0.875rem;
+          border-radius: 1rem;
+          margin-left:1rem;
+          font-family: "HelveticaNeue";
+          font-size:14px;
       }
-      p {
-        font-size: 10px;
+  }
+  &-warning {
+      border-color: transparent!important;
+      box-shadow: 2px 2px 8px rgba(247, 207, 67, 0.5); 
+  }
+  &-danger {
+      border-color: transparent!important;
+      box-shadow: 2px 2px 8px rgba(220, 108, 133, 0.5);
+  }
+  &-edit {
+      button:hover {
+          color: #fff!important;
       }
-      button{
-        width:163px;
-      }
-    }
-
-    .h1 .span::after{
-      content: "";
-      cursor: pointer;
-      display: inline-block;
-      background: #f7cf43;
-      height: 2px;
-      width: 60px;
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      -webkit-transform: translateX(-50%);
-      transform: translateX(-50%);
-    }
-
-   .error-message{
-      font-size:10px; 
-      font-family:'HelveticaNeue';
-      margin-top:2rem;
-      margin-left:4rem;
-     }
-
-
-
-    // @media screen and(max-width: 1024px) {
-    //     .words_lighthouse{
-    //     display: none;
-    //   }
-    // }
-    // @media screen and(max-width: 768px) {
-    //    .words_fly{
-    //     display: none;
-    //   }
-    // }
-  
+  }
+}
