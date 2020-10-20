@@ -210,7 +210,7 @@
         </div>
       </div>
       <!-- cards -->
-      <word-card v-for="item in 10" :key="item" :item="item" />
+      <router-view />
 
       <div class="columns is-centered mt-6 is-mobile">
         <div class="column is-7-tablet is-6-desktop is-5-widescreen">
@@ -238,16 +238,12 @@
 </template>
 
 <script>
-  import WordCard from '@/components/WordCard.vue'
   import { mapGetters } from 'vuex'
   import { gsap } from 'gsap'
   import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 
   export default {
     name: 'Alphabet',
-    components: {
-      WordCard
-    },
     data() {
       return {
         total: 200,

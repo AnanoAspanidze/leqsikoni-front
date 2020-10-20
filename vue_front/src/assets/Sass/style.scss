@@ -5,6 +5,11 @@ $danger: #dc6c85;
 $text: #c5cbcd;
 $grey-lightest: #c5cbcd;
 
+$info: #f7f7f7;
+$info-invert: #7e7e7e;
+$info-light: #c5cbcd;
+$info-dark: #c5cbcd;
+
 $warning-invert: #fff;
 $primary-invert: #fff;
 
@@ -70,8 +75,7 @@ $pagination-ellipsis-color: $primary;
 $pagination-disabled-background-color: rgba(197, 203, 205, 0.1);
 $pagination-disabled-border-color: transparent;
 
-// Import Bulma's core
-//@import '~bulma/sass/utilities/_all';
+$tooltip-arrow-size: 8px;
 
 // Import Bulma and Buefy styles
 @import '~bulma';
@@ -79,9 +83,6 @@ $pagination-disabled-border-color: transparent;
 
 @import './flaticon';
 @import './fonts';
-//@import './shared/header';
-//pages
-//@import './main-page';
 @import './pages/auth';
 //@import './contact';
 //@import './about-project';

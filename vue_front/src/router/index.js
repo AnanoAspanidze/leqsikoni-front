@@ -10,8 +10,34 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Alphabet',
-    component: Alphabet
+    component: Alphabet,
+    children: [
+      {
+        path: '',
+        name: 'Alphabet',
+        component: () => import('@/components/WordCard.vue')
+      },
+      {
+        path: '/:wordId',
+        name: 'SingleWord',
+        component: () => import('@/components/SingleWord.vue')
+      },
+      {
+        path: '/user/words/list',
+        name: 'UserWord',
+        component: () => import('@/components/UserWords.vue'),
+        // თუ მომხმარებელი არ არსებობს გადაამისამართოს მთავარ გვერდზე
+        // if no user redirect to main
+        beforeEnter: (to, from, next) => {
+          let user = localStorage.getItem('User')
+          if (user) {
+            next()
+          } else {
+            next({ path: '/' })
+          }
+        }
+      }
+    ]
   },
   {
     path: '/about',

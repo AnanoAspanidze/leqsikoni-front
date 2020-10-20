@@ -95,15 +95,6 @@
                   outlined
                   rounded
                 />
-                <b-button
-                  tag="router-link"
-                  to="/:wordId"
-                  type="is-primary"
-                  outlined
-                  rounded
-                >
-                  სრულად
-                </b-button>
               </div>
             </div>
           </div>
