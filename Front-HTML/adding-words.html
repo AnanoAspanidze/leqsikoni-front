@@ -49,7 +49,7 @@
                     <a href="main-page.html" class="navbar-item px-6">
                         <span class="is-relative">ანბანი</span>
                     </a>
-                    <a href="about-project.html" class="navbar-item px-6 is-active">
+                    <a href="about-project.html" class="navbar-item px-6 ">
                         <span class="is-relative">პროექტის შესახებ</span>
                     </a>
                     <a href="contact.html" class="navbar-item px-6">
@@ -77,105 +77,74 @@
                 </div>
             </div>
         </nav>
-
-        <div class="words pt-5">
-            <div class="container section">
-                <div class="columns is-mobile is-centered">
-                    <div class="column is-half-desktop is-four-fifths-tablet is-full-mobile is-relative">
-                        <div class="words_image-box-1 is-absolute">
-                            <figure class="image is-64x64">
-                                <img src="./img/yellow-ladybird.svg" alt="ladybird-words" class="yellow-ladybird-words" style="position: absolute;
-                                width: 30px;
-                                height: 25px;
-                                z-index: 100;
-                                left: 3rem;
-                                bottom: 3rem;">
-                            </figure>
-                        </div>
-                        <div class="card">
-                            <div class="card-header-title has-text-grey-lighter">
-                                <h1 class="mx-a" style="margin-top:3vh;">
-                                    <span class="has-text-primary" style="font-size:16px;">სიტყვის დამატება</span>
-                                </h1>
-                            </div>
-                            <span class="is-danger" style="font-size:14px; display:flex; justify-content:center; font-family:'HelveticaNeue'">პირველი სამი ველიდან ერთერთის შევსება სავალდებულოა.</span>
-                            <div class="card-content">
-                                <div class="columns is-centered is-mobile">
-                                    <div
-                                        class="column is-two-thirds-desktop is-three-fifths-tablet is-four-fifths-mobile">
-                                        <form>
-                                            <div class="field pb-1">
-                                                <div class="is-family-secondary card-content-item mb-1">
-                                                    <a class="icon has-text-white user-color">
-                                                        <i class="fi user"></i>
-                                                    </a>
-                                                    <a class="fa-info-content icon has-text-primary" href="user-info.html">
-                                                        <i class="fas fa-info-circle "></i>
-                                                    </a>
-                                                <div class="control">
-                                                    <input class="input  is-rounded" type="mail" placeholder="ინგლისური სიტყვა"
-                                                        required style="margin-left:20px;margin-bottom:20px; width:248px;  font-family:'HelveticaNeue';font-size:14px;">
-                                                </div>
-                                            </div>
-                                            <div class="is-family-secondary card-content-item mb-1">
-                                                <a class="icon has-text-white user-color">
-                                                    <i class="fi user"></i>
-                                                </a>
-                                                <a class="fa-info-content icon has-text-primary" href="user-info.html">
-                                                    <i class="fas fa-info-circle "></i>
-                                                </a>
-                                            <div class="control">
-                                                <input class="input is-rounded" type="mail" placeholder="ქართული სიტყვა"
-                                                    required style="margin-left:20px;margin-bottom:20px;  width:248px; font-family:'HelveticaNeue';font-size:14px;">
-                                            </div>
-                                        </div>
-                                        <div class="is-family-secondary card-content-item mb-1">
-                                            <a class="icon has-text-white user-color">
-                                                <i class="fi user"></i>
-                                            </a>
-                                            <a class="fa-info-content icon has-text-primary" href="user-info.html">
-                                                <i class="fas fa-info-circle "></i>
-                                            </a>                               
-                                                <div class="control">
-                                                    <input class="input is-rounded" type="text" placeholder="განმარტება"
-                                                        required style="margin-left:20px;  width:248px; font-family:'HelveticaNeue';font-size:14px;">
-                                                </div>
-                                            </div>
-                                            <p class="help is-danger error-message" style="font-size:10px; font-family:'HelveticaNeue';margin-top:2rem; margin-left:4rem;" >დაფიქსირდა შეცდომა, თავიდან სცადეთ
-                                            </p>
-                                            
-                                            <div class="field is-grouped is-grouped-centered pt-5">
-                                                <p class="control">
-                                                    <button class="button is-warning is-outlined is-rounded" style="width:163px;">
-                                                        შენახვა
-                                                    </button>
-                                                </p>
-                                                <p class="control">
-                                                    <button class="button is-danger is-outlined is-rounded"  style="width:163px;">
-                                                       გაუქმება
-                                                    </button>
-                                                </p>
-                                            </div>
-                                        </form>
+    </div>
+    <div class="container">
+        <div>
+            <img src="./img/main-page/fly-1.svg" alt="fly" class="fly-1">
+        </div>
+        <div>
+            <img src="./img/main-page/fly-2.svg" alt="fly" class="fly-2">
+        </div>
+    </div>
+    <div class="container is-arrowless">
+        
+        <div>
+            <img src="./img/main-page/yellow-ladybird.svg" alt="ladybird" class="adding_word-ladybird">
+        </div>
+        <div class="columns is-mobile is-centered">
+            <div class="column is-half-desktop is-four-fifths-tablet is-full-mobile is-relative">
+                <div class="card mt-5 adding_word-card">
+                    <div class="adding_word-card_item">
+                        <div class="adding_word-title_active"></div>
+                    <div class="card-header-title is-centered mb-5">
+                        <h1 class="title has-text-primary is-size-6 has-text-weight-light">სიტყვის დამატება</h1>
+                    </div>
+                    <span class="adding_word-span has-text-weight-light">პირველი სამი ველიდან ერთერთის შევსება სავალდებულოა.</span>
+                             <div class="adding_word-edit mt-4">
+                            <div class="is-flex is-align-center is-centered">
+                                <input type="image" src="./img/main-page/plus.svg" class="adding_word-add"/>
+                                <a class="fa-info-content icon has-text-primary">
+                                    <i class="fas fa-info-circle "></i>
+                                </a>
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input is-rounded adding_word-input_text " type="text" placeholder="ინგლისური სიტყვა">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="words_lighthouse is-absolute">
-                            <figure class="image is-256x256">
-                                <img src="./img/lighthouse.svg" alt="lighthouse" class="words_lighthouse" style="position: absolute;
-                                right: 20rem;
-                                bottom: 10rem;
-                            ">
-                            </figure>
+
+                        <div class="adding_word-edit mt-4">
+                            <div class="is-flex is-align-center is-centered">
+                                <input type="image" src="./img/main-page/plus.svg" class="adding_word-add"/>
+                                <a class="fa-info-content icon has-text-primary">
+                                    <i class="fas fa-info-circle "></i>
+                                </a>
+                                <div class="field">
+                                    <div class="control">
+                                        <input class="input is-rounded adding_word-input_text " type="text" placeholder="ქართული სიტყვა">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="words_fly is-absolute">
-                            <figure class="image is-256x256">
-                                <img src="./img/about-project/fly.svg" alt="fly-words" class="words_fly" style="    position: absolute;
-                                left: 38rem;
-                                bottom: 25rem;">
-                            </figure>
+                        <div class="adding_word-edit mt-5">
+                            <div class="is-flex  is-centered">
+                                <input type="image" src="./img/main-page/plus.svg" class="adding_word-add"/>
+                                <a class="fa-info-content icon has-text-primary mt-3">
+                                    <i class="fas fa-info-circle "></i>
+                                </a>
+                                <div class="control adding_word-textarea_content">
+                                    <textarea class="textarea has-fixed-size" placeholder="განმარტება"></textarea>
+                                  </div>
+                            </div>
+                            <span class="adding_word-span-second">დაფიქსირდა შეცდომა, თავიდან სცადეთ</span>
                         </div>
+                        <div class="adding_word-edit mt-5 has-text-right">
+                            <button class="button  is-small is-warning is-outlined is-rounded">შენახვა</button>
+                            <button class="button  is-small is-danger is-outlined is-rounded" style="margin-left:15px;">გაუქმება</button>
+                        </div>
+                        
+                    </div>
                     </div>
                 </div>
             </div>
@@ -183,8 +152,28 @@
     </div>
 
 
+   <!-- soc footer -->
+   <!-- <footer class="footer">
+    <div class="content has-text-centered">
+        <div class="columns is-centered is-mobile">
+            <div class="column is-one-fifth-desktop is-one-quarter-tablet is-three-fifths-mobile">
+                <div class="is-flex is-justify-around">
+                    <a class="button is-rounded button-size has-text-primary">
+                        <i class="fi fb"></i>
+                    </a>
+                    <a class="button is-rounded button-size has-text-primary">
+                        <i class="fi tw"></i>
+                    </a>
+                    <a class="button is-rounded button-size has-text-primary">
+                        <i class="fi in"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer> -->
 
     <script src="./js/script.js"></script>
-</body>
 
+</body>
 </html>
