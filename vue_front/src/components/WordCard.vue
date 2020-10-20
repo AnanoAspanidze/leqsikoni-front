@@ -97,7 +97,7 @@
                 />
                 <b-button
                   tag="router-link"
-                  to="/:wordId"
+                  :to="{ name: 'SingleWord', params: { wordId: item } }"
                   type="is-primary"
                   outlined
                   rounded
