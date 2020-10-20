@@ -23,7 +23,7 @@ const routes = [
         component: () => import('@/components/SingleWord.vue')
       },
       {
-        path: '/user/words/list',
+        path: 'list',
         name: 'UserWord',
         component: () => import('@/components/UserWords.vue'),
         // თუ მომხმარებელი არ არსებობს გადაამისამართოს მთავარ გვერდზე
@@ -53,6 +53,10 @@ const routes = [
     path: '/signing',
     name: 'Signing',
     component: Signing
+  },
+  {
+    path: '*',
+    redirect: '/'
   }
 ]
 

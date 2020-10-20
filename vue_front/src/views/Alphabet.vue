@@ -209,30 +209,15 @@
           </div>
         </div>
       </div>
-      <!-- cards -->
-      <router-view />
-
-      <div class="columns is-centered mt-6 is-mobile">
-        <div class="column is-7-tablet is-6-desktop is-5-widescreen">
-          <b-pagination
-            v-model="current"
-            :total="200"
-            :range-before="1"
-            :range-after="1"
-            :simple="false"
-            :rounded="true"
-            :per-page="8"
-            size="is-small"
-            order="is-centered"
-            icon-prev="left-chevron"
-            icon-next="right-chevron"
-            aria-next-label="Next page"
-            aria-previous-label="Previous page"
-            aria-page-label="Page"
-            aria-current-label="Current page"
-          ></b-pagination>
-        </div>
-      </div>
+      <!-- cards nested routes-->
+      <transition
+        :css="false"
+        mode="out-in"
+        @enter="routerEnter"
+        @leave="routerLeave"
+      >
+        <router-view />
+      </transition>
     </div>
   </div>
 </template>
@@ -246,18 +231,6 @@
     name: 'Alphabet',
     data() {
       return {
-        total: 200,
-        current: 10,
-        perPage: 10,
-        rangeBefore: 3,
-        rangeAfter: 1,
-        order: '',
-        size: '',
-        isSimple: false,
-        isRounded: false,
-        prevIcon: 'chevron-left',
-        nextIcon: 'chevron-right',
-
         alphabet: {
           active: false,
           index: 0
@@ -351,6 +324,23 @@
         gsap.to(el, {
           opacity: 0,
           rotateX: 90,
+          duration: 0.6,
+          onComplete: done
+        })
+      },
+      // router animation
+      routerEnter(el, done) {
+        gsap.from(el, {
+          opacity: 0,
+          scale: 0.7,
+          duration: 0.6,
+          onComplete: done
+        })
+      },
+      routerLeave(el, done) {
+        gsap.to(el, {
+          opacity: 0,
+          scale: 0.7,
           duration: 0.6,
           onComplete: done
         })

@@ -1,12 +1,7 @@
 <template>
   <div class="columns is-multiline is-centered mt-5">
-    <div
-      v-for="item in 10"
-      ref="parent"
-      :key="item"
-      class="column is-8 is-offset-1 is-relative"
-    >
-      <div v-if="item === 1" class="card_image-1 is-absolute">
+    <div ref="parent" class="column is-8 is-offset-1 is-relative">
+      <div class="card_image-1 is-absolute">
         <figure class="image is-32x32">
           <img src="@/assets/img/yellow-ladybird.svg" alt="ladybird" />
         </figure>
@@ -21,7 +16,7 @@
               <section class="b-tooltips">
                 <b-tooltip
                   label="this is user data"
-                  triggers="click"
+                  :triggers="['click']"
                   position="is-bottom"
                   type="is-info"
                 >
@@ -40,7 +35,7 @@
               <section class="b-tooltips">
                 <b-tooltip
                   label="this is info data"
-                  triggers="click"
+                  :triggers="['click']"
                   position="is-bottom"
                   type="is-info"
                 >
@@ -110,12 +105,6 @@
 
   export default {
     name: 'WordCard',
-    props: {
-      item: {
-        type: Number,
-        required: true
-      }
-    },
     mounted() {
       let parent = this.$refs.parent.clientWidth
       gsap.registerPlugin(MotionPathPlugin)
@@ -145,28 +134,29 @@
 <style lang="scss" scoped>
   .card {
     overflow-x: auto;
-  }
-  .card_image-1 {
-    left: 50px;
-    top: 0;
-    z-index: 90;
-  }
-  .card-content {
-    &_line {
-      &-icon {
-        border-radius: 100%;
-        max-height: 24px;
-      }
-      &-share button {
-        padding: 1rem 1.2rem;
-        &:last-child {
-          box-shadow: 2px 2px 6px #7fd1d866;
-          border: none;
+
+    &-content {
+      &_line {
+        &-icon {
+          border-radius: 100%;
+          max-height: 24px;
+        }
+        &-share button {
+          padding: 1rem 1.2rem;
+          &:last-child {
+            box-shadow: 2px 2px 6px #7fd1d866;
+            border: none;
+          }
         }
       }
     }
+    &_image-1 {
+      left: 50px;
+      top: 0;
+      z-index: 90;
+    }
   }
-  .b-tooltips {
+  .card .b-tooltips {
     .b-tooltip {
       margin-bottom: 1.5em;
       &.is-light-passive .tooltip-content {

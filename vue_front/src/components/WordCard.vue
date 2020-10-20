@@ -1,129 +1,131 @@
 <template>
-  <div class="columns is-multiline is-centered mt-5">
-    <div
-      v-for="item in 10"
-      ref="parent"
-      :key="item"
-      class="column is-8 is-offset-1 is-relative"
-    >
-      <div v-if="item === 1" class="card_image-1 is-absolute">
-        <figure class="image is-32x32">
-          <img src="@/assets/img/yellow-ladybird.svg" alt="ladybird" />
-        </figure>
-      </div>
-      <div class="card">
-        <div class="card-content mx-6 my-5">
-          <!-- fist content -->
-          <div class="card-content_line is-flex">
-            <div
-              class="card-content_line-icon has-background-warning is-inline-flex is-justify-content-center px-1 py-1"
-            >
-              <section class="b-tooltips">
-                <b-tooltip
-                  label="this is user data"
-                  triggers="click"
-                  position="is-bottom"
-                  type="is-info"
-                >
-                  <b-icon
-                    size="is-small"
-                    icon="user"
-                    type="is-white"
-                    class="is-clickable"
-                  ></b-icon>
-                </b-tooltip>
-              </section>
+  <div>
+    <div class="columns is-multiline is-centered mt-5">
+      <div
+        v-for="item in 10"
+        ref="parent"
+        :key="item"
+        class="column is-8 is-offset-1 is-relative"
+      >
+        <div v-if="item === 1" class="card_image-1 is-absolute">
+          <figure class="image is-32x32">
+            <img src="@/assets/img/yellow-ladybird.svg" alt="ladybird" />
+          </figure>
+        </div>
+        <div class="card">
+          <div class="card-content mx-6 my-5">
+            <!-- fist content -->
+            <div class="card-content_line is-flex">
+              <div
+                class="card-content_line-icon has-background-warning is-inline-flex is-justify-content-center px-1 py-1"
+              >
+                <section class="b-tooltips">
+                  <b-tooltip
+                    label="this is user data"
+                    :triggers="['click']"
+                    position="is-bottom"
+                    type="is-info"
+                  >
+                    <b-icon
+                      size="is-small"
+                      icon="user"
+                      type="is-white"
+                      class="is-clickable"
+                    ></b-icon>
+                  </b-tooltip>
+                </section>
+              </div>
+              <div
+                class="card-content_line-icon has-background-primary is-inline-flex is-justify-content-center px-1 py-1 ml-2"
+              >
+                <section class="b-tooltips">
+                  <b-tooltip
+                    label="this is info data"
+                    :triggers="['click']"
+                    position="is-bottom"
+                    type="is-info"
+                  >
+                    <b-icon
+                      size="is-small"
+                      icon="info"
+                      type="is-white"
+                      class="is-clickable"
+                    ></b-icon>
+                  </b-tooltip>
+                </section>
+              </div>
+              <p class="has-text-primary ml-3">Lorem ipsum</p>
             </div>
-            <div
-              class="card-content_line-icon has-background-primary is-inline-flex is-justify-content-center px-1 py-1 ml-2"
-            >
-              <section class="b-tooltips">
-                <b-tooltip
-                  label="this is info data"
-                  triggers="click"
-                  position="is-bottom"
-                  type="is-info"
-                >
-                  <b-icon
-                    size="is-small"
-                    icon="info"
-                    type="is-white"
-                    class="is-clickable"
-                  ></b-icon>
-                </b-tooltip>
-              </section>
+            <!-- second content -->
+            <div class="card-content_line is-flex mt-3">
+              <div
+                class="card-content_line-icon has-background-warning is-inline-flex is-justify-content-center px-1 py-1"
+              >
+                <b-icon size="is-small" icon="user" type="is-white"></b-icon>
+              </div>
+              <div
+                class="card-content_line-icon has-background-primary is-inline-flex is-justify-content-center px-1 py-1 ml-2"
+              >
+                <b-icon size="is-small" icon="info" type="is-white"></b-icon>
+              </div>
+              <p class="has-text-text ml-3">ლორემ იფსუმ</p>
             </div>
-            <p class="has-text-primary ml-3">Lorem ipsum</p>
-          </div>
-          <!-- second content -->
-          <div class="card-content_line is-flex mt-3">
-            <div
-              class="card-content_line-icon has-background-warning is-inline-flex is-justify-content-center px-1 py-1"
-            >
-              <b-icon size="is-small" icon="user" type="is-white"></b-icon>
+            <!-- third content -->
+            <div class="card-content_line is-flex mt-3">
+              <div
+                class="card-content_line-icon has-background-warning is-inline-flex is-justify-content-center px-1 py-1"
+              >
+                <b-icon size="is-small" icon="user" type="is-white"></b-icon>
+              </div>
+              <div
+                class="card-content_line-icon has-background-primary is-inline-flex is-justify-content-center px-1 py-1 ml-2"
+              >
+                <b-icon size="is-small" icon="info" type="is-white"></b-icon>
+              </div>
+              <p class="has-text-text ml-3">
+                საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია.
+              </p>
             </div>
-            <div
-              class="card-content_line-icon has-background-primary is-inline-flex is-justify-content-center px-1 py-1 ml-2"
-            >
-              <b-icon size="is-small" icon="info" type="is-white"></b-icon>
-            </div>
-            <p class="has-text-text ml-3">ლორემ იფსუმ</p>
-          </div>
-          <!-- third content -->
-          <div class="card-content_line is-flex mt-3">
-            <div
-              class="card-content_line-icon has-background-warning is-inline-flex is-justify-content-center px-1 py-1"
-            >
-              <b-icon size="is-small" icon="user" type="is-white"></b-icon>
-            </div>
-            <div
-              class="card-content_line-icon has-background-primary is-inline-flex is-justify-content-center px-1 py-1 ml-2"
-            >
-              <b-icon size="is-small" icon="info" type="is-white"></b-icon>
-            </div>
-            <p class="has-text-text ml-3">
-              საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია.
-            </p>
-          </div>
-          <!-- share content -->
-          <div class="card-content-line is-flex mt-5">
-            <div class="card-content_line-share ml-a">
-              <div class="buttons">
-                <b-button
-                  type="is-primary"
-                  icon-right="share"
-                  outlined
-                  rounded
-                />
-                <b-button
-                  tag="router-link"
-                  :to="{ name: 'SingleWord', params: { wordId: item } }"
-                  type="is-primary"
-                  outlined
-                  rounded
-                >
-                  სრულად
-                </b-button>
+            <!-- share content -->
+            <div class="card-content-line is-flex mt-5">
+              <div class="card-content_line-share ml-a">
+                <div class="buttons">
+                  <b-button
+                    type="is-primary"
+                    icon-right="share"
+                    outlined
+                    rounded
+                  />
+                  <b-button
+                    tag="router-link"
+                    :to="{ name: 'SingleWord', params: { wordId: item } }"
+                    type="is-primary"
+                    outlined
+                    rounded
+                  >
+                    სრულად
+                  </b-button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <!-- paginations -->
+    <pagination />
   </div>
 </template>
 
 <script>
+  import Pagination from '@/components/pagination/Pagination.vue'
   import gsap from 'gsap'
   import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 
   export default {
     name: 'WordCard',
-    props: {
-      item: {
-        type: Number,
-        required: true
-      }
+    components: {
+      Pagination
     },
     mounted() {
       let parent = this.$refs.parent.clientWidth
@@ -154,28 +156,29 @@
 <style lang="scss" scoped>
   .card {
     overflow-x: auto;
-  }
-  .card_image-1 {
-    left: 50px;
-    top: 0;
-    z-index: 90;
-  }
-  .card-content {
-    &_line {
-      &-icon {
-        border-radius: 100%;
-        max-height: 24px;
-      }
-      &-share button {
-        padding: 1rem 1.2rem;
-        &:last-child {
-          box-shadow: 2px 2px 6px #7fd1d866;
-          border: none;
+
+    &-content {
+      &_line {
+        &-icon {
+          border-radius: 100%;
+          max-height: 24px;
+        }
+        &-share button {
+          padding: 1rem 1.2rem;
+          &:last-child {
+            box-shadow: 2px 2px 6px #7fd1d866;
+            border: none;
+          }
         }
       }
     }
+    &_image-1 {
+      left: 50px;
+      top: 0;
+      z-index: 90;
+    }
   }
-  .b-tooltips {
+  .card .b-tooltips {
     .b-tooltip {
       margin-bottom: 1.5em;
       &.is-light-passive .tooltip-content {
