@@ -35,16 +35,14 @@
       routerEnter(el, done) {
         gsap.from(el, {
           opacity: 0,
-          translateX: 600,
-          duration: 0.6,
+          duration: 0.4,
           onComplete: done
         })
       },
       routerLeave(el, done) {
         gsap.to(el, {
           opacity: 0,
-          translateX: -600,
-          duration: 0.6,
+          duration: 0.4,
           onComplete: done
         })
       }
