@@ -8,8 +8,16 @@
       </div>
       <div class="card">
         <div class="card-content mx-6 my-5">
-          <div class="card_edit">
-            <b-button type="is-purple" icon-right="edit" outlined rounded />
+          <div class="card_edit is-flex">
+            <div class="is-inline-block ml-a">
+              <b-button
+                size="is-small"
+                type="is-purple"
+                icon-right="edit"
+                outlined
+                rounded
+              />
+            </div>
           </div>
           <!-- fist content -->
           <div class="card-content_line is-flex">
@@ -138,7 +146,7 @@
   .card {
     overflow-x: auto;
     &_edit button {
-      padding: 1rem 1.2rem;
+      padding: 0.1rem 0.85rem;
     }
     &-content {
       &_line {
