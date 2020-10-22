@@ -1,14 +1,6 @@
 <template>
   <div class="alphabet">
-    <div class="columns is-centered">
-      <div class="column is-8 is-relative">
-        <div class="bee is-fixed is-unselectable">
-          <figure class="image is-32x32">
-            <img src="../assets/img/bee.svg" />
-          </figure>
-        </div>
-      </div>
-    </div>
+    <app-bee />
     <div class="container section pt-0">
       <div class="columns">
         <div class="column is-12">
@@ -209,7 +201,8 @@
           </div>
         </div>
       </div>
-      <!-- cards nested routes-->
+      <!-- cards nested routes--->
+
       <transition
         :css="false"
         mode="out-in"
@@ -223,12 +216,15 @@
 </template>
 
 <script>
+  import AppBee from '@/components/shared/Bee.vue'
   import { mapGetters } from 'vuex'
   import { gsap } from 'gsap'
-  import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 
   export default {
     name: 'Alphabet',
+    components: {
+      AppBee
+    },
     data() {
       return {
         alphabet: {
@@ -245,25 +241,6 @@
     },
     computed: {
       ...mapGetters(['langAlph'])
-    },
-    mounted() {
-      gsap.registerPlugin(MotionPathPlugin)
-      gsap.to('.bee', {
-        transformOrigin: '50% 50%',
-        duration: 5,
-        ease: 'power1.inOut',
-        yoyo: true,
-        repeat: -1,
-        motionPath: {
-          alignOrigin: [0.5, 0.5],
-          curviness: 0,
-          path: [
-            { x: 0, y: 0, scale: 1 },
-            { x: 40, y: -20, scale: 1.4 },
-            { x: 80, y: 0, scale: 1 }
-          ]
-        }
-      })
     },
     methods: {
       selectLetter(val) {
@@ -351,11 +328,6 @@
 
 <style lang="scss" scoped>
   .alphabet {
-    .bee {
-      right: 30%;
-      top: 22%;
-      z-index: 100;
-    }
     .search-wrap {
       min-height: 40px;
     }
