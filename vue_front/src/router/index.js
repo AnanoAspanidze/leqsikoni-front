@@ -24,13 +24,28 @@ const routes = [
       },
       {
         path: 'user/list',
-        name: 'UserWord',
-        component: () => import('@/components/UserWords.vue'),
+        name: 'UserWords',
+        component: () => import('@/components/userCards/UserWords.vue'),
         // თუ მომხმარებელი არ არსებობს გადაამისამართოს მთავარ გვერდზე
         // if no user redirect to main
         beforeEnter: (to, from, next) => {
           let user = localStorage.getItem('User')
-          if (user) {
+          if (!user) {
+            next()
+          } else {
+            next({ path: '/' })
+          }
+        }
+      },
+      {
+        path: 'user/word/:wordId',
+        name: 'UserSingleWord',
+        component: () => import('@/components/userCards/UserSingleWord.vue'),
+        // თუ მომხმარებელი არ არსებობს გადაამისამართოს მთავარ გვერდზე
+        // if no user redirect to main
+        beforeEnter: (to, from, next) => {
+          let user = localStorage.getItem('User')
+          if (!user) {
             next()
           } else {
             next({ path: '/' })
