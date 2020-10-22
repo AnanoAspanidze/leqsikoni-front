@@ -16,7 +16,7 @@
             <router-link to="" class="navbar-item">
               რედაქტირება
             </router-link>
-            <router-link to="" class="navbar-item">
+            <router-link :to="{ name: 'UserWords' }" class="navbar-item">
               ჩემი სიტყვები
             </router-link>
             <router-link to="" class="navbar-item">
@@ -73,15 +73,15 @@
             ></div>
           </a>
           <div v-if="token" class="navbar-dropdown">
-            <a class="navbar-item">
+            <router-link to="" class="navbar-item">
               რედაქტირება
-            </a>
-            <a class="navbar-item">
+            </router-link>
+            <router-link class="navbar-item" :to="{ name: 'UserWords' }">
               ჩემი სიტყვები
-            </a>
-            <a class="navbar-item">
+            </router-link>
+            <router-link to="" class="navbar-item">
               გამოსვლა
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
@@ -94,7 +94,7 @@
 
   export default {
     computed: {
-      ...mapGetters(['token'])
+      ...mapGetters('auth', ['token'])
     },
     methods: {
       redirectUser() {

@@ -13,9 +13,6 @@
           </figure>
         </div>
         <div class="card is-relative">
-          <div class="is-edit is-absolute">
-            <b-button type="is-primary" icon-right="edit" outlined rounded />
-          </div>
           <div class="card-content mx-6 my-5">
             <!-- fist content -->
             <div class="card-content_line is-flex">
@@ -57,7 +54,7 @@
                   </b-tooltip>
                 </section>
               </div>
-              <p class="has-text-primary ml-3">Lorem ipsum</p>
+              <p class="has-text-primary ml-3">Ipsum Lorem</p>
             </div>
             <!-- second content -->
             <div class="card-content_line is-flex mt-3">
@@ -99,6 +96,15 @@
                     outlined
                     rounded
                   />
+                  <b-button
+                    tag="router-link"
+                    :to="{ name: 'UserSingleWord', params: { wordId: item } }"
+                    type="is-primary"
+                    outlined
+                    rounded
+                  >
+                    სრულად
+                  </b-button>
                 </div>
               </div>
             </div>
