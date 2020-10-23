@@ -6,105 +6,26 @@
           <img src="@/assets/img/yellow-ladybird.svg" alt="ladybird" />
         </figure>
       </div>
-      <div class="card">
-        <div class="card-content mx-6 my-5">
-          <!-- fist content -->
-          <div class="card-content_line is-flex">
-            <div
-              class="card-content_line-icon has-background-warning is-inline-flex is-justify-content-center px-1 py-1"
-            >
-              <section class="b-tooltips">
-                <b-tooltip
-                  label="this is user data"
-                  :triggers="['click']"
-                  position="is-bottom"
-                  type="is-info"
-                >
-                  <b-icon
-                    size="is-small"
-                    icon="user"
-                    type="is-white"
-                    class="is-clickable"
-                  ></b-icon>
-                </b-tooltip>
-              </section>
-            </div>
-            <div
-              class="card-content_line-icon has-background-primary is-inline-flex is-justify-content-center px-1 py-1 ml-2"
-            >
-              <section class="b-tooltips">
-                <b-tooltip
-                  label="this is info data"
-                  :triggers="['click']"
-                  position="is-bottom"
-                  type="is-info"
-                >
-                  <b-icon
-                    size="is-small"
-                    icon="info"
-                    type="is-white"
-                    class="is-clickable"
-                  ></b-icon>
-                </b-tooltip>
-              </section>
-            </div>
-            <p class="has-text-primary ml-3">Lorem ipsum</p>
-          </div>
-          <!-- second content -->
-          <div class="card-content_line is-flex mt-3">
-            <div
-              class="card-content_line-icon has-background-warning is-inline-flex is-justify-content-center px-1 py-1"
-            >
-              <b-icon size="is-small" icon="user" type="is-white"></b-icon>
-            </div>
-            <div
-              class="card-content_line-icon has-background-primary is-inline-flex is-justify-content-center px-1 py-1 ml-2"
-            >
-              <b-icon size="is-small" icon="info" type="is-white"></b-icon>
-            </div>
-            <p class="has-text-text ml-3">ლორემ იფსუმ</p>
-          </div>
-          <!-- third content -->
-          <div class="card-content_line is-flex mt-3">
-            <div
-              class="card-content_line-icon has-background-warning is-inline-flex is-justify-content-center px-1 py-1"
-            >
-              <b-icon size="is-small" icon="user" type="is-white"></b-icon>
-            </div>
-            <div
-              class="card-content_line-icon has-background-primary is-inline-flex is-justify-content-center px-1 py-1 ml-2"
-            >
-              <b-icon size="is-small" icon="info" type="is-white"></b-icon>
-            </div>
-            <p class="has-text-text ml-3">
-              საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია.
-            </p>
-          </div>
-          <!-- share content -->
-          <div class="card-content-line is-flex mt-5">
-            <div class="card-content_line-share ml-a">
-              <div class="buttons">
-                <b-button
-                  type="is-primary"
-                  icon-right="share"
-                  outlined
-                  rounded
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- card component -->
+      <words-card>
+        <template v-slot:buttons>
+          <b-button type="is-primary" icon-right="share" outlined rounded />
+        </template>
+      </words-card>
     </div>
   </div>
 </template>
 
 <script>
+  import WordsCard from '@/components/shared/WordCard.vue'
   import gsap from 'gsap'
   import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 
   export default {
     name: 'WordCard',
+    components: {
+      WordsCard
+    },
     mounted() {
       let parent = this.$refs.parent.clientWidth
       gsap.registerPlugin(MotionPathPlugin)

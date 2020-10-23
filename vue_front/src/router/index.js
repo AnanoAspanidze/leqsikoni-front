@@ -15,7 +15,7 @@ const routes = [
       {
         path: '',
         name: 'Alphabet',
-        component: () => import('@/components/WordCard.vue')
+        component: () => import('@/components/WordList.vue')
       },
       {
         path: '/:wordId',
