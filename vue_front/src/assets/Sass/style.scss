@@ -16,7 +16,6 @@ $warning-invert: #fff;
 $primary-invert: #fff;
 
 $purple-invert: #fff;
-
 //font family
 $family-primary: 'ALK Sanet';
 $family-secondary: 'NotoSans-Regular';
@@ -86,8 +85,7 @@ $colors: (
     $white,
     $black
   ),
-  'light':
-  (
+  'light': (
     $light,
     $light-invert
   ),
@@ -137,6 +135,9 @@ $colors: (
 }
 .mx-a {
   margin: 0 auto;
+}
+.ml-10 {
+  margin-left: 6.5rem;
 }
 
 //positions

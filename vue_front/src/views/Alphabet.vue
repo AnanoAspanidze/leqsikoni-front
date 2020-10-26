@@ -2,7 +2,15 @@
   <div class="alphabet">
     <app-bee />
     <div class="container section pt-0">
-      <div class="columns">
+      <div class="columns is-centered is-multiline">
+        <div v-if="userPath" class="column is-7">
+          <div class="is-flex is-align-items-center alphabet_words">
+            <figure class="image is-32x32">
+              <img src="@/assets/img/yellow-ladybird.svg" />
+            </figure>
+            <h3 class="ml-4">ჩემი სიტყვები</h3>
+          </div>
+        </div>
         <div class="column is-12">
           <!-- ანბანის ველის -->
           <div ref="searchWrap" class="is-flex is-justify-content-center">
@@ -66,7 +74,7 @@
           <div
             class="is-flex is-justify-content-center is-align-content-center alphabet-wrapper"
           >
-            <div class="lang is-relative mr-5">
+            <div v-if="!userPath" class="lang is-relative mr-5">
               <div class="lang_icon is-inline-flex">
                 <b-icon
                   size="is-large"
@@ -136,7 +144,7 @@
                 </b-collapse>
               </div>
             </div>
-            <div class="search ml-5">
+            <div class="search" :class="[userPath ? 'ml-10' : 'ml-5']">
               <div class="card is-flex is-align-items-center">
                 <div class="search is-flex is-align-items-center">
                   <input
@@ -153,7 +161,7 @@
                       class="image"
                       :class="[$screen.width > 769 ? 'is-64x64' : 'is-48x48']"
                     >
-                      <img src="@/assets/img/component-1.svg" />
+                      <img :src="shearchIcon" />
                     </figure>
                   </div>
                   <div
@@ -240,7 +248,16 @@
       }
     },
     computed: {
-      ...mapGetters(['langAlph'])
+      ...mapGetters(['langAlph']),
+      userPath() {
+        return this.$route.fullPath.includes('user')
+      },
+      shearchIcon() {
+        if (!this.userPath) {
+          return require('@/assets/img/component-1.svg')
+        }
+        return require('@/assets/img/edit.svg')
+      }
     },
     methods: {
       selectLetter(val) {
@@ -328,6 +345,9 @@
 
 <style lang="scss" scoped>
   .alphabet {
+    &_words {
+      margin-bottom: -5rem;
+    }
     .search-wrap {
       min-height: 40px;
     }

@@ -35,6 +35,7 @@
         aria-label="menu"
         aria-expanded="false"
         data-target="navbarBasicExample"
+        @click="isActive = !isActive"
       >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -42,7 +43,11 @@
       </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
+    <div
+      id="navbarBasicExample"
+      class="navbar-menu"
+      :class="{ 'is-active': isActive }"
+    >
       <div class="navbar-start">
         <router-link
           :to="{ name: 'Alphabet' }"
@@ -64,7 +69,7 @@
         </router-link>
       </div>
 
-      <div class="navbar-end is-flex is-justify-content-center">
+      <div class="navbar-end is-flex is-justify-content-center is-desktop">
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link is-arrowless is-relative">
             <div
@@ -93,6 +98,11 @@
   import { mapGetters } from 'vuex'
 
   export default {
+    data() {
+      return {
+        isActive: false
+      }
+    },
     computed: {
       ...mapGetters('auth', ['token'])
     },
@@ -176,6 +186,9 @@
 
   @media screen and (max-width: 1024px) {
     .navbar {
+      .is-desktop {
+        display: none !important;
+      }
       &-item img {
         max-height: 2.375rem;
       }
@@ -194,6 +207,22 @@
       &-start {
         .is-active span:after {
           display: none;
+        }
+        .hover-link:hover span {
+          &::after {
+            left: 0;
+            transform: translateX(0);
+          }
+        }
+        .hover-link span::after {
+          left: 0;
+          transform: translateX(0);
+        }
+        .router-link-exact-active span {
+          &::after {
+            left: 0;
+            transform: translateX(0);
+          }
         }
       }
       &-end {
