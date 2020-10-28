@@ -22,7 +22,7 @@ const routes = [
         component: () => import('@/components/SingleWord.vue')
       },
       {
-        path: 'user/list',
+        path: '/user/list',
         name: 'UserWords',
         component: () => import('@/components/userCards/UserWords.vue'),
         // თუ მომხმარებელი არ არსებობს გადაამისამართოს მთავარ გვერდზე
