@@ -272,6 +272,7 @@
   import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
   import { gsap } from 'gsap'
   import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     name: 'Signing',
@@ -329,14 +330,37 @@
         }
       }
     },
+    computed: {
+      ...mapGetters('auth', ['message'])
+    },
+    // get message to user
+    watch: {
+      message(data) {
+        if (data.success) {
+          this.$buefy.toast.open({
+            duration: 3000,
+            message: data.message,
+            position: 'is-bottom-right',
+            type: 'is-success'
+          })
+        } else if (!data.success) {
+          this.$buefy.toast.open({
+            duration: 3000,
+            message: data.message,
+            position: 'is-bottom-right',
+            type: 'is-danger'
+          })
+        }
+      }
+    },
     mounted() {
       gsap.registerPlugin(MotionPathPlugin)
       const r = 25
       gsap.to('.signing_image-box-1', {
         motionPath: {
           path: `M ${-r}, 0
-           a ${r},${r} 0 1,0 ${r * 2},0
-           a ${r},${r} 0 1,0 -${r * 2},0z`,
+                 a ${r},${r} 0 1,0 ${r * 2},0
+                 a ${r},${r} 0 1,0 -${r * 2},0z`,
           autoRotate: true
         },
         duration: 10,
@@ -345,9 +369,21 @@
       })
     },
     methods: {
+      ...mapActions('auth', ['registerUserWithEmail']),
       restoreUser() {},
       logIn() {},
-      registerUser() {},
+      registerUser() {
+        let data = {
+          Email: this.register.email,
+          Username: this.register.user,
+          Firstname: this.register.first_name,
+          Surname: this.register.last_name,
+          Password: this.register.password
+        }
+        if (!this.$v.register.$error) {
+          this.registerUserWithEmail(data)
+        }
+      },
       enter(el, done) {
         gsap.from(el, {
           x: 150,
@@ -424,8 +460,8 @@
   .slide-fade-leave-active {
     transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
   }
-  .slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
+  .slide-fade-enter,
+  .slide-fade-leave-to {
     transform: translateX(10px);
     opacity: 0;
   }

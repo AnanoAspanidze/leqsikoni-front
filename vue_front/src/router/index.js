@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Alphabet from '../views/Alphabet.vue'
 import About from '../views/About.vue'
 import Contact from '../views/Contact.vue'
-import Signing from '../views/Signing.vue'
 
 Vue.use(VueRouter)
 
@@ -18,7 +17,7 @@ const routes = [
         component: () => import('@/components/WordList.vue')
       },
       {
-        path: '/:wordId',
+        path: '/word/:wordId',
         name: 'SingleWord',
         component: () => import('@/components/SingleWord.vue')
       },
@@ -67,7 +66,7 @@ const routes = [
   {
     path: '/signing',
     name: 'Signing',
-    component: Signing
+    component: () => import('@/views/Signing.vue')
   }
 ]
 

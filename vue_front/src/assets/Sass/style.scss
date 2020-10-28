@@ -112,6 +112,10 @@ $colors: (
   'purple': (
     $purple,
     $purple-invert
+  ),
+  'success': (
+    $success,
+    $success-invert
   )
 );
 
@@ -164,4 +168,10 @@ $colors: (
       text-decoration: underline;
     }
   }
+}
+
+
+.lq-message{
+  position: fixed;
+  max-width: 400px;
 }
