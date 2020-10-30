@@ -77,6 +77,7 @@
                               type="is-warning"
                               rounded
                               outlined
+                              :loading="isLoading"
                               @click="logIn"
                             >
                               შესვლა
@@ -285,12 +286,12 @@
           password: ''
         },
         register: {
-          email: 'asdas@asda.ge',
-          user: 'asdasd',
-          first_name: 'asda',
-          last_name: 'asdas',
-          password: 'asdasd',
-          rePassword: 'asdasd'
+          email: '',
+          user: '',
+          first_name: '',
+          last_name: '',
+          password: '',
+          rePassword: ''
         }
       }
     },
