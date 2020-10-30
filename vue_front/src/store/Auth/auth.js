@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from '@/plugins/axios'
 
 const auth = {
@@ -20,21 +21,24 @@ const auth = {
     }
   },
   actions: {
-    registerUserWithEmail({ commit }, data) {
+    registerUserWithEmail({ commit, rootState }, data) {
+      rootState.isLoading = true
       axios
         .post('Account/SignUp', data)
         .then(Response => {
-          console.log('response =>', Response)
-          commit('SET_MESSAGE', { success: true, message: Response.data })
+          commit('SET_MESSAGE', Response.data)
+          rootState.isLoading = false
         })
         .catch(error => {
-          console.log('error =>', error.response)
-          commit('SET_MESSAGE', {
-            success: false,
-            message: error.response.data
-          })
-          Promise.resolve()
+          Promise.resolve(error)
         })
+    },
+    LoginWithEmail({ commit, rootState }, data) {
+      rootState.isLoading = true
+      axios.post('Account/Login', data).then(Response => {
+        console.log(Response)
+        rootState.isLoading = false
+      })
     }
   }
 }

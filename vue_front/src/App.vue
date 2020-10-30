@@ -3,15 +3,17 @@
     <div class="container">
       <nav-bar />
     </div>
-    <transition
-      :css="false"
-      mode="out-in"
-      @enter="routerEnter"
-      @leave="routerLeave"
-    >
-      <router-view class="container" :style="{ minHeight: calcHeight }" />
-    </transition>
-    <app-footer />
+    <div class="wraper" :style="{ minHeight: calcHeight }">
+      <transition
+        :css="false"
+        mode="out-in"
+        @enter="routerEnter"
+        @leave="routerLeave"
+      >
+        <router-view class="container" />
+      </transition>
+      <app-footer />
+    </div>
   </div>
 </template>
 
@@ -50,4 +52,10 @@
   }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+  #app {
+    .wraper {
+      min-height: calc(100vh - 15.3rem);
+    }
+  }
+</style>

@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Alphabet from '../views/Alphabet.vue'
 import About from '../views/About.vue'
 import Contact from '../views/Contact.vue'
+import axios from '@/plugins/axios'
+import store from '../store/index'
 
 Vue.use(VueRouter)
 
@@ -67,6 +69,23 @@ const routes = [
     path: '/signing',
     name: 'Signing',
     component: () => import('@/views/Signing.vue')
+  },
+  {
+    path: '/signing/:token',
+    name: 'validation',
+    // eslint-disable-next-line no-unused-vars
+    beforeEnter(to, from, next) {
+      let token = to.params.token || null
+      if (token) {
+        console.log(token)
+        axios.post(`Account/MailConfirmation/${token}`).then(result => {
+          store.state.isLoading = true
+          store.commit('auth/SET_MESSAGE', result.data)
+
+          next('/signing')
+        })
+      }
+    }
   }
 ]
 

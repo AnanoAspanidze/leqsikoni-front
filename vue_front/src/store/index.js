@@ -71,9 +71,13 @@ export default new Vuex.Store({
         'Y',
         'Z'
       ]
-    ]
+    ],
+    isLoading: false
   },
   getters: {
+    isLoading(state) {
+      return state.isLoading
+    },
     langAlph(state) {
       return state.alphabet
     }
