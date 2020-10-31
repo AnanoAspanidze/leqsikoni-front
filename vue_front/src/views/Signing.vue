@@ -78,6 +78,7 @@
                               rounded
                               outlined
                               :loading="isLoading"
+                              :disabled="$v.login.$invalid"
                               @click="logIn"
                             >
                               შესვლა
@@ -229,6 +230,7 @@
                               rounded
                               outlined
                               :loading="isLoading"
+                              :disabled="$v.register.$invalid"
                               @click="registerUser"
                             >
                               რეგისტრაცია
@@ -388,7 +390,9 @@
       ...mapActions('auth', ['registerUserWithEmail', 'LoginWithEmail']),
       restoreUser() {},
       logIn() {
-        this.LoginWithEmail(this.login)
+        if (!this.$v.login.$invalid) {
+          this.LoginWithEmail(this.login)
+        }
       },
       registerUser() {
         let data = {
@@ -398,7 +402,7 @@
           Surname: this.register.last_name,
           Password: this.register.password
         }
-        if (!this.$v.register.$error) {
+        if (!this.$v.register.$invalid) {
           this.registerUserWithEmail(data)
         }
       },

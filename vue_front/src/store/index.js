@@ -72,7 +72,8 @@ export default new Vuex.Store({
         'Z'
       ]
     ],
-    isLoading: false
+    isLoading: false,
+    user: null
   },
   getters: {
     isLoading(state) {
@@ -82,7 +83,14 @@ export default new Vuex.Store({
       return state.alphabet
     }
   },
-  mutations: {},
+  mutations: {
+    SET_USER(state, userData) {
+      state.user = userData
+    },
+    CLEAR_USER_DATA(state) {
+      state.user = null
+    }
+  },
   actions: {},
   modules: {
     auth

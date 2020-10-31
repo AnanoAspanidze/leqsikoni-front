@@ -79,7 +79,6 @@ const routes = [
       if (token) {
         console.log(token)
         axios.post(`Account/MailConfirmation/${token}`).then(result => {
-          store.state.isLoading = true
           store.commit('auth/SET_MESSAGE', result.data)
 
           next('/signing')

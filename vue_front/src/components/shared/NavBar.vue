@@ -10,18 +10,19 @@
           <a class="navbar-link is-arrowless is-relative">
             <div
               class="fi user has-text-warning is-flex is-justify-content-center is-align-items-end"
+              @click="redirectUser"
             ></div>
           </a>
-          <div class="navbar-dropdown">
+          <div v-if="token" class="navbar-dropdown">
             <router-link to="" class="navbar-item">
               რედაქტირება
             </router-link>
             <router-link :to="{ name: 'UserWords' }" class="navbar-item">
               ჩემი სიტყვები
             </router-link>
-            <router-link to="" class="navbar-item">
+            <a class="navbar-item" @click="logOut">
               გამოსვლა
-            </router-link>
+            </a>
           </div>
         </div>
       </div>
@@ -84,9 +85,9 @@
             <router-link class="navbar-item" :to="{ name: 'UserWords' }">
               ჩემი სიტყვები
             </router-link>
-            <router-link to="" class="navbar-item">
+            <a class="navbar-item" @click="logOut">
               გამოსვლა
-            </router-link>
+            </a>
           </div>
         </div>
       </div>
@@ -95,7 +96,7 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     data() {
@@ -107,11 +108,16 @@
       ...mapGetters('auth', ['token'])
     },
     methods: {
+      ...mapActions('auth', ['logOutUser']),
       redirectUser() {
-        console.log(this.token)
         if (!this.token) {
-          this.$router.push({ name: 'Signing' })
+          // eslint-disable-next-line no-unused-vars
+          this.$router.push({ name: 'Signing' }).catch(err => {})
         }
+      },
+      logOut() {
+        console.log('fire')
+        this.logOutUser()
       }
     }
   }
