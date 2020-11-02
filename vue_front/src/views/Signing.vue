@@ -25,218 +25,235 @@
                     <!-- შესვლის სექცია -->
                     <b-tab-item label="შესვლა" header-class="slesh">
                       <div class="mt-5">
-                        <!-- მეილი -->
-                        <b-field
-                          class="pb-1"
-                          :type="{ 'is-danger': $v.login.email.$error }"
-                          :message="{
-                            'ელ.ფოსტა სავალდებულოა':
-                              !$v.login.email.required && $v.login.email.$error,
-                            'ელ.ფოსტა არასწორია': !$v.login.email.email
-                          }"
-                        >
-                          <b-input
-                            v-model="login.email"
-                            placeholder="ელ.ფოსტა"
-                            type="email"
-                            rounded
-                            required
-                            @blur="$v.login.email.$touch()"
-                            @input="$v.login.email.$touch()"
-                          ></b-input>
-                        </b-field>
-
-                        <!-- პაროლი -->
-                        <b-field
-                          class="pt-1"
-                          :type="{ 'is-danger': $v.login.password.$error }"
-                          :message="{
-                            'პაროლი სავალდებულოა':
-                              !$v.login.password.required &&
-                              $v.login.password.$error
-                          }"
-                        >
-                          <b-input
-                            v-model="login.password"
-                            placeholder="ელ.ფოსტა"
-                            type="password"
-                            rounded
-                            required
-                            @blur="$v.login.password.$touch()"
-                          ></b-input>
-                        </b-field>
-                        <a
-                          class="has-text-primary is-size-7 pb-2"
-                          @click="restoreUser"
-                        >
-                          დაგავიწყდა პაროლი?
-                        </a>
-                        <b-field class="pt-5 pb-5">
-                          <p class="control is-flex is-justify-content-center">
-                            <b-button
-                              type="is-warning"
+                        <form @submit.prevent="logIn">
+                          <!-- მეილი -->
+                          <b-field
+                            class="pb-1"
+                            :type="{ 'is-danger': $v.login.email.$error }"
+                            :message="{
+                              'ელ.ფოსტა სავალდებულოა':
+                                !$v.login.email.required &&
+                                $v.login.email.$error,
+                              'ელ.ფოსტა არასწორია': !$v.login.email.email
+                            }"
+                          >
+                            <b-input
+                              v-model="login.email"
+                              placeholder="ელ.ფოსტა"
+                              type="email"
                               rounded
-                              outlined
-                              :loading="isLoading"
-                              :disabled="$v.login.$invalid"
-                              @click="logIn"
+                              required
+                              @blur="$v.login.email.$touch()"
+                              @input="$v.login.email.$touch()"
+                            ></b-input>
+                          </b-field>
+
+                          <!-- პაროლი -->
+                          <b-field
+                            class="pt-1"
+                            :type="{ 'is-danger': $v.login.password.$error }"
+                            :message="{
+                              'პაროლი სავალდებულოა':
+                                !$v.login.password.required &&
+                                $v.login.password.$error
+                            }"
+                          >
+                            <b-input
+                              v-model="login.password"
+                              placeholder="ელ.ფოსტა"
+                              type="password"
+                              rounded
+                              password-reveal
+                              required
+                              @blur="$v.login.password.$touch()"
+                            ></b-input>
+                          </b-field>
+                          <a
+                            class="has-text-primary is-size-7 pb-2"
+                            @click="restoreUser"
+                          >
+                            დაგავიწყდა პაროლი?
+                          </a>
+                          <b-field class="pt-5 pb-5">
+                            <p
+                              class="control is-flex is-justify-content-center"
                             >
-                              შესვლა
-                            </b-button>
-                          </p>
-                        </b-field>
+                              <b-button
+                                type="is-warning"
+                                rounded
+                                outlined
+                                :loading="isLoading"
+                                :disabled="$v.login.$invalid"
+                                native-type="submit"
+                                @click="logIn"
+                              >
+                                შესვლა
+                              </b-button>
+                            </p>
+                          </b-field>
+                        </form>
                       </div>
                     </b-tab-item>
                     <!-- რეგისტრაციის სექცია -->
                     <b-tab-item label="რეგისტრაცია">
                       <div class="mt-5">
-                        <!-- მაილი -->
-                        <b-field
-                          class="pb-1 pt-1"
-                          :type="{ 'is-danger': $v.register.email.$error }"
-                          :message="{
-                            'ელ.ფოსტა სავალდებულოა':
-                              !$v.register.email.required &&
-                              $v.register.email.$error,
-                            'ელ.ფოსტა არასწორია': !$v.register.email.email
-                          }"
-                        >
-                          <b-input
-                            v-model="register.email"
-                            placeholder="ელ.ფოსტა"
-                            type="email"
-                            rounded
-                            required
-                            @blur="$v.register.email.$touch()"
-                            @input="$v.register.email.$touch()"
-                          ></b-input>
-                        </b-field>
-
-                        <!-- მომხმარებელი -->
-                        <b-field
-                          class="pb-1 pt-1"
-                          :type="{ 'is-danger': $v.register.user.$error }"
-                          :message="{
-                            'ეს ველი სავალდებულოა':
-                              !$v.register.user.required &&
-                              $v.register.user.$error,
-                            'მინიმუმ 4 სიმბოლო': !$v.register.user.minLength
-                          }"
-                        >
-                          <b-input
-                            v-model="register.user"
-                            placeholder="მომხმარებლის სახელი"
-                            type="text"
-                            rounded
-                            required
-                            @blur="$v.register.user.$touch()"
-                            @input="$v.register.user.$touch()"
-                          ></b-input>
-                        </b-field>
-
-                        <!-- სახელი -->
-                        <b-field
-                          class="pb-1 pt-1"
-                          :type="{ 'is-danger': $v.register.first_name.$error }"
-                          :message="{
-                            'ეს ველი სავალდებულოა':
-                              !$v.register.first_name.required &&
-                              $v.register.first_name.$error,
-                            'მინიმუმ 2 სიმბოლო': !$v.register.first_name
-                              .minLength
-                          }"
-                        >
-                          <b-input
-                            v-model="register.first_name"
-                            placeholder="სახელი"
-                            type="text"
-                            rounded
-                            required
-                            @blur="$v.register.first_name.$touch()"
-                            @input="$v.register.first_name.$touch()"
-                          ></b-input>
-                        </b-field>
-
-                        <!-- გვარი -->
-                        <b-field
-                          class="pb-1 pt-1"
-                          :type="{ 'is-danger': $v.register.last_name.$error }"
-                          :message="{
-                            'ეს ველი სავალდებულოა':
-                              !$v.register.last_name.required &&
-                              $v.register.last_name.$error
-                          }"
-                        >
-                          <b-input
-                            v-model="register.last_name"
-                            placeholder="გვარი"
-                            type="text"
-                            rounded
-                            required
-                            @blur="$v.register.last_name.$touch()"
-                            @input="$v.register.last_name.$touch()"
-                          ></b-input>
-                        </b-field>
-
-                        <!-- პაროლი -->
-                        <b-field
-                          class="pt-1 pb-1"
-                          :type="{ 'is-danger': $v.register.password.$error }"
-                          :message="{
-                            'სავალდებულო ველი':
-                              !$v.register.password.required &&
-                              $v.register.password.$error,
-                            'მინიმუმ 6 სიმბოლო': !$v.register.password.minLength
-                          }"
-                        >
-                          <b-input
-                            v-model="register.password"
-                            placeholder="პაროლი"
-                            type="password"
-                            rounded
-                            required
-                            @blur="$v.register.password.$touch()"
-                          ></b-input>
-                        </b-field>
-
-                        <!-- გაიმეორე პაროლი -->
-                        <b-field
-                          class="pt-1 pb-1"
-                          :type="{
-                            'is-danger': $v.register.rePassword.$error
-                          }"
-                          :message="{
-                            'სავალდებულო ველი':
-                              !$v.register.rePassword.required &&
-                              $v.register.rePassword.$error,
-                            'პაროლი არ ემთხვევა':
-                              !$v.register.rePassword.$sameAsPassword &&
-                              $v.register.rePassword.$error
-                          }"
-                        >
-                          <b-input
-                            v-model="register.rePassword"
-                            placeholder="გაიმეორეთ პაროლი"
-                            type="password"
-                            rounded
-                            required
-                            @blur="$v.register.rePassword.$touch()"
-                          ></b-input>
-                        </b-field>
-                        <b-field class="pt-5 pb-5">
-                          <p class="control is-flex is-justify-content-center">
-                            <b-button
-                              type="is-warning"
+                        <form @submit.prevent="registerUser">
+                          <!-- მაილი -->
+                          <b-field
+                            class="pb-1 pt-1"
+                            :type="{ 'is-danger': $v.register.email.$error }"
+                            :message="{
+                              'ელ.ფოსტა სავალდებულოა':
+                                !$v.register.email.required &&
+                                $v.register.email.$error,
+                              'ელ.ფოსტა არასწორია': !$v.register.email.email
+                            }"
+                          >
+                            <b-input
+                              v-model="register.email"
+                              placeholder="ელ.ფოსტა"
+                              type="email"
                               rounded
-                              outlined
-                              :loading="isLoading"
-                              :disabled="$v.register.$invalid"
-                              @click="registerUser"
+                              required
+                              @blur="$v.register.email.$touch()"
+                              @input="$v.register.email.$touch()"
+                            ></b-input>
+                          </b-field>
+
+                          <!-- მომხმარებელი -->
+                          <b-field
+                            class="pb-1 pt-1"
+                            :type="{ 'is-danger': $v.register.user.$error }"
+                            :message="{
+                              'ეს ველი სავალდებულოა':
+                                !$v.register.user.required &&
+                                $v.register.user.$error,
+                              'მინიმუმ 4 სიმბოლო': !$v.register.user.minLength
+                            }"
+                          >
+                            <b-input
+                              v-model="register.user"
+                              placeholder="მომხმარებლის სახელი"
+                              type="text"
+                              rounded
+                              required
+                              @blur="$v.register.user.$touch()"
+                              @input="$v.register.user.$touch()"
+                            ></b-input>
+                          </b-field>
+
+                          <!-- სახელი -->
+                          <b-field
+                            class="pb-1 pt-1"
+                            :type="{
+                              'is-danger': $v.register.first_name.$error
+                            }"
+                            :message="{
+                              'ეს ველი სავალდებულოა':
+                                !$v.register.first_name.required &&
+                                $v.register.first_name.$error,
+                              'მინიმუმ 2 სიმბოლო': !$v.register.first_name
+                                .minLength
+                            }"
+                          >
+                            <b-input
+                              v-model="register.first_name"
+                              placeholder="სახელი"
+                              type="text"
+                              rounded
+                              required
+                              @blur="$v.register.first_name.$touch()"
+                              @input="$v.register.first_name.$touch()"
+                            ></b-input>
+                          </b-field>
+
+                          <!-- გვარი -->
+                          <b-field
+                            class="pb-1 pt-1"
+                            :type="{
+                              'is-danger': $v.register.last_name.$error
+                            }"
+                            :message="{
+                              'ეს ველი სავალდებულოა':
+                                !$v.register.last_name.required &&
+                                $v.register.last_name.$error
+                            }"
+                          >
+                            <b-input
+                              v-model="register.last_name"
+                              placeholder="გვარი"
+                              type="text"
+                              rounded
+                              required
+                              @blur="$v.register.last_name.$touch()"
+                              @input="$v.register.last_name.$touch()"
+                            ></b-input>
+                          </b-field>
+
+                          <!-- პაროლი -->
+                          <b-field
+                            class="pt-1 pb-1"
+                            :type="{ 'is-danger': $v.register.password.$error }"
+                            :message="{
+                              'სავალდებულო ველი':
+                                !$v.register.password.required &&
+                                $v.register.password.$error,
+                              'მინიმუმ 6 სიმბოლო': !$v.register.password
+                                .minLength
+                            }"
+                          >
+                            <b-input
+                              v-model="register.password"
+                              placeholder="პაროლი"
+                              type="password"
+                              rounded
+                              required
+                              @blur="$v.register.password.$touch()"
+                            ></b-input>
+                          </b-field>
+
+                          <!-- გაიმეორე პაროლი -->
+                          <b-field
+                            class="pt-1 pb-1"
+                            :type="{
+                              'is-danger': $v.register.rePassword.$error
+                            }"
+                            :message="{
+                              'სავალდებულო ველი':
+                                !$v.register.rePassword.required &&
+                                $v.register.rePassword.$error,
+                              'პაროლი არ ემთხვევა':
+                                !$v.register.rePassword.$sameAsPassword &&
+                                $v.register.rePassword.$error
+                            }"
+                          >
+                            <b-input
+                              v-model="register.rePassword"
+                              placeholder="გაიმეორეთ პაროლი"
+                              type="password"
+                              rounded
+                              required
+                              @blur="$v.register.rePassword.$touch()"
+                            ></b-input>
+                          </b-field>
+                          <b-field class="pt-5 pb-5">
+                            <p
+                              class="control is-flex is-justify-content-center"
                             >
-                              რეგისტრაცია
-                            </b-button>
-                          </p>
-                        </b-field>
+                              <b-button
+                                type="is-warning"
+                                rounded
+                                outlined
+                                :loading="isLoading"
+                                :disabled="$v.register.$invalid"
+                                native-type="submit"
+                                @click="registerUser"
+                              >
+                                რეგისტრაცია
+                              </b-button>
+                            </p>
+                          </b-field>
+                        </form>
                       </div>
                     </b-tab-item>
                   </b-tabs>
@@ -357,7 +374,13 @@
       restoreUser() {},
       logIn() {
         if (!this.$v.login.$invalid) {
-          this.LoginWithEmail(this.login)
+          this.LoginWithEmail(this.login).then(() => {
+            this.login = {
+              email: null,
+              password: null
+            }
+            this.$v.login.$reset()
+          })
         }
       },
       registerUser() {
@@ -369,7 +392,19 @@
           Password: this.register.password
         }
         if (!this.$v.register.$invalid) {
-          this.registerUserWithEmail(data)
+          this.registerUserWithEmail(data).then(() => {
+            // reset inputs & vulidate
+            // ველების გასუფთავება და vulidate საწყის მდგომარეობაში გადაყვანა
+            this.register = {
+              email: '',
+              user: '',
+              first_name: '',
+              last_name: '',
+              password: '',
+              rePassword: ''
+            }
+            this.$v.register.$reset()
+          })
         }
       },
       enter(el, done) {

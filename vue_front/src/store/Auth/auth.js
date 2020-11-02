@@ -30,71 +30,78 @@ const auth = {
   actions: {
     registerUserWithEmail({ commit, rootState }, data) {
       rootState.isLoading = true
-      axios
-        .post('Account/SignUp', data)
-        .then(Response => {
-          commit('SET_MESSAGE', Response.data)
-          rootState.isLoading = false
-        })
-        .catch(error => {
-          Promise.reject(error)
-        })
+      return new Promise(resolve => {
+        axios
+          .post('Account/SignUp', data)
+          .then(Response => {
+            commit('SET_MESSAGE', Response.data)
+            rootState.isLoading = false
+            // გაეშვას then ბლოცკი Singing რეგისტრაციის გვერდზე
+            resolve(true)
+          })
+          .catch(error => {
+            Promise.reject(error)
+          })
+      })
     },
-    // TODO წარმატებისას უნდა გამოყვეს success
     LoginWithEmail({ commit, rootState }, data) {
       rootState.isLoading = true
-      axios
-        .post('Account/Login', data)
-        .then(Response => {
-          //commit('SET_MESSAGE', Response.data)
-          commit('SET_TOKEN', Response.data)
+      return new Promise(resolve => {
+        axios
+          .post('Account/Login', data)
+          .then(Response => {
+            if (Response.data.success) {
+              let token = {
+                access: Response.data.userWithToken.accessToken,
+                refresh: Response.data.userWithToken.refreshToken
+              }
+              localStorage.setItem('emisToken', Response.data.userWithToken)
 
-          if (Response.data.success) {
-            let token = {
-              access: Response.data.accessToken,
-              refresh: Response.data.refreshToken
+              commit('SET_TOKEN', token)
+              commit('SET_USER', Response.data.userWithToken, { root: true })
+
+              rootState.isLoading = false
+              // გადამისამართება მთავარ გვერდზე
+              router.push({ path: '/' })
+            } else {
+              rootState.isLoading = false
+              commit('SET_MESSAGE', Response.data)
+              // გაეშვას then ბლოცკი Singing ლოგინის გვერდზე
+              resolve(true)
             }
-            let userData = {
-              firstName: Response.data.firstname,
-              lastName: Response.data.surname,
-              userId: Response.data.userId,
-              userName: Response.data.username,
-              email: Response.data.email,
-              userType: Response.data.userRole.userRoleId
-            }
-
-            localStorage.setItem('emisToken', token)
-
-            commit('SET_TOKEN', token)
-            commit('SET_USER', userData, { root: true })
-
-            rootState.isLoading = false
-          } else {
-            rootState.isLoading = false
-            // გადამისამართება მთავარ გვერდზე
-            router.push({ path: '/' })
-          }
-        })
-        .catch(err => {
-          Promise.reject(err)
-        })
+          })
+          .catch(err => {
+            Promise.reject(err)
+          })
+      })
     },
     // TODO გასარკვევია რა სახით გაეგზავნოს მონაცემები და რამდენ ხანში ერთხელ
     refreshUserToken({ commit, state }) {
-      axios.post('Account/RefreshToken')
+      let data = {
+        accessToken: state.token.access,
+        refreshToken: state.token.refresh
+      }
+      axios.post('Account/RefreshToken', data).then(Response => {
+        console.log(Response.data)
+      })
     },
-    // REVIEW მონაცემების ფორმა არის გასარკვევი აბრუნებს შეცდომას
     logOutUser({ commit, state }) {
       let data = {
-        AccessToken: state.token.accessToken,
-        RefreshToken: state.token.refreshToken
+        accessToken: state.token.access,
+        refreshToken: state.token.refresh
       }
       axios
         .post('Account/Logout', data)
         .then(Response => {
-          commit('CLEAR_USER_DATA', null, { root: true })
-          commit('CLEAR_TOKEN')
-          commit('SET_MESSAGE', Response.data)
+          console.log(Response)
+          if (Response.data.success) {
+            commit('CLEAR_USER_DATA', null, { root: true })
+            commit('CLEAR_TOKEN')
+            localStorage.removeItem('emisToken')
+            commit('SET_MESSAGE', Response.data)
+          } else {
+            commit('SET_MESSAGE', Response.data)
+          }
         })
         .catch(err => {
           Promise.reject(err)

@@ -47,19 +47,6 @@
           position: 'is-bottom-right',
           type: type
         })
-        // reset inputs & vulidate
-        // ველების გასუფთავება და vulidate საჭყის მდგომარეობაში გადაყვანა
-        setTimeout(() => {
-          this.register = {
-            email: '',
-            user: '',
-            first_name: '',
-            last_name: '',
-            password: '',
-            rePassword: ''
-          }
-          this.$v.register.$reset()
-        }, 3100)
       }
     },
     mounted() {

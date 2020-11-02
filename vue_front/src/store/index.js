@@ -85,7 +85,15 @@ export default new Vuex.Store({
   },
   mutations: {
     SET_USER(state, userData) {
-      state.user = userData
+      let data = {
+        firstName: userData.firstname,
+        lastName: userData.surname,
+        userId: userData.userId,
+        userName: userData.username,
+        email: userData.email,
+        userType: userData.userRole.userRoleId
+      }
+      state.user = data
     },
     CLEAR_USER_DATA(state) {
       state.user = null
