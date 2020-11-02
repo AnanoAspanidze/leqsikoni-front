@@ -334,44 +334,10 @@
       }
     },
     computed: {
-      ...mapGetters('auth', ['message']),
       ...mapGetters(['isLoading'])
     },
-    // get message to user
-    watch: {
-      message(data) {
-        let type = data.success ? 'is-success' : 'is-danger'
-        this.$buefy.toast.open({
-          duration: 3000,
-          message: data.message,
-          position: 'is-bottom-right',
-          type: type
-        })
-        // reset inputs & vulidate
-        // ველების გასუფთავება და vulidate საჭყის მდგომარეობაში გადაყვანა
-        setTimeout(() => {
-          this.register = {
-            email: '',
-            user: '',
-            first_name: '',
-            last_name: '',
-            password: '',
-            rePassword: ''
-          }
-          this.$v.register.$reset()
-        }, 3100)
-      }
-    },
+
     mounted() {
-      if (this.message) {
-        let type = this.message.success ? 'is-success' : 'is-danger'
-        this.$buefy.toast.open({
-          duration: 3000,
-          message: this.message.message,
-          position: 'is-bottom-right',
-          type: type
-        })
-      }
       gsap.registerPlugin(MotionPathPlugin)
       const r = 25
       gsap.to('.signing_image-box-1', {

@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import axios from '@/plugins/axios'
+import router from '@/router'
 
 const auth = {
   namespaced: true,
@@ -21,6 +22,9 @@ const auth = {
     },
     SET_TOKEN(state, token) {
       state.token = token
+    },
+    CLEAR_TOKEN(state) {
+      state.token = null
     }
   },
   actions: {
@@ -42,7 +46,8 @@ const auth = {
       axios
         .post('Account/Login', data)
         .then(Response => {
-          commit('SET_MESSAGE', Response.data)
+          //commit('SET_MESSAGE', Response.data)
+          commit('SET_TOKEN', Response.data)
 
           if (Response.data.success) {
             let token = {
@@ -67,7 +72,7 @@ const auth = {
           } else {
             rootState.isLoading = false
             // გადამისამართება მთავარ გვერდზე
-            this.router.push('/')
+            router.push({ path: '/' })
           }
         })
         .catch(err => {
@@ -80,15 +85,15 @@ const auth = {
     },
     // REVIEW მონაცემების ფორმა არის გასარკვევი აბრუნებს შეცდომას
     logOutUser({ commit, state }) {
-      console.log('action')
       let data = {
-        accessToken: state.token.accessToken,
-        refreshToken: state.token.refreshToken
+        AccessToken: state.token.accessToken,
+        RefreshToken: state.token.refreshToken
       }
       axios
         .post('Account/Logout', data)
         .then(Response => {
-          commit('CLEAR_USER_DATA', { root: true })
+          commit('CLEAR_USER_DATA', null, { root: true })
+          commit('CLEAR_TOKEN')
           commit('SET_MESSAGE', Response.data)
         })
         .catch(err => {

@@ -9,7 +9,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link is-arrowless is-relative">
             <div
-              class="fi user has-text-warning is-flex is-justify-content-center is-align-items-end"
+              class="fi user has-text-warning is-flex is-justify-content-center is-align-content-flex-end"
               @click="redirectUser"
             ></div>
           </a>
@@ -74,7 +74,7 @@
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link is-arrowless is-relative">
             <div
-              class="fi user has-text-warning is-flex is-justify-content-center is-align-items-end"
+              class="fi user has-text-warning is-flex is-justify-content-center is-align-items-flex-end"
               @click="redirectUser"
             ></div>
           </a>
