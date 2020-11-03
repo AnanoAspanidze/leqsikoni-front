@@ -57,7 +57,7 @@
       let parent = this.$refs.parent.clientWidth
       gsap.registerPlugin(MotionPathPlugin)
       gsap.to('.about_image-1', {
-        duration: 12,
+        duration: 14,
         ease: 'none',
         yoyo: true,
         repeat: -1,
@@ -71,8 +71,7 @@
             { x: (parent / 100) * 25, y: 0 },
             { x: (parent / 100) * 29, y: 0 },
             { x: (parent / 100) * 30, y: 0 }
-          ],
-          autoRotate: true
+          ]
         }
       })
     }

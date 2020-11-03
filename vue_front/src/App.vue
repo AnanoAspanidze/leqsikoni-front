@@ -12,8 +12,8 @@
       >
         <router-view class="container" />
       </transition>
-      <app-footer />
     </div>
+    <app-footer />
   </div>
 </template>
 

@@ -106,6 +106,11 @@ const auth = {
         .catch(err => {
           Promise.reject(err)
         })
+    },
+    resetPassword({ commit }, data) {
+      axios.post('Account/UpdateResetPassword', data).then(Response => {
+        commit('SET_MESSAGE', Response.data)
+      })
     }
   }
 }

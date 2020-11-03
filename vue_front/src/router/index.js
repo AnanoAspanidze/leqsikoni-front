@@ -68,12 +68,33 @@ const routes = [
   {
     path: '/signing',
     name: 'Signing',
-    component: () => import('@/views/Signing.vue')
+    component: () => import('@/views/auth/Signing.vue')
+  },
+  {
+    path: '/credentialsReset',
+    name: 'Reset',
+    component: () => import('@/views/auth/Rsest.vue')
+  },
+  {
+    path: '/credentialsReset/:token',
+    name: 'Reset',
+    component: () => import('@/views/auth/Rsest.vue'),
+    beforeEnter(to, from, next) {
+      let token = to.params.token || null
+      if (token) {
+        console.log(token)
+        axios.post(`Account/MailConfirmation/${token}`).then(result => {
+          store.commit('auth/SET_MESSAGE', result.data)
+          if (result.data.success) {
+            next('/credentialsReset')
+          }
+        })
+      }
+    }
   },
   {
     path: '/signing/:token',
     name: 'validation',
-    // eslint-disable-next-line no-unused-vars
     beforeEnter(to, from, next) {
       let token = to.params.token || null
       if (token) {

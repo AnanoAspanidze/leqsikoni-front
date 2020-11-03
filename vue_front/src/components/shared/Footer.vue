@@ -5,7 +5,7 @@
         <div
           class="column is-one-fifth-desktop is-one-quarter-tablet is-three-fifths-mobile"
         >
-          <div class="is-flex is-justify-content-around">
+          <div class="is-flex is-justify-content-space-around">
             <a class="button is-rounded has-text-primary">
               <i class="fi fb"></i>
             </a>
@@ -33,7 +33,7 @@
     .button {
       padding: 10px;
       border: 2px solid #7fd1d8;
-      margin-left: 5vh;
+      //margin-left: 5vh;
       i {
         font-size: 16px;
       }
