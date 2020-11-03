@@ -68,12 +68,12 @@
                               @blur="$v.login.password.$touch()"
                             ></b-input>
                           </b-field>
-                          <a
+                          <router-link
                             class="has-text-primary is-size-7 pb-2"
-                            @click="restoreUser"
+                            :to="{ name: 'mailConfirm' }"
                           >
                             დაგავიწყდა პაროლი?
-                          </a>
+                          </router-link>
                           <b-field class="pt-5 pb-5">
                             <p
                               class="control is-flex is-justify-content-center"
@@ -371,7 +371,6 @@
     },
     methods: {
       ...mapActions('auth', ['registerUserWithEmail', 'LoginWithEmail']),
-      restoreUser() {},
       logIn() {
         if (!this.$v.login.$invalid) {
           this.LoginWithEmail(this.login).then(() => {
@@ -407,6 +406,7 @@
           })
         }
       },
+
       enter(el, done) {
         gsap.from(el, {
           x: 150,

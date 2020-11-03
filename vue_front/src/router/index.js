@@ -71,26 +71,27 @@ const routes = [
     component: () => import('@/views/auth/Signing.vue')
   },
   {
-    path: '/credentialsReset',
-    name: 'Reset',
-    component: () => import('@/views/auth/Rsest.vue')
-  },
-  {
     path: '/credentialsReset/:token',
     name: 'Reset',
     component: () => import('@/views/auth/Rsest.vue'),
     beforeEnter(to, from, next) {
       let token = to.params.token || null
       if (token) {
-        console.log(token)
         axios.post(`Account/MailConfirmation/${token}`).then(result => {
           store.commit('auth/SET_MESSAGE', result.data)
           if (result.data.success) {
             next('/credentialsReset')
+          } else {
+            next('/')
           }
         })
       }
     }
+  },
+  {
+    path: '/confirmEmail',
+    name: 'mailConfirm',
+    component: () => import('@/views/auth/ConfirmEmail.vue')
   },
   {
     path: '/signing/:token',

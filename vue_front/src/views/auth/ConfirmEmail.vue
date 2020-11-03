@@ -12,7 +12,7 @@
             <h1
               class="title has-text-primary is-size-5 has-text-weight-light mt-5 has-text-centered is-relative"
             >
-              პაროლის არდგენა
+              ფოსტის დადასტურება
             </h1>
           </div>
           <div class="card-content pb-6 is-family-secondary">
@@ -32,57 +32,11 @@
                     placeholder="ელ.ფოსტა"
                     type="email"
                     rounded
-                    required
                     @blur="$v.form.email.$touch()"
                     @input="$v.form.email.$touch()"
                   ></b-input>
                 </b-field>
-                <!-- new password -->
-                <b-field
-                  class="pb-1"
-                  :type="{ 'is-danger': $v.form.newPassword.$error }"
-                  :message="{
-                    'სავალდებულო ველი':
-                      !$v.form.newPassword.required &&
-                      $v.form.newPassword.$error,
-                    'მინიმუმ 6 სიმბოლო': !$v.form.newPassword.minLength
-                  }"
-                >
-                  <b-input
-                    v-model="form.newPassword"
-                    placeholder="ახალი პაროლი"
-                    type="password"
-                    password-reveal
-                    rounded
-                    required
-                    @blur="$v.form.newPassword.$touch()"
-                    @input="$v.form.newPassword.$touch()"
-                  ></b-input>
-                </b-field>
-                <!-- confirm password -->
-                <b-field
-                  class="pb-1"
-                  :type="{ 'is-danger': $v.form.confirmNewPassword.$error }"
-                  :message="{
-                    'მიმდინარე ველი სავალდებულოა':
-                      !$v.form.confirmNewPassword.required &&
-                      $v.form.confirmNewPassword.$error,
-                    'პაროლი არ ემთხვევა':
-                      !$v.form.confirmNewPassword.$sameAsPassword &&
-                      $v.form.confirmNewPassword.$error
-                  }"
-                >
-                  <b-input
-                    v-model="form.confirmNewPassword"
-                    placeholder="მიმდინარე პაროლი"
-                    type="password"
-                    password-reveal
-                    rounded
-                    required
-                    @blur="$v.form.confirmNewPassword.$touch()"
-                    @input="$v.form.confirmNewPassword.$touch()"
-                  ></b-input>
-                </b-field>
+
                 <div class="is-flex is-justify-content-space-around">
                   <b-field class="pt-5 pb-5 mr-1">
                     <b-button
@@ -94,7 +48,7 @@
                       native-type="submit"
                       @click="reset"
                     >
-                      შენახვა
+                      გაგზავნა
                     </b-button>
                   </b-field>
                   <b-field class="pt-5 pb-5 ml-1">
@@ -118,7 +72,7 @@
 </template>
 
 <script>
-  import { required, minLength, email, sameAs } from 'vuelidate/lib/validators'
+  import { required, email } from 'vuelidate/lib/validators'
   import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
   import gsap from 'gsap'
   import { mapActions, mapGetters } from 'vuex'
@@ -127,9 +81,7 @@
     data() {
       return {
         form: {
-          email: null,
-          confirmNewPassword: null,
-          newPassword: null
+          email: null
         }
       }
     },
@@ -138,14 +90,6 @@
         email: {
           required,
           email
-        },
-        newPassword: {
-          required,
-          minLength: minLength(6)
-        },
-        confirmNewPassword: {
-          required,
-          sameAsPassword: sameAs('newPassword')
         }
       }
     },
@@ -175,15 +119,24 @@
       })
     },
     methods: {
-      ...mapActions('auth', ['resetPassword']),
+      ...mapActions('auth', ['resetEmail']),
       reset() {
-        this.resetPassword(this.form)
+        this.resetEmail(this.form)
+          .then(() => {
+            this.form = {
+              email: null
+            }
+            this.$v.form.$reset()
+          })
+          .catch(err => {
+            Promise.reject(err)
+          })
       }
     }
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .reset {
     h1 {
       width: 100%;
@@ -203,6 +156,12 @@
     &_image-1 {
       z-index: 5;
       top: 0;
+    }
+    .field {
+      font-family: 'HelveticaNeue';
+      .input {
+        font-family: 'HelveticaNeue';
+      }
     }
   }
 </style>

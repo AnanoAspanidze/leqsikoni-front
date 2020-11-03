@@ -107,9 +107,23 @@ const auth = {
           Promise.reject(err)
         })
     },
-    resetPassword({ commit }, data) {
-      axios.post('Account/UpdateResetPassword', data).then(Response => {
+    resetEmail({ commit }, data) {
+      axios.post('Account/SendResetPasswordMail', data).then(Response => {
         commit('SET_MESSAGE', Response.data)
+      })
+    },
+    resetPassword({ commit }, data) {
+      new Promise((resolve, reject) => {
+        axios
+          .post('Account/UpdateResetPassword', data)
+          .then(Response => {
+            console.log(Response)
+            commit('SET_MESSAGE', Response.data)
+            resolve(true)
+          })
+          .catch(err => {
+            reject(err)
+          })
       })
     }
   }
