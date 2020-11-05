@@ -50,7 +50,7 @@
       }
     },
     created() {
-      this.refreshUserInfo()
+      this.setUserData()
     },
     mounted() {
       if (this.message) {
@@ -64,7 +64,7 @@
       }
     },
     methods: {
-      ...mapActions('auth', ['refreshUserInfo']),
+      ...mapActions('auth', ['setUserData']),
       routerEnter(el, done) {
         gsap.from(el, {
           opacity: 0,

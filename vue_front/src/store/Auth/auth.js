@@ -24,7 +24,6 @@ const auth = {
       if (localStorage.getItem('emisToken')) {
         state.token = JSON.parse(localStorage.getItem('emisToken'))
       } else {
-        console.log(token)
         state.token = token
         localStorage.setItem('emisToken', JSON.stringify(token))
       }
@@ -59,8 +58,9 @@ const auth = {
             if (Response.data.success) {
               let userData = Response.data.userWithToken
               let token = Response.data.userWithToken.accessToken
-              dispatch('setUserData', userData, token)
 
+              commit('SET_USER', userData, { root: true })
+              commit('SET_TOKEN', token)
               rootState.isLoading = false
               // გადამისამართება მთავარ გვერდზე
               router.push({ path: '/' })
@@ -77,18 +77,15 @@ const auth = {
       })
     },
     // მომხმარებლის მონაცმების შენახვა
-    setUserData({ commit }, userData, token) {
-      commit('SET_USER', userData, { root: true })
-      commit('SET_TOKEN', token)
-    },
-    // განახლება ყოველ გადატვირთვაზე
-    refreshUserInfo({ dispatch }) {
+    setUserData({ commit }) {
       let token = localStorage.getItem('emisToken') || null
       let user = localStorage.getItem('emisUser') || null
       if (token && user) {
-        dispatch('setUserData', user, token)
+        commit('SET_USER', user, { root: true })
+        commit('SET_TOKEN', token)
       }
     },
+
     logOutUser({ commit, state }) {
       let data = {
         accessToken: state.token.access,
@@ -97,7 +94,6 @@ const auth = {
       axios
         .post('Account/Logout', data)
         .then(Response => {
-          console.log(Response)
           if (Response.data.success) {
             commit('CLEAR_USER_DATA', null, { root: true })
             commit('CLEAR_TOKEN')
@@ -122,7 +118,6 @@ const auth = {
         axios
           .post('Account/UpdateResetPassword', data)
           .then(Response => {
-            console.log(Response)
             commit('SET_MESSAGE', Response.data)
             resolve(true)
           })

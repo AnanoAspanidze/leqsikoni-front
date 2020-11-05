@@ -116,7 +116,6 @@
         }
       },
       logOut() {
-        console.log('fire')
         this.logOutUser()
       }
     }
