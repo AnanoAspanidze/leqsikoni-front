@@ -85,15 +85,20 @@ export default new Vuex.Store({
   },
   mutations: {
     SET_USER(state, userData) {
-      let data = {
-        firstName: userData.firstname,
-        lastName: userData.surname,
-        userId: userData.userId,
-        userName: userData.username,
-        email: userData.email,
-        userType: userData.userRole.userRoleId
+      if (localStorage.getItem('emisUser')) {
+        state.useer = JSON.parse(localStorage.getItem('emisUser'))
+      } else {
+        let data = {
+          firstName: userData.firstname,
+          lastName: userData.surname,
+          userId: userData.userId,
+          userName: userData.username,
+          email: userData.email,
+          userType: userData.userRole.userRoleId
+        }
+        localStorage.setItem('emisUser', JSON.stringify(data))
+        state.user = data
       }
-      state.user = data
     },
     CLEAR_USER_DATA(state) {
       state.user = null

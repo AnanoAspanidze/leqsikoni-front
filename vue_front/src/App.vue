@@ -21,7 +21,7 @@
   import NavBar from '@/components/shared/NavBar.vue'
   import AppFooter from '@/components/shared/Footer.vue'
   import { gsap } from 'gsap'
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     name: 'App',
@@ -49,6 +49,9 @@
         })
       }
     },
+    created() {
+      this.refreshUserInfo()
+    },
     mounted() {
       if (this.message) {
         let type = this.message.success ? 'is-success' : 'is-danger'
@@ -61,6 +64,7 @@
       }
     },
     methods: {
+      ...mapActions('auth', ['refreshUserInfo']),
       routerEnter(el, done) {
         gsap.from(el, {
           opacity: 0,

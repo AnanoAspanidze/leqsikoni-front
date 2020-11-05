@@ -21,7 +21,13 @@ const auth = {
       state.authMessage = message
     },
     SET_TOKEN(state, token) {
-      state.token = token
+      if (localStorage.getItem('emisToken')) {
+        state.token = JSON.parse(localStorage.getItem('emisToken'))
+      } else {
+        console.log(token)
+        state.token = token
+        localStorage.setItem('emisToken', JSON.stringify(token))
+      }
     },
     CLEAR_TOKEN(state) {
       state.token = null
@@ -44,21 +50,16 @@ const auth = {
           })
       })
     },
-    LoginWithEmail({ commit, rootState }, data) {
+    LoginWithEmail({ commit, dispatch, rootState }, data) {
       rootState.isLoading = true
       return new Promise(resolve => {
         axios
           .post('Account/Login', data)
           .then(Response => {
             if (Response.data.success) {
-              let token = {
-                access: Response.data.userWithToken.accessToken,
-                refresh: Response.data.userWithToken.refreshToken
-              }
-              localStorage.setItem('emisToken', Response.data.userWithToken)
-
-              commit('SET_TOKEN', token)
-              commit('SET_USER', Response.data.userWithToken, { root: true })
+              let userData = Response.data.userWithToken
+              let token = Response.data.userWithToken.accessToken
+              dispatch('setUserData', userData, token)
 
               rootState.isLoading = false
               // გადამისამართება მთავარ გვერდზე
@@ -75,15 +76,18 @@ const auth = {
           })
       })
     },
-    // TODO გასარკვევია რა სახით გაეგზავნოს მონაცემები და რამდენ ხანში ერთხელ
-    refreshUserToken({ commit, state }) {
-      let data = {
-        accessToken: state.token.access,
-        refreshToken: state.token.refresh
+    // მომხმარებლის მონაცმების შენახვა
+    setUserData({ commit }, userData, token) {
+      commit('SET_USER', userData, { root: true })
+      commit('SET_TOKEN', token)
+    },
+    // განახლება ყოველ გადატვირთვაზე
+    refreshUserInfo({ dispatch }) {
+      let token = localStorage.getItem('emisToken') || null
+      let user = localStorage.getItem('emisUser') || null
+      if (token && user) {
+        dispatch('setUserData', user, token)
       }
-      axios.post('Account/RefreshToken', data).then(Response => {
-        console.log(Response.data)
-      })
     },
     logOutUser({ commit, state }) {
       let data = {
@@ -98,6 +102,7 @@ const auth = {
             commit('CLEAR_USER_DATA', null, { root: true })
             commit('CLEAR_TOKEN')
             localStorage.removeItem('emisToken')
+            localStorage.removeItem('emisUser')
             commit('SET_MESSAGE', Response.data)
           } else {
             commit('SET_MESSAGE', Response.data)
