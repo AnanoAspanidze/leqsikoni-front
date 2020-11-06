@@ -2,7 +2,7 @@
   <div>
     <div class="columns is-multiline is-centered mt-5">
       <div
-        v-for="item in 10"
+        v-for="item in 6"
         ref="parent"
         :key="item"
         class="column is-8 is-offset-1 is-relative"

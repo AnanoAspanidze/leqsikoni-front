@@ -30,8 +30,8 @@ const routes = [
         // თუ მომხმარებელი არ არსებობს გადაამისამართოს მთავარ გვერდზე
         // if no user redirect to main
         beforeEnter: (to, from, next) => {
-          let user = localStorage.getItem('User')
-          if (!user) {
+          let token = localStorage.getItem('emisToken')
+          if (token) {
             next()
           } else {
             next({ path: '/' })

@@ -8,6 +8,7 @@ const auth = {
     token: null,
     authMessage: null
   },
+
   getters: {
     token(state) {
       return state.token
@@ -16,6 +17,7 @@ const auth = {
       return state.authMessage
     }
   },
+
   mutations: {
     SET_MESSAGE(state, message) {
       state.authMessage = message
@@ -32,6 +34,7 @@ const auth = {
       state.token = null
     }
   },
+
   actions: {
     registerUserWithEmail({ commit, rootState }, data) {
       rootState.isLoading = true
@@ -63,7 +66,7 @@ const auth = {
               commit('SET_TOKEN', token)
               rootState.isLoading = false
               // გადამისამართება მთავარ გვერდზე
-              router.push({ path: '/' })
+              router.push({ path: '/' }).catch(err => {})
             } else {
               rootState.isLoading = false
               commit('SET_MESSAGE', Response.data)
@@ -87,18 +90,14 @@ const auth = {
     },
 
     logOutUser({ commit, state }) {
-      let data = {
-        accessToken: state.token.access,
-        refreshToken: state.token.refresh
-      }
+      localStorage.removeItem('emisToken')
+      localStorage.removeItem('emisUser')
       axios
-        .post('Account/Logout', data)
+        .post('Account/Logout', { accessToken: state.token.access })
         .then(Response => {
           if (Response.data.success) {
             commit('CLEAR_USER_DATA', null, { root: true })
             commit('CLEAR_TOKEN')
-            localStorage.removeItem('emisToken')
-            localStorage.removeItem('emisUser')
             commit('SET_MESSAGE', Response.data)
           } else {
             commit('SET_MESSAGE', Response.data)
