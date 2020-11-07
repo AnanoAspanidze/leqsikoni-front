@@ -42,7 +42,6 @@
                               placeholder="ელ.ფოსტა"
                               type="email"
                               rounded
-                              required
                               @blur="$v.login.email.$touch()"
                               @input="$v.login.email.$touch()"
                             ></b-input>
@@ -64,7 +63,6 @@
                               type="password"
                               rounded
                               password-reveal
-                              required
                               @blur="$v.login.password.$touch()"
                             ></b-input>
                           </b-field>
@@ -114,7 +112,6 @@
                               placeholder="ელ.ფოსტა"
                               type="email"
                               rounded
-                              required
                               @blur="$v.register.email.$touch()"
                               @input="$v.register.email.$touch()"
                             ></b-input>
@@ -136,7 +133,6 @@
                               placeholder="მომხმარებლის სახელი"
                               type="text"
                               rounded
-                              required
                               @blur="$v.register.user.$touch()"
                               @input="$v.register.user.$touch()"
                             ></b-input>
@@ -161,7 +157,6 @@
                               placeholder="სახელი"
                               type="text"
                               rounded
-                              required
                               @blur="$v.register.first_name.$touch()"
                               @input="$v.register.first_name.$touch()"
                             ></b-input>
@@ -184,7 +179,6 @@
                               placeholder="გვარი"
                               type="text"
                               rounded
-                              required
                               @blur="$v.register.last_name.$touch()"
                               @input="$v.register.last_name.$touch()"
                             ></b-input>
@@ -207,7 +201,6 @@
                               placeholder="პაროლი"
                               type="password"
                               rounded
-                              required
                               @blur="$v.register.password.$touch()"
                             ></b-input>
                           </b-field>
@@ -232,7 +225,6 @@
                               placeholder="გაიმეორეთ პაროლი"
                               type="password"
                               rounded
-                              required
                               @blur="$v.register.rePassword.$touch()"
                             ></b-input>
                           </b-field>
@@ -373,13 +365,12 @@
       ...mapActions('auth', ['registerUserWithEmail', 'LoginWithEmail']),
       logIn() {
         if (!this.$v.login.$invalid) {
-          this.LoginWithEmail(this.login).then(() => {
-            this.login = {
-              email: null,
-              password: null
-            }
-            this.$v.login.$reset()
-          })
+          this.LoginWithEmail(this.login)
+          this.login = {
+            email: null,
+            password: null
+          }
+          this.$v.login.$reset()
         }
       },
       registerUser() {
@@ -391,19 +382,18 @@
           Password: this.register.password
         }
         if (!this.$v.register.$invalid) {
-          this.registerUserWithEmail(data).then(() => {
-            // reset inputs & vulidate
-            // ველების გასუფთავება და vulidate საწყის მდგომარეობაში გადაყვანა
-            this.register = {
-              email: '',
-              user: '',
-              first_name: '',
-              last_name: '',
-              password: '',
-              rePassword: ''
-            }
-            this.$v.register.$reset()
-          })
+          this.registerUserWithEmail(data)
+          // reset inputs & vulidate
+          // ველების გასუფთავება და vulidate საწყის მდგომარეობაში გადაყვანა
+          this.register = {
+            email: '',
+            user: '',
+            first_name: '',
+            last_name: '',
+            password: '',
+            rePassword: ''
+          }
+          this.$v.register.$reset()
         }
       },
 
