@@ -3,12 +3,12 @@
     <div class="column is-7-tablet is-6-desktop is-5-widescreen">
       <b-pagination
         v-model="current"
-        :total="200"
-        :range-before="1"
-        :range-after="1"
+        :total="total"
+        :range-before="rangeBefore"
+        :range-after="rangeAfter"
         :simple="false"
         :rounded="true"
-        :per-page="8"
+        :per-page="perPage"
         size="is-small"
         order="is-centered"
         icon-prev="left-chevron"
@@ -17,6 +17,7 @@
         aria-previous-label="Previous page"
         aria-page-label="Page"
         aria-current-label="Current page"
+        @change="$emit('currentPage', current)"
       ></b-pagination>
     </div>
   </div>
@@ -25,19 +26,18 @@
 <script>
   export default {
     name: 'Pagination',
+    props: {
+      total: {
+        type: Number,
+        required: true
+      }
+    },
     data() {
       return {
-        total: 200,
-        current: 10,
-        perPage: 10,
+        current: 1,
+        perPage: 5,
         rangeBefore: 3,
-        rangeAfter: 1,
-        order: '',
-        size: '',
-        isSimple: false,
-        isRounded: false,
-        prevIcon: 'chevron-left',
-        nextIcon: 'chevron-right'
+        rangeAfter: 1
       }
     }
   }

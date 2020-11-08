@@ -74,7 +74,9 @@ export default new Vuex.Store({
       ]
     ],
     isLoading: false,
-    user: null
+    user: null,
+    wordList: [],
+    wordCount: 0
   },
   getters: {
     isLoading(state) {
@@ -82,6 +84,12 @@ export default new Vuex.Store({
     },
     langAlph(state) {
       return state.alphabet
+    },
+    wordList(state) {
+      return state.wordList
+    },
+    totalWords(state) {
+      return state.wordCount
     }
   },
   mutations: {
@@ -101,14 +109,21 @@ export default new Vuex.Store({
         state.user = data
       }
     },
+    SET_WORD_LIST(state, wordList) {
+      state.wordList = wordList
+    },
+    SET_WORDS_COUNT(state, count) {
+      state.wordCount = count
+    },
     CLEAR_USER_DATA(state) {
       state.user = null
     }
   },
   actions: {
-    getWordLIst() {
+    getWordLIst({ commit }) {
       Axios.get('words/wordslist').then(Response => {
-        console.log(Response)
+        commit('SET_WORD_LIST', Response.data.wordsList)
+        commit('SET_WORDS_COUNT', Response.data.wordsQuantity)
       })
     }
   },

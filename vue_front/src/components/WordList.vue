@@ -1,24 +1,23 @@
 <template>
   <div>
-    <div class="columns is-multiline is-centered mt-5">
+    <div ref="parent" class="columns is-multiline is-centered mt-5">
       <div
-        v-for="item in 10"
-        ref="parent"
-        :key="item"
+        v-for="(item, i) in wordList"
+        :key="item.wordId"
         class="column is-8 is-offset-1 is-relative"
       >
-        <div v-if="item === 1" class="card_image-1 is-absolute">
+        <div v-if="i === 0" class="card_image-1 is-absolute">
           <figure class="image is-32x32">
             <img src="@/assets/img/yellow-ladybird.svg" alt="ladybird" />
           </figure>
         </div>
         <!-- card component -->
-        <words-card>
+        <words-card :word="item">
           <template v-slot:buttons>
             <b-button type="is-primary" icon-right="share" outlined rounded />
             <b-button
               tag="router-link"
-              :to="{ name: 'SingleWord', params: { wordId: item } }"
+              :to="{ name: 'SingleWord', params: { wordId: item.wordId } }"
               type="is-primary"
               outlined
               rounded
@@ -30,7 +29,7 @@
       </div>
     </div>
     <!-- paginations -->
-    <pagination />
+    <pagination :total="totalWords" @currentPage="current = $event" />
   </div>
 </template>
 
@@ -39,20 +38,29 @@
   import WordsCard from '@/components/shared/WordCard.vue'
   import gsap from 'gsap'
   import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
-  import { mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
-    name: 'WordCard',
+    name: 'WordList',
     components: {
       Pagination,
       WordsCard
     },
+    data() {
+      return {
+        current: 1
+      }
+    },
+    computed: {
+      ...mapGetters(['totalWords', 'wordList'])
+    },
     created() {
       this.getWordLIst()
     },
-    mounted() {
-      let parent = this.$refs.parent[0].clientWidth
+    updated() {
+      let parent = this.$refs.parent.clientWidth
       gsap.registerPlugin(MotionPathPlugin)
+
       gsap.to('.card_image-1', {
         duration: 12,
         ease: 'none',
@@ -68,8 +76,7 @@
             { x: (parent / 100) * 25, y: 0 },
             { x: (parent / 100) * 29, y: 0 },
             { x: (parent / 100) * 30, y: 0 }
-          ],
-          autoRotate: true
+          ]
         }
       })
     },

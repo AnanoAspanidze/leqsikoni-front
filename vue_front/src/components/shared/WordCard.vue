@@ -5,73 +5,117 @@
       <!-- fist content -->
       <div class="card-content_line is-flex">
         <div
-          class="card-content_line-icon has-background-warning is-inline-flex is-justify-content-center px-1 py-1"
+          class="card-content_line-icon has-background-warning is-flex is-justify-content-center px-1 py-1"
         >
-          <section class="b-tooltips">
-            <b-tooltip
-              label="this is user data"
-              :triggers="['click']"
-              position="is-bottom"
-              type="is-info"
-            >
-              <b-icon
-                size="is-small"
-                icon="user"
-                type="is-white"
-                class="is-clickable"
-              ></b-icon>
-            </b-tooltip>
-          </section>
+          <b-tooltip
+            label="this is user data"
+            :triggers="['click']"
+            position="is-bottom"
+            type="is-info"
+          >
+            <b-icon
+              size="is-small"
+              icon="user"
+              type="is-white"
+              class="is-clickable"
+            ></b-icon>
+          </b-tooltip>
         </div>
         <div
           class="card-content_line-icon has-background-primary is-inline-flex is-justify-content-center px-1 py-1 ml-2"
         >
-          <section class="b-tooltips">
-            <b-tooltip
-              label="this is info data"
-              :triggers="['click']"
-              position="is-bottom"
-              type="is-info"
-            >
-              <b-icon
-                size="is-small"
-                icon="info"
-                type="is-white"
-                class="is-clickable"
-              ></b-icon>
-            </b-tooltip>
-          </section>
+          <b-tooltip
+            label="this is info data"
+            :triggers="['click']"
+            position="is-bottom"
+            type="is-info"
+          >
+            <b-icon
+              size="is-small"
+              icon="info"
+              type="is-white"
+              class="is-clickable"
+            ></b-icon>
+          </b-tooltip>
         </div>
-        <p class="has-text-primary ml-3">Lorem ipsum</p>
+        <p class="has-text-primary ml-3">{{ word.engWord }}</p>
       </div>
       <!-- second content -->
       <div class="card-content_line is-flex mt-3">
         <div
-          class="card-content_line-icon has-background-warning is-inline-flex is-justify-content-center px-1 py-1"
+          class="card-content_line-icon has-background-warning is-flex is-justify-content-center px-1 py-1"
         >
-          <b-icon size="is-small" icon="user" type="is-white"></b-icon>
+          <b-tooltip
+            label="this is user data"
+            :triggers="['click']"
+            position="is-bottom"
+            type="is-info"
+          >
+            <b-icon
+              size="is-small"
+              icon="user"
+              type="is-white"
+              class="is-clickable"
+            ></b-icon>
+          </b-tooltip>
         </div>
         <div
           class="card-content_line-icon has-background-primary is-inline-flex is-justify-content-center px-1 py-1 ml-2"
         >
-          <b-icon size="is-small" icon="info" type="is-white"></b-icon>
+          <b-tooltip
+            label="this is info data"
+            :triggers="['click']"
+            position="is-bottom"
+            type="is-info"
+          >
+            <b-icon
+              size="is-small"
+              icon="info"
+              type="is-white"
+              class="is-clickable"
+            ></b-icon>
+          </b-tooltip>
         </div>
-        <p class="has-text-text ml-3">ლორემ იფსუმ</p>
+        <p class="has-text-text ml-3">{{ word.geoWord }}</p>
       </div>
       <!-- third content -->
       <div class="card-content_line is-flex mt-3">
         <div
-          class="card-content_line-icon has-background-warning is-inline-flex is-justify-content-center px-1 py-1"
+          class="card-content_line-icon has-background-warning is-flex is-justify-content-center px-1 py-1"
         >
-          <b-icon size="is-small" icon="user" type="is-white"></b-icon>
+          <b-tooltip
+            label="this is user data"
+            :triggers="['click']"
+            position="is-bottom"
+            type="is-info"
+          >
+            <b-icon
+              size="is-small"
+              icon="user"
+              type="is-white"
+              class="is-clickable"
+            ></b-icon>
+          </b-tooltip>
         </div>
         <div
           class="card-content_line-icon has-background-primary is-inline-flex is-justify-content-center px-1 py-1 ml-2"
         >
-          <b-icon size="is-small" icon="info" type="is-white"></b-icon>
+          <b-tooltip
+            label="this is info data"
+            :triggers="['click']"
+            position="is-bottom"
+            type="is-info"
+          >
+            <b-icon
+              size="is-small"
+              icon="info"
+              type="is-white"
+              class="is-clickable"
+            ></b-icon>
+          </b-tooltip>
         </div>
         <p class="has-text-text ml-3">
-          საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია.
+          {{ word.wordDefinition }}
         </p>
       </div>
       <!-- share content -->
@@ -87,7 +131,14 @@
 </template>
 
 <script>
-  export default {}
+  export default {
+    props: {
+      word: {
+        type: Object,
+        required: true
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -98,7 +149,8 @@
       &_line {
         &-icon {
           border-radius: 100%;
-          max-height: 24px;
+          height: 24px;
+          width: 24px;
         }
         &-share button {
           padding: 1rem 1.2rem;
