@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import axios from '@/plugins/axios'
+import Axios from '@/plugins/axios'
 import router from '@/router'
 
 const auth = {
@@ -39,8 +39,7 @@ const auth = {
     registerUserWithEmail({ commit, rootState }, data) {
       rootState.isLoading = true
       return new Promise(resolve => {
-        axios
-          .post('Account/SignUp', data)
+        Axios.post('Account/SignUp', data)
           .then(Response => {
             commit('SET_MESSAGE', Response.data)
             rootState.isLoading = false
@@ -55,8 +54,7 @@ const auth = {
     LoginWithEmail({ commit, dispatch, rootState }, data) {
       rootState.isLoading = true
       return new Promise(resolve => {
-        axios
-          .post('Account/Login', data)
+        Axios.post('Account/Login', data)
           .then(Response => {
             if (Response.data.success) {
               let userData = Response.data.userWithToken
@@ -92,8 +90,7 @@ const auth = {
     logOutUser({ commit, state }) {
       localStorage.removeItem('emisToken')
       localStorage.removeItem('emisUser')
-      axios
-        .post('Account/Logout', { accessToken: state.token.access })
+      Axios.post('Account/Logout', { accessToken: state.token.access })
         .then(Response => {
           if (Response.data.success) {
             commit('CLEAR_USER_DATA', null, { root: true })
@@ -108,20 +105,22 @@ const auth = {
         })
     },
     resetEmail({ commit }, data) {
-      axios.post('Account/SendResetPasswordMail', data).then(Response => {
+      Axios.post('Account/SendResetPasswordMail', data).then(Response => {
         commit('SET_MESSAGE', Response.data)
       })
     },
-    resetPassword({ commit }, data) {
-      new Promise((resolve, reject) => {
-        axios
-          .post('Account/UpdateResetPassword', data)
+    resetPassword({ commit }, form) {
+      let confirmToken = localStorage.getItem('emisReset')
+      form.ResetPasswordToken = confirmToken
+      return new Promise(resolve => {
+        Axios.post('Account/UpdateResetPassword', form)
           .then(Response => {
             commit('SET_MESSAGE', Response.data)
+            localStorage.removeItem('emisReset')
             resolve(true)
           })
           .catch(err => {
-            reject(err)
+            Promise.reject(err)
           })
       })
     }

@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Alphabet from '../views/Alphabet.vue'
 import About from '../views/About.vue'
 import Contact from '../views/Contact.vue'
-import axios from '@/plugins/axios'
+import Axios from '@/plugins/axios'
 import store from '../store/index'
 
 Vue.use(VueRouter)
@@ -71,15 +71,21 @@ const routes = [
     component: () => import('@/views/auth/Signing.vue')
   },
   {
+    path: '/credentialsReset',
+    name: 'reset',
+    component: () => import('@/views/auth/Reset.vue')
+  },
+  {
     path: '/credentialsReset/:token',
-    name: 'Reset',
-    component: () => import('@/views/auth/Rsest.vue'),
+    name: 'credentialsReset',
+    component: () => import('@/views/auth/Reset.vue'),
     beforeEnter(to, from, next) {
       let token = to.params.token || null
       if (token) {
-        axios.post(`Account/MailConfirmation/${token}`).then(result => {
+        Axios.post(`Account/MailConfirmation/${token}`).then(result => {
           store.commit('auth/SET_MESSAGE', result.data)
           if (result.data.success) {
+            localStorage.setItem('emisReset', token)
             next('/credentialsReset')
           } else {
             next('/')
@@ -99,8 +105,7 @@ const routes = [
     beforeEnter(to, from, next) {
       let token = to.params.token || null
       if (token) {
-        console.log(token)
-        axios.post(`Account/MailConfirmation/${token}`).then(result => {
+        Axios.post(`Account/MailConfirmation/${token}`).then(result => {
           store.commit('auth/SET_MESSAGE', result.data)
 
           next('/signing')

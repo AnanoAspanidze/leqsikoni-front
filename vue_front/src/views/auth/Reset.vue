@@ -32,7 +32,6 @@
                     placeholder="ელ.ფოსტა"
                     type="email"
                     rounded
-                    required
                     @blur="$v.form.email.$touch()"
                     @input="$v.form.email.$touch()"
                   ></b-input>
@@ -54,7 +53,6 @@
                     type="password"
                     password-reveal
                     rounded
-                    required
                     @blur="$v.form.newPassword.$touch()"
                     @input="$v.form.newPassword.$touch()"
                   ></b-input>
@@ -64,7 +62,7 @@
                   class="pb-1"
                   :type="{ 'is-danger': $v.form.confirmNewPassword.$error }"
                   :message="{
-                    'მიმდინარე ველი სავალდებულოა':
+                    'პაროლის ველი სავალდებულოა':
                       !$v.form.confirmNewPassword.required &&
                       $v.form.confirmNewPassword.$error,
                     'პაროლი არ ემთხვევა':
@@ -74,11 +72,10 @@
                 >
                   <b-input
                     v-model="form.confirmNewPassword"
-                    placeholder="მიმდინარე პაროლი"
+                    placeholder="გაიმეორეთ პაროლი"
                     type="password"
                     password-reveal
                     rounded
-                    required
                     @blur="$v.form.confirmNewPassword.$touch()"
                     @input="$v.form.confirmNewPassword.$touch()"
                   ></b-input>
@@ -92,7 +89,6 @@
                       :loading="isLoading"
                       :disabled="$v.form.$invalid"
                       native-type="submit"
-                      @click="reset"
                     >
                       შენახვა
                     </b-button>
@@ -177,13 +173,21 @@
     methods: {
       ...mapActions('auth', ['resetPassword']),
       reset() {
-        this.resetPassword(this.form)
+        this.resetPassword(this.form).then(() => {
+          this.$router.push({ name: 'Signing' })
+        })
+        this.form = {
+          email: null,
+          confirmNewPassword: null,
+          newPassword: null
+        }
+        this.$v.form.$reset()
       }
     }
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .reset {
     h1 {
       width: 100%;
@@ -199,6 +203,9 @@
         transform: translateX(-50%);
         transition: all 1s;
       }
+    }
+    .field .input {
+      font-family: 'HelveticaNeue';
     }
     &_image-1 {
       z-index: 5;

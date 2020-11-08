@@ -39,12 +39,16 @@
   import WordsCard from '@/components/shared/WordCard.vue'
   import gsap from 'gsap'
   import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
+  import { mapActions } from 'vuex'
 
   export default {
     name: 'WordCard',
     components: {
       Pagination,
       WordsCard
+    },
+    created() {
+      this.getWordLIst()
     },
     mounted() {
       let parent = this.$refs.parent[0].clientWidth
@@ -68,6 +72,9 @@
           autoRotate: true
         }
       })
+    },
+    methods: {
+      ...mapActions(['getWordLIst'])
     }
   }
 </script>

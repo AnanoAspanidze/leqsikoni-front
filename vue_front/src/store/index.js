@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Axios from '../plugins/axios'
 
 import auth from './Auth/auth'
 
@@ -104,7 +105,13 @@ export default new Vuex.Store({
       state.user = null
     }
   },
-  actions: {},
+  actions: {
+    getWordLIst() {
+      Axios.get('words/wordslist').then(Response => {
+        console.log(Response)
+      })
+    }
+  },
   modules: {
     auth
   }
