@@ -26,7 +26,10 @@
           </div>
         </div>
       </div>
-      <router-link class="navbar-item" to="/">
+      <router-link
+        class="navbar-item"
+        :to="{ path: '/', query: { PageNumber: 1 } }"
+      >
         <img src="../../assets/img/logo.svg" width="112" height="28" />
       </router-link>
 
@@ -51,7 +54,7 @@
     >
       <div class="navbar-start">
         <router-link
-          :to="{ name: 'Alphabet' }"
+          :to="{ name: 'AlphabetActive' }"
           class="navbar-item hover-link px-6"
         >
           <span class="is-relative">ანბანი</span>

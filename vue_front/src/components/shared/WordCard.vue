@@ -38,7 +38,11 @@
             ></b-icon>
           </b-tooltip>
         </div>
-        <p class="has-text-primary ml-3">{{ word.engWord }}</p>
+        <p
+          class="has-text-primary is-family-secondary has-text-weight-bold is-capitalized ml-3"
+        >
+          {{ word.engWord }}
+        </p>
       </div>
       <!-- second content -->
       <div class="card-content_line is-flex mt-3">
@@ -76,7 +80,11 @@
             ></b-icon>
           </b-tooltip>
         </div>
-        <p class="has-text-text ml-3">{{ word.geoWord }}</p>
+        <p
+          class="has-text-text is-family-secondary has-text-weight-light is-capitalized ml-3"
+        >
+          {{ word.geoWord }}
+        </p>
       </div>
       <!-- third content -->
       <div class="card-content_line is-flex mt-3">
@@ -114,7 +122,9 @@
             ></b-icon>
           </b-tooltip>
         </div>
-        <p class="has-text-text ml-3">
+        <p
+          class="has-text-text is-family-secondary has-text-weight-light is-capitalized ml-3"
+        >
           {{ word.wordDefinition }}
         </p>
       </div>
