@@ -17,7 +17,6 @@
         aria-previous-label="Previous page"
         aria-page-label="Page"
         aria-current-label="Current page"
-        @change="$emit('currentPage', current)"
       ></b-pagination>
     </div>
   </div>
@@ -30,14 +29,27 @@
       total: {
         type: Number,
         required: true
+      },
+      currentPage: {
+        type: Number,
+        default: 1
       }
     },
     data() {
       return {
-        current: 1,
         perPage: 5,
         rangeBefore: 3,
         rangeAfter: 1
+      }
+    },
+    computed: {
+      current: {
+        get() {
+          return this.currentPage
+        },
+        set(newValue) {
+          this.$emit('update:page', newValue)
+        }
       }
     }
   }

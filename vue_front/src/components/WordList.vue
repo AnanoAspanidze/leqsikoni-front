@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wordList">
     <div ref="parent" class="columns is-multiline is-centered mt-5">
       <div
         v-for="(item, i) in wordList"
@@ -14,13 +14,20 @@
         <!-- card component -->
         <words-card :word="item">
           <template v-slot:buttons>
-            <b-button type="is-primary" icon-right="share" outlined rounded />
+            <b-button
+              class="mr-5"
+              type="is-primary"
+              icon-right="share"
+              outlined
+              rounded
+            />
             <b-button
               tag="router-link"
               :to="{ name: 'SingleWord', params: { wordId: item.wordId } }"
               type="is-primary"
               outlined
               rounded
+              class="fullInfo"
             >
               სრულად
             </b-button>
@@ -29,7 +36,11 @@
       </div>
     </div>
     <!-- paginations -->
-    <pagination :total="totalWords" @currentPage="current = $event" />
+    <pagination
+      :total="totalWords"
+      :current-page="current"
+      :page.sync="current"
+    />
   </div>
 </template>
 
@@ -54,8 +65,35 @@
     computed: {
       ...mapGetters(['totalWords', 'wordList'])
     },
+    watch: {
+      // route ცვლილებისას გაეშვას შესაბამისი სიტყვების ჩატვირთვის მოთხოვნა
+      $route(to) {
+        let page = parseInt(to.query.PageNumber)
+        this.current = page
+        this.geWordsByPage(page)
+      },
+      // route ცვლილება current პაგინაციის ცვლილებისას
+      current() {
+        this.$router
+          .push({ query: { PageNumber: this.current } })
+          .catch(() => {})
+      }
+    },
     created() {
       this.getWordLIst()
+    },
+    mounted() {
+      // შეამოწმოს route და შექმას შესაბამისი ქვერი თუ არ არესებობს
+      // თუ არსებობს აქტიური გვერდი გაუტოლოს აქტიურ პაგინაცი
+      if (!this.$route.query.PageNumber) {
+        this.$router
+          .push({ query: { PageNumber: this.current } })
+          .catch(() => {})
+      } else {
+        let page = parseInt(this.$route.query.PageNumber)
+        this.current = page
+        this.geWordsByPage(page)
+      }
     },
     updated() {
       let parent = this.$refs.parent.clientWidth
@@ -81,25 +119,31 @@
       })
     },
     methods: {
-      ...mapActions(['getWordLIst'])
+      ...mapActions(['getWordLIst', 'geWordsByPage'])
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  .card {
-    &_image-1 {
-      left: 50px;
-      top: 0;
-      z-index: 90;
+  .wordList {
+    .fullInfo {
+      border-color: transparent;
+      box-shadow: 2px 2px 8px #7fd1d899;
     }
-    .b-tooltips {
-      .b-tooltip {
-        margin-bottom: 1.5em;
-        &.is-light-passive .tooltip-content {
-          background: whitesmoke;
-          color: #c5cbcd;
-          box-shadow: 0px 3px 6px #7fd1d866;
+    .card {
+      &_image-1 {
+        left: 50px;
+        top: 0;
+        z-index: 90;
+      }
+      .b-tooltips {
+        .b-tooltip {
+          margin-bottom: 1.5em;
+          &.is-light-passive .tooltip-content {
+            background: whitesmoke;
+            color: #c5cbcd;
+            box-shadow: 0px 3px 6px #7fd1d866;
+          }
         }
       }
     }
