@@ -17,6 +17,14 @@ const routes = [
         path: '',
         name: 'Alphabet',
         component: () => import('@/components/WordList.vue')
+        /* beforeEnter: (to, from, next) => {
+          store.state.
+        } */
+      },
+      {
+        path: '/alphabet',
+        name: 'AlphabetActive',
+        component: () => import('@/components/WordList.vue')
       },
       {
         path: '/word/:wordId',
