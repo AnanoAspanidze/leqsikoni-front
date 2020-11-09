@@ -1,6 +1,8 @@
 <template>
   <div class="alphabet">
     <app-bee />
+    <app-fly />
+    <app-light-house />
     <div class="container section pt-0">
       <div class="columns is-centered is-multiline">
         <div v-if="userPath" class="column is-7">
@@ -20,7 +22,10 @@
               @enter="cardEnter"
               @leave="cardLeave"
             >
-              <div v-if="alphabet.active" class="card">
+              <div
+                v-if="alphabet.active || $route.name === 'AlphabetActive'"
+                class="card is-alphabet"
+              >
                 <div
                   class="is-flex is-justify-content-center has-text-primary is-family-primary is-size-4 my-5 is-relative"
                 >
@@ -172,12 +177,24 @@
                       :class="[$screen.width > 769 ? 'is-64x64' : 'is-48x48']"
                     >
                       <svg viewBox="0 0 79.238 79.6">
+                        <defs>
+                          <filter id="shadow2">
+                            <feDropShadow
+                              dx="1"
+                              dy="3"
+                              stdDeviation="4"
+                              flood-color="#f7cf43"
+                            />
+                          </filter>
+                        </defs>
                         <g transform="translate(10 10)">
                           <g transform="translate(55.238 0) rotate(90)">
                             <g transform="translate(0 0)">
                               <g
                                 class="c"
                                 transform="matrix(0, -1, 1, 0, -10, 65.24)"
+                                r="4"
+                                style="filter:url(#shadow2);"
                               >
                                 <path
                                   class="a"
@@ -225,13 +242,17 @@
 
 <script>
   import AppBee from '@/components/shared/Bee.vue'
+  import AppFly from '@/components/shared/Fly'
+  import AppLightHouse from '@/components/shared/LightHouse'
   import { mapGetters } from 'vuex'
   import { gsap } from 'gsap'
 
   export default {
     name: 'Alphabet',
     components: {
-      AppBee
+      AppBee,
+      AppFly,
+      AppLightHouse
     },
     data() {
       return {
@@ -345,6 +366,9 @@
 
 <style lang="scss" scoped>
   .alphabet {
+    .is-alphabet {
+      width: 100%;
+    }
     &_words {
       margin-bottom: -5rem;
     }
@@ -359,7 +383,7 @@
       transform: translate(-50%, -50%);
       li {
         border-radius: 100%;
-        height: 40px;
+        height: 30px;
         width: 30px;
         min-width: 30px;
       }
