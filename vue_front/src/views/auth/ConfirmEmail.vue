@@ -157,11 +157,5 @@
       z-index: 5;
       top: 0;
     }
-    .field {
-      font-family: 'HelveticaNeue';
-      .input {
-        font-family: 'HelveticaNeue';
-      }
-    }
   }
 </style>

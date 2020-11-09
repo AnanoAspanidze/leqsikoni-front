@@ -41,6 +41,7 @@
                               v-model="login.email"
                               placeholder="ელ.ფოსტა"
                               type="email"
+                              class="has-text-primary"
                               rounded
                               @blur="$v.login.email.$touch()"
                               @input="$v.login.email.$touch()"
@@ -444,15 +445,6 @@
     }
     &_image-box-2 {
       right: 10%;
-    }
-    .field {
-      font-family: 'HelveticaNeue';
-      .input {
-        font-family: 'HelveticaNeue';
-      }
-      p {
-        font-size: 10px;
-      }
     }
     @media screen and(max-width: 1024px) {
       &_image-box-2 {

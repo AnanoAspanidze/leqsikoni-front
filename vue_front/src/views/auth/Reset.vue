@@ -204,9 +204,7 @@
         transition: all 1s;
       }
     }
-    .field .input {
-      font-family: 'HelveticaNeue';
-    }
+
     &_image-1 {
       z-index: 5;
       top: 0;

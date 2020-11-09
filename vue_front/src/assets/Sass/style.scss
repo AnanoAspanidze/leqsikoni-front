@@ -3,7 +3,7 @@
 $primary: #7fd1d8;
 $warning: #f7cf43;
 $danger: #dc6c85;
-$text: #c5cbcd;
+$text: #b9b9b9;
 $grey-lightest: #c5cbcd;
 $purple: #947dce;
 
@@ -46,8 +46,10 @@ $navbar-dropdown-border-top: none;
 $navbar-burger-color: $primary;
 
 // button global variables
-$button-padding-horizontal: 3.5em;
+$button-padding-horizontal: 2.5em;
 $button-text-hover-color: #fff;
+$button-focus-box-shadow-size: 0 0 0 0.5em;
+
 $button-focus-box-shadow-size: 0 0 0 0.25em;
 
 //font sizes
@@ -170,8 +172,18 @@ $colors: (
   }
 }
 
-
-.lq-message{
+.lq-message {
   position: fixed;
   max-width: 400px;
+}
+
+// input
+.field {
+  font-family: 'NotoSans-Regular';
+  .input {
+    font-family: 'NotoSans-Regular';
+  }
+  p {
+    font-size: 10px;
+  }
 }
