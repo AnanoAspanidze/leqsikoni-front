@@ -115,7 +115,7 @@ export default new Vuex.Store({
     SET_WORDS_COUNT(state, count) {
       state.wordCount = count
     },
-    SET_WORD_BY_PAGE(state, words) {
+    SET_WORD_BY_QUERY(state, words) {
       state.wordList = words
     },
     CLEAR_USER_DATA(state) {
@@ -129,9 +129,11 @@ export default new Vuex.Store({
         commit('SET_WORDS_COUNT', Response.data.wordsQuantity)
       })
     },
-    geWordsByPage({ commit }, pageNumber) {
-      Axios.get(`words/wordslist?PageNumber=${pageNumber}`).then(Response => {
-        commit('SET_WORD_BY_PAGE', Response.data.wordsList)
+    getWordByQuery({ commit }, param) {
+      console.log('data', param)
+      Axios.get(`words/wordslist?${param.key}=${param.info}`).then(Response => {
+        console.log('Response', Response.data)
+        commit('SET_WORD_BY_QUERY', Response.data.wordsList)
         commit('SET_WORDS_COUNT', Response.data.wordsQuantity)
       })
     }

@@ -152,11 +152,14 @@
             <div class="search" :class="[userPath ? 'ml-10' : 'ml-5']">
               <div class="card is-flex is-align-items-center">
                 <div class="search is-flex is-align-items-center">
-                  <input
-                    class="input is-rounded"
-                    type="text"
-                    placeholder="მოძებნე"
-                  />
+                  <form @submit.prevent="getSearch">
+                    <input
+                      v-model="search"
+                      class="input is-rounded"
+                      type="text"
+                      placeholder="მოძებნე"
+                    />
+                  </form>
                 </div>
                 <div class="search_icon is-flex is-relative">
                   <div
@@ -244,7 +247,7 @@
   import AppBee from '@/components/shared/Bee.vue'
   import AppFly from '@/components/shared/Fly'
   import AppLightHouse from '@/components/shared/LightHouse'
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
   import { gsap } from 'gsap'
 
   export default {
@@ -265,7 +268,8 @@
         isGeo: false,
         isEng: false,
         geoSort: ['ა - ჰ', 'ჰ - ა'],
-        engSort: ['A-Z', 'Z-A']
+        engSort: ['A-Z', 'Z-A'],
+        search: ''
       }
     },
     computed: {
@@ -281,8 +285,15 @@
       }
     },
     methods: {
+      ...mapActions(['getWordByQuery']),
       selectLetter(val) {
         this.selectedLetter = val
+        this.$router.push({ query: { FilterChar: val } }).catch(() => {})
+      },
+      getSearch() {
+        this.$router
+          .push({ query: { SearchQuery: this.search } })
+          .catch(() => {})
       },
       // globe show/hide
       showSorting() {

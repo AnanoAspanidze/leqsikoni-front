@@ -56,6 +56,7 @@
         <router-link
           :to="{ name: 'AlphabetActive' }"
           class="navbar-item hover-link px-6"
+          @click.native="queryCheck"
         >
           <span class="is-relative">ანბანი</span>
         </router-link>
@@ -117,6 +118,13 @@
           // eslint-disable-next-line no-unused-vars
           this.$router.push({ name: 'Signing' }).catch(err => {})
         }
+      },
+      queryCheck() {
+        let query = Object.keys(this.$route.query)[0]
+        if (!query) {
+          this.$router.push({ query: { PageNumber: 1 } }).catch(() => {})
+        }
+        console.log(query)
       },
       logOut() {
         this.logOutUser()

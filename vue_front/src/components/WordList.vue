@@ -69,8 +69,18 @@
       // route ცვლილებისას გაეშვას შესაბამისი სიტყვების ჩატვირთვის მოთხოვნა
       $route(to) {
         let page = parseInt(to.query.PageNumber)
-        this.current = page
-        this.geWordsByPage(page)
+        let search = to.query.SearchQuery
+        let char = to.query.FilterChar
+        let key = Object.keys(to.query)[0]
+
+        if (page) {
+          this.current = page
+          this.getWordByQuery({ info: page, key })
+        } else if (search) {
+          this.getWordByQuery({ info: search, key })
+        } else if (char) {
+          this.getWordByQuery({ info: char, key })
+        }
       },
       // route ცვლილება current პაგინაციის ცვლილებისას
       current() {
@@ -80,20 +90,23 @@
       }
     },
     created() {
-      this.getWordLIst()
+      let key = Object.keys(this.$route.query)[0]
+      if (!key) {
+        this.$router
+          .push({ query: { PageNumber: this.current } })
+          .catch(() => {})
+      } else if (key === 'PageNumber') {
+        let page = parseInt(this.$route.query.PageNumber)
+        this.current = page
+        this.getWordByQuery({ info: page, key })
+      } else {
+        let data = this.$route.query[key]
+        this.getWordByQuery({ info: data, key })
+      }
     },
     mounted() {
       // შეამოწმოს route და შექმას შესაბამისი ქვერი თუ არ არესებობს
       // თუ არსებობს აქტიური გვერდი გაუტოლოს აქტიურ პაგინაცი
-      if (!this.$route.query.PageNumber) {
-        this.$router
-          .push({ query: { PageNumber: this.current } })
-          .catch(() => {})
-      } else {
-        let page = parseInt(this.$route.query.PageNumber)
-        this.current = page
-        this.geWordsByPage(page)
-      }
     },
     updated() {
       let parent = this.$refs.parent.clientWidth
@@ -119,7 +132,7 @@
       })
     },
     methods: {
-      ...mapActions(['getWordLIst', 'geWordsByPage'])
+      ...mapActions(['getWordLIst', 'getWordByQuery'])
     }
   }
 </script>
