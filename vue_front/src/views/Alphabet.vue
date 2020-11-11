@@ -336,6 +336,7 @@
       },
       // get lnag change
       getAlphabet(val, data) {
+        // სორტირება ქარტ, ინგ და თარიღის მიზედვით
         switch (data) {
           case this.geoSort[0]:
             this.$router
