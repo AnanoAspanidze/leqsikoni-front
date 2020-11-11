@@ -76,7 +76,8 @@ export default new Vuex.Store({
     isLoading: false,
     user: null,
     wordList: [],
-    wordCount: 0
+    wordCount: 0,
+    searchCount: null
   },
   getters: {
     isLoading(state) {
@@ -90,6 +91,9 @@ export default new Vuex.Store({
     },
     totalWords(state) {
       return state.wordCount
+    },
+    searchCount(state) {
+      return state.searchCount
     }
   },
   mutations: {
@@ -120,6 +124,9 @@ export default new Vuex.Store({
     },
     CLEAR_USER_DATA(state) {
       state.user = null
+    },
+    SEARCH_COUNT(state, number) {
+      state.searchCount = number
     }
   },
   actions: {
@@ -135,6 +142,9 @@ export default new Vuex.Store({
         console.log('Response', Response.data)
         commit('SET_WORD_BY_QUERY', Response.data.wordsList)
         commit('SET_WORDS_COUNT', Response.data.wordsQuantity)
+        if (param.key === 'SearchQuery') {
+          commit('SEARCH_COUNT', Response.data.wordsQuantity)
+        }
       })
     }
   },

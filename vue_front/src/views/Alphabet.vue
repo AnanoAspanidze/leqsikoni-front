@@ -95,6 +95,7 @@
                   class="panel mt-2 px-3 "
                   animation="slide"
                 >
+                  <!-- ქართ. ანბანის ფილტრი -->
                   <div class="is-clickable px-2 py-2">
                     <div @click="isGeo = !isGeo">
                       ქართული
@@ -114,12 +115,13 @@
                         v-for="item in geoSort"
                         :key="item"
                         class="has-text-text is-sorting"
-                        @click="getAlphabet('ka')"
+                        @click="getAlphabet('ka', item)"
                       >
                         {{ item }}
                       </div>
                     </b-collapse>
                   </div>
+                  <!-- ინგ ანბანის ფილტრი -->
                   <div class="is-clickable px-2 py-2">
                     <div @click="isEng = !isEng">
                       English
@@ -139,13 +141,38 @@
                         v-for="item in engSort"
                         :key="item"
                         class="has-text-text is-sorting"
-                        @click="getAlphabet('en')"
+                        @click="getAlphabet('en', item)"
                       >
                         {{ item }}
                       </div>
                     </b-collapse>
                   </div>
-                  <div class="is-clickable px-2 py-2 is-date">თარიღით</div>
+                  <!-- თარიღით ფილტრი -->
+                  <div class="is-clickable px-2 py-2">
+                    <div @click="isDate = !isDate">
+                      Date
+                      <b-icon
+                        size="is-small"
+                        :icon="isDate ? 'up' : 'down'"
+                        class="pl-2"
+                      ></b-icon>
+                    </div>
+                    <b-collapse
+                      v-model="isDate"
+                      aria-id="contentIdForA11y3"
+                      class=" mt-2 px-3"
+                      animation="slide"
+                    >
+                      <div
+                        v-for="item in dateSort"
+                        :key="item"
+                        class="has-text-text is-sorting"
+                        @click="getAlphabet('date', item)"
+                      >
+                        {{ item }}
+                      </div>
+                    </b-collapse>
+                  </div>
                 </b-collapse>
               </div>
             </div>
@@ -227,6 +254,9 @@
               </div>
             </div>
           </div>
+          <p v-if="searchCount" class="has-text-right mt-4 mr-6">
+            მოიძებნა {{ searchCount }} სიტყვა
+          </p>
         </div>
       </div>
       <!-- cards nested routes--->
@@ -267,13 +297,15 @@
         isOpen: false,
         isGeo: false,
         isEng: false,
+        isDate: false,
         geoSort: ['ა - ჰ', 'ჰ - ა'],
         engSort: ['A-Z', 'Z-A'],
+        dateSort: ['1-9', '9-1'],
         search: ''
       }
     },
     computed: {
-      ...mapGetters(['langAlph']),
+      ...mapGetters(['langAlph', 'searchCount']),
       userPath() {
         return this.$route.fullPath.includes('user')
       },
@@ -303,7 +335,41 @@
         this.alphabet.active = false
       },
       // get lnag change
-      getAlphabet(val) {
+      getAlphabet(val, data) {
+        switch (data) {
+          case this.geoSort[0]:
+            this.$router
+              .push({ query: { SortOrder: 'geo_name_asc' } })
+              .catch(() => {})
+            break
+          case this.geoSort[1]:
+            this.$router
+              .push({ query: { SortOrder: 'geo_name_desc' } })
+              .catch(() => {})
+            break
+          case this.engSort[0]:
+            this.$router
+              .push({ query: { SortOrder: 'eng_name_asc' } })
+              .catch(() => {})
+            break
+          case this.engSort[1]:
+            this.$router
+              .push({ query: { SortOrder: 'eng_name_desc' } })
+              .catch(() => {})
+            break
+          case this.dateSort[0]:
+            this.$router
+              .push({ query: { SortOrder: 'date_asc' } })
+              .catch(() => {})
+            break
+          case this.dateSort[1]:
+            this.$router
+              .push({ query: { SortOrder: 'date_desc' } })
+              .catch(() => {})
+            break
+          default:
+            break
+        }
         if (val === 'ka') {
           this.alphabet.active = true
           this.alphabet.index = 0

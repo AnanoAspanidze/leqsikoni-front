@@ -68,18 +68,20 @@
     watch: {
       // route ცვლილებისას გაეშვას შესაბამისი სიტყვების ჩატვირთვის მოთხოვნა
       $route(to) {
+        //გვერდის პაგინაციის შექმნა რადგან ციფრი უნდა იყოს
         let page = parseInt(to.query.PageNumber)
-        let search = to.query.SearchQuery
-        let char = to.query.FilterChar
         let key = Object.keys(to.query)[0]
+        // ავტ. query-ს მონიშნვა გარდა page
+        let queryData = to.query[key]
 
+        //პაგინასიის query-ს შექმნა
         if (page) {
           this.current = page
           this.getWordByQuery({ info: page, key })
-        } else if (search) {
-          this.getWordByQuery({ info: search, key })
-        } else if (char) {
-          this.getWordByQuery({ info: char, key })
+        }
+        //სხვა დანარჩენი query-ს შექმნა
+        else if (queryData) {
+          this.getWordByQuery({ info: queryData, key })
         }
       },
       // route ცვლილება current პაგინაციის ცვლილებისას
@@ -91,11 +93,14 @@
     },
     created() {
       let key = Object.keys(this.$route.query)[0]
+      //დომეინზე შესვლისას პაგინაციის query-ს ჩატვირთვა
       if (!key) {
         this.$router
           .push({ query: { PageNumber: this.current } })
           .catch(() => {})
-      } else if (key === 'PageNumber') {
+      }
+      //დომეინზე შესვლისას query-ს არსებობისას vuex action გაშვება
+      else if (key === 'PageNumber') {
         let page = parseInt(this.$route.query.PageNumber)
         this.current = page
         this.getWordByQuery({ info: page, key })
