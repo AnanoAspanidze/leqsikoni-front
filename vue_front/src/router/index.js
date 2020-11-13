@@ -64,6 +64,11 @@ const routes = [
     ]
   },
   {
+    path: '/addWords',
+    name: 'AddWords',
+    component: () => import('@/views/AddWords.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     component: About

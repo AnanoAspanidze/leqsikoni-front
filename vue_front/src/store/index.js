@@ -144,6 +144,8 @@ export default new Vuex.Store({
         commit('SET_WORDS_COUNT', Response.data.wordsQuantity)
         if (param.key === 'SearchQuery') {
           commit('SEARCH_COUNT', Response.data.wordsQuantity)
+        } else {
+          commit('SEARCH_COUNT', null)
         }
       })
     }

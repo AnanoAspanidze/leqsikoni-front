@@ -150,7 +150,7 @@
                   <!-- თარიღით ფილტრი -->
                   <div class="is-clickable px-2 py-2">
                     <div @click="isDate = !isDate">
-                      Date
+                      თარიღით
                       <b-icon
                         size="is-small"
                         :icon="isDate ? 'up' : 'down'"
@@ -217,7 +217,10 @@
                             />
                           </filter>
                         </defs>
-                        <g transform="translate(10 10)">
+                        <g
+                          transform="translate(10 10)"
+                          @click="$router.push({ name: 'AddWords' })"
+                        >
                           <g transform="translate(55.238 0) rotate(90)">
                             <g transform="translate(0 0)">
                               <g
@@ -252,11 +255,11 @@
                   </div>
                 </div>
               </div>
+              <p v-if="searchCount" class="has-text-left mt-4 ml-6">
+                მოიძებნა {{ searchCount }} სიტყვა
+              </p>
             </div>
           </div>
-          <p v-if="searchCount" class="has-text-right mt-4 mr-6">
-            მოიძებნა {{ searchCount }} სიტყვა
-          </p>
         </div>
       </div>
       <!-- cards nested routes--->
@@ -300,7 +303,7 @@
         isDate: false,
         geoSort: ['ა - ჰ', 'ჰ - ა'],
         engSort: ['A-Z', 'Z-A'],
-        dateSort: ['1-9', '9-1'],
+        dateSort: ['ახალი', 'ძველი'],
         search: ''
       }
     },

@@ -1,5 +1,5 @@
 <template>
-  <div class="columns is-centered mt-6 is-mobile">
+  <div v-if="total" class="columns is-centered mt-6 is-mobile">
     <div class="column is-7-tablet is-6-desktop is-5-widescreen">
       <b-pagination
         v-model="current"
