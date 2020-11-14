@@ -132,14 +132,13 @@ export default new Vuex.Store({
   actions: {
     getWordLIst({ commit }) {
       Axios.get('words/wordslist').then(Response => {
+        console.log(Response)
         commit('SET_WORD_LIST', Response.data.wordsList)
         commit('SET_WORDS_COUNT', Response.data.wordsQuantity)
       })
     },
     getWordByQuery({ commit }, param) {
-      console.log('data', param)
       Axios.get(`words/wordslist?${param.key}=${param.info}`).then(Response => {
-        console.log('Response', Response.data)
         commit('SET_WORD_BY_QUERY', Response.data.wordsList)
         commit('SET_WORDS_COUNT', Response.data.wordsQuantity)
         if (param.key === 'SearchQuery') {

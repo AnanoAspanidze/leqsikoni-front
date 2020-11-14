@@ -111,6 +111,7 @@
       return {
         test: '',
         wordList: {
+          userToken: 'asdasd323esda',
           geoWords: [
             {
               word: ''

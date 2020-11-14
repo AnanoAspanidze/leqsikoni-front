@@ -37,7 +37,7 @@
     },
     data() {
       return {
-        perPage: 5,
+        perPage: 10,
         rangeBefore: 3,
         rangeAfter: 1
       }

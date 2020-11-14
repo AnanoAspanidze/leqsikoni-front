@@ -12,7 +12,7 @@
           </figure>
         </div>
         <!-- card component -->
-        <words-card :word="item">
+        <words-card :words="item">
           <template v-slot:buttons>
             <b-button
               class="mr-5"
@@ -23,7 +23,7 @@
             />
             <b-button
               tag="router-link"
-              :to="{ name: 'SingleWord', params: { wordId: item.wordId } }"
+              :to="{ name: 'SingleWord', params: { wordId: item.itemId } }"
               type="is-primary"
               outlined
               rounded
