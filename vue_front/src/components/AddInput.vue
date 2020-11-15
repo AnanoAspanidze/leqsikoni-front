@@ -1,70 +1,94 @@
 <template>
-  <div class="is-inline-flex is-align-items-center">
-    <div class="add">
-      <div
-        class="image"
-        :class="[$screen.width > 769 ? 'is-48x48' : 'is-32x32']"
-      >
-        <svg viewBox="0 0 79.238 79.6">
-          <defs>
-            <filter id="shadow2">
-              <feDropShadow
-                dx="1"
-                dy="3"
-                stdDeviation="4"
-                flood-color="#f7cf43"
-              />
-            </filter>
-          </defs>
-          <g transform="translate(10 10)" @click="more(type)">
-            <g transform="translate(55.238 0) rotate(90)">
-              <g transform="translate(0 0)">
-                <g
-                  class="c"
-                  transform="matrix(0, -1, 1, 0, -10, 65.24)"
-                  r="4"
-                  style="filter:url(#shadow2);"
-                >
-                  <path
-                    class="a"
-                    d="M.4,27.291s5.065,27.947,28.7,27.947,31.321-25.321,23.632-39.95S22.9-4.03,9.963,3.659.4,27.291.4,27.291Z"
-                    transform="translate(65.24 10) rotate(90)"
-                  />
+  <div class="is-inline-flex is-flex-direction-column ">
+    <div class="is-flex is-align-items-center">
+      <div class="add">
+        <div
+          class="image"
+          :class="[$screen.width > 769 ? 'is-48x48' : 'is-32x32']"
+        >
+          <svg v-if="index == 0" viewBox="0 0 79.238 79.6">
+            <defs>
+              <filter id="shadow2">
+                <feDropShadow
+                  dx="1"
+                  dy="3"
+                  stdDeviation="4"
+                  flood-color="#f7cf43"
+                />
+              </filter>
+            </defs>
+            <g transform="translate(10 10)" @click="more(type)">
+              <g transform="translate(55.238 0) rotate(90)">
+                <g transform="translate(0 0)">
+                  <g
+                    class="c"
+                    transform="matrix(0, -1, 1, 0, -10, 65.24)"
+                    r="4"
+                    style="filter:url(#shadow2);"
+                  >
+                    <path
+                      class="a"
+                      d="M.4,27.291s5.065,27.947,28.7,27.947,31.321-25.321,23.632-39.95S22.9-4.03,9.963,3.659.4,27.291.4,27.291Z"
+                      transform="translate(65.24 10) rotate(90)"
+                    />
+                  </g>
                 </g>
               </g>
+              <g transform="translate(-894.947 -318.641)">
+                <line
+                  class="b"
+                  y2="10.952"
+                  transform="translate(922.976 340.5)"
+                />
+                <line
+                  class="b"
+                  x1="10.952"
+                  transform="translate(917.5 345.976)"
+                />
+              </g>
             </g>
-            <g transform="translate(-894.947 -318.641)">
-              <line
-                class="b"
-                y2="10.952"
-                transform="translate(922.976 340.5)"
-              />
-              <line
-                class="b"
-                x1="10.952"
-                transform="translate(917.5 345.976)"
-              />
-            </g>
-          </g>
-        </svg>
+          </svg>
+        </div>
       </div>
+      <div
+        class="icon-box has-background-primary is-flex is-justify-content-center is-align-items-center ml-2 mr-5"
+      >
+        <b-icon
+          size="is-small"
+          icon="info"
+          type="is-white"
+          class="is-clickable"
+          @click.native="toggle = !toggle"
+        ></b-icon>
+      </div>
+      <b-input
+        v-model="syncWord"
+        type="text"
+        :placeholder="placeholder"
+        rounded
+      />
     </div>
-    <div
-      class="icon-box has-background-primary is-flex is-justify-content-center is-align-items-center ml-2 mr-5"
-    >
-      <b-icon
-        size="is-small"
-        icon="info"
-        type="is-white"
-        class="is-clickable"
-      ></b-icon>
-    </div>
-    <b-input
-      v-model="syncWord"
-      type="text"
-      :placeholder="placeholder"
-      rounded
-    />
+    <section v-if="toggle">
+      <b-field grouped>
+        <b-input
+          v-model="syncSource"
+          placeholder="წყარო"
+          expanded
+          rounded
+          class="mt-2"
+        ></b-input>
+      </b-field>
+      <b-field grouped>
+        <b-input
+          v-model="syncLinks"
+          placeholder="www"
+          expanded
+          rounded
+          icon="link"
+          class="mb-2"
+        ></b-input>
+      </b-field>
+    </section>
   </div>
 </template>
 
@@ -76,6 +100,10 @@
         type: String,
         default: ''
       },
+      index: {
+        type: Number,
+        required: true
+      },
       type: {
         type: String,
         required: true
@@ -85,19 +113,43 @@
         required: true
       },
       word: {
-        type: String,
+        type: Object,
         required: true
+      }
+    },
+    data() {
+      return {
+        toggle: false
       }
     },
     computed: {
       syncWord: {
         get() {
-          return this.word
+          return this.word.wordName
         },
         set(newValue) {
           this.$emit('update:newWord', newValue)
         }
+      },
+      syncSource: {
+        get() {
+          return this.word.sourceText
+        },
+        set(newValue) {
+          this.$emit('update:newSource', newValue)
+        }
+      },
+      syncLinks: {
+        get() {
+          return this.word.sourceLink
+        },
+        set(newValue) {
+          this.$emit('update:newLink', newValue)
+        }
       }
+    },
+    methods: {
+      // დამატებითი წყაროები
     }
   }
 </script>

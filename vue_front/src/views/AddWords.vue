@@ -20,42 +20,51 @@
               class="is-flex is-flex-direction-column is-justify-content-center"
             >
               <div
-                v-for="(input, i) in wordList.engWords"
+                v-for="(input, i) in wordList.engWords.slice().reverse()"
                 :key="i + 'eng'"
                 class="adding_word-english is-inline-flex is-justify-content-center mb-3"
               >
                 <add-input
-                  :placeholder="'ინგლისური სიტყვა'"
+                  placeholder="ინგლისური სიტყვა"
                   type="eng"
+                  :index="i"
                   :more="addInput"
-                  :word="input.word"
-                  :new-word.sync="input.word"
+                  :word="input"
+                  :new-word.sync="input.wordName"
+                  :new-source.sync="input.sourceText"
+                  :new-link.sync="input.sourceLink"
                 />
               </div>
               <div
-                v-for="(input, i) in wordList.geoWords"
+                v-for="(input, i) in wordList.geoWords.slice().reverse()"
                 :key="i + 'geo'"
                 class="adding_word-gerigian is-inline-flex is-justify-content-center mb-3"
               >
                 <add-input
-                  :placeholder="'ქართული სიტყვა'"
+                  placeholder="ქართული სიტყვა"
                   type="geo"
+                  :index="i"
                   :more="addInput"
-                  :word="input.word"
-                  :new-word.sync="input.word"
+                  :word="input"
+                  :new-word.sync="input.wordName"
+                  :new-source.sync="input.sourceText"
+                  :new-link.sync="input.sourceLink"
                 />
               </div>
               <div
-                v-for="(input, i) in wordList.description"
+                v-for="(input, i) in wordList.defination.slice().reverse()"
                 :key="i + 'disc'"
                 class="adding_word-textarea is-inline-flex is-justify-content-center mb-3"
               >
                 <add-textarea
-                  :placeholder="'განმარტება'"
-                  type="disc"
+                  placeholder="განმარტება"
+                  type="def"
+                  :index="i"
                   :more="addInput"
-                  :discription="input.discription"
-                  :new-discriptin.sync="input.discription"
+                  :defination="input"
+                  :new-defination.sync="input.wordName"
+                  :new-source.sync="input.sourceText"
+                  :new-link.sync="input.sourceLink"
                 />
               </div>
             </div>
@@ -66,7 +75,7 @@
                   rounded
                   outlined
                   native-type="submit"
-                  @click="sublitWords"
+                  @click="submitWords"
                 >
                   შენახვა
                 </b-button>
@@ -109,22 +118,29 @@
     },
     data() {
       return {
-        test: '',
         wordList: {
-          userToken: 'asdasd323esda',
           geoWords: [
             {
-              word: ''
+              wordName: '',
+              wordType: 'geo',
+              sourceText: '',
+              sourceLink: ''
             }
           ],
           engWords: [
             {
-              word: ''
+              wordName: '',
+              wordType: 'eng',
+              sourceText: '',
+              sourceLink: ''
             }
           ],
-          description: [
+          defination: [
             {
-              discription: ''
+              wordName: '',
+              wordType: 'def',
+              sourceText: '',
+              sourceLink: ''
             }
           ]
         }
@@ -132,27 +148,43 @@
     },
     methods: {
       addInput(type) {
+        let obj = {
+          wordName: '',
+          wordType: type,
+          sourceText: '',
+          sourceLink: ''
+        }
         switch (type) {
           case 'eng':
-            this.wordList.engWords.push({ word: '' })
+            this.wordList.engWords.push(obj)
             break
           case 'geo':
-            this.wordList.geoWords.push({ word: '' })
+            this.wordList.geoWords.push(obj)
             break
-          case 'disc':
-            this.wordList.description.push({ discription: '' })
+          case 'def':
+            this.wordList.defination.push(obj)
             break
           default:
             break
         }
       },
-      sublitWords() {
-        //let checkObj = {}
-        let eng = this.wordList.engWords.filter(x => x.word !== '')
-        let geo = this.wordList.geoWords.filter(x => x.word !== '')
-        let disc = this.wordList.description.filter(x => x.word !== '')
-
-        console.log('eng =>', eng, 'geo =>', geo, 'disc =>', disc)
+      submitWords() {
+        // ცარიელ სიტყვებზე შემოწმება
+        let eng = this.wordList.engWords.filter(x => x.wordName !== '')
+        let geo = this.wordList.geoWords.filter(x => x.wordName !== '')
+        let def = this.wordList.defination.filter(x => x.wordName !== '')
+        // მომხმარებლის ტოკენი
+        let token = this.$store.state.auth.token
+        // BE გასაგზავნი ფორმატი
+        let wordList = [
+          {
+            userToken: token,
+            wordList: [...eng, ...geo, ...def]
+          }
+        ]
+        if (eng.length > 0 || geo.length > 0) {
+          console.log(wordList, def)
+        }
       }
     }
   }
@@ -168,10 +200,6 @@
       transform: translateX(-50%);
       width: 60px;
       border-bottom: 2px solid #f7cf43;
-    }
-    &-english {
-    }
-    &-georgian {
     }
   }
 </style>
