@@ -24,10 +24,11 @@
             >
               <div
                 v-if="alphabet.active || $route.name === 'AlphabetActive'"
-                class="card is-alphabet"
+                class="card is-alphabet py-3"
               >
                 <div
-                  class="is-flex is-justify-content-center has-text-primary is-family-primary is-size-4 my-5 is-relative"
+                  class="is-flex is-justify-content-center has-text-primary is-family-primary is-size-4  is-relative"
+                  :class="[$screen.tablet ? 'my-5' : 'my-6']"
                 >
                   <div class="search-wrap">
                     <transition
@@ -41,7 +42,7 @@
                         :key="alphabet.index"
                         class="is-flex alphabet_list is-absolute"
                         :class="{
-                          'is-justify-content-space-around': $screen.desktop
+                          'is-justify-content-space-around': $screen.widescreen
                         }"
                       >
                         <li
@@ -70,9 +71,11 @@
       <div
         class="columns is-centered mt-5"
         :class="[
-          { 'is-mobile-mt': isOpen && !isEng && !isGeo },
+          { 'is-mobile-mt': isOpen && !isEng && !isGeo && !isDate },
+          { 'is-mobile-mt-lg': isOpen && isEng && isGeo && isDate },
           { 'is-lang-mt': isEng },
-          { 'is-lang-mt': isGeo }
+          { 'is-lang-mt': isGeo },
+          { 'is-lang-mt': isDate }
         ]"
       >
         <div class="column is-10">
@@ -481,6 +484,7 @@
         }
         .is-panel_wrapper {
           right: 0;
+          z-index: 5;
           min-width: 160px;
         }
         .is {
@@ -548,7 +552,7 @@
         }
       }
     }
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 1216px) {
       .alphabet {
         &_list {
           flex-direction: row;
@@ -588,6 +592,9 @@
 
       .is-mobile-mt {
         margin-bottom: 10rem !important;
+      }
+      .is-mobile-mt-lg {
+        margin-bottom: 20rem !important;
       }
       .is-lang-mt {
         margin-bottom: 15rem;

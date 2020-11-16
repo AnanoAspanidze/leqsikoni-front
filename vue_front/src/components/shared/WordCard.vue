@@ -1,11 +1,11 @@
 <template>
   <div class="card">
-    <div class="card-content mx-6 my-5">
+    <div class="card-content my-5" :class="[!$screen.tablet ? 'mx-3' : 'mx-6']">
       <slot name="edit"></slot>
       <!-- fist content -->
       <div class="card-content_line is-flex is-flex-direction-column">
         <div
-          v-for="word in words.wordsList"
+          v-for="word in words.itemsList"
           :key="word.itemId"
           class="is-flex mb-3"
         >

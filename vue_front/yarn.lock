@@ -8629,10 +8629,10 @@ vue-router@^3.4.8:
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.4.8.tgz#2c06261d35d8075893470352d42d70b6287b8194"
   integrity sha512-3BsR84AqarcmweXjItxw3jwQsiYNssYg090yi4rlzTnCJxmHtkyCvhNz9Z7qRSOkmiV485KkUCReTp5AjNY4wg==
 
-vue-screen@^1.4.4:
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/vue-screen/-/vue-screen-1.4.4.tgz#c4a3b2706d29685ccdf703eecc6cb33b554fe325"
-  integrity sha512-o5nOnjjknVjfyBmEZTzfVbDm2EJ7rnejsMJSrU11ke3WoN5Reo7ecSyLPSnNatve/GuAsXPDl2nEdaM1X48Lqw==
+vue-screen@^1.5.3:
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/vue-screen/-/vue-screen-1.5.3.tgz#0fc576c4620d9327b6c9c05a06c2fc35b87724d4"
+  integrity sha512-n9vKn6usE31Uy50D5g3uXalC++M0mEVXqNgGsWNPuo/JcV/6qQrsfY/PTe88n3d4qAF03Nje84sCzC/mLXmL2A==
 
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.2"

@@ -53,8 +53,8 @@ const routes = [
         // თუ მომხმარებელი არ არსებობს გადაამისამართოს მთავარ გვერდზე
         // if no user redirect to main
         beforeEnter: (to, from, next) => {
-          let user = localStorage.getItem('User')
-          if (!user) {
+          let token = localStorage.getItem('emisToken')
+          if (!token) {
             next()
           } else {
             next({ path: '/' })
@@ -66,7 +66,15 @@ const routes = [
   {
     path: '/addWords',
     name: 'AddWords',
-    component: () => import('@/views/AddWords.vue')
+    component: () => import('@/views/AddWords.vue'),
+    beforeEnter: (to, from, next) => {
+      let token = localStorage.getItem('emisToken')
+      if (!token) {
+        next()
+      } else {
+        next({ name: 'Signing' })
+      }
+    }
   },
   {
     path: '/about',
