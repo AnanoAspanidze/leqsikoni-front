@@ -1,6 +1,10 @@
 <template>
   <div class="card">
-    <div class="card-content my-5" :class="[!$screen.tablet ? 'mx-3' : 'mx-6']">
+    <div
+      v-if="words != 0"
+      class="card-content my-5"
+      :class="[!$screen.tablet ? 'mx-3' : 'mx-6']"
+    >
       <slot name="edit"></slot>
       <!-- fist content -->
       <div class="card-content_line is-flex is-flex-direction-column">
@@ -44,7 +48,10 @@
             </b-tooltip>
           </div>
           <p
-            class="has-text-primary is-family-secondary has-text-weight-bold is-capitalized ml-3"
+            class="has-text-text is-family-secondary has-text-weight-bold is-capitalized ml-3"
+            :class="{
+              'has-text-primary': word.wordType.toLowerCase() === 'eng'
+            }"
           >
             {{ word.wordName }}
           </p>
@@ -60,6 +67,13 @@
         </div>
       </div>
     </div>
+    <div
+      v-else
+      class="card-content my-5"
+      :class="[!$screen.tablet ? 'mx-3' : 'mx-6']"
+    >
+      <h2 class="has-text-primary has-text-centered">ეს სექცია ცარიელია</h2>
+    </div>
   </div>
 </template>
 
@@ -67,7 +81,7 @@
   export default {
     props: {
       words: {
-        type: Object,
+        type: [Object, Number],
         required: true
       }
     }

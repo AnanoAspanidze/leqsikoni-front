@@ -42,7 +42,7 @@ const routes = [
           if (token) {
             next()
           } else {
-            next({ path: '/' })
+            next({ name: 'Signing' })
           }
         }
       },
@@ -69,7 +69,7 @@ const routes = [
     component: () => import('@/views/AddWords.vue'),
     beforeEnter: (to, from, next) => {
       let token = localStorage.getItem('emisToken')
-      if (!token) {
+      if (token) {
         next()
       } else {
         next({ name: 'Signing' })

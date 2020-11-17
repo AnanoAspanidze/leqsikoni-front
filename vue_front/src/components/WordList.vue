@@ -109,10 +109,6 @@
         this.getWordByQuery({ info: data, key })
       }
     },
-    mounted() {
-      // შეამოწმოს route და შექმას შესაბამისი ქვერი თუ არ არესებობს
-      // თუ არსებობს აქტიური გვერდი გაუტოლოს აქტიურ პაგინაცი
-    },
     updated() {
       let parent = this.$refs.parent.clientWidth
       gsap.registerPlugin(MotionPathPlugin)

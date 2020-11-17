@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
+
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Axios from '../plugins/axios'
-
+import router from '@/router'
 import auth from './Auth/auth'
 
 Vue.use(Vuex)
@@ -77,7 +79,8 @@ export default new Vuex.Store({
     user: null,
     wordList: [],
     wordCount: 0,
-    searchCount: null
+    searchCount: null,
+    userWords: null
   },
   getters: {
     isLoading(state) {
@@ -94,12 +97,15 @@ export default new Vuex.Store({
     },
     searchCount(state) {
       return state.searchCount
+    },
+    userWords(state) {
+      return state.userWords
     }
   },
   mutations: {
     SET_USER(state, userData) {
       if (localStorage.getItem('emisUser')) {
-        state.useer = JSON.parse(localStorage.getItem('emisUser'))
+        state.user = JSON.parse(localStorage.getItem('emisUser'))
       } else {
         let data = {
           firstName: userData.firstname,
@@ -127,6 +133,9 @@ export default new Vuex.Store({
     },
     SEARCH_COUNT(state, number) {
       state.searchCount = number
+    },
+    SET_USER_WORDS(state, words) {
+      state.userWords = words
     }
   },
   actions: {
@@ -147,6 +156,22 @@ export default new Vuex.Store({
           commit('SEARCH_COUNT', null)
         }
       })
+    },
+    getUserWordList({ commit, state }, page) {
+      let userId = state.user.userId
+      console.log(userId, page)
+      if (userId) {
+        Axios.get(`words/wordslist/${userId}?PageNumber=${page}`).then(
+          Response => {
+            console.log(Response.data)
+            commit('SET_WORDS_COUNT', Response.data.wordsQuantity)
+            commit('SET_USER_WORDS', Response.data.wordsList)
+          }
+        )
+      } else {
+        // გადამისამართება მთავარ გვერდზე
+        router.push({ name: 'Signing' }).catch(err => {})
+      }
     }
   },
   modules: {
