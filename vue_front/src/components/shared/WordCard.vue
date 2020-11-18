@@ -2,7 +2,7 @@
   <div class="card">
     <div
       v-if="words != 0"
-      class="card-content my-5"
+      class="card-content py-6"
       :class="[!$screen.tablet ? 'mx-3' : 'mx-6']"
     >
       <slot name="edit"></slot>
@@ -21,6 +21,7 @@
               :triggers="['click']"
               position="is-bottom"
               type="is-info"
+              :auto-close="['outside', 'escape']"
             >
               <b-icon
                 size="is-small"
@@ -34,11 +35,17 @@
             class="card-content_line-icon has-background-primary is-inline-flex is-justify-content-center px-1 py-1 ml-2"
           >
             <b-tooltip
-              label="this is info data"
               :triggers="['click']"
               position="is-bottom"
               type="is-info"
+              :auto-close="['outside', 'escape']"
             >
+              <template v-slot:content>
+                <div class="is-flex is-flex-direction-column">
+                  <p class="pb-1">წყარო: {{ word.sourceText }}</p>
+                  <a class="pt-1" href="word.sourceLink">ლინკი</a>
+                </div>
+              </template>
               <b-icon
                 size="is-small"
                 icon="info"
@@ -47,6 +54,7 @@
               ></b-icon>
             </b-tooltip>
           </div>
+          <slot name="icon"></slot>
           <p
             class="has-text-text is-family-secondary has-text-weight-bold is-capitalized ml-3"
             :class="{
@@ -90,8 +98,6 @@
 
 <style lang="scss" scoped>
   .card {
-    overflow-x: auto;
-
     &-content {
       &_line {
         &-icon {

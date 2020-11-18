@@ -45,28 +45,13 @@ const routes = [
             next({ name: 'Signing' })
           }
         }
-      },
-      {
-        path: 'user/word/:wordId',
-        name: 'UserSingleWord',
-        component: () => import('@/components/userCards/UserSingleWord.vue'),
-        // თუ მომხმარებელი არ არსებობს გადაამისამართოს მთავარ გვერდზე
-        // if no user redirect to main
-        beforeEnter: (to, from, next) => {
-          let token = localStorage.getItem('emisToken')
-          if (!token) {
-            next()
-          } else {
-            next({ path: '/' })
-          }
-        }
       }
     ]
   },
   {
-    path: '/addWords',
-    name: 'AddWords',
-    component: () => import('@/views/AddWords.vue'),
+    path: '/editing',
+    name: 'Editing',
+    component: () => import('@/views/WordsChange.vue'),
     beforeEnter: (to, from, next) => {
       let token = localStorage.getItem('emisToken')
       if (token) {

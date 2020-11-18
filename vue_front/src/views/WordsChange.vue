@@ -106,6 +106,7 @@
   import AppLightHouse from '@/components/shared/LightHouse'
   import AddInput from '@/components/AddInput.vue'
   import AddTextarea from '@/components/AddTextarea.vue'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     name: 'AddWords',
@@ -146,7 +147,37 @@
         }
       }
     },
+    computed: {
+      ...mapGetters(['singleWord'])
+    },
+    watch: {
+      singleWord(val) {
+        val.itemsList.forEach(elm => {
+          console.log(elm.wordType.toLowerCase())
+          switch (elm.wordType.toLowerCase()) {
+            case 'geo':
+              this.wordList.geoWords.push(elm)
+              break
+            case 'eng':
+              this.wordList.engWords.push(elm)
+              break
+            case 'def':
+              this.wordList.defination.push(elm)
+              break
+            default:
+              break
+          }
+        })
+      }
+    },
+    created() {
+      let wordId = parseInt(this.$route.params.wordId)
+      if (wordId) {
+        this.getSingleWord(wordId)
+      }
+    },
     methods: {
+      ...mapActions(['getSingleWord']),
       addInput(type) {
         let obj = {
           wordName: '',

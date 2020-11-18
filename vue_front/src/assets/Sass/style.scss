@@ -31,6 +31,7 @@ $navbar-item-active-color: $text;
 //card global variables
 $card-radius: 1.5rem;
 $card-shadow: 2px 2px 8px #7fd1d866;
+$card-overflow: inherit;
 
 // panel variables
 $panel-shadow: 2px 2px 8px #7fd1d866;
@@ -186,4 +187,8 @@ $colors: (
   p {
     font-size: 10px;
   }
+}
+
+.time-size {
+  font-size: 25px !important;
 }

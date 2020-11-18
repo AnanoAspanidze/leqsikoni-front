@@ -7,7 +7,42 @@
         </figure>
       </div>
       <!-- card component -->
-      <words-card>
+      <words-card :words="singleWord">
+        <template v-slot:edit>
+          <div class="card-content_line-edit is-flex">
+            <div class="is-inline-block ml-a mb-3">
+              <b-button
+                size="is-small"
+                type="is-purple"
+                icon-right="edit"
+                outlined
+                rounded
+                @click="getEditRoute"
+              />
+            </div>
+          </div>
+        </template>
+        <template v-slot:icon>
+          <div
+            class="card-content_line-icon has-background-primary is-inline-flex is-justify-content-center px-1 py-1 ml-2"
+          >
+            <b-tooltip
+              :label="getDateFormat"
+              :triggers="['click']"
+              position="is-bottom"
+              type="is-info"
+              :auto-close="['outside', 'escape']"
+            >
+              <b-icon
+                size="is-small"
+                icon="clock"
+                type="is-white"
+                class="is-clickable"
+                custom-class="time-size"
+              ></b-icon>
+            </b-tooltip>
+          </div>
+        </template>
         <template v-slot:buttons>
           <b-button type="is-primary" icon-right="share" outlined rounded />
         </template>
@@ -20,13 +55,37 @@
   import WordsCard from '@/components/shared/WordCard.vue'
   import gsap from 'gsap'
   import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     name: 'WordCard',
     components: {
       WordsCard
     },
-    mounted() {
+    computed: {
+      ...mapGetters(['singleWord', 'user']),
+      getDateFormat() {
+        if (this.singleWord) {
+          const date = new Date(this.singleWord.date)
+          const dateTimeFormat = new Intl.DateTimeFormat('ka', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric'
+          })
+          return dateTimeFormat.format(date)
+        }
+        return ''
+      }
+    },
+    created() {
+      let id = this.$route.params.wordId
+      if (id) {
+        this.getSingleWord(id)
+      }
+    },
+    updated() {
       let parent = this.$refs.parent.clientWidth
       gsap.registerPlugin(MotionPathPlugin)
       gsap.to('.card_image-1', {
@@ -48,14 +107,35 @@
           autoRotate: true
         }
       })
+    },
+    methods: {
+      ...mapActions(['getSingleWord']),
+      getEditRoute() {
+        let wordId = this.singleWord.itemsList[0].user.userId
+        if (!this.user) {
+          this.$router.push({ name: 'Signing' })
+        } else {
+          if (wordId === this.user.userId) {
+            this.$router.push({
+              name: 'Editing',
+              params: { wordId: this.singleWord.itemId }
+            })
+          } else {
+            this.$buefy.toast.open({
+              duration: 3000,
+              message: 'თქვენ არ გაქვთ ამ სიტყვის რედაქტირების უფლება',
+              position: 'is-bottom-right',
+              type: 'is-danger'
+            })
+          }
+        }
+      }
     }
   }
 </script>
 
 <style lang="scss" scoped>
   .card {
-    overflow-x: auto;
-
     &-content {
       &_line {
         &-icon {
@@ -68,6 +148,9 @@
             box-shadow: 2px 2px 6px #7fd1d866;
             border: none;
           }
+        }
+        &-edit button {
+          padding: 1rem 1rem;
         }
       }
     }

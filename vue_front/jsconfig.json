@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "allowSyntheticDefaultImports": false,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "Config/*": ["src/config/*"],
-      "Components/*": ["src/components/*"],
-      "Ducks/*": ["src/ducks/*"],
-      "Shared/*": ["src/shared/*"],
-      "App/*": ["src/*"]
+      "src/*": ["src/*"],
+      "app/*": ["*"],
+      "components/*": ["src/components/*"],
+      "layouts/*": ["src/layouts/*"],
+      "pages/*": ["src/pages/*"],
+      "assets/*": ["src/assets/*"],
+      "vue$": ["node_modules/vue/dist/vue.esm.js"]
     }
   },
-  "exclude": ["node_modules", "dist"]
+  "exclude": ["dist", "node_modules"]
 }

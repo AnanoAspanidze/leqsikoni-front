@@ -80,11 +80,15 @@ export default new Vuex.Store({
     wordList: [],
     wordCount: 0,
     searchCount: null,
-    userWords: null
+    userWords: null,
+    singleWord: {}
   },
   getters: {
     isLoading(state) {
       return state.isLoading
+    },
+    user(state){
+      return state.user
     },
     langAlph(state) {
       return state.alphabet
@@ -100,6 +104,9 @@ export default new Vuex.Store({
     },
     userWords(state) {
       return state.userWords
+    },
+    singleWord(state) {
+      return state.singleWord
     }
   },
   mutations: {
@@ -136,6 +143,9 @@ export default new Vuex.Store({
     },
     SET_USER_WORDS(state, words) {
       state.userWords = words
+    },
+    SET_SINGLE_WORD(state, word) {
+      state.singleWord = word
     }
   },
   actions: {
@@ -159,7 +169,6 @@ export default new Vuex.Store({
     },
     getUserWordList({ commit, state }, page) {
       let userId = state.user.userId
-      console.log(userId, page)
       if (userId) {
         Axios.get(`words/wordslist/${userId}?PageNumber=${page}`).then(
           Response => {
@@ -172,6 +181,11 @@ export default new Vuex.Store({
         // გადამისამართება მთავარ გვერდზე
         router.push({ name: 'Signing' }).catch(err => {})
       }
+    },
+    getSingleWord({ commit }, wordId) {
+      Axios.get(`words/wordsdetails/${wordId}`).then(Response => {
+        commit('SET_SINGLE_WORD', Response.data)
+      })
     }
   },
   modules: {
