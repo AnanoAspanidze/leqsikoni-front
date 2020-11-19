@@ -165,7 +165,7 @@
           transition: all 1s;
         }
       }
-      .router-link-exact-active span:after {
+      .router-link-active span:after {
         content: '';
         display: inline-block;
         background: #f7cf43;

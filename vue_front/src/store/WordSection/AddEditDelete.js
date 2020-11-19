@@ -10,9 +10,7 @@ const auth = {
   mutations: {},
 
   actions: {
-      editWord(){
-          
-      }
+    editWord() {}
   }
 }
 
