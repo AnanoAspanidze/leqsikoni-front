@@ -222,7 +222,7 @@
                         </defs>
                         <g
                           transform="translate(10 10)"
-                          @click="$router.push({ name: 'AddWords' })"
+                          @click="$router.push({ name: 'Editing' })"
                         >
                           <g transform="translate(55.238 0) rotate(90)">
                             <g transform="translate(0 0)">

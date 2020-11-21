@@ -87,7 +87,7 @@ export default new Vuex.Store({
     isLoading(state) {
       return state.isLoading
     },
-    user(state){
+    user(state) {
       return state.user
     },
     langAlph(state) {
@@ -151,7 +151,6 @@ export default new Vuex.Store({
   actions: {
     getWordLIst({ commit }) {
       Axios.get('words/wordslist').then(Response => {
-        console.log(Response)
         commit('SET_WORD_LIST', Response.data.wordsList)
         commit('SET_WORDS_COUNT', Response.data.wordsQuantity)
       })
@@ -172,7 +171,6 @@ export default new Vuex.Store({
       if (userId) {
         Axios.get(`words/wordslist/${userId}?PageNumber=${page}`).then(
           Response => {
-            console.log(Response.data)
             commit('SET_WORDS_COUNT', Response.data.wordsQuantity)
             commit('SET_USER_WORDS', Response.data.wordsList)
           }

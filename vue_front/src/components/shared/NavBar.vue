@@ -124,7 +124,6 @@
         if (!query) {
           this.$router.push({ query: { PageNumber: 1 } }).catch(() => {})
         }
-        console.log(query)
       },
       logOut() {
         this.logOutUser()

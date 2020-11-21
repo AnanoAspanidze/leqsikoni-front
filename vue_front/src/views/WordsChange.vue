@@ -153,7 +153,6 @@
     watch: {
       singleWord(val) {
         val.itemsList.forEach(elm => {
-          console.log(elm.wordType.toLowerCase())
           switch (elm.wordType.toLowerCase()) {
             case 'geo':
               this.wordList.geoWords.push(elm)
