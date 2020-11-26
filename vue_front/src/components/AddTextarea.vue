@@ -66,6 +66,7 @@
           v-model="syncDiscription"
           class="textarea has-fixed-size is-rounded"
           :placeholder="placeholder"
+          :disabled="isDisabled"
         ></textarea>
       </div>
     </div>
@@ -124,6 +125,12 @@
       }
     },
     computed: {
+      isDisabled() {
+        if (this.defination.wordName.length === 0 || this.defination.isAuthor) {
+          return false
+        }
+        return true
+      },
       // prop ტექსტის სინტქრონი
       syncDiscription: {
         get() {

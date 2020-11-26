@@ -233,19 +233,28 @@
     },
     computed: {
       engWords() {
-        return this.words.itemsList.filter(
-          x => x.wordType.toLowerCase() === 'eng'
-        )
+        if (this.words.itemsList !== undefined) {
+          return this.words.itemsList.filter(
+            x => x.wordType.toLowerCase() === 'eng'
+          )
+        }
+        return null
       },
       geoWords() {
-        return this.words.itemsList.filter(
-          x => x.wordType.toLowerCase() === 'geo'
-        )
+        if (this.words.itemsList !== undefined) {
+          return this.words.itemsList.filter(
+            x => x.wordType.toLowerCase() === 'geo'
+          )
+        }
+        return null
       },
       defWords() {
-        return this.words.itemsList.filter(
-          x => x.wordType.toLowerCase() === 'def'
-        )
+        if (this.words.itemsList !== undefined) {
+          return this.words.itemsList.filter(
+            x => x.wordType.toLowerCase() === 'def'
+          )
+        }
+        return null
       }
     }
   }

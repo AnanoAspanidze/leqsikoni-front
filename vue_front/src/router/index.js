@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Alphabet from '../views/Alphabet.vue'
-import About from '../views/About.vue'
-import Contact from '../views/Contact.vue'
+import Alphabet from '@/views/Alphabet.vue'
+import About from '@/views/About.vue'
+import Contact from '@/views/Contact.vue'
 import Axios from '@/plugins/axios'
-import store from '../store/index'
+import store from '@/store/index'
 
 Vue.use(VueRouter)
 
@@ -49,7 +49,20 @@ const routes = [
     ]
   },
   {
-    path: '/editing',
+    path: '/addwords',
+    name: 'addWord',
+    component: () => import('@/views/WordsChange.vue'),
+    beforeEnter: (to, from, next) => {
+      let token = localStorage.getItem('emisToken')
+      if (token) {
+        next()
+      } else {
+        next({ name: 'Signing' })
+      }
+    }
+  },
+  {
+    path: '/editing/:wordId',
     name: 'Editing',
     component: () => import('@/views/WordsChange.vue'),
     beforeEnter: (to, from, next) => {

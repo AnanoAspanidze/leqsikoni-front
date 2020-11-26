@@ -2,7 +2,7 @@
   <div class="adding_word container section">
     <div class="columns is-centered">
       <div class="column is-6-desktop is-8-tablet is-12-mobile">
-        <div class="card">
+        <div v-if="editWord" class="card">
           <div class="card-header-title is-centered mt-5">
             <h1
               class="title has-text-primary is-size-6 has-text-weight-light is-relative"
@@ -75,6 +75,7 @@
                   rounded
                   outlined
                   native-type="submit"
+                  :disabled="getSubmitCondition"
                   @click="submitWords"
                 >
                   შენახვა
@@ -148,10 +149,18 @@
       }
     },
     computed: {
-      ...mapGetters(['singleWord'])
+      ...mapGetters('words', ['editWord']),
+      getSubmitCondition() {
+        const geo = this.wordList.geoWords[0]
+        const eng = this.wordList.engWords[0]
+        if (geo.wordName.length > 1 || eng.wordName.length > 1) {
+          return false
+        }
+        return true
+      }
     },
     watch: {
-      singleWord(val) {
+      editWord(val) {
         val.itemsList.forEach(elm => {
           switch (elm.wordType.toLowerCase()) {
             case 'geo':
@@ -172,11 +181,11 @@
     created() {
       let wordId = parseInt(this.$route.params.wordId)
       if (wordId) {
-        this.getSingleWord(wordId)
+        this.getEditWord(wordId)
       }
     },
     methods: {
-      ...mapActions(['getSingleWord']),
+      ...mapActions('words', ['getEditWord']),
       addInput(type) {
         let obj = {
           wordName: '',
@@ -199,21 +208,73 @@
         }
       },
       submitWords() {
-        // ცარიელ სიტყვებზე შემოწმება
-        let eng = this.wordList.engWords.filter(x => x.wordName !== '')
-        let geo = this.wordList.geoWords.filter(x => x.wordName !== '')
-        let def = this.wordList.defination.filter(x => x.wordName !== '')
-        // მომხმარებლის ტოკენი
-        let token = this.$store.state.auth.token
-        // BE გასაგზავნი ფორმატი
-        let wordList = [
-          {
-            userToken: token,
-            wordList: [...eng, ...geo, ...def]
+        if (!this.$route.params.wordId) {
+          // ცარიელ სიტყვებზე შემოწმება
+          let eng = this.wordList.engWords.filter(x => x.wordName !== '')
+          let geo = this.wordList.geoWords.filter(x => x.wordName !== '')
+          let def = this.wordList.defination.filter(x => x.wordName !== '')
+          // BE გასაგზავნი ფორმატი
+          let wordList = {
+            itemsList: [...eng, ...geo, ...def]
           }
-        ]
-        if (eng.length > 0 || geo.length > 0) {
-          console.log(wordList, def)
+          if (eng.length > 0 || geo.length > 0) {
+            this.editWord(wordList)
+              .then(result => {
+                let type = result.success ? 'is-success' : 'is-danger'
+                if (result.success) {
+                  this.$buefy.toast.open({
+                    duration: 3000,
+                    message: result.message,
+                    position: 'is-bottom-right',
+                    type: type
+                  })
+                  // reset word
+                  this.wordList = {
+                    geoWords: [
+                      {
+                        wordName: '',
+                        wordType: 'geo',
+                        sourceText: '',
+                        sourceLink: ''
+                      }
+                    ],
+                    engWords: [
+                      {
+                        wordName: '',
+                        wordType: 'eng',
+                        sourceText: '',
+                        sourceLink: ''
+                      }
+                    ],
+                    defination: [
+                      {
+                        wordName: '',
+                        wordType: 'def',
+                        sourceText: '',
+                        sourceLink: ''
+                      }
+                    ]
+                  }
+                } else {
+                  this.$buefy.toast.open({
+                    duration: 3000,
+                    message: result.message,
+                    position: 'is-bottom-right',
+                    type: type
+                  })
+                }
+              })
+              .catch(err => {
+                console.log(err)
+              })
+          } else {
+            this.$buefy.toast.open({
+              duration: 3000,
+              message: '',
+              position: 'is-bottom-right',
+              type: 'is-danger'
+            })
+          }
         }
       }
     }

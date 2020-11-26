@@ -5,6 +5,7 @@ import Vuex from 'vuex'
 import Axios from '../plugins/axios'
 import router from '@/router'
 import auth from './Auth/auth'
+import words from './Words/AddEditDelete'
 
 Vue.use(Vuex)
 
@@ -187,6 +188,7 @@ export default new Vuex.Store({
     }
   },
   modules: {
-    auth
+    auth,
+    words
   }
 })

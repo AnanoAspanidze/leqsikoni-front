@@ -1,6 +1,10 @@
 <template>
   <div class="columns is-multiline is-centered mt-5">
-    <div ref="parent" class="column is-8 is-offset-1 is-relative">
+    <div
+      v-if="singleWord"
+      ref="parent"
+      class="column is-8 is-offset-1 is-relative"
+    >
       <div class="card_image-1 is-absolute">
         <figure class="image is-32x32">
           <img src="@/assets/img/yellow-ladybird.svg" alt="ladybird" />
@@ -17,7 +21,12 @@
                 icon-right="edit"
                 outlined
                 rounded
-                @click="getEditRoute"
+                @click="
+                  $router.push({
+                    name: 'Editing',
+                    params: { wordId: singleWord.itemId }
+                  })
+                "
               />
             </div>
           </div>
@@ -58,7 +67,7 @@
   import { mapGetters, mapActions } from 'vuex'
 
   export default {
-    name: 'WordCard',
+    name: 'SingleWord',
     components: {
       WordsCard
     },
@@ -109,27 +118,7 @@
       })
     },
     methods: {
-      ...mapActions(['getSingleWord']),
-      getEditRoute() {
-        let wordId = this.singleWord.itemsList[0].user.userId
-        if (!this.user) {
-          this.$router.push({ name: 'Signing' })
-        } else {
-          if (wordId === this.user.userId) {
-            this.$router.push({
-              name: 'Editing',
-              params: { wordId: this.singleWord.itemId }
-            })
-          } else {
-            this.$buefy.toast.open({
-              duration: 3000,
-              message: 'თქვენ არ გაქვთ ამ სიტყვის რედაქტირების უფლება',
-              position: 'is-bottom-right',
-              type: 'is-danger'
-            })
-          }
-        }
-      }
+      ...mapActions(['getSingleWord'])
     }
   }
 </script>

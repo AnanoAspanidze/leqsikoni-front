@@ -66,6 +66,7 @@
         type="text"
         :placeholder="placeholder"
         rounded
+        :disabled="isDisabled"
       />
     </div>
     <section v-if="toggle">
@@ -123,6 +124,12 @@
       }
     },
     computed: {
+      isDisabled() {
+        if (this.word.isAuthor) {
+          return false
+        }
+        return true
+      },
       syncWord: {
         get() {
           return this.word.wordName
