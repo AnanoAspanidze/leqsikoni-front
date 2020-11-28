@@ -63,16 +63,17 @@
       </div>
       <b-input
         v-model="syncWord"
-        type="text"
-        :placeholder="placeholder"
-        rounded
         :disabled="isDisabled"
+        :placeholder="placeholder"
+        type="text"
+        rounded
       />
     </div>
     <section v-if="toggle">
       <b-field grouped>
         <b-input
           v-model="syncSource"
+          :disabled="isDisabled"
           placeholder="წყარო"
           expanded
           rounded
@@ -82,6 +83,7 @@
       <b-field grouped>
         <b-input
           v-model="syncLinks"
+          :disabled="isDisabled"
           placeholder="www"
           expanded
           rounded
@@ -125,8 +127,10 @@
     },
     computed: {
       isDisabled() {
-        if (this.word.isAuthor) {
-          return false
+        if (this.word) {
+          if (!('isAuthor' in this.word) || this.word.isAuthor) {
+            return false
+          }
         }
         return true
       },

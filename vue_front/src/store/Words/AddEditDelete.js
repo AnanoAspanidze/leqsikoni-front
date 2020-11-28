@@ -8,7 +8,7 @@ const words = {
   },
 
   getters: {
-    editWord(state) {
+    wordsToEdit(state) {
       return state.words
     }
   },
@@ -21,7 +21,7 @@ const words = {
 
   actions: {
     // add words
-    editWord(_, newWord) {
+    addWord(_, newWord) {
       return new Promise(res => {
         Axios.post('words/addword', newWord).then(Response => {
           res(Response.data)
@@ -32,6 +32,14 @@ const words = {
     getEditWord({ commit }, wordId) {
       Axios.get(`words/editwordsdetails/${wordId}`).then(Response => {
         commit('SET_EDITING_WORDS', Response.data)
+      })
+    },
+    // get edditable words
+    editWord(_, newWord) {
+      return new Promise(res => {
+        Axios.post('words/editword', newWord).then(Response => {
+          res(Response.data)
+        })
       })
     }
   }

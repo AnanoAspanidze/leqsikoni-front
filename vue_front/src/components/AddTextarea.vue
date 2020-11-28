@@ -74,6 +74,7 @@
       <b-field grouped>
         <b-input
           v-model="syncSource"
+          :disabled="isDisabled"
           placeholder="წყარო"
           expanded
           rounded
@@ -83,6 +84,7 @@
       <b-field grouped>
         <b-input
           v-model="syncLinks"
+          :disabled="isDisabled"
           placeholder="www"
           expanded
           rounded
@@ -126,8 +128,10 @@
     },
     computed: {
       isDisabled() {
-        if (this.defination.wordName.length === 0 || this.defination.isAuthor) {
-          return false
+        if (this.defination) {
+          if (!('isAuthor' in this.defination) || this.defination.isAuthor) {
+            return false
+          }
         }
         return true
       },
