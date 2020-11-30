@@ -278,10 +278,16 @@
         } else {
           // სიტყვების წვლილება
           wordList = this.removeEmptyObjects()
-          console.log(wordList)
+          wordList.itemId = this.wordsToEdit.itemId
           // შეტყობინების გამოტანის ფუნქციის გამოძახება წარმატება/წარუმატებლობისას
           this.editWord(wordList).then(result => {
             this.getMessage(result.success, result.message)
+
+            // გადავამისამართოთ სიტყვის გვერდზე
+            this.$router.push({
+              name: 'SingleWord',
+              params: { wordId: this.wordsToEdit.itemId }
+            })
           })
         }
       }
