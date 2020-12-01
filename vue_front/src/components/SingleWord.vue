@@ -53,7 +53,16 @@
           </div>
         </template>
         <template v-slot:buttons>
-          <b-button type="is-primary" icon-right="share" outlined rounded />
+          <ShareNetwork
+            tag="div"
+            network="facebook"
+            :url="`https://terms.emis.ge${$route.fullPath}`"
+            title="Say hi to Vite! A brand new, extremely fast development setup for Vue."
+            description="This week, I’d like to introduce you to 'Vite', which means 'Fast'. It’s a brand new development setup created by Evan You."
+            quote="The hot reload is so fast it\'s near instant. - Evan You"
+          >
+            <b-button type="is-primary" icon-right="share" outlined rounded />
+          </ShareNetwork>
         </template>
       </words-card>
     </div>
@@ -84,6 +93,18 @@
             minute: 'numeric'
           })
           return dateTimeFormat.format(date)
+        }
+        return ''
+      },
+      getFacebookWord() {
+        if (this.singleWord) {
+          this.singleWord.itemsList.forEach(elm => {
+            if (elm.isMainWord && elm.wordType === 'eng') {
+              return elm.wordName
+            } else if (elm.isMainWord && elm.wordType === 'geo') {
+              return elm.wordName
+            }
+          })
         }
         return ''
       }

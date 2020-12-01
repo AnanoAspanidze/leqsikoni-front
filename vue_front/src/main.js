@@ -3,43 +3,18 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import {
-  ConfigProgrammatic,
-  Input,
-  Tabs,
-  Button,
-  Collapse,
-  Icon,
-  Dropdown,
-  Pagination,
-  Tooltip,
-  Toast,
-  Field
-} from 'buefy'
-
-import './assets/Sass/style.scss'
-Vue.use(Input)
-Vue.use(Button)
-Vue.use(Collapse)
-Vue.use(Icon)
-Vue.use(Dropdown)
-Vue.use(Pagination)
-Vue.use(Tooltip)
-Vue.use(Toast)
-Vue.use(Tabs)
-Vue.use(Field)
-ConfigProgrammatic.setOptions({
-  defaultIconPack: 'fi'
-  // ...
-})
-
-import Vuelidate from 'vuelidate'
-Vue.use(Vuelidate)
-
-import VueScreen from 'vue-screen'
-Vue.use(VueScreen, 'bulma')
+import '@/assets/Sass/style.scss'
+import '@/plugins/allPlugin'
 
 Vue.config.productionTip = false
+
+// remove fb query params
+router.beforeEach((to, from, next) => {
+  if (to.query.fbclid) {
+    delete to.query.fbclid
+    next()
+  } else next()
+})
 
 new Vue({
   router,

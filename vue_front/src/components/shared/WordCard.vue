@@ -56,7 +56,7 @@
             <slot name="icon"></slot>
             <p
               v-if="word.wordType.toLowerCase() === 'eng'"
-              class="has-text-primary is-family-secondary has-text-weight-bold is-capitalized ml-3"
+              class="has-text-primary is-family-secondary is-capitalized ml-3"
               :class="[
                 word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
               ]"
@@ -65,13 +65,13 @@
             </p>
             <p
               v-if="word.wordType.toLowerCase() === 'geo'"
-              class="has-text-text is-family-secondary has-text-weight-bold is-capitalized ml-3 mt"
+              class="has-text-text is-family-secondary is-capitalized ml-3 mt"
             >
               {{ word.wordName }}
             </p>
             <p
               v-if="word.wordType.toLowerCase() === 'def'"
-              class="has-text-text is-family-secondary has-text-weight-bold is-capitalized ml-3"
+              class="has-text-text is-family-secondary is-capitalized ml-3"
             >
               {{ word.wordName }}
             </p>
@@ -131,19 +131,28 @@
             <slot name="icon"></slot>
             <p
               v-if="word.wordType.toLowerCase() === 'eng'"
-              class="has-text-primary is-family-secondary has-text-weight-bold is-capitalized ml-3"
+              class="has-text-primary is-family-secondary is-capitalized ml-3"
+              :class="[
+                word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
+              ]"
             >
               {{ word.wordName }}
             </p>
             <p
               v-if="word.wordType.toLowerCase() === 'geo'"
-              class="has-text-text is-family-secondary has-text-weight-bold is-capitalized ml-3 mt"
+              class="has-text-text is-family-secondary is-capitalized ml-3 mt"
+              :class="[
+                word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
+              ]"
             >
               {{ word.wordName }}
             </p>
             <p
               v-if="word.wordType.toLowerCase() === 'def'"
-              class="has-text-text is-family-secondary has-text-weight-bold is-capitalized ml-3"
+              class="has-text-text is-family-secondary is-capitalized ml-3"
+              :class="[
+                word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
+              ]"
             >
               {{ word.wordName }}
             </p>
@@ -196,19 +205,28 @@
             <slot name="icon"></slot>
             <p
               v-if="word.wordType.toLowerCase() === 'eng'"
-              class="has-text-primary is-family-secondary has-text-weight-bold is-capitalized ml-3"
+              :class="[
+                word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
+              ]"
+              class="has-text-primary is-family-secondary is-capitalized ml-3"
             >
               {{ word.wordName }}
             </p>
             <p
               v-if="word.wordType.toLowerCase() === 'geo'"
-              class="has-text-text is-family-secondary has-text-weight-bold is-capitalized ml-3 mt"
+              :class="[
+                word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
+              ]"
+              class="has-text-text is-family-secondary is-capitalized ml-3 mt"
             >
               {{ word.wordName }}
             </p>
             <p
               v-if="word.wordType.toLowerCase() === 'def'"
-              class="has-text-text is-family-secondary has-text-weight-bold is-capitalized ml-3"
+              :class="[
+                word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
+              ]"
+              class="has-text-text is-family-secondary is-capitalized ml-3"
             >
               {{ word.wordName }}
             </p>
@@ -265,7 +283,7 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .card {
     &-content {
       &_line {
@@ -274,12 +292,8 @@
           height: 26px;
           width: 26px;
         }
-        &-share button {
-          padding: 1rem 1.2rem;
-          &:last-child {
-            box-shadow: 2px 2px 6px #7fd1d866;
-            border: none;
-          }
+        &-share .buttons button {
+          padding: 1rem 1.2rem !important;
         }
       }
     }

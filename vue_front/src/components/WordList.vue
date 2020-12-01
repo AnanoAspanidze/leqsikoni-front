@@ -14,13 +14,23 @@
         <!-- card component -->
         <words-card :words="item">
           <template v-slot:buttons>
-            <b-button
-              class="mr-5"
-              type="is-primary"
-              icon-right="share"
-              outlined
-              rounded
-            />
+            <ShareNetwork
+              tag="div"
+              network="facebook"
+              url="https://terms.emis.ge"
+              title="აქ უნდა იყოს სათაური"
+              description="აღწერის ველი"
+              quote="ციტირების ველი"
+              hashtags="ჰეშტეგები"
+            >
+              <b-button
+                class="mr-5"
+                type="is-primary"
+                icon-right="share"
+                outlined
+                rounded
+              />
+            </ShareNetwork>
             <b-button
               tag="router-link"
               :to="{ name: 'SingleWord', params: { wordId: item.itemId } }"
