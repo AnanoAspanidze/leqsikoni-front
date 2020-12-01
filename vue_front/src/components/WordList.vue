@@ -34,6 +34,9 @@
           </template>
         </words-card>
       </div>
+      <div v-if="totalWords === 0" class="column is-8 is-offset-1 is-relative">
+        <empty-word />
+      </div>
     </div>
     <!-- paginations -->
     <pagination
@@ -47,6 +50,7 @@
 <script>
   import Pagination from '@/components/pagination/Pagination.vue'
   import WordsCard from '@/components/shared/WordCard.vue'
+  import EmptyWord from '@/components/shared/EmptyWord.vue'
   import gsap from 'gsap'
   import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
   import { mapActions, mapGetters } from 'vuex'
@@ -55,7 +59,8 @@
     name: 'WordList',
     components: {
       Pagination,
-      WordsCard
+      WordsCard,
+      EmptyWord
     },
     data() {
       return {
@@ -70,24 +75,24 @@
       $route(to) {
         //გვერდის პაგინაციის შექმნა რადგან ციფრი უნდა იყოს
         let page = parseInt(to.query.PageNumber)
-        let key = Object.keys(to.query)[0]
-        // ავტ. query-ს მონიშნვა გარდა page
-        let queryData = to.query[key]
-
         //პაგინასიის query-ს შექმნა
         if (page) {
           this.current = page
-          this.getWordByQuery({ info: page, key })
+          this.getWordByQuery(to.query)
         }
         //სხვა დანარჩენი query-ს შექმნა
-        else if (queryData) {
-          this.getWordByQuery({ info: queryData, key })
+        else {
+          this.getWordByQuery(to.query)
         }
       },
       // route ცვლილება current პაგინაციის ცვლილებისას
       current() {
         this.$router
-          .push({ query: { PageNumber: this.current } })
+          .push({
+            query: Object.assign({}, this.$route.query, {
+              PageNumber: this.current
+            })
+          })
           .catch(() => {})
       }
     },
@@ -100,13 +105,11 @@
           .catch(() => {})
       }
       //დომეინზე შესვლისას query-ს არსებობისას vuex action გაშვება
-      else if (key === 'PageNumber') {
-        let page = parseInt(this.$route.query.PageNumber)
-        this.current = page
-        this.getWordByQuery({ info: page, key })
-      } else {
-        let data = this.$route.query[key]
-        this.getWordByQuery({ info: data, key })
+      else {
+        if (this.$route.query.PageNumber) {
+          this.current = parseInt(this.$route.query.PageNumber)
+        }
+        this.getWordByQuery(this.$route.query)
       }
     },
     updated() {

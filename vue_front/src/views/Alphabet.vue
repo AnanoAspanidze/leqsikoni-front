@@ -283,7 +283,7 @@
   import AppBee from '@/components/shared/Bee.vue'
   import AppFly from '@/components/shared/Fly'
   import AppLightHouse from '@/components/shared/LightHouse'
-  import { mapGetters, mapActions } from 'vuex'
+  import { mapGetters } from 'vuex'
   import { gsap } from 'gsap'
 
   export default {
@@ -323,14 +323,13 @@
       }
     },
     methods: {
-      ...mapActions(['getWordByQuery']),
       selectLetter(val) {
         this.selectedLetter = val
         this.$router.push({ query: { FilterChar: val } }).catch(() => {})
       },
       getSearch() {
         this.$router
-          .push({ query: { SearchQuery: this.search } })
+          .push({ path: '/', query: { SearchQuery: this.search } })
           .catch(() => {})
       },
       // globe show/hide
@@ -346,32 +345,56 @@
         switch (data) {
           case this.geoSort[0]:
             this.$router
-              .push({ query: { SortOrder: 'geo_name_asc' } })
+              .push({
+                query: Object.assign({}, this.$route.query, {
+                  SortOrder: 'geo_name_asc'
+                })
+              })
               .catch(() => {})
             break
           case this.geoSort[1]:
             this.$router
-              .push({ query: { SortOrder: 'geo_name_desc' } })
+              .push({
+                query: Object.assign({}, this.$route.query, {
+                  SortOrder: 'geo_name_desc'
+                })
+              })
               .catch(() => {})
             break
           case this.engSort[0]:
             this.$router
-              .push({ query: { SortOrder: 'eng_name_asc' } })
+              .push({
+                query: Object.assign({}, this.$route.query, {
+                  SortOrder: 'eng_name_asc'
+                })
+              })
               .catch(() => {})
             break
           case this.engSort[1]:
             this.$router
-              .push({ query: { SortOrder: 'eng_name_desc' } })
+              .push({
+                query: Object.assign({}, this.$route.query, {
+                  SortOrder: 'eng_name_desc'
+                })
+              })
               .catch(() => {})
             break
           case this.dateSort[0]:
             this.$router
-              .push({ query: { SortOrder: 'date_asc' } })
+              .push({
+                query: Object.assign({}, this.$route.query, {
+                  SortOrder: 'date_asc'
+                })
+              })
               .catch(() => {})
             break
           case this.dateSort[1]:
             this.$router
-              .push({ query: { SortOrder: 'date_desc' } })
+              .push({
+                query: Object.assign({}, this.$route.query, {
+                  SortOrder: 'date_desc'
+                })
+              })
               .catch(() => {})
             break
           default:

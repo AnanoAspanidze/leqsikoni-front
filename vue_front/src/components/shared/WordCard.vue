@@ -40,7 +40,9 @@
                 <template v-slot:content>
                   <div class="is-flex is-flex-direction-column">
                     <p class="pb-1">წყარო: {{ word.sourceText }}</p>
-                    <a class="pt-1" href="word.sourceLink">ლინკი</a>
+                    <a class="pt-1" target="_blanck" :href="word.sourceLink">
+                      ლინკი
+                    </a>
                   </div>
                 </template>
                 <b-icon
@@ -55,6 +57,9 @@
             <p
               v-if="word.wordType.toLowerCase() === 'eng'"
               class="has-text-primary is-family-secondary has-text-weight-bold is-capitalized ml-3"
+              :class="[
+                word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
+              ]"
             >
               {{ word.wordName }}
             </p>
@@ -105,7 +110,14 @@
                 <template v-slot:content>
                   <div class="is-flex is-flex-direction-column">
                     <p class="pb-1">წყარო: {{ word.sourceText }}</p>
-                    <a class="pt-1" href="word.sourceLink">ლინკი</a>
+                    <a
+                      v-if="word.sourceLink && word.sourceLink !== ''"
+                      class="pt-1"
+                      target="_blanck"
+                      :href="word.sourceLink"
+                    >
+                      ლინკი
+                    </a>
                   </div>
                 </template>
                 <b-icon
@@ -213,13 +225,6 @@
         </div>
       </div>
     </div>
-    <div
-      v-else
-      class="card-content my-5"
-      :class="[!$screen.tablet ? 'mx-3' : 'mx-6']"
-    >
-      <h2 class="has-text-primary has-text-centered">ეს სექცია ცარიელია</h2>
-    </div>
   </div>
 </template>
 
@@ -266,8 +271,8 @@
       &_line {
         &-icon {
           border-radius: 100%;
-          height: 24px;
-          width: 24px;
+          height: 26px;
+          width: 26px;
         }
         &-share button {
           padding: 1rem 1.2rem;

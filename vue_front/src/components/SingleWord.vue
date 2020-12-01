@@ -129,7 +129,7 @@
       &_line {
         &-icon {
           border-radius: 100%;
-          max-height: 24px;
+          max-height: 26px;
         }
         &-share button {
           padding: 1rem 1.2rem;

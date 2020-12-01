@@ -157,7 +157,16 @@ export default new Vuex.Store({
       })
     },
     getWordByQuery({ commit }, param) {
-      Axios.get(`words/wordslist?${param.key}=${param.info}`).then(Response => {
+      // get all keys and values from query
+      const keys = Object.keys(param)
+      const values = Object.values(param)
+      // save all elements in single array and join on send
+      let result = []
+      for (var i = 0; i < keys.length; i++) {
+        result[i] = keys[i] + '=' + values[i]
+      }
+
+      Axios.get(`words/wordslist?${result.join('&')}`).then(Response => {
         commit('SET_WORD_BY_QUERY', Response.data.wordsList)
         commit('SET_WORDS_COUNT', Response.data.wordsQuantity)
         if (param.key === 'SearchQuery') {

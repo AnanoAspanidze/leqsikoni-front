@@ -1,30 +1,30 @@
-    /*
+/*
     Flaticon icon font: Flaticon
     Creation date: 15/11/2020 11:48
     */
 
-    @font-face {
-  font-family: "Flaticon";
-  src: url("../fonts/Flaticon.eot");
-  src: url("../fonts/Flaticon.eot?#iefix") format("embedded-opentype"),
-       url("../fonts/Flaticon.woff2") format("woff2"),
-       url("../fonts/Flaticon.woff") format("woff"),
-       url("../fonts/Flaticon.ttf") format("truetype"),
-       url("../fonts/Flaticon.svg#Flaticon") format("svg");
+@font-face {
+  font-family: 'Flaticon';
+  src: url('../fonts/Flaticon.eot');
+  src: url('../fonts/Flaticon.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Flaticon.woff2') format('woff2'),
+    url('../fonts/Flaticon.woff') format('woff'),
+    url('../fonts/Flaticon.ttf') format('truetype'),
+    url('../fonts/Flaticon.svg#Flaticon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
-    font-family: "Flaticon";
-    src: url("../fonts/Flaticon.svg#Flaticon") format("svg");
+    font-family: 'Flaticon';
+    src: url('../fonts/Flaticon.svg#Flaticon') format('svg');
   }
 }
 
-    .fi:before{
-        display: inline-block;
-  font-family: "Flaticon";
+.fi:before {
+  display: inline-block;
+  font-family: 'Flaticon';
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -35,45 +35,82 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-smoothing: antialiased;
-    }
+}
 
-  .user:before { content: "\f100"; }
-.in:before { content: "\f101"; }
-.fb:before { content: "\f102"; }
-.tw:before { content: "\f103"; }
-.info:before { content: "\f104"; }
-.share:before { content: "\f105"; }
-.plus:before { content: "\f106"; }
-.clock:before { content: "\f107"; }
-.edit:before { content: "\f108"; }
-.checked:before { content: "\f109"; }
-.block-user:before { content: "\f10a"; }
-.internet:before { content: "\f10b"; }
-.down:before { content: "\f10c"; }
-.up:before { content: "\f10d"; }
-.right-chevron:before { content: "\f10e"; }
-.left-chevron:before { content: "\f10f"; }
-.eye:before { content: "\f110"; }
-.eye-off:before { content: "\f111"; }
-.link:before { content: "\f112"; }
-    
-    $font-user: "\f100";
-    $font-in: "\f101";
-    $font-fb: "\f102";
-    $font-tw: "\f103";
-    $font-info: "\f104";
-    $font-share: "\f105";
-    $font-plus: "\f106";
-    $font-clock: "\f107";
-    $font-edit: "\f108";
-    $font-checked: "\f109";
-    $font-block-user: "\f10a";
-    $font-internet: "\f10b";
-    $font-down: "\f10c";
-    $font-up: "\f10d";
-    $font-right-chevron: "\f10e";
-    $font-left-chevron: "\f10f";
-    $font-eye: "\f110";
-    $font-eye-off: "\f111";
-    $font-link: "\f112";
+.user:before {
+  content: '\f100';
+}
+.in:before {
+  content: '\f101';
+}
+.fb:before {
+  content: '\f102';
+}
+.tw:before {
+  content: '\f103';
+}
+.info:before {
+  content: '\f104';
+}
+.share:before {
+  content: '\f105';
+}
+.plus:before {
+  content: '\f106';
+}
+.clock:before {
+  content: '\f107';
+}
+.edit:before {
+  content: '\f108';
+}
+.checked:before {
+  content: '\f109';
+}
+.block-user:before {
+  content: '\f10a';
+}
+.internet:before {
+  content: '\f10b';
+}
+.down:before {
+  content: '\f10c';
+}
+.up:before {
+  content: '\f10d';
+}
+.right-chevron:before {
+  content: '\f10e';
+}
+.left-chevron:before {
+  content: '\f10f';
+}
+.eye:before {
+  content: '\f110';
+}
+.eye-off:before {
+  content: '\f111';
+}
+.link:before {
+  content: '\f112';
+}
 
+$font-user: '\f100';
+$font-in: '\f101';
+$font-fb: '\f102';
+$font-tw: '\f103';
+$font-info: '\f104';
+$font-share: '\f105';
+$font-plus: '\f106';
+$font-clock: '\f107';
+$font-edit: '\f108';
+$font-checked: '\f109';
+$font-block-user: '\f10a';
+$font-internet: '\f10b';
+$font-down: '\f10c';
+$font-up: '\f10d';
+$font-right-chevron: '\f10e';
+$font-left-chevron: '\f10f';
+$font-eye: '\f110';
+$font-eye-off: '\f111';
+$font-link: '\f112';

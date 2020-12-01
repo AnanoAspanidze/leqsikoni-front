@@ -12,7 +12,7 @@
             <h1
               class="title has-text-primary is-size-5 has-text-weight-light mt-5 has-text-centered is-relative"
             >
-              პაროლის არდგენა
+              პაროლის აღდგენა
             </h1>
           </div>
           <div class="card-content pb-6 is-family-secondary">
