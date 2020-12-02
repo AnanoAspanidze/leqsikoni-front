@@ -118,7 +118,7 @@
         { property: 'og:site_name', content: '' },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://terms.emis.ge' },
-        { property: 'og:image', content: '/logo.svg' },
+        { property: 'og:image', content: 'https://terms.emis.ge/logo.svg' },
         { property: 'og:description', content: '' },
         { property: 'og:locale', content: 'ka_ge' }
       ]
