@@ -472,7 +472,20 @@
       // if no subcomponents specify a metaInfo.title, this title will be used
       title: 'მთავარი',
       // all titles will be injected into this template
-      titleTemplate: '%s | Term.emis.ge'
+      titleTemplate: '%s | Term.emis.ge',
+      meta: [
+        // OpenGraph data (Most widely used)
+        { property: 'og:title', content: '' },
+        { property: 'og:site_name', content: '' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: 'https://terms.emis.ge' },
+        { property: 'og:image', content: 'https://terms.emis.ge/logo.png' },
+        {
+          property: 'og:description',
+          content: 'ეს არის terms.emis.ge სატესტო SEO აღწერა'
+        },
+        { property: 'og:locale', content: 'ka-GE' }
+      ]
     }
   }
 </script>

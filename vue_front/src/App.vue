@@ -119,8 +119,11 @@
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://terms.emis.ge' },
         { property: 'og:image', content: 'https://terms.emis.ge/logo.png' },
-        { property: 'og:description', content: '' },
-        { property: 'og:locale', content: 'ka_ge' }
+        {
+          property: 'og:description',
+          content: 'ეს არის terms.emis.ge სატესტო SEO აღწერა'
+        },
+        { property: 'og:locale', content: 'ka-GE' }
       ]
     }
   }

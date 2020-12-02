@@ -17,7 +17,7 @@
             <ShareNetwork
               tag="div"
               network="facebook"
-              url="https://terms.emis.ge"
+              :url="`https://terms.emis.ge/word/${item.id}`"
               title="აქ უნდა იყოს სათაური"
               description="აღწერის ველი"
               quote="ციტირების ველი"
@@ -33,7 +33,11 @@
             </ShareNetwork>
             <b-button
               tag="router-link"
-              :to="{ name: 'SingleWord', params: { wordId: item.itemId } }"
+              :to="{
+                name: 'SingleWord',
+                params: { wordId: item.itemId },
+                query: { word: item.itemsList[0].wordName }
+              }"
               type="is-primary"
               outlined
               rounded
