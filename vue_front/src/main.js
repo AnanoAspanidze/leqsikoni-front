@@ -19,5 +19,9 @@ router.beforeEach((to, from, next) => {
 new Vue({
   router,
   store,
+  // RenderAfterDocument Event:'render-event'name must correspond to vue-config.js
+  mounted() {
+    document.dispatchEvent(new Event('render-event'))
+  },
   render: h => h(App)
 }).$mount('#app')

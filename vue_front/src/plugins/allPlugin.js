@@ -39,3 +39,8 @@ ConfigProgrammatic.setOptions({
 // social share
 import VueSocialSharing from 'vue-social-sharing'
 Vue.use(VueSocialSharing)
+
+// meta tags
+
+import VueMeta from 'vue-meta'
+Vue.use(VueMeta)

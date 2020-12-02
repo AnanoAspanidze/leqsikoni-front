@@ -46,7 +46,7 @@
 .plus:before { content: "\f106"; }
 .edit:before { content: "\f107"; }
 .checked:before { content: "\f108"; }
-.block:before { content: "\f109"; }
+.blocks:before { content: "\f109"; }
 .internet:before { content: "\f10a"; }
 .down:before { content: "\f10b"; }
 .up:before { content: "\f10c"; }
@@ -68,7 +68,7 @@
     $font-plus: "\f106";
     $font-edit: "\f107";
     $font-checked: "\f108";
-    $font-block: "\f109";
+    $font-blocks: "\f109";
     $font-internet: "\f10a";
     $font-down: "\f10b";
     $font-up: "\f10c";

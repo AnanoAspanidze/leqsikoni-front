@@ -69,6 +69,12 @@
         yoyo: true,
         ease: 'none'
       })
+    },
+    metaInfo: {
+      // if no subcomponents specify a metaInfo.title, this title will be used
+      title: 'კონტაქტი',
+      // all titles will be injected into this template
+      titleTemplate: '%s | Term.emis.ge'
     }
   }
 </script>

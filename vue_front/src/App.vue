@@ -80,6 +80,44 @@
           onComplete: done
         })
       }
+    },
+    metaInfo: {
+      // if no subcomponents specify a metaInfo.title, this title will be used
+      title: 'მთავარი',
+      // all titles will be injected into this template
+      titleTemplate: '%s | Term.emis.ge',
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+      meta: [
+        // Google / Schema.org markup:
+        {
+          itemprop: 'name',
+          content: 'Terms.emis.ge'
+        },
+        {
+          itemprop: 'descritpin',
+          content: ''
+        },
+        {
+          itemprop: 'image',
+          content: '/logo.svg'
+        },
+        // Twitter card
+        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:title', content: '' },
+        { name: 'twitter:site', content: process.env.BASE_URL },
+        { name: 'twitter:description', content: '' },
+        // -- Twitter summary card with large image must be at least 280x150px --
+        { name: 'twitter:image:src', content: '/logo.svg' },
+
+        // OpenGraph data (Most widely used)
+        { property: 'og:title', content: '' },
+        { property: 'og:site_name', content: '' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: process.env.BASE_URL },
+        { property: 'og:image', content: '/logo.svg' },
+        { property: 'og:description', content: '' },
+        { property: 'og:locale', content: 'ka_ge' }
+      ]
     }
   }
 </script>
