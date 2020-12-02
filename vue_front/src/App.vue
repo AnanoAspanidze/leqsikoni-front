@@ -110,7 +110,7 @@
         // -- Twitter summary card with large image must be at least 280x150px --
         {
           name: 'twitter:image:src',
-          content: './logo.svg'
+          content: 'https://terms.emis.ge/logo.svg'
         },
 
         // OpenGraph data (Most widely used)
@@ -118,7 +118,7 @@
         { property: 'og:site_name', content: '' },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://terms.emis.ge' },
-        { property: 'og:image', content: '/logo.png' },
+        { property: 'og:image', content: 'https://terms.emis.ge/logo.png' },
         { property: 'og:description', content: '' },
         { property: 'og:locale', content: 'ka_ge' }
       ]
