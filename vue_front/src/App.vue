@@ -31,6 +31,7 @@
     },
     data() {
       return {
+        BASE_URL: 'https://terms.emis.ge',
         calcHeight: `calc(${this.$screen.height}px - 15.3rem)`
       }
     },
@@ -104,20 +105,20 @@
         // Twitter card
         { name: 'twitter:card', content: 'summary' },
         { name: 'twitter:title', content: '' },
-        { name: 'twitter:site', content: process.env.BASE_URL },
+        { name: 'twitter:site', content: this.BASE_URL },
         { name: 'twitter:description', content: '' },
         // -- Twitter summary card with large image must be at least 280x150px --
         {
           name: 'twitter:image:src',
-          content: process.env.BASE_URL + 'logo.svg'
+          content: this.BASE_URL + '/logo.svg'
         },
 
         // OpenGraph data (Most widely used)
         { property: 'og:title', content: '' },
         { property: 'og:site_name', content: '' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: process.env.BASE_URL },
-        { property: 'og:image', content: process.env.BASE_URL + 'logo.svg' },
+        { property: 'og:url', content: this.BASE_URL },
+        { property: 'og:image', content: this.BASE_URL + '/logo.svg' },
         { property: 'og:description', content: '' },
         { property: 'og:locale', content: 'ka_ge' }
       ]
