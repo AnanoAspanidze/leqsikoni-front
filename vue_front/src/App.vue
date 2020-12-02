@@ -107,14 +107,17 @@
         { name: 'twitter:site', content: process.env.BASE_URL },
         { name: 'twitter:description', content: '' },
         // -- Twitter summary card with large image must be at least 280x150px --
-        { name: 'twitter:image:src', content: '/logo.svg' },
+        {
+          name: 'twitter:image:src',
+          content: process.env.BASE_URL + '/logo.svg'
+        },
 
         // OpenGraph data (Most widely used)
         { property: 'og:title', content: '' },
         { property: 'og:site_name', content: '' },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: process.env.BASE_URL },
-        { property: 'og:image', content: '/logo.svg' },
+        { property: 'og:image', content: process.env.BASE_URL + '/logo.svg' },
         { property: 'og:description', content: '' },
         { property: 'og:locale', content: 'ka_ge' }
       ]
