@@ -1,7 +1,7 @@
 <template>
   <div class="lightHouse is-fixed">
     <figure class="image is-156x256">
-      <img src="@/assets/img/lighthouse.svg" alt="lightHouse" />
+      <img src="@/assets/img/lighthouse.png" alt="lightHouse" />
     </figure>
   </div>
 </template>
@@ -18,6 +18,7 @@
   .lightHouse {
     left: 5%;
     bottom: 2%;
+    z-index: 9999;
     @media screen and (max-width: 1024px) {
       display: none;
     }

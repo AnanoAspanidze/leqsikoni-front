@@ -31,6 +31,7 @@
             <div
               class="card-content_line-icon has-background-primary is-inline-flex is-justify-content-center px-1 py-1 ml-2"
             >
+              <!-- eng tooltip -->
               <b-tooltip
                 :triggers="['click']"
                 position="is-bottom"
@@ -38,11 +39,21 @@
                 :auto-close="['outside', 'escape']"
               >
                 <template v-slot:content>
-                  <div class="is-flex is-flex-direction-column">
-                    <p class="pb-1">წყარო: {{ word.sourceText }}</p>
-                    <a class="pt-1" target="_blanck" :href="word.sourceLink">
-                      ლინკი
-                    </a>
+                  <div class="is-flex is-flex-direction-column tooltip-icons">
+                    <div class="pb-1">
+                      <b-icon
+                        size="is-medium"
+                        icon="sticky-notes"
+                        type="is-text"
+                      />
+                      <span class="px-4">{{ word.sourceText || '-' }}</span>
+                    </div>
+                    <div class="pt-1" @click="openLink(word.sourceLink)">
+                      <b-icon size="is-medium" icon="link" type="is-text" />
+                      <span class="px-4 is-clickable">
+                        {{ word.sourceLink || '-' }}
+                      </span>
+                    </div>
                   </div>
                 </template>
                 <b-icon
@@ -108,16 +119,23 @@
                 :auto-close="['outside', 'escape']"
               >
                 <template v-slot:content>
-                  <div class="is-flex is-flex-direction-column">
-                    <p class="pb-1">წყარო: {{ word.sourceText }}</p>
-                    <a
-                      v-if="word.sourceLink && word.sourceLink !== ''"
-                      class="pt-1"
-                      target="_blanck"
-                      :href="word.sourceLink"
-                    >
-                      ლინკი
-                    </a>
+                  <div class="is-flex is-flex-direction-column tooltip-icons">
+                    <div class="pb-1">
+                      <b-icon
+                        size="is-medium"
+                        icon="sticky-notes"
+                        type="is-text"
+                      />
+                      <span class="px-4">
+                        {{ word.sourceText || '-' }}
+                      </span>
+                    </div>
+                    <div class="pt-1" @click="openLink(word.sourceLink)">
+                      <b-icon size="is-medium" icon="link" type="is-text" />
+                      <span class="px-4 is-clickable">
+                        {{ word.sourceLink || '-' }}
+                      </span>
+                    </div>
                   </div>
                 </template>
                 <b-icon
@@ -189,9 +207,23 @@
                 :auto-close="['outside', 'escape']"
               >
                 <template v-slot:content>
-                  <div class="is-flex is-flex-direction-column">
-                    <p class="pb-1">წყარო: {{ word.sourceText }}</p>
-                    <a class="pt-1" href="word.sourceLink">ლინკი</a>
+                  <div class="is-flex is-flex-direction-column tooltip-icons">
+                    <div class="pb-1">
+                      <b-icon
+                        size="is-medium"
+                        icon="sticky-notes"
+                        type="is-text"
+                      />
+                      <span class="px-4">
+                        {{ word.sourceText || '-' }}
+                      </span>
+                    </div>
+                    <div class="pt-1" @click="openLink(word.sourceLink)">
+                      <b-icon size="is-medium" icon="link" type="is-text" />
+                      <span class="px-4 is-clickable">
+                        {{ word.sourceLink || '-' }}
+                      </span>
+                    </div>
                   </div>
                 </template>
                 <b-icon
@@ -279,6 +311,13 @@
         }
         return null
       }
+    },
+    methods: {
+      openLink(val) {
+        if (val !== '') {
+          window.open(val, '_blank')
+        }
+      }
     }
   }
 </script>
@@ -296,6 +335,9 @@
           padding: 1rem 1.2rem !important;
         }
       }
+    }
+    .tooltip-icons i {
+      font-size: 1.2rem;
     }
   }
 </style>

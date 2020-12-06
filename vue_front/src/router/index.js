@@ -38,7 +38,7 @@ const routes = [
         // თუ მომხმარებელი არ არსებობს გადაამისამართოს მთავარ გვერდზე
         // if no user redirect to main
         beforeEnter: (to, from, next) => {
-          let token = localStorage.getItem('emisToken')
+          const token = localStorage.getItem('emisToken')
           if (token) {
             next()
           } else {
@@ -47,6 +47,21 @@ const routes = [
         }
       }
     ]
+  },
+  {
+    path: '/user/change',
+    name: 'UserChange',
+    component: () => import('@/views/auth/UserChange.vue'),
+    // თუ მომხმარებელი არ არსებობს გადაამისამართოს მთავარ გვერდზე
+    // if no user redirect to main
+    beforeEnter: (to, from, next) => {
+      const token = localStorage.getItem('emisToken')
+      if (token) {
+        next()
+      } else {
+        next({ name: 'Signing' })
+      }
+    }
   },
   {
     path: '/addwords',

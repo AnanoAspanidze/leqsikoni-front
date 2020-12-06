@@ -1,6 +1,10 @@
 <template>
-  <div class="wordList">
-    <div ref="parent" class="columns is-multiline is-centered mt-5">
+  <div class="wordList is-relative">
+    <div
+      v-if="!isLoading"
+      ref="parent"
+      class="columns is-multiline is-centered mt-5"
+    >
       <div
         v-for="(item, i) in wordList"
         :key="item.wordId"
@@ -52,8 +56,17 @@
         <empty-word />
       </div>
     </div>
+    <b-loading
+      style="height: 450px"
+      :active="isLoading"
+      :is-full-page="false"
+      :can-cancel="false"
+    >
+      <loading-spiner />
+    </b-loading>
     <!-- paginations -->
     <pagination
+      v-if="!isLoading"
       :total="totalWords"
       :current-page="current"
       :page.sync="current"
@@ -65,6 +78,7 @@
   import Pagination from '@/components/pagination/Pagination.vue'
   import WordsCard from '@/components/shared/WordCard.vue'
   import EmptyWord from '@/components/shared/EmptyWord.vue'
+  import LoadingSpiner from '@/components/shared/LoadingSpiner.vue'
   import gsap from 'gsap'
   import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
   import { mapActions, mapGetters } from 'vuex'
@@ -74,7 +88,8 @@
     components: {
       Pagination,
       WordsCard,
-      EmptyWord
+      EmptyWord,
+      LoadingSpiner
     },
     data() {
       return {
@@ -82,7 +97,7 @@
       }
     },
     computed: {
-      ...mapGetters(['totalWords', 'wordList'])
+      ...mapGetters(['totalWords', 'wordList', 'isLoading'])
     },
     watch: {
       // route ცვლილებისას გაეშვას შესაბამისი სიტყვების ჩატვირთვის მოთხოვნა
@@ -113,7 +128,7 @@
     created() {
       let key = Object.keys(this.$route.query)[0]
       //დომეინზე შესვლისას პაგინაციის query-ს ჩატვირთვა
-      if (!key) {
+      if (key == undefined) {
         this.$router
           .push({ query: { PageNumber: this.current } })
           .catch(() => {})
@@ -150,7 +165,7 @@
       })
     },
     methods: {
-      ...mapActions(['getWordLIst', 'getWordByQuery'])
+      ...mapActions(['getWordByQuery'])
     }
   }
 </script>

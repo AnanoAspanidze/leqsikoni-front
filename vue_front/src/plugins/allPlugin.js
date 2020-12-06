@@ -18,7 +18,8 @@ import {
   Pagination,
   Tooltip,
   Toast,
-  Field
+  Field,
+  Loading
 } from 'buefy'
 // use Buefy components
 Vue.use(Input)
@@ -31,6 +32,7 @@ Vue.use(Tooltip)
 Vue.use(Toast)
 Vue.use(Tabs)
 Vue.use(Field)
+Vue.use(Loading)
 // set programc. options
 ConfigProgrammatic.setOptions({
   defaultIconPack: 'fi'

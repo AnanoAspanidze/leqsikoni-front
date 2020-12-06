@@ -266,7 +266,6 @@
         </div>
       </div>
       <!-- cards nested routes--->
-
       <transition
         :css="false"
         mode="out-in"

@@ -129,12 +129,14 @@ export default new Vuex.Store({
     },
     SET_WORD_LIST(state, wordList) {
       state.wordList = wordList
+      state.isLoading = false
     },
     SET_WORDS_COUNT(state, count) {
       state.wordCount = count
     },
     SET_WORD_BY_QUERY(state, words) {
       state.wordList = words
+      state.isLoading = false
     },
     CLEAR_USER_DATA(state) {
       state.user = null
@@ -150,13 +152,8 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getWordLIst({ commit }) {
-      Axios.get('words/wordslist').then(Response => {
-        commit('SET_WORD_LIST', Response.data.wordsList)
-        commit('SET_WORDS_COUNT', Response.data.wordsQuantity)
-      })
-    },
-    getWordByQuery({ commit }, param) {
+    getWordByQuery({ commit, state }, param) {
+      state.isLoading = true
       // get all keys and values from query
       const keys = Object.keys(param)
       const values = Object.values(param)
@@ -178,8 +175,9 @@ export default new Vuex.Store({
     },
     getUserWordList({ commit, state }, page) {
       let userId = state.user.userId
+      console.log(page, userId)
       if (userId) {
-        Axios.get(`words/wordslist/${userId}?PageNumber=${page}`).then(
+        Axios.get(`words/userwordslist/${userId}?PageNumber=${page}`).then(
           Response => {
             commit('SET_WORDS_COUNT', Response.data.wordsQuantity)
             commit('SET_USER_WORDS', Response.data.wordsList)

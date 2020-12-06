@@ -14,7 +14,7 @@
             ></div>
           </a>
           <div v-if="token" class="navbar-dropdown">
-            <router-link to="" class="navbar-item">
+            <router-link :to="{ name: 'UserChange' }" class="navbar-item">
               რედაქტირება
             </router-link>
             <router-link :to="{ name: 'UserWords' }" class="navbar-item">
@@ -82,10 +82,10 @@
             ></div>
           </a>
           <div v-if="token" class="navbar-dropdown">
-            <router-link to="" class="navbar-item">
+            <router-link :to="{ name: 'UserChange' }" class="navbar-item">
               რედაქტირება
             </router-link>
-            <router-link class="navbar-item" :to="{ name: 'UserWords' }">
+            <router-link :to="{ name: 'UserWords' }" class="navbar-item">
               ჩემი სიტყვები
             </router-link>
             <a class="navbar-item" @click="logOut">
