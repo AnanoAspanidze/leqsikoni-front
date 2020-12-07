@@ -93,7 +93,6 @@
                               :loading="isLoading"
                               :disabled="$v.userInfo.$invalid"
                               native-type="submit"
-                              @click="userChange"
                             >
                               შეცვლა
                             </b-button>
@@ -196,7 +195,6 @@
                               :loading="isLoading"
                               :disabled="$v.newPassword.$invalid"
                               native-type="submit"
-                              @click="passwordChange"
                             >
                               შეცვლა
                             </b-button>
@@ -263,6 +261,13 @@
     computed: {
       ...mapGetters(['isLoading', 'user'])
     },
+    created() {
+      for (const key in this.user) {
+        if (this.userInfo[key] !== undefined) {
+          this.userInfo[key] = this.user[key]
+        }
+      }
+    },
     mounted() {
       let parent = this.$refs.parent.clientWidth
       gsap.registerPlugin(MotionPathPlugin)
@@ -306,7 +311,7 @@
     },
     metaInfo: {
       // if no subcomponents specify a metaInfo.title, this title will be used
-      title: '',
+      title: 'მონაცემების შეცვლა',
       // all titles will be injected into this template
       titleTemplate: '%s | Term.emis.ge'
     }

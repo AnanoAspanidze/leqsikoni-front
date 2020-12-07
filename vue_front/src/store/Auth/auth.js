@@ -125,12 +125,23 @@ const auth = {
       })
     },
     changeUserInfo({ commit }, userData) {
-      Axios.post('Account/edituser', userData).then(Response => {
+      const newInfo = {
+        username: userData.userName,
+        firstname: userData.firstName,
+        surname: userData.lastName
+      }
+      Axios.post('Account/edituser', newInfo).then(Response => {
         commit('SET_MESSAGE', Response.data)
       })
     },
     changeUserPassword({ commit }, userData) {
-      Axios.post('Account/edituser', userData).then(Response => {
+      const newPass = {
+        OldPassword: userData.oldPassword,
+        NewPassword: userData.password,
+        ConfirmNewPassword: userData.confirmNewPassword
+      }
+      console.log(newPass)
+      Axios.post('Account/edituserpassword', newPass).then(Response => {
         commit('SET_MESSAGE', Response.data)
       })
     }
