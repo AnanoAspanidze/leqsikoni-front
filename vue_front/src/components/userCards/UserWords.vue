@@ -1,10 +1,10 @@
 <template>
   <div class="userWords">
-    <div class="columns is-multiline is-centered mt-5">
+    <div v-if="!isLoading" class="columns is-multiline is-centered mt-5">
       <div
         v-for="item in userWords"
         ref="parent"
-        :key="item"
+        :key="item.id"
         class="column is-8 is-offset-1 is-relative"
       >
         <div class="card_image-1 is-absolute">
@@ -12,19 +12,37 @@
             <img src="@/assets/img/yellow-ladybird.svg" alt="ladybird" />
           </figure>
         </div>
-
         <!-- card component -->
-
         <words-card :words="item">
           <template v-slot:buttons>
-            <b-button type="is-primary" icon-right="share" outlined rounded />
+            <ShareNetwork
+              tag="div"
+              network="facebook"
+              :url="`https://terms.emis.ge/word/${item.id}`"
+              title="აქ უნდა იყოს სათაური"
+              description="აღწერის ველი"
+              quote="ციტირების ველი"
+              hashtags="ჰეშტეგები"
+            >
+              <b-button
+                class="mr-5"
+                type="is-primary"
+                icon-right="share"
+                outlined
+                rounded
+              />
+            </ShareNetwork>
             <b-button
-              v-if="item"
               tag="router-link"
-              :to="{ name: 'UserSingleWord', params: { wordId: item } }"
+              :to="{
+                name: 'SingleWord',
+                params: { wordId: item.itemId },
+                query: { word: item.itemsList[0].wordName }
+              }"
               type="is-primary"
               outlined
               rounded
+              class="fullInfo"
             >
               სრულად
             </b-button>
@@ -60,9 +78,22 @@
           </template>
         </words-card>
       </div>
+      <div v-if="totalWords === 0" class="column is-8 is-offset-1 is-relative">
+        <empty-word />
+      </div>
     </div>
+
+    <b-loading
+      style="height: 450px"
+      :active="isLoading"
+      :is-full-page="false"
+      :can-cancel="false"
+    >
+      <loading-spiner />
+    </b-loading>
     <!-- pagination -->
     <pagination
+      v-if="!isLoading"
       :total="totalWords"
       :current-page="current"
       :page.sync="current"
@@ -73,6 +104,8 @@
 <script>
   import Pagination from '@/components/pagination/Pagination.vue'
   import WordsCard from '@/components/shared/WordCard.vue'
+  import EmptyWord from '@/components/shared/EmptyWord.vue'
+  import LoadingSpiner from '@/components/shared/LoadingSpiner.vue'
   import gsap from 'gsap'
   import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
   import { mapGetters, mapActions } from 'vuex'
@@ -81,7 +114,9 @@
     name: 'UserWord',
     components: {
       Pagination,
-      WordsCard
+      WordsCard,
+      LoadingSpiner,
+      EmptyWord
     },
     data() {
       return {
@@ -89,7 +124,7 @@
       }
     },
     computed: {
-      ...mapGetters(['totalWords', 'userWords'])
+      ...mapGetters(['totalWords', 'userWords', 'isLoading'])
     },
     watch: {
       // route ცვლილებისას გაეშვას შესაბამისი სიტყვების ჩატვირთვის მოთხოვნა

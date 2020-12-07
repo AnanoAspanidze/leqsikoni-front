@@ -48,52 +48,33 @@
                   }"
                 >
                   <b-input
-                    v-model="form.name"
+                    v-model="form.firstName"
                     placeholder="სახელი"
                     type="text"
                     rounded
-                    @blur="$v.form.name.$touch()"
-                    @input="$v.form.name.$touch()"
+                    @blur="$v.form.firstName.$touch()"
+                    @input="$v.form.firstName.$touch()"
                   ></b-input>
                 </b-field>
-                <!-- Surname field -->
+                <!-- lastName field -->
                 <b-field
                   class="pb-1"
-                  :type="{ 'is-danger': $v.form.surname.$error }"
+                  :type="{ 'is-danger': $v.form.lastName.$error }"
                   :message="{
                     'სავალდებულო ველი':
-                      !$v.form.surname.required && $v.form.surname.$error
+                      !$v.form.lastName.required && $v.form.lastName.$error
                   }"
                 >
                   <b-input
-                    v-model="form.surname"
+                    v-model="form.lastName"
                     placeholder="გვარი"
                     type="text"
                     rounded
-                    @blur="$v.form.surname.$touch()"
-                    @input="$v.form.surname.$touch()"
+                    @blur="$v.form.lastName.$touch()"
+                    @input="$v.form.lastName.$touch()"
                   ></b-input>
                 </b-field>
-                <!-- conf. password -->
-                <b-field
-                  class="pb-1"
-                  :type="{ 'is-danger': $v.form.oldPassword.$error }"
-                  :message="{
-                    'პაროლის ველი სავალდებულოა':
-                      !$v.form.oldPassword.required &&
-                      $v.form.oldPassword.$error
-                  }"
-                >
-                  <b-input
-                    v-model="form.oldPassword"
-                    placeholder="მიმდინარე პაროლი"
-                    type="password"
-                    password-reveal
-                    rounded
-                    @blur="$v.form.oldPassword.$touch()"
-                    @input="$v.form.oldPassword.$touch()"
-                  ></b-input>
-                </b-field>
+
                 <!-- new password -->
                 <b-field
                   class="pb-1"
@@ -113,6 +94,25 @@
                     rounded
                     @blur="$v.form.newPassword.$touch()"
                     @input="$v.form.newPassword.$touch()"
+                  ></b-input>
+                </b-field>
+                <!-- conf. password -->
+                <b-field
+                  class="pb-1"
+                  :type="{ 'is-danger': $v.form.oldPassword.$error }"
+                  :message="{
+                    'პაროლის ველი სავალდებულოა':
+                      !$v.form.oldPassword.required &&
+                      $v.form.oldPassword.$error
+                  }"
+                >
+                  <b-input
+                    v-model="form.oldPassword"
+                    placeholder="გაიმეორეთ პაროლი"
+                    type="password"
+                    rounded
+                    @blur="$v.form.oldPassword.$touch()"
+                    @input="$v.form.oldPassword.$touch()"
                   ></b-input>
                 </b-field>
                 <div class="is-flex is-justify-content-space-around">
@@ -152,15 +152,15 @@
   import { required, minLength } from 'vuelidate/lib/validators'
   import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
   import gsap from 'gsap'
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     data() {
       return {
         form: {
           userName: '',
-          name: '',
-          surname: '',
+          firstName: '',
+          lastName: '',
           oldPassword: '',
           newPassword: ''
         }
@@ -170,13 +170,22 @@
       form: {
         userName: { required, minLength: minLength(4) },
         name: { required, minLength: minLength(2) },
-        surname: { required },
+        lastName: { required },
         oldPassword: { required },
         newPassword: { required, minLength: minLength(7) }
       }
     },
     computed: {
-      ...mapGetters(['isLoading'])
+      ...mapGetters(['isLoading', 'user'])
+    },
+    created() {
+      for (const key in this.user) {
+        //console.log(key)
+        if (this.form[key] !== undefined) {
+          console.log(this.form[key])
+          this.form[key] = this.user[key]
+        }
+      }
     },
     mounted() {
       let parent = this.$refs.parent.clientWidth
@@ -202,8 +211,10 @@
       })
     },
     methods: {
+      ...mapActions('auth', ['changeUserInfo']),
       userChange() {
         console.log(this.form)
+        this.changeUserInfo(this.form)
       }
     },
     metaInfo: {

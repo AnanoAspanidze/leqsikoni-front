@@ -146,6 +146,7 @@ export default new Vuex.Store({
     },
     SET_USER_WORDS(state, words) {
       state.userWords = words
+      state.isLoading = false
     },
     SET_SINGLE_WORD(state, word) {
       state.singleWord = word
@@ -174,19 +175,11 @@ export default new Vuex.Store({
       })
     },
     getUserWordList({ commit, state }, page) {
-      let userId = state.user.userId
-      console.log(page, userId)
-      if (userId) {
-        Axios.get(`words/userwordslist/${userId}?PageNumber=${page}`).then(
-          Response => {
-            commit('SET_WORDS_COUNT', Response.data.wordsQuantity)
-            commit('SET_USER_WORDS', Response.data.wordsList)
-          }
-        )
-      } else {
-        // გადამისამართება მთავარ გვერდზე
-        router.push({ name: 'Signing' }).catch(err => {})
-      }
+      state.isLoading = true
+      Axios.get(`words/userwordslist/?PageNumber=${page}`).then(Response => {
+        commit('SET_WORDS_COUNT', Response.data.wordsQuantity)
+        commit('SET_USER_WORDS', Response.data.wordsList)
+      })
     },
     getSingleWord({ commit }, wordId) {
       Axios.get(`words/wordsdetails/${wordId}`).then(Response => {

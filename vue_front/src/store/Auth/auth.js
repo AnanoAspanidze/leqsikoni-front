@@ -123,6 +123,11 @@ const auth = {
             Promise.reject(err)
           })
       })
+    },
+    changeUserInfo(_, userData) {
+      Axios.get('Account/userprofile', userData).then(Response => {
+        console.log(Response)
+      })
     }
   }
 }
