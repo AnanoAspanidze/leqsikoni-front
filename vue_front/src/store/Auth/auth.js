@@ -124,9 +124,14 @@ const auth = {
           })
       })
     },
-    changeUserInfo(_, userData) {
-      Axios.get('Account/userprofile', userData).then(Response => {
-        console.log(Response)
+    changeUserInfo({ commit }, userData) {
+      Axios.post('Account/edituser', userData).then(Response => {
+        commit('SET_MESSAGE', Response.data)
+      })
+    },
+    changeUserPassword({ commit }, userData) {
+      Axios.post('Account/edituser', userData).then(Response => {
+        commit('SET_MESSAGE', Response.data)
       })
     }
   }
