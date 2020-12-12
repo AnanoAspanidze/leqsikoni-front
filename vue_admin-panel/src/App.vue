@@ -2,7 +2,7 @@
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer" dark app>
       <v-list dense nav class="py-0">
-        <v-list-item two-line :class="miniVariant && 'px-0'">
+        <v-list-item two-line class="px-0">
           <v-list-item-avatar>
             <img src="https://randomuser.me/api/portraits/men/81.jpg" />
           </v-list-item-avatar>
@@ -38,7 +38,7 @@
       <v-toolbar-title>Admin Panel</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn flat depressed>
+        <v-btn text depressed>
           <v-icon left>mdi-logout</v-icon>
           გასვლა
         </v-btn>

@@ -1,10 +1,6 @@
 <template>
-  <div class="wordList is-relative">
-    <div
-      v-if="!isLoading"
-      ref="parent"
-      class="columns is-multiline is-centered mt-5"
-    >
+  <div ref="parent" class="wordList is-relative">
+    <div v-if="!isLoading" class="columns is-multiline is-centered mt-5">
       <div
         v-for="(item, i) in wordList"
         :key="item.wordId"
@@ -158,8 +154,8 @@
             { x: 0, y: 0 },
             { x: (parent / 100) * 15, y: 0 },
             { x: (parent / 100) * 25, y: 0 },
-            { x: (parent / 100) * 29, y: 0 },
-            { x: (parent / 100) * 30, y: 0 }
+            { x: (parent / 100) * 15, y: 0 },
+            { x: 0, y: 0 }
           ]
         }
       })

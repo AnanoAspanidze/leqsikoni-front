@@ -1,13 +1,12 @@
 <template>
-  <div class="userWords">
+  <div ref="parent" class="userWords">
     <div v-if="!isLoading" class="columns is-multiline is-centered mt-5">
       <div
         v-for="item in userWords"
-        ref="parent"
         :key="item.id"
         class="column is-8 is-offset-1 is-relative"
       >
-        <div class="card_image-1 is-absolute">
+        <div v-if="i === 0" class="card_image-1 is-absolute">
           <figure class="image is-32x32">
             <img src="@/assets/img/yellow-ladybird.svg" alt="ladybird" />
           </figure>
@@ -178,8 +177,8 @@
             { x: 0, y: 0 },
             { x: (parent / 100) * 15, y: 0 },
             { x: (parent / 100) * 25, y: 0 },
-            { x: (parent / 100) * 29, y: 0 },
-            { x: (parent / 100) * 30, y: 0 }
+            { x: (parent / 100) * 15, y: 0 },
+            { x: 0, y: 0 }
           ]
         }
       })
