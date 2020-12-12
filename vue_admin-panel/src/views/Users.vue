@@ -1,114 +1,174 @@
 <template>
   <div class="users">
-    <v-container>
-      <v-data-table
-        :headers="headers"
-        :items="users"
-        :search="search"
-        :items-per-page="5"
-        sort-by="user"
-        class="elevation-1"
-      >
-        <template v-slot:top>
-          <v-card-title>
-            მომხარებლები
-            <v-divider class="mx-4" inset vertical></v-divider>
-            <v-spacer></v-spacer>
-            <v-text-field
-              v-model="search"
-              append-icon="mdi-magnify"
-              label="Search"
-              single-line
-              hide-details
-            ></v-text-field>
-          </v-card-title>
-          <v-toolbar flat>
-            <v-dialog v-model="dialogDelete" max-width="500px">
-              <v-card>
-                <v-card-title class="headline">
-                  ნამდვილად გსურთ წაშლა?
-                </v-card-title>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn color="blue darken-1" text @click="closeDelete">
-                    გაუქმება
-                  </v-btn>
-                  <v-btn color="blue darken-1" text @click="deleteItemConfirm">
-                    დიახ
-                  </v-btn>
-                  <v-spacer></v-spacer>
-                </v-card-actions>
-              </v-card>
-            </v-dialog>
-            <v-dialog v-model="userBlock" max-width="500px">
-              <v-card>
-                <v-card-title class="headline">
-                  ნამდვილად გსურთ დაბლოკოთ მომხმარებელი: {{ editedItem.user }} ?
-                </v-card-title>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn color="blue darken-1" text @click="closeBlock">
-                    გაუქმება
-                  </v-btn>
-                  <v-btn color="blue darken-1" text @click="blockUserConfirm">
-                    დიახ
-                  </v-btn>
-                  <v-spacer></v-spacer>
-                </v-card-actions>
-              </v-card>
-            </v-dialog>
-          </v-toolbar>
-        </template>
-        <template v-slot:[`item.actions`]="{ item }">
-          <v-icon small color="primary" class="mr-2" @click="deleteItem(item)">
-            mdi-delete
-          </v-icon>
-          <v-icon small color="red" @click="blockUser(item)">
-            block
-          </v-icon>
-        </template>
-        <template v-slot:no-data>
-          <v-btn color="primary" @click="initialize">
-            Reset
+    <v-data-table
+      :headers="headers"
+      :items="users"
+      :search="search"
+      :items-per-page="10"
+      sort-by="user"
+      class="elevation-1 px-5"
+    >
+      <!-- მომხმარებელი -->
+      <template v-slot:[`item.username`]="{ item }">
+        <div class="d-flex align-center">
+          <v-icon color="orange" medium>account_circle</v-icon>
+          <span class="pl-3 text-capitalize">{{ item.username }}</span>
+        </div>
+      </template>
+      <!-- სტატუსი -->
+      <template v-slot:[`item.isActive`]="{ item }">
+        <div v-if="item.isActive" class="green--text darken-2--text">
+          აქტიური
+        </div>
+        <div v-else class="red--text darken-2--text">დაბლოკილი</div>
+      </template>
+      <!-- დადასტურებული -->
+      <template v-slot:[`item.isConfirmed`]="{ item }">
+        <div v-if="item.isConfirmed" class="green--text darken-2--text">
+          დადასტურებული
+        </div>
+        <div v-else class="amber--text darken-1--text">დაუდასტურებული</div>
+      </template>
+
+      <template v-slot:top>
+        <v-card-title>
+          მომხარებლები
+          <v-divider class="mx-4" inset vertical></v-divider>
+          <v-spacer></v-spacer>
+          <v-text-field
+            v-model="search"
+            append-icon="mdi-magnify"
+            label="Search"
+            single-line
+            hide-details
+          ></v-text-field>
+        </v-card-title>
+        <v-toolbar flat>
+          <v-dialog v-model="dialogeActive" max-width="500px">
+            <v-card>
+              <v-card-title class="headline justify-center">
+                <span class="inline-block ">
+                  ნამდვილად გსურთ
+                  <span class="amber--text text--darken-1 text-center">
+                    {{ editedItem.username }}
+                  </span>
+                  {{ dialogMesage }}?
+                </span>
+              </v-card-title>
+              <v-card-actions class="py-5">
+                <v-spacer></v-spacer>
+                <v-btn
+                  v-if="!dialogType"
+                  color="green darken-1"
+                  outlined
+                  @click="blockUserConfirm"
+                >
+                  დიახ
+                </v-btn>
+                <v-btn
+                  v-else
+                  color="green darken-1"
+                  outlined
+                  @click="activateBlockeduser"
+                >
+                  დიახ
+                </v-btn>
+                <v-spacer></v-spacer>
+                <v-btn color="red darken-1" outlined @click="closeBlock">
+                  გაუქმება
+                </v-btn>
+                <v-spacer></v-spacer>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </v-toolbar>
+      </template>
+      <!-- block/active icons -->
+      <template v-slot:[`item.actions`]="{ item }">
+        <v-icon
+          v-if="item.isActive"
+          medium
+          color="red"
+          @click="blockUser(item)"
+        >
+          block
+        </v-icon>
+        <v-icon v-else medium color="green" @click="activeUser(item)">
+          check_circle
+        </v-icon>
+      </template>
+      <template v-slot:no-data>
+        <v-btn color="primary">
+          Reset
+        </v-btn>
+      </template>
+      <template v-slot:[`item.details`]="{ value }">
+        <router-link :to="value">
+          <v-btn small color="primary">
+            დეტალურად
           </v-btn>
-        </template>
-        <template v-slot:[`item.details`]="{ value }">
-          <router-link :to="value">
-            <v-btn small color="primary">
-              დეტალურად
-            </v-btn>
-          </router-link>
-        </template>
-      </v-data-table>
-    </v-container>
+        </router-link>
+      </template>
+    </v-data-table>
+    <!-- message toast -->
+    <v-snackbar
+      v-model="snackbar"
+      absolute
+      bottom
+      :color="getColor"
+      :timeout="3000"
+      transition="slide-y-reverse-transition"
+    >
+      <v-icon v-if="messageData.success" text>done</v-icon>
+      <v-icon v-else text>priority_high</v-icon>
+      {{ messageData.message }}
+    </v-snackbar>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
   data: () => ({
     search: '',
     dialog: false,
+    dialogType: false,
     dialogDelete: false,
-    userBlock: false,
-    headers: [
-      { text: 'მომხმარებელი', align: 'start', value: 'user' },
-      { text: 'Actions', value: 'actions', sortable: false },
-      { text: '', value: 'details' }
-    ],
-    users: [],
+    dialogMesage: '',
     editedIndex: -1,
-    editedItem: {
-      user: ''
-    },
+    dialogeActive: false,
+    editedItem: {},
+    snackbar: false,
+    messageData: '',
     defaultItem: {
       user: ''
     }
   }),
 
   computed: {
+    ...mapGetters('userList', ['users']),
     formTitle() {
       return this.editedIndex === -1 ? 'ახალი სიტყვა' : 'რედაქტირება'
+    },
+    headers() {
+      return [
+        { text: 'მომხმარებელი', align: 'start', value: 'username' },
+        { text: 'ელ.მეილი', align: 'start', value: 'email' },
+        { text: 'სტატუსი', align: 'start', value: 'isActive' },
+        { text: 'დადასტურებული', align: 'center', value: 'isConfirmed' },
+        {
+          text: 'ქმედებები',
+          align: 'center',
+          value: 'actions',
+          sortable: false
+        }
+      ]
+    },
+    getColor() {
+      if (this.messageData.success) {
+        return 'green lighten-2'
+      }
+      return 'red lighten-2'
     }
   },
 
@@ -116,112 +176,59 @@ export default {
     dialog(val) {
       val || this.close()
     },
-    dialogDelete(val) {
-      val || this.closeDelete()
-    },
-    userBlock(val) {
+    dialogeActive(val) {
       val || this.closeBlock()
     }
   },
 
   created() {
-    this.initialize()
+    this.getUserList()
   },
 
   methods: {
-    initialize() {
-      this.users = [
-        {
-          user: 'user0001@gmail.com',
-          details: '/userDetails'
-        },
-        {
-          user: 'testUser@gmail.com',
-          details: '/userDetails'
-        },
-        {
-          user: 'user1234@gmail.com',
-          details: '/userDetails'
-        },
-        {
-          user: 'megi.akhalkatsi@gmail.com',
-          details: '/userDetails'
-        },
-        {
-          user: 'ikalekishvili@gmail.com',
-          details: '/userDetails'
-        },
-        {
-          user: 'romeo.khazalia@gmail.com',
-          details: '/userDetails'
-        }
-      ]
-    },
-
-    editItem(item) {
-      this.editedIndex = this.users.indexOf(item)
-      this.editedItem = Object.assign({}, item)
-      this.dialog = true
-    },
-
-    deleteItem(item) {
-      this.editedIndex = this.users.indexOf(item)
-      this.editedItem = Object.assign({}, item)
-      this.dialogDelete = true
-    },
-
-    deleteItemConfirm() {
-      this.users.splice(this.editedIndex, 1)
-      this.closeDelete()
-    },
+    ...mapActions('userList', [
+      'getUserList',
+      'blockActiveUser',
+      'unblockUser'
+    ]),
     blockUser(item) {
-      this.editedIndex = this.users.indexOf(item)
+      this.dialogType = false
+      this.editedIndex = item.userId
       this.editedItem = Object.assign({}, item)
-      this.userBlock = true
+      this.dialogMesage = 'დაბლოკვა'
+      this.dialogeActive = true
+    },
+    activeUser(item) {
+      this.dialogType = true
+      this.editedIndex = item.userId
+      this.editedItem = Object.assign({}, item)
+      this.dialogMesage = 'განბლოკვა'
+      this.dialogeActive = true
     },
     blockUserConfirm() {
-      this.users.splice(this.editedIndex, 1)
-      this.closeBlock()
-    },
-
-    close() {
-      this.dialog = false
-      this.$nextTick(() => {
-        this.editedItem = Object.assign({}, this.defaultItem)
-        this.editedIndex = -1
+      this.blockActiveUser(this.editedIndex).then(result => {
+        console.log('component=>', result)
+        this.messageData = result
+        this.snackbar = true
+        this.dialogeActive = false
       })
     },
-
-    closeDelete() {
-      this.dialogDelete = false
-      this.$nextTick(() => {
-        this.editedItem = Object.assign({}, this.defaultItem)
-        this.editedIndex = -1
+    activateBlockeduser() {
+      this.unblockUser(this.editedIndex).then(result => {
+        console.log('component=>', result)
+        this.messageData = result
+        this.snackbar = true
+        this.dialogeActive = false
       })
     },
-
     closeBlock() {
-      this.userBlock = false
-      this.$nextTick(() => {
-        this.editedItem = Object.assign({}, this.defaultItem)
-        this.editedIndex = -1
-      })
-    },
-
-    save() {
-      if (this.editedIndex > -1) {
-        Object.assign(this.users[this.editedIndex], this.editedItem)
-      } else {
-        this.users.push(this.editedItem)
-      }
-      this.close()
+      this.dialogeActive = false
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
-.v-toolbar--flat {
-  display: none;
+<style lang="scss">
+.users {
 }
 </style>
