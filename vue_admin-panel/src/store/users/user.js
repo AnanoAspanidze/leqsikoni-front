@@ -4,17 +4,25 @@ import Axios from '@/plugins/axios'
 const userList = {
   namespaced: true,
   state: {
-    users: []
+    logdUser: '',
+    users: [],
+    userStats: []
   },
   getters: {
     users(state) {
       return state.users
+    },
+    userStates(state) {
+      return state.userStats
     }
   },
   mutations: {
     // set word list
     SET_USER_LIST(state, users) {
       state.users = users
+    },
+    SET_USER_STATS(state, data) {
+      state.userStats = data
     }
   },
   actions: {
@@ -48,6 +56,12 @@ const userList = {
           }
           resolve(result.data)
         })
+      })
+    },
+    getUserStats({ commit }) {
+      Axios.get('statistics').then(result => {
+        console.log(result.data)
+        commit('SET_USER_STATS', result.data.statistics)
       })
     }
   }

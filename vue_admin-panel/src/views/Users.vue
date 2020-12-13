@@ -129,6 +129,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 export default {
+  name: 'Users',
   data: () => ({
     search: '',
     dialog: false,
