@@ -48,7 +48,7 @@
           <template v-slot:[`item.defWords`]="{ value }">
             <v-chip class="pl-3">
               <v-avatar left>
-                <v-img src="@/assets/description.png"></v-img>
+                <v-img src="@/assets/notes.png"></v-img>
               </v-avatar>
               {{ value }}
             </v-chip>

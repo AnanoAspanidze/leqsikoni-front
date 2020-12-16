@@ -6,6 +6,10 @@ import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false
 
+import '@/plugins/shorten'
+
+store.dispatch('logUser')
+
 new Vue({
   router,
   store,

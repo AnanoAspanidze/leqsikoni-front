@@ -8,8 +8,10 @@
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title>სახელი გვარი</v-list-item-title>
-            <v-list-item-subtitle>ადმინისტრატორი</v-list-item-subtitle>
+            <v-list-item-title>{{ user.userRole.title }}</v-list-item-title>
+            <v-list-item-subtitle>
+              {{ user.firstname }} {{ user.surname }}
+            </v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
 
@@ -39,7 +41,7 @@
       <v-toolbar-title>Admin Panel</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn text depressed>
+        <v-btn text depressed @click="logOutUser">
           <v-icon left>mdi-logout</v-icon>
           გასვლა
         </v-btn>
@@ -53,6 +55,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
   data: () => ({
     drawer: null,
@@ -65,7 +68,13 @@ export default {
         route: '/users'
       }
     ]
-  })
+  }),
+  computed: {
+    ...mapGetters(['user'])
+  },
+  methods: {
+    ...mapActions(['logOutUser'])
+  }
 }
 </script>
 

@@ -6,7 +6,8 @@ const userList = {
   state: {
     logdUser: '',
     users: [],
-    userStats: []
+    userStats: [],
+    singeUser: null
   },
   getters: {
     users(state) {
@@ -14,6 +15,9 @@ const userList = {
     },
     userStates(state) {
       return state.userStats
+    },
+    singeUser(state) {
+      return state.singeUser
     }
   },
   mutations: {
@@ -23,6 +27,9 @@ const userList = {
     },
     SET_USER_STATS(state, data) {
       state.userStats = data
+    },
+    SET_SINGLE_USER_INFO(state, info) {
+      state.singeUser = info
     }
   },
   actions: {
@@ -39,7 +46,6 @@ const userList = {
     blockActiveUser({ dispatch }, userId) {
       return new Promise(resolve => {
         Axios.post(`blockuser/${userId}`).then(result => {
-          console.log('vuex=>', result)
           if (result.data.success) {
             dispatch('getUserList')
           }
@@ -50,7 +56,6 @@ const userList = {
     unblockUser({ dispatch }, userId) {
       return new Promise(resolve => {
         Axios.post(`unblockuser/${userId}`).then(result => {
-          console.log('vuex=>', result)
           if (result.data.success) {
             dispatch('getUserList')
           }
@@ -62,6 +67,11 @@ const userList = {
       Axios.get('statistics').then(result => {
         console.log(result.data)
         commit('SET_USER_STATS', result.data.statistics)
+      })
+    },
+    getUserDetailed({ commit }, userId) {
+      Axios.get(`userseditdetails/${userId}`).then(result => {
+        commit('SET_SINGLE_USER_INFO', result.data)
       })
     }
   }

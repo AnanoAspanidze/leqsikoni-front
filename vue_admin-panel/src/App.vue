@@ -8,6 +8,7 @@
 <script>
 import AppHome from '@/views/Home'
 import AppLogin from '@/views/Main'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -19,8 +20,18 @@ export default {
       logedUser: false
     }
   },
-  created() {
-    this.logedUser = JSON.parse(localStorage.getItem('adminInfo')) || false
+  computed: {
+    ...mapGetters(['token'])
+  },
+  watch: {
+    token(val) {
+      this.logedUser = val
+    }
+  },
+  mounted() {
+    if (this.token) {
+      this.logedUser = this.token
+    }
   }
 }
 </script>

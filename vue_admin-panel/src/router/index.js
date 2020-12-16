@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import Statistics from '../views/Statistics.vue'
 import Words from '../views/Words.vue'
+import WordByid from '../views/WordsById.vue'
 import Users from '../views/Users.vue'
 
 Vue.use(VueRouter)
@@ -22,6 +23,11 @@ const routes = [
     path: '/users',
     name: 'users',
     component: Users
+  },
+  {
+    path: '/words/:itemId',
+    name: 'wordInfo',
+    component: WordByid
   }
 ]
 

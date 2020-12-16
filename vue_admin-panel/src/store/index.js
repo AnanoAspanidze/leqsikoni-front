@@ -8,21 +8,32 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    user: null
+    user: null,
+    token: null
+  },
+  getters: {
+    user(state) {
+      return state.user
+    },
+    token(state) {
+      return state.token
+    }
   },
   mutations: {
     SET_USER(state, info) {
-      state.user = info
+      if (info.userRole.userRoleId === 2) {
+        state.user = info
+        state.token = info.accessToken
+      }
     }
   },
   actions: {
     LoginWithEmail({ commit }, form) {
-      console.log('fire')
       return new Promise((resolve, reject) => {
         Axios.post('https://terms.emis.ge/test/api/Account/Login', form)
           .then(Response => {
             if (Response.data.success) {
-              let userData = Response.data.userWithToken
+              let userData = JSON.stringify(Response.data.userWithToken)
               localStorage.setItem('adminInfo', userData)
 
               commit('SET_USER', Response.data.userWithToken)
@@ -33,6 +44,16 @@ export default new Vuex.Store({
             reject(err.message)
           })
       })
+    },
+    logOutUser({ commit }) {
+      localStorage.removeItem('adminInfo')
+      commit('SET_USER', null)
+    },
+    logUser({ commit }) {
+      let user = JSON.parse(localStorage.getItem('adminInfo'))
+      if (user) {
+        commit('SET_USER', user)
+      }
     }
   },
   modules: {

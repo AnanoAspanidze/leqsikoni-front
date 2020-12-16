@@ -97,18 +97,6 @@
           check_circle
         </v-icon>
       </template>
-      <template v-slot:no-data>
-        <v-btn color="primary">
-          Reset
-        </v-btn>
-      </template>
-      <template v-slot:[`item.details`]="{ value }">
-        <router-link :to="value">
-          <v-btn small color="primary">
-            დეტალურად
-          </v-btn>
-        </router-link>
-      </template>
     </v-data-table>
     <!-- message toast -->
     <v-snackbar
@@ -190,7 +178,8 @@ export default {
     ...mapActions('userList', [
       'getUserList',
       'blockActiveUser',
-      'unblockUser'
+      'unblockUser',
+      'getUserDetailed'
     ]),
     blockUser(item) {
       this.dialogType = false
@@ -228,8 +217,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.users {
-}
-</style>
