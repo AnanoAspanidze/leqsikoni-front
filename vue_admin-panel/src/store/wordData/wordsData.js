@@ -50,7 +50,6 @@ const wordData = {
     },
     getWordById({ commit }, id) {
       Axios.get(`/editworddetails/${id}`).then(result => {
-        console.log(result)
         commit('SET_WORD_CONTAINER_ID', result.data.itemId)
         commit('SET_WORD_BY_ID', result.data.itemsList)
       })
@@ -67,15 +66,49 @@ const wordData = {
       })
     },
     blockWord(_, id) {
-      console.log(id)
       return new Promise((resolve, reject) => {
-        Axios.post(`blockWord/${id}`).then(result => {
+        Axios.post(`blockword/${id}`).then(result => {
           if (result.data.success) {
             resolve(result.data)
           } else {
             reject(resolve.data)
           }
         })
+      })
+    },
+    unBlockWord(_, id) {
+      return new Promise((resolve, reject) => {
+        Axios.post(`unblockword/${id}`).then(result => {
+          if (result.data.success) {
+            resolve(result.data)
+          } else {
+            reject(resolve.data)
+          }
+        })
+      })
+    },
+    addSingleWord({ dispatch }, word) {
+      console.log(word)
+      return new Promise((resolve, reject) => {
+        Axios.post('addnewword', word)
+          .then(result => {
+            console.log(result)
+          })
+          .catch(err => {
+            console.log(err.message)
+          })
+      })
+    },
+    editSingleWord({ dispatch }, word) {
+      console.log(word)
+      return new Promise((resolve, reject) => {
+        Axios.post('editword', word)
+          .then(result => {
+            console.log(result)
+          })
+          .catch(err => {
+            console.log(err.message)
+          })
       })
     }
   }

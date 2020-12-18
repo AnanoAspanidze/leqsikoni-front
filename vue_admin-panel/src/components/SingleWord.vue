@@ -24,7 +24,7 @@
         :disabled="
           item.wordType === 'Geo' && getMeinGeo.length > 0 && !item.isMainWord
         "
-        @click="$emit('wordSelect', item.wordId)"
+        @click="$emit('wordSelect', item)"
       ></v-checkbox>
       <v-checkbox
         v-if="item.wordType === 'Eng'"
@@ -34,9 +34,9 @@
         label="მთავარი"
         class="mt-0"
         :disabled="
-          item.wordType === 'Geo' && getMeinEng.length > 0 && !item.isMainWord
+          item.wordType === 'Eng' && getMeinEng.length > 0 && !item.isMainWord
         "
-        @click="$emit('wordSelect', item.wordId)"
+        @click="$emit('wordSelect', item)"
       ></v-checkbox>
       <v-checkbox
         v-if="item.wordType === 'Def'"
@@ -46,9 +46,9 @@
         label="მთავარი"
         class="mt-0"
         :disabled="
-          item.wordType === 'Geo' && getMeinDef.length > 0 && !item.isMainWord
+          item.wordType === 'Def' && getMeinDef.length > 0 && !item.isMainWord
         "
-        @click="$emit('wordSelect', item.wordId)"
+        @click="$emit('wordSelect', item)"
       ></v-checkbox>
     </v-card-title>
     <v-container>
@@ -79,20 +79,26 @@
       </div>
       <v-row>
         <v-col class="text-right">
-          <v-btn color="primary" class="mr-3">შეცვლა</v-btn>
+          <v-btn
+            color="primary"
+            class="mr-3"
+            @click="$emit('editSingleWord', item)"
+          >
+            შეცვლა
+          </v-btn>
           <v-btn
             class="mx-1"
             fab
             dark
             small
             :color="getBlockColor(item)"
-            @click="wordConditionChange()"
+            @click="wordConditionChange(item)"
           >
             <v-icon v-if="item.isActive" dark>
-              remove_circle
+              check_circle
             </v-icon>
             <v-icon v-else dark>
-              check_circle
+              remove_circle
             </v-icon>
           </v-btn>
         </v-col>
@@ -112,7 +118,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'SingleWord',
@@ -144,33 +150,45 @@ export default {
       timeout: 1500
     }
   },
-  computed: {
-    ...mapGetters('wordData', ['containerId'])
-  },
   methods: {
     ...mapActions('wordData', [
       'changeSelectedWord',
       'blockWord',
       'getWordById'
     ]),
-    wordConditionChange() {
-      console.log(this.containerId)
-      this.blockWord(this.containerId)
-        .then(result => {
-          this.snackbar.type = 'success'
-          Object.assign(this.snackbar, result)
-          this.getWordById(this.$route.params.itemId)
-        })
-        .catch(err => {
-          this.snackbar.type = 'error'
-          Object.assign(this.snackbar, err)
-        })
+    wordConditionChange(item) {
+      console.log(item)
+      if (item.isActive) {
+        item.isActive = false
+        this.changeSelectedWord(item)
+          .then(result => {
+            this.snackbar.type = 'success'
+            Object.assign(this.snackbar, result)
+            this.getWordById(this.$route.params.itemId)
+          })
+          .catch(err => {
+            this.snackbar.type = 'error'
+            Object.assign(this.snackbar, err)
+          })
+      } else {
+        item.isActive = true
+        this.changeSelectedWord(item)
+          .then(result => {
+            this.snackbar.type = 'success'
+            Object.assign(this.snackbar, result)
+            this.getWordById(this.$route.params.itemId)
+          })
+          .catch(err => {
+            this.snackbar.type = 'error'
+            Object.assign(this.snackbar, err)
+          })
+      }
     },
     getBlockColor(item) {
       if (item.isActive) {
-        return 'error'
+        return 'success'
       }
-      return 'success'
+      return 'error'
     }
   }
 }

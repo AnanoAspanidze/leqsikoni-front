@@ -43,18 +43,55 @@
               <v-avatar left>
                 <v-img src="@/assets/notes.png"></v-img>
               </v-avatar>
-              {{ value | shorten(30) }}
+              {{ value | shorten(25) }}
             </v-chip>
           </template>
           <!-- full -->
           <template v-slot:[`item.itemId`]="{ value }">
-            <v-btn color="primary" medium @click="getFullInfo(value)">
-              დეტალურად
+            <v-btn
+              class="ma-2"
+              dark
+              color="primary"
+              dense
+              small
+              @click="getFullInfo(value)"
+            >
+              <v-icon dark>
+                read_more
+              </v-icon>
+            </v-btn>
+          </template>
+          <!-- condition -->
+          <template v-slot:[`item.conditionWidthId`]="{ item }">
+            <v-btn
+              class="mx-1"
+              fab
+              dark
+              x-small
+              :color="getBlockColor(item.isContainerActive)"
+              @click="wordConditionChange(item)"
+            >
+              <v-icon v-if="item.isContainerActive" dark>
+                check_circle
+              </v-icon>
+              <v-icon v-else dark>
+                remove_circle
+              </v-icon>
             </v-btn>
           </template>
         </v-data-table>
       </v-card>
     </template>
+    <v-snackbar
+      v-model="snackbar.success"
+      :timeout="timeout"
+      :color="snackbar.type"
+      bottom
+      text
+      content-class="text-center"
+    >
+      {{ snackbar.message }}
+    </v-snackbar>
   </div>
 </template>
 
@@ -73,8 +110,15 @@ export default {
         },
         { text: 'ინგლისური სიტყვები', value: 'engWord' },
         { text: 'განმარტება', value: 'defWord' },
-        { text: 'სრულად', value: 'itemId', sortable: false }
-      ]
+        { text: 'სრულად', value: 'itemId', sortable: false },
+        { text: 'აქტიური', value: 'conditionWidthId', sortable: false }
+      ],
+      snackbar: {
+        success: false,
+        message: '',
+        type: ''
+      },
+      timeout: 1500
     }
   },
   computed: {
@@ -84,9 +128,41 @@ export default {
     this.getWordList()
   },
   methods: {
-    ...mapActions('wordData', ['getWordList']),
+    ...mapActions('wordData', ['getWordList', 'blockWord', 'unBlockWord']),
     getFullInfo(val) {
       this.$router.push({ name: 'wordInfo', params: { itemId: val } })
+    },
+    getBlockColor(item) {
+      if (item) {
+        return 'success'
+      }
+      return 'error'
+    },
+    wordConditionChange(item) {
+      console.log(item)
+      if (item.isContainerActive) {
+        this.blockWord(item.itemId)
+          .then(result => {
+            this.snackbar.type = 'success'
+            Object.assign(this.snackbar, result)
+            this.getWordList()
+          })
+          .catch(err => {
+            this.snackbar.type = 'error'
+            Object.assign(this.snackbar, err)
+          })
+      } else {
+        this.unBlockWord(item.itemId)
+          .then(result => {
+            this.snackbar.type = 'success'
+            Object.assign(this.snackbar, result)
+            this.getWordList()
+          })
+          .catch(err => {
+            this.snackbar.type = 'error'
+            Object.assign(this.snackbar, err)
+          })
+      }
     }
   }
 }

@@ -1,5 +1,144 @@
 <template>
   <div class="wordInfo">
+    <v-container fluid>
+      <v-row>
+        <v-col :cols="12">
+          <v-dialog
+            v-model="dialog"
+            fullscreen
+            hide-overlay
+            transition="dialog-bottom-transition"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn color="primary" dark v-bind="attrs" v-on="on">
+                სიტყვის დამატება
+              </v-btn>
+            </template>
+            <v-card>
+              <v-toolbar dark color="primary">
+                <v-toolbar-items>
+                  <v-btn dark text @click="resetValidation">
+                    გაუქმება
+                    <v-icon right dark>close</v-icon>
+                  </v-btn>
+                </v-toolbar-items>
+                <v-spacer></v-spacer>
+                <v-toolbar-items>
+                  <v-btn dark text @click="dialog = false">
+                    <v-icon left dark>save_alt</v-icon>
+                    შენახვა
+                  </v-btn>
+                </v-toolbar-items>
+              </v-toolbar>
+              <v-row justify="center">
+                <v-col :cols="6">
+                  <h3 class="mt-10 text-center">ახალი სიტყვის დამატება</h3>
+                  <v-form
+                    ref="form"
+                    v-model="valid"
+                    class="mt-15"
+                    lazy-validation
+                  >
+                    <v-textarea
+                      v-model="form.wordName"
+                      :rules="wordRules"
+                      label="სიტყვა"
+                      rows="1"
+                      auto-grow
+                      dense
+                      required
+                      clearable
+                      outlined
+                    ></v-textarea>
+                    <div v-if="sourseActive">
+                      <v-text-field
+                        v-model="form.sourseText"
+                        label="წყარო"
+                        dense
+                        prepend-icon="note"
+                        clearable
+                        outlined
+                      ></v-text-field>
+                      <v-text-field
+                        v-model="form.sourceLink"
+                        label="ლინკი"
+                        prepend-icon="link"
+                        dense
+                        clearable
+                        outlined
+                      ></v-text-field>
+                    </div>
+
+                    <div class="float-icon">
+                      <v-fab-transition>
+                        <v-btn
+                          :key="activeFab.icon"
+                          :color="activeFab.color"
+                          fab
+                          small
+                          dark
+                          absolute
+                          bottom
+                          right
+                          class="v-btn--example"
+                          @click="getIcon"
+                        >
+                          <v-icon>{{ activeFab.icon }}</v-icon>
+                        </v-btn>
+                      </v-fab-transition>
+                    </div>
+                    <div class="d-flex">
+                      <v-checkbox
+                        v-model="form.wordType"
+                        label="ინგლისური"
+                        :rules="[v => !!v || 'მონიშნეთ სიტყვის ტიპი']"
+                        class="mr-4"
+                        value="Eng"
+                        required
+                      ></v-checkbox>
+                      <v-checkbox
+                        v-model="form.wordType"
+                        label="ქართული"
+                        :rules="[v => !!v || 'მონიშნეთ სიტყვის ტიპი']"
+                        class="mr-4"
+                        value="Geo"
+                        required
+                      ></v-checkbox>
+                      <v-checkbox
+                        v-model="form.wordType"
+                        label="აღწერა"
+                        :rules="[v => !!v || 'მონიშნეთ სიტყვის ტიპი']"
+                        value="Def"
+                        required
+                      ></v-checkbox>
+                    </div>
+                    <v-checkbox
+                      v-model="form.isMainWord"
+                      class="mt-0 mb-4"
+                      label="მთავაი სიტყვად მონიშვნა"
+                      required
+                    ></v-checkbox>
+
+                    <div class="d-flex justify-center">
+                      <v-btn color="success" @click="addWord">
+                        დამატება
+                      </v-btn>
+                      <v-btn color="warning" class="mx-5" @click="reset">
+                        გასუფთავება
+                      </v-btn>
+                      <v-btn color="error" @click="resetValidation">
+                        გაუქმება
+                      </v-btn>
+                    </div>
+                  </v-form>
+                </v-col>
+              </v-row>
+            </v-card>
+          </v-dialog>
+        </v-col>
+      </v-row>
+    </v-container>
+
     <v-container>
       <v-timeline dense>
         <transition-group name="flip-list">
@@ -19,6 +158,7 @@
                 :get-mein-eng="getMeinEng"
                 :get-mein-def="getMeinDef"
                 @wordSelect="setMainWord($event)"
+                @editSingleWord="getEditDialog($event)"
               />
               <single-word
                 v-if="item.wordType === 'Geo'"
@@ -27,6 +167,7 @@
                 :get-mein-eng="getMeinEng"
                 :get-mein-def="getMeinDef"
                 @wordSelect="setMainWord($event)"
+                @editSingleWord="getEditDialog($event)"
               />
               <single-word
                 v-if="item.wordType === 'Def'"
@@ -35,6 +176,7 @@
                 :get-mein-eng="getMeinEng"
                 :get-mein-def="getMeinDef"
                 @wordSelect="setMainWord($event)"
+                @editSingleWord="getEditDialog($event)"
               />
             </div>
             <div v-else>
@@ -45,6 +187,7 @@
                 :get-mein-eng="getMeinEng"
                 :get-mein-def="getMeinDef"
                 @wordSelect="setMainWord($event)"
+                @editSingleWord="getEditDialog($event)"
               />
               <single-word
                 v-if="item.wordType === 'Geo'"
@@ -53,6 +196,7 @@
                 :get-mein-eng="getMeinEng"
                 :get-mein-def="getMeinDef"
                 @wordSelect="setMainWord($event)"
+                @editSingleWord="getEditDialog($event)"
               />
               <single-word
                 v-if="item.wordType === 'Def'"
@@ -61,6 +205,7 @@
                 :get-mein-eng="getMeinEng"
                 :get-mein-def="getMeinDef"
                 @wordSelect="setMainWord($event)"
+                @editSingleWord="getEditDialog($event)"
               />
             </div>
           </v-timeline-item>
@@ -89,17 +234,33 @@ export default {
   components: {
     SingleWord
   },
-  data() {
-    return {
-      wordList: [],
-      snackbar: {
-        success: false,
-        message: '',
-        type: ''
-      },
-      timeout: 1500
-    }
-  },
+  data: () => ({
+    wordList: [],
+    snackbar: {
+      success: false,
+      message: '',
+      type: ''
+    },
+    timeout: 1500,
+    dialog: false,
+    valid: true,
+    sourseActive: 0,
+    form: {
+      wordId: null,
+      wordName: '',
+      wordType: '',
+      sourseText: '',
+      sourceLink: '',
+      mainWord: false,
+      isActive: false,
+      isAuthor: false,
+      user: null
+    },
+    wordRules: [
+      v => !!v || 'ველი სავალდებულოა',
+      v => (v && v.length >= 2) || 'მინიმუმ 2 სიმბოლო'
+    ]
+  }),
   computed: {
     ...mapGetters('wordData', ['WordsById', 'containerId']),
     getMeinGeo() {
@@ -119,6 +280,16 @@ export default {
         x => x.wordType === 'Def' && x.isMainWord
       )
       return defWord
+    },
+    activeFab() {
+      switch (this.sourseActive) {
+        case 0:
+          return { color: 'success', icon: 'add' }
+        case 1:
+          return { color: 'red', icon: 'remove' }
+        default:
+          return {}
+      }
     }
   },
   watch: {
@@ -131,16 +302,19 @@ export default {
     this.getWordById(id)
   },
   methods: {
-    ...mapActions('wordData', ['getWordById', 'changeSelectedWord']),
-    setMainWord(id) {
-      let word = this.wordList.find(x => x.wordId === id)
-      let data = {
-        itemId: this.containerId,
-        itemsList: [{ ...word }]
-      }
-      this.changeSelectedWord(data)
+    ...mapActions('wordData', [
+      'getWordById',
+      'changeSelectedWord',
+      'addSingleWord',
+      'editSingleWord'
+    ]),
+    getEditDialog(item) {
+      this.form = item
+      this.dialog = true
+    },
+    setMainWord(item) {
+      this.changeSelectedWord(item)
         .then(result => {
-          console.log(result)
           this.snackbar.type = 'success'
           Object.assign(this.snackbar, result)
           this.getWordById(this.$route.params.itemId)
@@ -149,12 +323,70 @@ export default {
           this.snackbar.type = 'error'
           Object.assign(this.snackbar, err)
         })
+    },
+    getIcon() {
+      switch (this.sourseActive) {
+        case 0:
+          this.sourseActive = 1
+          break
+
+        case 1:
+          this.sourseActive = 0
+          break
+
+        default:
+          break
+      }
+    },
+    addWord() {
+      console.log(this.form.wordId)
+      if (this.$refs.form.validate()) {
+        if (this.wordId) {
+          const data = {
+            wordId: this.form.wordId,
+            wordName: this.form.wordName,
+            wordType: this.form.wordType,
+            sourceLink: this.form.sourceLink,
+            sourceText: this.form.sourseText
+          }
+          this.editSingleWord(data)
+        } else {
+          const word = {
+            ContainerId: this.containerId,
+            isActive: true,
+            isAuthor: false,
+            ...this.form
+          }
+          this.addSingleWord(word)
+        }
+      }
+    },
+    reset() {
+      this.$refs.form.reset()
+    },
+    resetValidation() {
+      this.$refs.form.resetValidation()
+      this.form = {
+        wordId: null,
+        wordName: '',
+        wordType: '',
+        sourseText: '',
+        sourceLink: '',
+        mainWord: false,
+        isActive: false,
+        isAuthor: false,
+        user: null
+      }
+      this.dialog = false
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.float-icon {
+  position: relative;
+}
 .flip-list-move {
   transition: transform 1s;
 }
