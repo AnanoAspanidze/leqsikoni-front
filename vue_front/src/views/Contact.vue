@@ -23,19 +23,12 @@
             </div>
 
             <div class="card-content is-family-secondary pb-6">
-              <div class="content mb-2">
-                Adresse : IMPACT, Chaussée de Vleurgat 195, 1050 Ixelles
-              </div>
-              <div class="content mb-2">Tél. Machin : +32 484 26 26 26</div>
-              <div class="content mb-2">Tél. Truc : +32 484 26 26 26</div>
               <div class="content pb-5">
                 Mail :
-                <a href="#" class="text-decoration-underline has-text-primary">
-                  info@impact.org
+                <a class="text-decoration-underline has-text-primary">
+                  {{ contact.email }}
                 </a>
               </div>
-              <div class="content mb-2">IBAN : BE 32 484 26 77 94</div>
-              <div class="content mb-2">BIC : BE 32 484 26 77 94</div>
             </div>
           </div>
           <!-- img -->

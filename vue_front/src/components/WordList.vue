@@ -18,8 +18,8 @@
               tag="div"
               network="facebook"
               :url="`https://terms.emis.ge/word/${item.id}`"
-              title="აქ უნდა იყოს სათაური"
-              :quote="item.itemsList[0].wordName"
+              title=""
+              :quote="text"
             >
               <b-button
                 class="mr-5"
@@ -27,6 +27,7 @@
                 icon-right="share"
                 outlined
                 rounded
+                @click="getFacebookWord(item)"
               />
             </ShareNetwork>
             <b-button
@@ -87,7 +88,8 @@
     },
     data() {
       return {
-        current: 1
+        current: 1,
+        text: ''
       }
     },
     computed: {
@@ -159,7 +161,19 @@
       })
     },
     methods: {
-      ...mapActions(['getWordByQuery'])
+      ...mapActions(['getWordByQuery']),
+      getFacebookWord(item) {
+        let data = ''
+        if (item.itemsList) {
+          let engWord = item.itemsList.find(x => x.wordType === 'Eng')
+          let geoWord = item.itemsList.find(x => x.wordType === 'Geo')
+
+          if (engWord || geoWord) {
+            data = engWord.wordName || geoWord.wordName
+          }
+        }
+        this.text = 'terms.emis.ge - ' + data
+      }
     }
   }
 </script>

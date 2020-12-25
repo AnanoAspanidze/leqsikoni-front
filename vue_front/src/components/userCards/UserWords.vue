@@ -20,7 +20,7 @@
               :url="`https://terms.emis.ge/word/${item.id}`"
               title="აქ უნდა იყოს სათაური"
               description="აღწერის ველი"
-              quote="ციტირების ველი"
+              :quote="text"
               hashtags="ჰეშტეგები"
             >
               <b-button
@@ -29,6 +29,7 @@
                 icon-right="share"
                 outlined
                 rounded
+                @click="getFacebookWord(item)"
               />
             </ShareNetwork>
             <b-button
@@ -119,7 +120,8 @@
     },
     data() {
       return {
-        current: 1
+        current: 1,
+        text: ''
       }
     },
     computed: {
@@ -184,7 +186,19 @@
       })
     },
     methods: {
-      ...mapActions(['getUserWordList'])
+      ...mapActions(['getUserWordList']),
+      getFacebookWord(item) {
+        let data = ''
+        if (item.itemsList) {
+          let engWord = item.itemsList.find(x => x.wordType === 'Eng')
+          let geoWord = item.itemsList.find(x => x.wordType === 'Geo')
+
+          if (engWord || geoWord) {
+            data = engWord.wordName || geoWord.wordName
+          }
+        }
+        this.text = 'terms.emis.ge - ' + data
+      }
     }
   }
 </script>

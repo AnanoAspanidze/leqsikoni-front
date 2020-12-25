@@ -58,7 +58,7 @@
             network="facebook"
             :url="`https://terms.emis.ge${$route.fullPath}`"
             title=""
-            :quote="`terms.emis.ge - ${getFacebookWord}`"
+            :quote="getFacebookWord"
           >
             <b-button type="is-primary" icon-right="share" outlined rounded />
           </ShareNetwork>
@@ -98,9 +98,18 @@
       getFacebookWord() {
         let data = ''
         if (this.singleWord.itemsList) {
-          data = this.singleWord.itemsList[0].wordName
+          let engWord = this.singleWord.itemsList.find(
+            x => x.wordType === 'Eng'
+          )
+          let geoWord = this.singleWord.itemsList.find(
+            x => x.wordType === 'Geo'
+          )
+
+          if (engWord || geoWord) {
+            data = engWord.wordName || geoWord.wordName
+          }
         }
-        return data
+        return 'terms.emis.ge - ' + data
       }
     },
     created() {

@@ -13,27 +13,12 @@
               <h1
                 class="title has-text-primary is-size-4 has-text-weight-light mt-6"
               >
-                რატომ ვიყენებთ მას?
+                პროექტის შესახებ
               </h1>
             </div>
             <div class="card-content pb-6 is-family-secondary">
               <div class="content">
-                ცნობილი ფაქტია, რომ გვერდის წაკითხვად შიგთავსს შეუძლია
-                მკითხველის ყურადღება მიიზიდოს და დიზაინის აღქმაში ხელი შეუშალოს.
-                Lorem Ipsum-ის გამოყენებით ვღებულობთ იმაზე მეტ-ნაკლებად სწორი
-                გადანაწილების ტექსტს, ვიდრე ერთიდაიგივე გამეორებადი სიტყვებია
-                ხოლმე.
-              </div>
-              <div class="content">
-                შედეგად, ტექსტი ჩვეულებრივ ინგლისურს გავს, მისი წაითხვა კი
-                შეუძლებელია.დღეს უამრავი პერსონალური საგამომცემლო პროგრამა და
-                ვებგვერდი იყენებს Lorem Ipsum-ს, როგორც დროებით ტექსტს წყობის
-                შესავსებად; Lorem Ipsum-ის მოძებნისას კი საძიებო სისტემები ბევრ
-                დაუსრულებელ გვერდს გვიჩვენებენ.
-              </div>
-              <div class="content pb-4">
-                წლების მანძილზე ამ ტექსტის უამრავი ვერსია გამოჩნდა, ზოგი
-                შემთხვევით დაშვებული შეცდომის გამო, ზოგი კი — განზრახ, ხუმრობით.
+                {{ contact.description }}
               </div>
             </div>
           </div>
@@ -51,8 +36,12 @@
 <script>
   import gsap from 'gsap'
   import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
+    computed: {
+      ...mapGetters(['contact'])
+    },
     mounted() {
       let parent = this.$refs.parent.clientWidth
       gsap.registerPlugin(MotionPathPlugin)
@@ -74,6 +63,12 @@
           ]
         }
       })
+    },
+    created() {
+      this.getContactInfo()
+    },
+    methods: {
+      ...mapActions(['getContactInfo'])
     },
     metaInfo: {
       // if no subcomponents specify a metaInfo.title, this title will be used

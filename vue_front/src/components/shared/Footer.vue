@@ -6,13 +6,22 @@
           class="column is-one-fifth-desktop is-one-quarter-tablet is-three-fifths-mobile"
         >
           <div class="is-flex is-justify-content-space-around">
-            <a class="button is-rounded has-text-primary">
+            <a
+              :href="contact.facebookLink || '#'"
+              class="button is-rounded has-text-primary"
+            >
               <i class="fi fb"></i>
             </a>
-            <a class="button is-rounded has-text-primary">
+            <a
+              :href="contact.tweeterLink || '#'"
+              class="button is-rounded has-text-primary"
+            >
               <i class="fi tw"></i>
             </a>
-            <a class="button is-rounded has-text-primary">
+            <a
+              :href="contact.linkedinLink || '#'"
+              class="button is-rounded has-text-primary"
+            >
               <i class="fi in"></i>
             </a>
           </div>
