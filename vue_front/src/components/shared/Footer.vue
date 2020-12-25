@@ -23,8 +23,18 @@
 </template>
 
 <script>
+  import { mapActions, mapGetters } from 'vuex'
   export default {
-    name: 'Footer'
+    name: 'Footer',
+    computed: {
+      ...mapGetters(['contact'])
+    },
+    created() {
+      this.getContactInfo()
+    },
+    methods: {
+      ...mapActions(['getContactInfo'])
+    }
   }
 </script>
 

@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Axios from '../plugins/axios'
-import router from '@/router'
 import auth from './Auth/auth'
 import words from './Words/AddEditDelete'
 
@@ -82,7 +81,8 @@ export default new Vuex.Store({
     wordCount: 0,
     searchCount: null,
     userWords: null,
-    singleWord: {}
+    singleWord: {},
+    contact: ''
   },
   getters: {
     isLoading(state) {
@@ -108,6 +108,9 @@ export default new Vuex.Store({
     },
     singleWord(state) {
       return state.singleWord
+    },
+    contact(state) {
+      return state.contact
     }
   },
   mutations: {
@@ -150,6 +153,9 @@ export default new Vuex.Store({
     },
     SET_SINGLE_WORD(state, word) {
       state.singleWord = word
+    },
+    SET_CONTACT_INFO(state, contactInfo) {
+      state.contact = contactInfo
     }
   },
   actions: {
@@ -184,6 +190,11 @@ export default new Vuex.Store({
     getSingleWord({ commit }, wordId) {
       Axios.get(`words/wordsdetails/${wordId}`).then(Response => {
         commit('SET_SINGLE_WORD', Response.data)
+      })
+    },
+    getContactInfo({ commit }) {
+      Axios.get('words/info').then(result => {
+        commit('SET_CONTACT_INFO', result.data)
       })
     }
   },

@@ -82,49 +82,63 @@
         })
       }
     },
-    metaInfo: {
-      // if no subcomponents specify a metaInfo.title, this title will be used
-      title: 'მთავარი',
-      // all titles will be injected into this template
-      titleTemplate: '%s | Term.emis.ge',
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-      meta: [
-        // Google / Schema.org markup:
-        {
-          itemprop: 'name',
-          content: 'Terms.emis.ge'
-        },
-        {
-          itemprop: 'descritpin',
-          content: ''
-        },
-        {
-          itemprop: 'image',
-          content: '/logo.svg'
-        },
-        // Twitter card
-        { name: 'twitter:card', content: 'summary' },
-        { name: 'twitter:title', content: '' },
-        { name: 'twitter:site', content: 'https://terms.emis.ge' },
-        { name: 'twitter:description', content: '' },
-        // -- Twitter summary card with large image must be at least 280x150px --
-        {
-          name: 'twitter:image:src',
-          content: 'https://terms.emis.ge/logo.svg'
-        },
+    metaInfo() {
+      return {
+        // if no subcomponents specify a metaInfo.title, this title will be used
+        title: 'მთავარი',
+        // all titles will be injected into this template
+        titleTemplate: '%s | terms.emis.ge',
+        link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+        meta: [
+          // Google / Schema.org markup:
+          {
+            itemprop: 'name',
+            content: 'ტექნოლოგიური ტერმინების ლექსიკონი'
+          },
+          {
+            itemprop: 'descritpin',
+            content:
+              'ტექნოლოგიების ლექსიკონი ტერმინთა ქართული თარგმანებითა  და განმარტებებით. მის შევსებაში მონაწილეობის მიღება შეუძლია ყველა დაინტერესებულ ადამიანს.'
+          },
+          {
+            itemprop: 'image',
+            content: '/logo.svg'
+          },
+          // Twitter card
+          { name: 'twitter:card', content: 'summary' },
+          {
+            name: 'twitter:title',
+            content: 'ტექნოლოგიური ტერმინების ლექსიკონი'
+          },
+          { name: 'twitter:site', content: 'https://terms.emis.ge' },
+          {
+            name: 'twitter:description',
+            content:
+              'ტექნოლოგიების ლექსიკონი ტერმინთა ქართული თარგმანებითა  და განმარტებებით. მის შევსებაში მონაწილეობის მიღება შეუძლია ყველა დაინტერესებულ ადამიანს.'
+          },
+          // -- Twitter summary card with large image must be at least 280x150px --
+          {
+            name: 'twitter:image:src',
+            content: 'https://terms.emis.ge/logo.svg'
+          },
 
-        // OpenGraph data (Most widely used)
-        { property: 'og:title', content: '' },
-        { property: 'og:site_name', content: '' },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:url', content: 'https://terms.emis.ge' },
-        { property: 'og:image', content: 'https://terms.emis.ge/logo.png' },
-        {
-          property: 'og:description',
-          content: 'ეს არის terms.emis.ge სატესტო SEO აღწერა'
-        },
-        { property: 'og:locale', content: 'ka-GE' }
-      ]
+          // OpenGraph data (Most widely used)
+          {
+            property: 'og:title',
+            content: 'ტექნოლოგიური ტერმინების ლექსიკონი'
+          },
+          { property: 'og:site_name', content: '' },
+          { property: 'og:type', content: 'website' },
+          { property: 'og:url', content: 'https://terms.emis.ge' },
+          { property: 'og:image', content: 'https://terms.emis.ge/logo.png' },
+          {
+            property: 'og:description',
+            content:
+              'ტექნოლოგიების ლექსიკონი ტერმინთა ქართული თარგმანებითა  და განმარტებებით. მის შევსებაში მონაწილეობის მიღება შეუძლია ყველა დაინტერესებულ ადამიანს.'
+          },
+          { property: 'og:locale', content: 'ka-GE' }
+        ]
+      }
     }
   }
 </script>

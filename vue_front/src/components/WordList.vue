@@ -19,9 +19,7 @@
               network="facebook"
               :url="`https://terms.emis.ge/word/${item.id}`"
               title="აქ უნდა იყოს სათაური"
-              description="აღწერის ველი"
-              quote="ციტირების ველი"
-              hashtags="ჰეშტეგები"
+              :quote="item.itemsList[0].wordName"
             >
               <b-button
                 class="mr-5"

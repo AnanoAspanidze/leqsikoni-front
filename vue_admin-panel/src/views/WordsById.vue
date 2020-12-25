@@ -14,7 +14,7 @@
                 სიტყვის დამატება
               </v-btn>
             </template>
-            <v-card>
+            <v-card class="overflow-x-hidden">
               <v-toolbar dark color="primary">
                 <v-toolbar-items>
                   <v-btn dark text @click="resetValidation">
@@ -50,9 +50,9 @@
                       clearable
                       outlined
                     ></v-textarea>
-                    <div v-if="sourseActive">
+                    <div v-if="sourceActive">
                       <v-text-field
-                        v-model="form.sourseText"
+                        v-model="form.sourceText"
                         label="წყარო"
                         dense
                         prepend-icon="note"
@@ -112,12 +112,20 @@
                         required
                       ></v-checkbox>
                     </div>
-                    <v-checkbox
-                      v-model="form.isMainWord"
-                      class="mt-0 mb-4"
-                      label="მთავაი სიტყვად მონიშვნა"
-                      required
-                    ></v-checkbox>
+                    <div class="d-flex">
+                      <v-checkbox
+                        v-model="form.isMainWord"
+                        class="mt-0 mb-4"
+                        label="მთავაი სიტყვად მონიშვნა"
+                        required
+                      ></v-checkbox>
+                      <v-checkbox
+                        v-model="form.isActive"
+                        class="mt-0 ml-4 mb-4"
+                        label="გააქტიურება"
+                        required
+                      ></v-checkbox>
+                    </div>
 
                     <div class="d-flex justify-center">
                       <v-btn color="success" @click="addWord">
@@ -244,17 +252,14 @@ export default {
     timeout: 1500,
     dialog: false,
     valid: true,
-    sourseActive: 0,
+    sourceActive: 0,
     form: {
-      wordId: null,
+      wordId: 0,
       wordName: '',
       wordType: '',
-      sourseText: '',
+      sourceText: '',
       sourceLink: '',
-      mainWord: false,
-      isActive: false,
-      isAuthor: false,
-      user: null
+      isMainWord: false
     },
     wordRules: [
       v => !!v || 'ველი სავალდებულოა',
@@ -282,7 +287,7 @@ export default {
       return defWord
     },
     activeFab() {
-      switch (this.sourseActive) {
+      switch (this.sourceActive) {
         case 0:
           return { color: 'success', icon: 'add' }
         case 1:
@@ -325,13 +330,13 @@ export default {
         })
     },
     getIcon() {
-      switch (this.sourseActive) {
+      switch (this.sourceActive) {
         case 0:
-          this.sourseActive = 1
+          this.sourceActive = 1
           break
 
         case 1:
-          this.sourseActive = 0
+          this.sourceActive = 0
           break
 
         default:
@@ -339,25 +344,65 @@ export default {
       }
     },
     addWord() {
-      console.log(this.form.wordId)
       if (this.$refs.form.validate()) {
-        if (this.wordId) {
+        if (this.form.wordId !== 0) {
           const data = {
             wordId: this.form.wordId,
             wordName: this.form.wordName,
             wordType: this.form.wordType,
             sourceLink: this.form.sourceLink,
-            sourceText: this.form.sourseText
+            sourceText: this.form.sourseText,
+            isMainWord: this.form.isMainWord,
+            isActive: this.form.isActive
           }
           this.editSingleWord(data)
+            .then(result => {
+              if (result.success) {
+                this.snackbar = {
+                  success: true,
+                  message: result.message,
+                  type: 'success'
+                }
+              } else {
+                this.snackbar = {
+                  success: true,
+                  message: result.message,
+                  type: 'error'
+                }
+              }
+            })
+            .then(() => {
+              this.resetValidation()
+              this.snackbar
+            })
         } else {
           const word = {
             ContainerId: this.containerId,
             isActive: true,
-            isAuthor: false,
             ...this.form
           }
           this.addSingleWord(word)
+            .then(result => {
+              console.log(result)
+              if (result.success) {
+                this.snackbar = {
+                  success: true,
+                  message: result.message,
+                  type: 'success'
+                }
+              } else {
+                this.snackbar = {
+                  success: true,
+                  message: result.message,
+                  type: 'error'
+                }
+              }
+              this.resetValidation()
+            })
+            .then(() => {
+              const id = this.$route.params.itemId
+              this.getWordById(id)
+            })
         }
       }
     },
@@ -370,7 +415,7 @@ export default {
         wordId: null,
         wordName: '',
         wordType: '',
-        sourseText: '',
+        sourceText: '',
         sourceLink: '',
         mainWord: false,
         isActive: false,

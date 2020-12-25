@@ -33,8 +33,12 @@ export default new Vuex.Store({
         Axios.post('https://terms.emis.ge/test/api/Account/Login', form)
           .then(Response => {
             if (Response.data.success) {
-              let userData = JSON.stringify(Response.data.userWithToken)
-              localStorage.setItem('adminInfo', userData)
+              const now = new Date()
+              const item = {
+                value: Response.data.userWithToken,
+                expiry: now.getTime() + 7 * 24 * 60 * 60 * 1000
+              }
+              localStorage.setItem('adminInfo', JSON.stringify(item))
 
               commit('SET_USER', Response.data.userWithToken)
             }
@@ -50,9 +54,15 @@ export default new Vuex.Store({
       commit('SET_USER', null)
     },
     logUser({ commit }) {
-      let user = JSON.parse(localStorage.getItem('adminInfo'))
-      if (user) {
-        commit('SET_USER', user)
+      const itemStr = localStorage.getItem('adminInfo')
+      if (!itemStr) return null
+
+      const user = JSON.parse(itemStr)
+      const now = new Date()
+      if (now.getTime() > user.expiry) {
+        localStorage.removeItem('adminInfo')
+      } else {
+        commit('SET_USER', user.value)
       }
     }
   },

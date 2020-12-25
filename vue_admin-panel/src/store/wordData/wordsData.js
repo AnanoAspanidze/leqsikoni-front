@@ -87,27 +87,33 @@ const wordData = {
         })
       })
     },
-    addSingleWord({ dispatch }, word) {
+    addSingleWord(_, word) {
+      const token = JSON.parse(localStorage.getItem('adminInfo')).value
+        .accessToken
       console.log(word)
       return new Promise((resolve, reject) => {
-        Axios.post('addnewword', word)
+        Axios.post('addnewword', word, {
+          headers: {
+            authorization: 'Bearer ' + token
+          }
+        })
           .then(result => {
-            console.log(result)
+            resolve(result.data)
           })
           .catch(err => {
-            console.log(err.message)
+            reject(err.message)
           })
       })
     },
-    editSingleWord({ dispatch }, word) {
+    editSingleWord(_, word) {
       console.log(word)
       return new Promise((resolve, reject) => {
-        Axios.post('editword', word)
+        Axios.post('editword', word, {})
           .then(result => {
-            console.log(result)
+            resolve(result.data)
           })
           .catch(err => {
-            console.log(err.message)
+            reject(err)
           })
       })
     }
