@@ -111,12 +111,15 @@
             geoWord.wordName = ''
           }
           if (defWord.wordName === undefined) {
-            console.log('fire')
             defWord.wordName = ''
           }
-          console.log(engWord.wordName, geoWord.wordName, defWord.wordName)
           data =
-            engWord.wordName + ' ' + geoWord.wordName + ' ' + defWord.wordName
+            'terms.emis.ge - ' +
+            engWord.wordName +
+            ' ' +
+            geoWord.wordName +
+            ' ' +
+            defWord.wordName
         }
 
         return data

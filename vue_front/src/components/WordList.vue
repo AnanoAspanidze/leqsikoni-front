@@ -178,7 +178,12 @@
             defWord.wordName = ''
           }
           this.text =
-            engWord.wordName + ' ' + geoWord.wordName + ' ' + defWord.wordName
+            'terms.emis.ge - ' +
+            engWord.wordName +
+            ' ' +
+            geoWord.wordName +
+            ' ' +
+            defWord.wordName
         }
       }
     }

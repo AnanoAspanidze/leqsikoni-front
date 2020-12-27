@@ -8,6 +8,7 @@
           <div class="is-flex is-justify-content-space-around">
             <a
               :href="contact.facebookLink || '#'"
+              target="blank"
               class="button is-rounded has-text-primary"
             >
               <i class="fi fb"></i>

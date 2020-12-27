@@ -8,10 +8,7 @@
       <slot name="edit"></slot>
       <div class="card-content_line is-flex is-flex-direction-column">
         <!-- English content -->
-        <div
-          v-if="engWords !== undefined"
-          :class="{ 'mb-3': $route.name === 'SingleWord' }"
-        >
+        <div :class="{ 'mb-3': $route.name === 'SingleWord' }">
           <div v-for="word in engWords" :key="word.itemId" class="is-flex mt-3">
             <div
               class="card-content_line-icon has-background-warning is-flex is-justify-content-center px-1 py-1"
@@ -92,7 +89,7 @@
           </div>
         </div>
         <!-- Georgian content -->
-        <div v-if="geoWords" :class="{ 'my-3': $route.name === 'SingleWord' }">
+        <div :class="{ 'my-3': $route.name === 'SingleWord' }">
           <div v-for="word in geoWords" :key="word.itemId" class="is-flex mt-3">
             <div
               class="card-content_line-icon has-background-warning is-flex is-justify-content-center px-1 py-1"
@@ -180,7 +177,7 @@
           </div>
         </div>
         <!-- Definition content -->
-        <div v-if="defWords" :class="{ 'mt-3': $route.name === 'SingleWord' }">
+        <div :class="{ 'mt-3': $route.name === 'SingleWord' }">
           <div v-for="word in defWords" :key="word.itemId" class="is-flex mt-3">
             <div
               class="card-content_line-icon has-background-warning is-flex is-justify-content-center px-1 py-1"

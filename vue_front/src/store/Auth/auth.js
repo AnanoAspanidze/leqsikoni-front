@@ -51,7 +51,7 @@ const auth = {
           })
       })
     },
-    LoginWithEmail({ commit, dispatch, rootState }, data) {
+    LoginWithEmail({ commit, rootState }, data) {
       rootState.isLoading = true
       return new Promise(resolve => {
         Axios.post('Account/Login', data)
@@ -62,6 +62,11 @@ const auth = {
 
               commit('SET_USER', userData, { root: true })
               commit('SET_TOKEN', token)
+              const message = {
+                success: true,
+                message: 'თქვენ წარმატებით გაიარეთ ავტორიზაცია'
+              }
+              commit('SET_MESSAGE', message)
               rootState.isLoading = false
               // გადამისამართება მთავარ გვერდზე
               router.push({ path: '/' }).catch(err => {})
@@ -87,12 +92,13 @@ const auth = {
       }
     },
 
-    logOutUser({ commit, state }) {
-      localStorage.removeItem('emisToken')
-      localStorage.removeItem('emisUser')
-      Axios.post('Account/Logout', { accessToken: state.token.access })
+    logOutUser({ commit }) {
+      const token = localStorage.getItem('emisToken')
+      Axios.post('Account/Logout', { accessToken: token })
         .then(Response => {
           if (Response.data.success) {
+            localStorage.removeItem('emisToken')
+            localStorage.removeItem('emisUser')
             commit('CLEAR_USER_DATA', null, { root: true })
             commit('CLEAR_TOKEN')
             commit('SET_MESSAGE', Response.data)
@@ -140,7 +146,6 @@ const auth = {
         NewPassword: userData.password,
         ConfirmNewPassword: userData.confirmNewPassword
       }
-      console.log(newPass)
       Axios.post('Account/edituserpassword', newPass).then(Response => {
         commit('SET_MESSAGE', Response.data)
       })
