@@ -87,7 +87,7 @@
         // if no subcomponents specify a metaInfo.title, this title will be used
         title: 'მთავარი',
         // all titles will be injected into this template
-        titleTemplate: '%s | terms.emis.ge',
+        titleTemplate: '%s | ტექნოლოგიური ტერმინების ლექსიკონი',
         link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
         meta: [
           // Google / Schema.org markup:

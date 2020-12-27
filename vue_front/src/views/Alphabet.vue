@@ -476,7 +476,7 @@
         // if no subcomponents specify a metaInfo.title, this title will be used
         title: this.getMetaTitle,
         // all titles will be injected into this template
-        titleTemplate: '%s | terms.emis.ge'
+        titleTemplate: '%s | ტექნოლოგიური ტერმინების ლექსიკონი'
       }
     }
   }
