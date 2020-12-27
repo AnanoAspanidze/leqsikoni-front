@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Axios from 'axios'
+import axios from '../plugins/axios'
 import wordData from './wordData/wordsData'
 import userList from './users/user'
 
@@ -9,7 +10,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     user: null,
-    token: null
+    token: null,
+    pageInfo: {}
   },
   getters: {
     user(state) {
@@ -17,6 +19,9 @@ export default new Vuex.Store({
     },
     token(state) {
       return state.token
+    },
+    pageInfo(state) {
+      return state.pageInfo
     }
   },
   mutations: {
@@ -25,6 +30,9 @@ export default new Vuex.Store({
         state.user = info
         state.token = info.accessToken
       }
+    },
+    SET_INFO(state, info) {
+      state.pageInfo = info
     }
   },
   actions: {
@@ -64,6 +72,22 @@ export default new Vuex.Store({
       } else {
         commit('SET_USER', user.value)
       }
+    },
+    getAboutInfo({ commit }) {
+      axios.get(`editcontactdetails/1`).then(result => {
+        commit('SET_INFO', result.data)
+      })
+    },
+    editAboutInfo(_, info) {
+      return new Promise((resolve, reject) => {
+        axios.post(`editcontact`, info).then(result => {
+          if (result.data.success) {
+            resolve(result.data.message)
+          } else {
+            reject(result.data.message)
+          }
+        })
+      })
     }
   },
   modules: {

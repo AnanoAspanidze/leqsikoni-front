@@ -38,7 +38,7 @@
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Admin Panel</v-toolbar-title>
+      <v-toolbar-title>ადმინისტრატორის პანელი</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
         <v-btn text depressed @click="logOutUser">
@@ -66,6 +66,11 @@ export default {
         icon: 'supervisor_account',
         title: 'მომხმარებელთა სია',
         route: '/users'
+      },
+      {
+        icon: 'read_more',
+        title: 'ტექსტები',
+        route: '/texts'
       }
     ]
   }),

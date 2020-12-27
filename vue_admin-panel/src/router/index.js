@@ -5,6 +5,7 @@ import Statistics from '../views/Statistics.vue'
 import Words from '../views/Words.vue'
 import WordByid from '../views/WordsById.vue'
 import Users from '../views/Users.vue'
+import Texts from '../views/Texts.vue'
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,11 @@ const routes = [
     path: '/words/:itemId',
     name: 'wordInfo',
     component: WordByid
+  },
+  {
+    path: '/texts',
+    name: 'texts',
+    component: Texts
   }
 ]
 

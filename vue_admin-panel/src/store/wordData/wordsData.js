@@ -92,11 +92,7 @@ const wordData = {
         .accessToken
       console.log(word)
       return new Promise((resolve, reject) => {
-        Axios.post('addnewword', word, {
-          headers: {
-            authorization: 'Bearer ' + token
-          }
-        })
+        Axios.post('addnewword', word)
           .then(result => {
             resolve(result.data)
           })
@@ -106,7 +102,6 @@ const wordData = {
       })
     },
     editSingleWord(_, word) {
-      console.log(word)
       return new Promise((resolve, reject) => {
         Axios.post('editword', word, {})
           .then(result => {
