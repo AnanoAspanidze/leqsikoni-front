@@ -597,6 +597,7 @@
     @media screen and (max-width: 769px) {
       .alphabet {
         &-wrapper {
+          z-index: 50;
           .lang {
             margin-top: 0.75rem;
             margin-right: 1rem !important;

@@ -98,18 +98,28 @@
       getFacebookWord() {
         let data = ''
         if (this.singleWord.itemsList) {
-          let engWord = this.singleWord.itemsList.find(
-            x => x.wordType === 'Eng'
-          )
-          let geoWord = this.singleWord.itemsList.find(
-            x => x.wordType === 'Geo'
-          )
-
-          if (engWord || geoWord) {
-            data = engWord.wordName || geoWord.wordName
+          let engWord =
+            this.singleWord.itemsList.find(x => x.wordType === 'Eng') || {}
+          let geoWord =
+            this.singleWord.itemsList.find(x => x.wordType === 'Geo') || {}
+          let defWord =
+            this.singleWord.itemsList.find(x => x.wordType === 'Def') || {}
+          if (engWord.wordName === undefined) {
+            engWord.wordName = ''
           }
+          if (geoWord.wordName === undefined) {
+            geoWord.wordName = ''
+          }
+          if (defWord.wordName === undefined) {
+            console.log('fire')
+            defWord.wordName = ''
+          }
+          console.log(engWord.wordName, geoWord.wordName, defWord.wordName)
+          data =
+            engWord.wordName + ' ' + geoWord.wordName + ' ' + defWord.wordName
         }
-        return 'terms.emis.ge - ' + data
+
+        return data
       }
     },
     created() {

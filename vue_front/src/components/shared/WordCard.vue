@@ -8,7 +8,10 @@
       <slot name="edit"></slot>
       <div class="card-content_line is-flex is-flex-direction-column">
         <!-- English content -->
-        <div :class="{ 'mb-3': $route.name === 'SingleWord' }">
+        <div
+          v-if="engWords !== undefined"
+          :class="{ 'mb-3': $route.name === 'SingleWord' }"
+        >
           <div v-for="word in engWords" :key="word.itemId" class="is-flex mt-3">
             <div
               class="card-content_line-icon has-background-warning is-flex is-justify-content-center px-1 py-1"
@@ -66,7 +69,7 @@
             </div>
             <slot name="icon"></slot>
             <p
-              v-if="word.wordType.toLowerCase() === 'eng'"
+              v-if="word.wordType === 'Eng'"
               class="has-text-primary is-family-secondary is-capitalized ml-3"
               :class="[
                 word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
@@ -75,13 +78,13 @@
               {{ word.wordName }}
             </p>
             <p
-              v-if="word.wordType.toLowerCase() === 'geo'"
+              v-if="word.wordType === 'Geo'"
               class="has-text-text is-family-secondary is-capitalized ml-3 mt"
             >
               {{ word.wordName }}
             </p>
             <p
-              v-if="word.wordType.toLowerCase() === 'def'"
+              v-if="word.wordType === 'Def'"
               class="has-text-text is-family-secondary is-capitalized ml-3"
             >
               {{ word.wordName }}
@@ -89,7 +92,7 @@
           </div>
         </div>
         <!-- Georgian content -->
-        <div :class="{ 'my-3': $route.name === 'SingleWord' }">
+        <div v-if="geoWords" :class="{ 'my-3': $route.name === 'SingleWord' }">
           <div v-for="word in geoWords" :key="word.itemId" class="is-flex mt-3">
             <div
               class="card-content_line-icon has-background-warning is-flex is-justify-content-center px-1 py-1"
@@ -148,7 +151,7 @@
             </div>
             <slot name="icon"></slot>
             <p
-              v-if="word.wordType.toLowerCase() === 'eng'"
+              v-if="word.wordType === 'Eng'"
               class="has-text-primary is-family-secondary is-capitalized ml-3"
               :class="[
                 word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
@@ -157,7 +160,7 @@
               {{ word.wordName }}
             </p>
             <p
-              v-if="word.wordType.toLowerCase() === 'geo'"
+              v-if="word.wordType === 'Geo'"
               class="has-text-text is-family-secondary is-capitalized ml-3 mt"
               :class="[
                 word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
@@ -166,7 +169,7 @@
               {{ word.wordName }}
             </p>
             <p
-              v-if="word.wordType.toLowerCase() === 'def'"
+              v-if="word.wordType === 'Def'"
               class="has-text-text is-family-secondary is-capitalized ml-3"
               :class="[
                 word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
@@ -177,7 +180,7 @@
           </div>
         </div>
         <!-- Definition content -->
-        <div :class="{ 'mt-3': $route.name === 'SingleWord' }">
+        <div v-if="defWords" :class="{ 'mt-3': $route.name === 'SingleWord' }">
           <div v-for="word in defWords" :key="word.itemId" class="is-flex mt-3">
             <div
               class="card-content_line-icon has-background-warning is-flex is-justify-content-center px-1 py-1"
@@ -236,7 +239,7 @@
             </div>
             <slot name="icon"></slot>
             <p
-              v-if="word.wordType.toLowerCase() === 'eng'"
+              v-if="word.wordType === 'Eng'"
               :class="[
                 word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
               ]"
@@ -245,7 +248,7 @@
               {{ word.wordName }}
             </p>
             <p
-              v-if="word.wordType.toLowerCase() === 'geo'"
+              v-if="word.wordType === 'Geo'"
               :class="[
                 word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
               ]"
@@ -254,7 +257,7 @@
               {{ word.wordName }}
             </p>
             <p
-              v-if="word.wordType.toLowerCase() === 'def'"
+              v-if="word.wordType === 'Def'"
               :class="[
                 word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
               ]"
@@ -289,25 +292,19 @@
     computed: {
       engWords() {
         if (this.words.itemsList !== undefined) {
-          return this.words.itemsList.filter(
-            x => x.wordType.toLowerCase() === 'eng'
-          )
+          return this.words.itemsList.filter(x => x.wordType === 'Eng')
         }
         return null
       },
       geoWords() {
         if (this.words.itemsList !== undefined) {
-          return this.words.itemsList.filter(
-            x => x.wordType.toLowerCase() === 'geo'
-          )
+          return this.words.itemsList.filter(x => x.wordType === 'Geo')
         }
         return null
       },
       defWords() {
         if (this.words.itemsList !== undefined) {
-          return this.words.itemsList.filter(
-            x => x.wordType.toLowerCase() === 'def'
-          )
+          return this.words.itemsList.filter(x => x.wordType === 'Def')
         }
         return null
       }
