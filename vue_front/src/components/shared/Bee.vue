@@ -35,7 +35,7 @@
 <style lang="scss" scoped>
   .bee {
     position: fixed;
-    right: 30%;
+    right: 34%;
     top: 14%;
     z-index: 40;
   }

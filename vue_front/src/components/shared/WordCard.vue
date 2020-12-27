@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card word">
     <div
       v-if="words != 0"
       class="card-content py-6"
@@ -324,6 +324,9 @@
 
 <style lang="scss">
   .card {
+    &.word {
+      z-index: 20;
+    }
     &-content {
       &_line {
         &-icon {
@@ -331,8 +334,14 @@
           height: 26px;
           width: 26px;
         }
-        &-share .buttons button {
-          padding: 1rem 1.2rem !important;
+        &-share {
+          background: #fff;
+          position: relative;
+          z-index: 50;
+          border-radius: 20px;
+          .buttons button {
+            padding: 1rem 1.2rem !important;
+          }
         }
       }
     }

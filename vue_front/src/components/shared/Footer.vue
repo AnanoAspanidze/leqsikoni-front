@@ -12,7 +12,7 @@
             >
               <i class="fi fb"></i>
             </a>
-            <a
+            <!-- <a
               :href="contact.tweeterLink || '#'"
               class="button is-rounded has-text-primary"
             >
@@ -23,7 +23,7 @@
               class="button is-rounded has-text-primary"
             >
               <i class="fi in"></i>
-            </a>
+            </a> -->
           </div>
         </div>
       </div>

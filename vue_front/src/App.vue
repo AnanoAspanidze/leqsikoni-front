@@ -127,7 +127,10 @@
             property: 'og:title',
             content: 'ტექნოლოგიური ტერმინების ლექსიკონი'
           },
-          { property: 'og:site_name', content: '' },
+          {
+            property: 'og:site_name',
+            content: 'ტექნოლოგიური ტერმინების ლექსიკონი'
+          },
           { property: 'og:type', content: 'website' },
           { property: 'og:url', content: 'https://terms.emis.ge' },
           { property: 'og:image', content: 'https://terms.emis.ge/logo.png' },
@@ -135,8 +138,7 @@
             property: 'og:description',
             content:
               'ტექნოლოგიების ლექსიკონი ტერმინთა ქართული თარგმანებითა  და განმარტებებით. მის შევსებაში მონაწილეობის მიღება შეუძლია ყველა დაინტერესებულ ადამიანს.'
-          },
-          { property: 'og:locale', content: 'ka-GE' }
+          }
         ]
       }
     }

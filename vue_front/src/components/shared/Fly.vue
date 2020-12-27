@@ -18,7 +18,7 @@
   .fly {
     right: 5%;
     top: 25%;
-    z-index: 9999;
+    z-index: 10;
     @media screen and (max-width: 1024px) {
       display: none;
     }

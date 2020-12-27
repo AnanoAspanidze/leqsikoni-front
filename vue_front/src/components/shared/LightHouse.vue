@@ -18,7 +18,7 @@
   .lightHouse {
     left: 5%;
     bottom: 2%;
-    z-index: 9999;
+    z-index: 10;
     @media screen and (max-width: 1024px) {
       display: none;
     }
