@@ -14,7 +14,7 @@
             <p
               class="subtitle has-text-weight-light is-size-7 has-text-centered"
             >
-              უცილებელია ერთი ინგლისური ან ქართული სიტყვის ჩაწერა მაინც
+              აუცილებელია ერთი ინგლისური ან ქართული სიტყვის ჩაწერა მაინც.
             </p>
             <div
               class="is-flex is-flex-direction-column is-justify-content-center"

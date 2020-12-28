@@ -25,8 +25,7 @@
                   $router.push({
                     name: 'Editing',
                     params: { wordId: singleWord.itemId }
-                  })
-                "
+                  })"
               />
             </div>
           </div>
@@ -116,9 +115,9 @@
           data =
             'terms.emis.ge - ' +
             engWord.wordName +
-            ' ' +
+            ' - ' +
             geoWord.wordName +
-            ' ' +
+            ' - ' +
             defWord.wordName
         }
 

@@ -37,6 +37,7 @@
     position: fixed;
     right: 34%;
     top: 14%;
-    z-index: 40;
+    z-index: 30;
+    pointer-events: none;
   }
 </style>

@@ -188,16 +188,30 @@
     methods: {
       ...mapActions(['getUserWordList']),
       getFacebookWord(item) {
-        let data = ''
         if (item.itemsList) {
-          let engWord = item.itemsList.find(x => x.wordType === 'Eng')
-          let geoWord = item.itemsList.find(x => x.wordType === 'Geo')
+          let engWord = item.itemsList.find(x => x.wordType === 'Eng') || {}
+          let geoWord = item.itemsList.find(x => x.wordType === 'Geo') || {}
+          let defWord = item.itemsList.find(x => x.wordType === 'Def') || {}
 
-          if (engWord || geoWord) {
-            data = engWord.wordName || geoWord.wordName
+          if (engWord.wordName === undefined) {
+            engWord.wordName = ''
+            this.link = engWord
           }
+          if (geoWord.wordName === undefined) {
+            geoWord.wordName = ''
+          }
+          if (defWord.wordName === undefined) {
+            defWord.wordName = ''
+          }
+          this.link = engWord.wordName
+          this.text =
+            'terms.emis.ge - ' +
+            engWord.wordName +
+            ' - ' +
+            geoWord.wordName +
+            ' - ' +
+            defWord.wordName
         }
-        this.text = 'terms.emis.ge - ' + data
       }
     }
   }

@@ -3,7 +3,7 @@
     <div v-if="!isLoading" class="columns is-multiline is-centered mt-5">
       <div
         v-for="(item, i) in wordList"
-        :key="item.wordId"
+        :key="item.itemId"
         class="column is-8 is-offset-1 is-relative"
       >
         <div v-if="i === 0" class="card_image-1 is-absolute">
@@ -17,7 +17,7 @@
             <ShareNetwork
               tag="div"
               network="facebook"
-              :url="`https://terms.emis.ge/word/${item.id}`"
+              :url="`https://terms.emis.ge/word/${item.itemId}?word=${link}`"
               title=""
               :quote="text"
             >
@@ -89,7 +89,8 @@
     data() {
       return {
         current: 1,
-        text: ''
+        text: '',
+        link: ''
       }
     },
     computed: {
@@ -170,6 +171,7 @@
 
           if (engWord.wordName === undefined) {
             engWord.wordName = ''
+            this.link = engWord
           }
           if (geoWord.wordName === undefined) {
             geoWord.wordName = ''
@@ -177,12 +179,13 @@
           if (defWord.wordName === undefined) {
             defWord.wordName = ''
           }
+          this.link = engWord.wordName
           this.text =
             'terms.emis.ge - ' +
             engWord.wordName +
-            ' ' +
+            ' - ' +
             geoWord.wordName +
-            ' ' +
+            ' - ' +
             defWord.wordName
         }
       }
