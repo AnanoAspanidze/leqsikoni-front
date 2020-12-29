@@ -15,21 +15,7 @@
               </v-btn>
             </template>
             <v-card class="overflow-x-hidden">
-              <v-toolbar dark color="primary">
-                <v-toolbar-items>
-                  <v-btn dark text @click="resetValidation">
-                    გაუქმება
-                    <v-icon right dark>close</v-icon>
-                  </v-btn>
-                </v-toolbar-items>
-                <v-spacer></v-spacer>
-                <v-toolbar-items>
-                  <v-btn dark text @click="dialog = false">
-                    <v-icon left dark>save_alt</v-icon>
-                    შენახვა
-                  </v-btn>
-                </v-toolbar-items>
-              </v-toolbar>
+              <v-toolbar dark color="primary"></v-toolbar>
               <v-row justify="center">
                 <v-col :cols="6">
                   <h3 class="mt-10 text-center">ახალი სიტყვის დამატება</h3>
@@ -116,7 +102,7 @@
                       <v-checkbox
                         v-model="form.isMainWord"
                         class="mt-0 mb-4"
-                        label="მთავაი სიტყვად მონიშვნა"
+                        label="მთავარ სიტყვად მონიშვნა"
                         required
                       ></v-checkbox>
                       <v-checkbox
@@ -126,7 +112,6 @@
                         required
                       ></v-checkbox>
                     </div>
-
                     <div class="d-flex justify-center">
                       <v-btn color="success" @click="addWord">
                         დამატება

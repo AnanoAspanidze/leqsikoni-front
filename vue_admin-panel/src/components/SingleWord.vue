@@ -58,6 +58,7 @@
           mdi-link
         </v-icon>
         <a
+          v-if="item.sourceLink"
           class="pl-1 text-decoration-none"
           :href="item.sourceLink"
           target="_blank"
@@ -69,13 +70,9 @@
         <v-icon medium color="blue darken-2">
           mdi-bookmark
         </v-icon>
-        <a
-          class="pl-1 text-decoration-none"
-          :href="item.sourceLink"
-          target="_blank"
-        >
-          წყარო
-        </a>
+        <span class="pl-1 text-decoration-none">
+          {{ item.sourceLink }}
+        </span>
       </div>
       <v-row>
         <v-col class="text-right">

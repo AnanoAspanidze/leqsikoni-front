@@ -60,6 +60,7 @@
 import { mapActions, mapGetters } from 'vuex'
 
 export default {
+  name: 'Text',
   data() {
     return {
       form: {
