@@ -71,7 +71,7 @@
           mdi-bookmark
         </v-icon>
         <span class="pl-1 text-decoration-none">
-          {{ item.sourceLink }}
+          {{ item.sourceText }}
         </span>
       </div>
       <v-row>
