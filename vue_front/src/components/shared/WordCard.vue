@@ -69,7 +69,9 @@
               v-if="word.wordType === 'Eng'"
               class="has-text-primary is-family-secondary is-capitalized ml-3"
               :class="[
-                word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
+                word.isMainWord
+                  ? 'has-text-weight-bold'
+                  : 'has-text-weight-light'
               ]"
             >
               {{ word.wordName }}
@@ -77,12 +79,22 @@
             <p
               v-if="word.wordType === 'Geo'"
               class="has-text-text is-family-secondary is-capitalized ml-3 mt"
+              :class="[
+                word.isMainWord
+                  ? 'has-text-weight-bold'
+                  : 'has-text-weight-light'
+              ]"
             >
               {{ word.wordName }}
             </p>
             <p
               v-if="word.wordType === 'Def'"
               class="has-text-text is-family-secondary is-capitalized ml-3"
+              :class="[
+                word.isMainWord
+                  ? 'has-text-weight-bold'
+                  : 'has-text-weight-light'
+              ]"
             >
               {{ word.wordName }}
             </p>
@@ -151,7 +163,9 @@
               v-if="word.wordType === 'Eng'"
               class="has-text-primary is-family-secondary is-capitalized ml-3"
               :class="[
-                word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
+                word.isMainWord
+                  ? 'has-text-weight-bold'
+                  : 'has-text-weight-light'
               ]"
             >
               {{ word.wordName }}
@@ -160,7 +174,9 @@
               v-if="word.wordType === 'Geo'"
               class="has-text-text is-family-secondary is-capitalized ml-3 mt"
               :class="[
-                word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
+                word.isMainWord
+                  ? 'has-text-weight-bold'
+                  : 'has-text-weight-light'
               ]"
             >
               {{ word.wordName }}
@@ -169,7 +185,9 @@
               v-if="word.wordType === 'Def'"
               class="has-text-text is-family-secondary is-capitalized ml-3"
               :class="[
-                word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
+                word.isMainWord
+                  ? 'has-text-weight-bold'
+                  : 'has-text-weight-light'
               ]"
             >
               {{ word.wordName }}
@@ -238,7 +256,9 @@
             <p
               v-if="word.wordType === 'Eng'"
               :class="[
-                word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
+                word.isMainWord
+                  ? 'has-text-weight-bold'
+                  : 'has-text-weight-light'
               ]"
               class="has-text-primary is-family-secondary is-capitalized ml-3"
             >
@@ -247,7 +267,9 @@
             <p
               v-if="word.wordType === 'Geo'"
               :class="[
-                word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
+                word.isMainWord
+                  ? 'has-text-weight-bold'
+                  : 'has-text-weight-light'
               ]"
               class="has-text-text is-family-secondary is-capitalized ml-3 mt"
             >
@@ -256,7 +278,9 @@
             <p
               v-if="word.wordType === 'Def'"
               :class="[
-                word.isAuthor ? 'has-text-weight-bold' : 'has-text-weight-light'
+                word.isMainWord
+                  ? 'has-text-weight-bold'
+                  : 'has-text-weight-light'
               ]"
               class="has-text-text is-family-secondary is-capitalized ml-3"
             >
