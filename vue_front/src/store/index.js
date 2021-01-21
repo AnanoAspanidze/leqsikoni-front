@@ -173,7 +173,7 @@ export default new Vuex.Store({
       Axios.get(`words/wordslist?${result.join('&')}`).then(Response => {
         commit('SET_WORD_BY_QUERY', Response.data.wordsList)
         commit('SET_WORDS_COUNT', Response.data.wordsQuantity)
-        if (param.key === 'SearchQuery') {
+        if (Object.keys(param)[0] === 'SearchQuery') {
           commit('SEARCH_COUNT', Response.data.wordsQuantity)
         } else {
           commit('SEARCH_COUNT', null)

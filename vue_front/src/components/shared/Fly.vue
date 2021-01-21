@@ -17,7 +17,7 @@
 <style lang="scss" scoped>
   .fly {
     right: 5%;
-    top: 25%;
+    top: 35%;
     z-index: 10;
     @media screen and (max-width: 1024px) {
       display: none;

@@ -1,5 +1,5 @@
 <template>
-  <div class="lightHouse is-fixed">
+  <div class="lightHouse is-absolute">
     <figure class="image is-156x256">
       <img src="@/assets/img/lighthouse.png" alt="lightHouse" />
     </figure>
@@ -17,7 +17,7 @@
 <style lang="scss" scoped>
   .lightHouse {
     left: 5%;
-    bottom: 2%;
+    bottom: 30%;
     z-index: 10;
     @media screen and (max-width: 1024px) {
       display: none;

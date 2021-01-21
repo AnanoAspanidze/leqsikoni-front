@@ -532,7 +532,7 @@
       }
       .search {
         width: 80%;
-        z-index: 40;
+        z-index: 25;
         .card {
           height: 94px;
           border-radius: 5rem;
