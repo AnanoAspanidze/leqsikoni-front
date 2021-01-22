@@ -73,7 +73,7 @@
                         </v-btn>
                       </v-fab-transition>
                     </div>
-                    <div class="d-flex">
+                    <div v-if="!edit" class="d-flex">
                       <v-checkbox
                         v-model="form.wordType"
                         label="ინგლისური"
@@ -238,13 +238,14 @@ export default {
     dialog: false,
     valid: true,
     sourceActive: 0,
+    edit: false,
     form: {
       wordId: 0,
       wordName: '',
       wordType: '',
       sourceText: '',
       sourceLink: '',
-      isMainWord: false
+      isMainWord: true
     },
     wordRules: [
       v => !!v || 'ველი სავალდებულოა',
@@ -300,6 +301,7 @@ export default {
     ]),
     getEditDialog(item) {
       this.form = item
+      this.edit = true
       this.dialog = true
     },
     setMainWord(item) {
